@@ -81,7 +81,7 @@ public class DaoImpl implements Dao {
 	public void insert(ProductVO p) {
 		Connection conn = db.getConnection();
 		
-		String sql = "insert into product values(?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into product values(?, ?, ?, ?, ?, sysdate, 0)";
 		
 		PreparedStatement pstmt = null;
 		
@@ -93,8 +93,6 @@ public class DaoImpl implements Dao {
 			pstmt.setInt(3, p.getPrice());
 			pstmt.setString(4, p.getImg());
 			pstmt.setString(5, p.getContent());
-			pstmt.setDate(6, p.getE_date());
-			pstmt.setInt(7, p.getRecord());
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

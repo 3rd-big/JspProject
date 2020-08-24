@@ -26,7 +26,7 @@ public class ServiceImpl implements Service{
 
 	@Override
 	public void add(ProductVO p) {
-		
+		dao.insert(p);
 	}
 
 }
