@@ -2,7 +2,7 @@ package product.dao;
 
 import java.util.ArrayList;
 
-import product.vo.ProductVO;
+import model.ProductVO;
 
 public interface Dao {
 	ArrayList<ProductVO> selectAll();

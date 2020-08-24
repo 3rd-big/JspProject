@@ -1,4 +1,4 @@
-package review.vo;
+package model;
 
 import java.sql.Date;
 

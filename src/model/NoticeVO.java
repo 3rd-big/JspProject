@@ -1,4 +1,4 @@
-package notice.vo;
+package model;
 
 import java.sql.Date;
 

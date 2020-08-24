@@ -1,4 +1,4 @@
-package product.vo;
+package model;
 
 public class ProductImageVO {
 	private int num;

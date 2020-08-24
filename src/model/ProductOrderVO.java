@@ -1,4 +1,4 @@
-package product.vo;
+package model;
 
 import java.sql.Date;
 

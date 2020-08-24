@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conn.DBConnect;
-import product.vo.ProductVO;
+import model.ProductVO;
 
 public class DaoImpl implements Dao {
 

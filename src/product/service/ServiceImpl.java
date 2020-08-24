@@ -2,9 +2,9 @@ package product.service;
 
 import java.util.ArrayList;
 
+import model.ProductVO;
 import product.dao.Dao;
 import product.dao.DaoImpl;
-import product.vo.ProductVO;
 
 public class ServiceImpl implements Service{
 	
