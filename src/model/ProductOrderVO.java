@@ -10,10 +10,9 @@ public class ProductOrderVO {
 	private String m_id;
 	private Date o_date;
 	private int o_state;
-	private int d_dtate;
+	private int d_state;
 	
-	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
-			int d_dtate) {
+	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state, int d_state) {
 		super();
 		this.num = num;
 		this.p_num = p_num;
@@ -22,7 +21,7 @@ public class ProductOrderVO {
 		this.m_id = m_id;
 		this.o_date = o_date;
 		this.o_state = o_state;
-		this.d_dtate = d_dtate;
+		this.d_state = d_state;
 	}
 
 	public int getNum() {
@@ -81,19 +80,19 @@ public class ProductOrderVO {
 		this.o_state = o_state;
 	}
 
-	public int getD_dtate() {
-		return d_dtate;
+	public int getD_state() {
+		return d_state;
 	}
 
-	public void setD_dtate(int d_dtate) {
-		this.d_dtate = d_dtate;
+	public void setD_state(int d_state) {
+		this.d_state = d_state;
 	}
 
 	@Override
 	public String toString() {
 		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
-				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_dtate="
-				+ d_dtate + "]";
+				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
+				+ d_state + "]";
 	}
 	
 	

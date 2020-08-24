@@ -6,18 +6,18 @@ public class ReviewVO {
 	private int num;
 	private String m_id;
 	private int rate;
+	private String content;
 	private String img;
 	private Date r_date;
-	private String content;
 	
-	public ReviewVO(int num, String m_id, int rate, String img, Date r_date, String content) {
+	public ReviewVO(int num, String m_id, int rate, String content, String img, Date r_date) {
 		super();
 		this.num = num;
 		this.m_id = m_id;
 		this.rate = rate;
+		this.content = content;
 		this.img = img;
 		this.r_date = r_date;
-		this.content = content;
 	}
 
 	public int getNum() {
@@ -44,6 +44,14 @@ public class ReviewVO {
 		this.rate = rate;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public String getImg() {
 		return img;
 	}
@@ -60,18 +68,10 @@ public class ReviewVO {
 		this.r_date = r_date;
 	}
 
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
 	@Override
 	public String toString() {
-		return "ReviewVO [num=" + num + ", m_id=" + m_id + ", rate=" + rate + ", img=" + img + ", r_date=" + r_date
-				+ ", content=" + content + "]";
+		return "ReviewVO [num=" + num + ", m_id=" + m_id + ", rate=" + rate + ", content=" + content + ", img=" + img
+				+ ", r_date=" + r_date + "]";
 	}
 	
 	
