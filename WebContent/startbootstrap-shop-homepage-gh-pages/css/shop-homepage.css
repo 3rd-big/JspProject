@@ -3,6 +3,36 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
+/* html, body
+{
+    height: 100%;
+}
+
+body
+{
+    display: table;
+    margin: 0 auto;
+}
+
+.container
+{
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.main
+{
+    height: 200px;
+    width: 200px;
+    background-color: blue;     
+} */
+
+
+ 
+ 
+ 
+ 
 body {
   padding-top: 56px;
 }
@@ -12,9 +42,26 @@ body {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
-    position: center;
+	position: center;
+
     width: 100%;
     padding-right: 5px;
     padding-left: 30px;
 }
 
+.logincomponent{
+	 -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: center;
+    width: 100%;
+    padding-right: 200px;
+    padding-left: 100px;
+    margin-left:200px
+  
+}
+.searchUser{
+	position: center;
+	color: grey;
+}

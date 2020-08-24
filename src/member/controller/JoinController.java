@@ -45,7 +45,7 @@ public class JoinController extends HttpServlet {
 		String addr = request.getParameter("addr");
 		
 		
-		MemberVO m = new MemberVO(id, pwd, name, email, addr,1,0);
+		MemberVO m = new MemberVO(id, pwd, name, email, addr, 1, 0);
 		service.join(m);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/startbootstrap-shop-homepage-gh-pages/index.jsp");
