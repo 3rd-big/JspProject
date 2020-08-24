@@ -6,3 +6,15 @@
 body {
   padding-top: 56px;
 }
+
+.enrollcomponent{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: center;
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 30px;
+}
+

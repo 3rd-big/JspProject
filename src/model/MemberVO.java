@@ -20,6 +20,9 @@ public class MemberVO {
 		this.point = point;
 	}
 
+	
+	
+	
 	public String getId() {
 		return id;
 	}
