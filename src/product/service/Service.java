@@ -8,6 +8,10 @@ public interface Service {
 
 	ArrayList<ProductVO> getProductAll();
 	
+	ArrayList<ProductVO> getBestProducts();
+	
+	ArrayList<ProductVO> getNewProducts();
+	
 	int makeNum();
 	
 	void add(ProductVO p);

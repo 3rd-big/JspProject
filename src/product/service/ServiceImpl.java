@@ -18,6 +18,16 @@ public class ServiceImpl implements Service{
 	public ArrayList<ProductVO> getProductAll() {
 		return dao.selectAll();
 	}
+	
+	@Override
+	public ArrayList<ProductVO> getBestProducts() {
+		return dao.selectBestProducts();
+	}
+
+	@Override
+	public ArrayList<ProductVO> getNewProducts() {
+		return dao.selectNewProducts();
+	}
 
 	@Override
 	public int makeNum() {
@@ -28,5 +38,7 @@ public class ServiceImpl implements Service{
 	public void add(ProductVO p) {
 		dao.insert(p);
 	}
+
+
 
 }

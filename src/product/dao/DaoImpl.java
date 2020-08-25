@@ -48,6 +48,69 @@ public class DaoImpl implements Dao {
 	}
 
 	@Override
+	public ArrayList<ProductVO> selectBestProducts() {
+		ArrayList<ProductVO> bestProducts = new ArrayList<>();
+		ResultSet rs = null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from product where rownum <= 4 order by record desc";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bestProducts.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return bestProducts;
+	}
+
+	@Override
+	public ArrayList<ProductVO> selectNewProducts() {
+		ArrayList<ProductVO> newProducts = new ArrayList<>();
+		ResultSet rs = null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from product where rownum <= 4 order by e_date desc";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				newProducts.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return newProducts;
+	}
+	
+	
+	
+
+	@Override
 	public int selectNum() {
 		Connection conn = db.getConnection();
 
@@ -107,6 +170,7 @@ public class DaoImpl implements Dao {
 			}
 		}
 	}
+
 
 	
 }

@@ -27,9 +27,11 @@ public class MainListController extends HttpServlet {
 		
 		
 		Service service = new ServiceImpl(); 
-		ArrayList<ProductVO> data = service.getProductAll();
+		ArrayList<ProductVO> bestProducts = service.getBestProducts();
+		ArrayList<ProductVO> newProducts = service.getNewProducts();
 		
-		request.setAttribute("data", data);
+		request.setAttribute("bestProducts", bestProducts);
+		request.setAttribute("newProducts", newProducts);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/startbootstrap-shop-homepage-gh-pages/main.jsp");
 		dispatcher.forward(request, response);
