@@ -14,19 +14,30 @@
 			
 		}
 	</style>	
+	<script type="text/javascript">
+		function flag(a) {
+			alert(a);
+		}
+	</script>
 </head>
 <body>
 	<div>
-		<h1>신상품</h1>
+		<h1>신상품</h1> 
+		<hr>
+		<c:forEach var="newProduct" items="${newProducts }">
+			<a href="${pageContext.request.contextPath }/DetailController?num=${newProduct.num }">
+				<img src="${newProduct.img}" width="200" height="300">
+			</a>
+		</c:forEach>
 	</div>
-	<hr>
-
-	<c:forEach var="data" items="${data }">
-		<tr>
-			<td>
-				<img src="${data.img}" width="300" height="300">
-			</td>
-		</tr>
-	</c:forEach>
+	<div>
+		<h1>인기순</h1>
+		<hr>
+		<c:forEach var="bestProduct" items="${bestProducts }">
+			<a href="${pageContext.request.contextPath }/DetailController?num=${bestProduct.num }">
+				<img src="${bestProduct.img}" width="200" height="300">
+			</a>
+		</c:forEach>
+	</div>
 </body>
 </html>
