@@ -11,7 +11,7 @@ import model.ProductVO;
 
 public class DaoImpl implements Dao {
 
-	private DBConnect db;
+private DBConnect db;
 	
 	public DaoImpl() {
 		db = DBConnect.getInstance();
