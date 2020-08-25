@@ -64,3 +64,4 @@ quantity    number
 
 
 create SEQUENCE seq_shop_product;
+create SEQUENCE seq_notice;
