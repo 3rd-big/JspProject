@@ -39,6 +39,11 @@ public class ServiceImpl implements Service{
 		dao.insert(p);
 	}
 
+	@Override
+	public ProductVO getProduct(int num) {
+		return dao.select(num);
+	}
+
 
 
 }

@@ -12,6 +12,8 @@ public interface Service {
 	
 	ArrayList<ProductVO> getNewProducts();
 	
+	ProductVO getProduct(int num);
+	
 	int makeNum();
 	
 	void add(ProductVO p);

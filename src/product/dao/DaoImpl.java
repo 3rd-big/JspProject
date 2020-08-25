@@ -171,6 +171,40 @@ public class DaoImpl implements Dao {
 		}
 	}
 
+	@Override
+	public ProductVO select(int num) {
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		ProductVO product = null;
+		PreparedStatement pstmt = null;
+		
+		
+		// TODO 해당 쿼리문은 나중에 상품관련 테이블 모두 조인한 결과값으로 수정 필요
+		String sql = "select * from product where num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				product = (new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return product;
+	}
+
 
 	
 }

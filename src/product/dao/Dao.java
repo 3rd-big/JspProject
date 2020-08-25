@@ -16,5 +16,5 @@ public interface Dao {
 	
 	void insert(ProductVO p);
 	
-	
+	ProductVO select(int num);
 }

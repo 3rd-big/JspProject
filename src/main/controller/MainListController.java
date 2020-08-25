@@ -33,7 +33,7 @@ public class MainListController extends HttpServlet {
 		request.setAttribute("bestProducts", bestProducts);
 		request.setAttribute("newProducts", newProducts);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/startbootstrap-shop-homepage-gh-pages/main.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main.jsp");
 		dispatcher.forward(request, response);
 		
 		

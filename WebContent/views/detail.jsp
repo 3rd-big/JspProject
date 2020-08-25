@@ -12,10 +12,10 @@
   <title>Shop Item - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/shop-item.css" rel="stylesheet">
+  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 
 </head>
 
@@ -67,7 +67,7 @@
       <div class="col-lg-9">
 
         <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+          <img class="card-img-top img-fluid" src="${product.img }" alt="">
           <div class="card-body">
             <h3 class="card-title">Product Name</h3>
             <h4>$24.99</h4>
