@@ -14,11 +14,6 @@
 			
 		}
 	</style>	
-	<script type="text/javascript">
-		function flag(a) {
-			alert(a);
-		}
-	</script>
 </head>
 <body>
 	<div>
