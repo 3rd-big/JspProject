@@ -41,10 +41,8 @@ public class DetailImageController extends HttpServlet {
 		Service service = new ServiceImpl();
 		product.service.Service pImg_service = new product.service.ServiceImpl();
 		ArrayList<ProductVO> pImgs = service.getProductAll();
-//		for(ProductImageVO pImg : img) {
-//			
-//		}
-		
+
+		//request.setAttribute(arg0, arg1);
 	}
 
 	/**
