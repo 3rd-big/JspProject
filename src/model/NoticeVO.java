@@ -9,6 +9,7 @@ public class NoticeVO {
 	private Date n_date;
 	private int view_count;
 	
+	
 	public NoticeVO(int num, String title, String content, Date n_date, int view_count) {
 		super();
 		this.num = num;
@@ -16,6 +17,10 @@ public class NoticeVO {
 		this.content = content;
 		this.n_date = n_date;
 		this.view_count = view_count;
+	}
+
+	public NoticeVO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getNum() {

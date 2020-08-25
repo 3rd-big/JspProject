@@ -11,7 +11,7 @@ import model.ProductVO;
 
 public class DaoImpl implements Dao {
 
-	private DBConnect db;
+private DBConnect db;
 	
 	public DaoImpl() {
 		db = DBConnect.getInstance();
@@ -54,7 +54,7 @@ public class DaoImpl implements Dao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "select * from product where rownum <= 4 order by record desc";
+		String sql = "select * from (select * from product order by record desc) where rownum <= 4";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -84,7 +84,7 @@ public class DaoImpl implements Dao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "select * from product where rownum <= 4 order by e_date desc";
+		String sql = "select * from (select * from product order by e_date desc) where rownum <= 4";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
