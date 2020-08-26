@@ -27,10 +27,11 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 
 		<div class="logo">
+		<form>
 			<img
 				src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px">
 		</div>
-
+</form>
 		<!-- top-navbar -->
 		<div class="container" style="flex-flow: column; max-width: none;">
 			<!-- top-navbar -->
@@ -46,7 +47,7 @@
 								<span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
+						<li class="nav-item"><a class="nav-link" href="/views/login.jsp">로그인</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Contact</a>
 						</li>
 
@@ -69,7 +70,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link" href="#">Home
+						<li class="nav-item active"><a class="nav-link" href="/views/main/main.jsp">Home
 								<span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">About</a></li>
