@@ -19,6 +19,15 @@ public class MemberVO {
 		this.type = type;
 		this.point = point;
 	}
+	
+	public MemberVO(String id, String pwd, String name, String email, String addr) {
+		super();
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.addr = addr;
+	}
 
 	public String getId() {
 		return id;

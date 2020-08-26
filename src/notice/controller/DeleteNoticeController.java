@@ -15,8 +15,11 @@ import notice.service.ServiceImpl;
 /**
  * Servlet implementation class DeleteNoticeController
  */
+
 @WebServlet("/DeleteNoticeController")
 public class DeleteNoticeController extends HttpServlet {
+
+
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -32,9 +35,9 @@ public class DeleteNoticeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int num = Integer.parseInt(request.getParameter("num"));
+	//	int num = Integer.parseInt(request.getParameter("num"));
 		Service service = new ServiceImpl();
-		service.delNotice(num);
+	//	service.delNotice(num);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
 		if (dispatcher != null) {

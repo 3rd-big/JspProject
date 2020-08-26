@@ -11,6 +11,12 @@ public class ProductOrderVO {
 	private Date o_date;
 	private int o_state;
 	private int d_state;
+	private String prod_name;
+	private String prod_img;
+	
+	public ProductOrderVO() {
+		
+	}
 	
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state, int d_state) {
 		super();
@@ -93,6 +99,22 @@ public class ProductOrderVO {
 		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
 				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
 				+ d_state + "]";
+	}
+
+	public String getProd_name() {
+		return prod_name;
+	}
+
+	public void setProd_name(String prod_name) {
+		this.prod_name = prod_name;
+	}
+
+	public String getProd_img() {
+		return prod_img;
+	}
+
+	public void setProd_img(String prod_img) {
+		this.prod_img = prod_img;
 	}
 	
 	
