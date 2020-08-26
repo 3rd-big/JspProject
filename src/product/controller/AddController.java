@@ -44,7 +44,7 @@ public class AddController extends HttpServlet {
 //		System.out.println("AddController 페이지");
 //		System.out.println(uploadPath);
 //		System.out.println(uploadPath2);
-		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		String uploadPath = "C:\\Web\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 //		String uploadPath = "/JspProject/upload_img";
 //		String uploadPath = request.getSession().getServletContext().getRealPath("upload_img");
 //		String uploadPath =  request.getRealPath("");
