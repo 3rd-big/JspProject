@@ -32,11 +32,10 @@ public class ReadNoticeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html; charset=UTF-8");
+//		response.setCharacterEncoding("UTF-8");
 
-				System.out.println("hhhjj");
 				// 기능을 제공할 서비스 객체 생성
 				Service service = new ServiceImpl();
 

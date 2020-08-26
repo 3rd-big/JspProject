@@ -164,7 +164,7 @@ public class DaoImpl implements Dao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "select * from notice";
+		String sql = "select * from notice order by num desc";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

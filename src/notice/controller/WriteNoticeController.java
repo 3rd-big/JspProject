@@ -35,9 +35,9 @@ public class WriteNoticeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 요청과 응답의 인코딩 설정
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html; charset=UTF-8");
+//		response.setCharacterEncoding("UTF-8");
 
 		// 기능을 제공할 서비스 객체 생성
 		Service service = new ServiceImpl();
