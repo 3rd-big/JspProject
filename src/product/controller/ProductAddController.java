@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,11 +19,11 @@ import product.service.Service;
 import product.service.ServiceImpl;
 
 
-@WebServlet("/AddController")
-public class AddController extends HttpServlet {
+@WebServlet("/ProductAddController")
+public class ProductAddController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddController() {
+    public ProductAddController() {
         super();
     }
 
@@ -75,7 +76,8 @@ public class AddController extends HttpServlet {
 		p.setImg("/upload_img/" + img);
 		service.add(p);
 		
-		// TODO 관리자가 상품등록 후 이동할 페이지 지정
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ProductAllListController");
+		dispatcher.forward(request, response);
 		
 	}
 

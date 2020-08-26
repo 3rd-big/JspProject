@@ -17,7 +17,8 @@
 </head>
 <body>
 
-	<%@include file ="/views/common/header.jsp" %>
+	<!-- Navigation -->
+	<%@include file ="/views/common/header_example.jsp" %>
 
 
 	<div>

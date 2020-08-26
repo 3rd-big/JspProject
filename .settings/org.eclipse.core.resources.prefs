@@ -1,6 +1,7 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=2fcbd0e02aa8541ebf315a6f8fa5f8575f840551
 eclipse.preferences.version=1
-<<<<<<< HEAD
-=======
-encoding//src/product/controller/AddController.java=UTF-8
->>>>>>> 2fcbd0e02aa8541ebf315a6f8fa5f8575f840551
+encoding//WebContent/views/product/detail.jsp=UTF-8
+encoding//src/product/controller/ProductAddController.java=UTF-8
 encoding/<project>=UTF-8
