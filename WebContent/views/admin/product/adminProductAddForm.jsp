@@ -43,7 +43,7 @@
 <body>
 
 	<!-- Navigation -->
-	<%@include file="/views/common/header_example.jsp"%>
+	<%@include file="/views/common/header.jsp"%>
 
 	<h1>상품등록 페이지</h1>
 

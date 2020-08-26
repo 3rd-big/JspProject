@@ -36,6 +36,7 @@ public class LoginController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("utf-8");
+		System.out.println("LoginController 페이지 실행");
 		String path = "/views/member/login.jsp";
 		// 기능을 제공할 서비스 객체 생성
 		Service service = new ServiceImpl();
@@ -63,13 +64,16 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("memberType", type);
 			if (type == 1) {
 				//사용자 type=1
-				path = "/views/main/main.jsp";
+//				path = "/views/main/main.jsp";
+				path = "/MainListController";
+				
 			} else if (type == 0) {
 				//관리자 type=0
-				path = "/views/main/main.jsp";
+//				path = "/views/main/main.jsp";
+				path = "/MainListController";
 			}
 		}
-
+		System.out.println(path);
 		System.out.println(session);
 		// 메뉴 페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);

@@ -60,7 +60,7 @@
 							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">주문조회</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="<%=request.getContextPath()%>/member/controller/logout.jsp">로그아웃</a></li>
+								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
 							</li>
 
 						</c:if>
@@ -70,7 +70,7 @@
 						<c:if test="${sessionScope.memberType == 0 }">
 							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="<%=request.getContextPath()%>/member/controller/logout.jsp">로그아웃</a></li>
+								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
 							</li>
 
 						</c:if>
@@ -161,7 +161,7 @@
 						<!-- 관리자 로그인 상태 -->
 
 						<c:if test="${sessionScope.memberType == 0 }">
-							<li class="nav-item"><a class="nav-link" href="#">상품관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/ProductAllListController">상품관리</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
