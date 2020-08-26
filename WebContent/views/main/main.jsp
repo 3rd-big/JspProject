@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<%@include file ="/views/common/header.jsp" %>
+	<%@include file ="/views/common/headertestsj.jsp" %>
 
 
 	<div>

@@ -19,26 +19,27 @@ public class ServiceImpl implements Service {
 
 	@Override
 	public MemberVO getMember(String id) {
-		// TODO Auto-generated method stub
 		return dao.select(id);
 	}
 
 	@Override
 	public void editMember(MemberVO m) {
-		// TODO Auto-generated method stub
-		
+		dao.update(m);
 	}
 
 	@Override
 	public void remMember(String id) {
-		// TODO Auto-generated method stub
-		
+		dao.delete(id);
 	}
 
 	@Override
 	public boolean login(String id, String pwd) {
-		// TODO Auto-generated method stub
-		return false;
+		MemberVO m = dao.select(id);
+		if (m == null || !m.getPwd().equals(pwd)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	

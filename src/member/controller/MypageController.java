@@ -15,16 +15,16 @@ import member.service.ServiceImpl;
 import model.MemberVO;
 
 /**
- * Servlet implementation class SearchController
+ * Servlet implementation class MypageController
  */
-@WebServlet("/SearchController")
-public class SearchController extends HttpServlet {
+@WebServlet("/MypageController")
+public class MypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchController() {
+    public MypageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,7 +49,7 @@ public class SearchController extends HttpServlet {
         //검색 결과인 객체 m을 request객체에 이름 m으로 저장
         request.setAttribute("m", m);
         //정보 페이지로 이동
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/mypage/edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/mypage/myInfo.jsp");
         if(dispatcher!=null) {
            dispatcher.forward(request, response);
         }		

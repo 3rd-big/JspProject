@@ -48,6 +48,7 @@
 						<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/views/member/login.jsp">로그인</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/MypageController">마이페이지</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/LogoutController">로그아웃</a>
 						</li>
 
 						<!-- 네비게이션 검색창 -->

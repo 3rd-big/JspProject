@@ -22,7 +22,7 @@
 </head>
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="#">Start Bootstrap</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -43,7 +43,8 @@
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
+	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class = "enrollcomponent">
 		<form action="${pageContext.request.contextPath }/JoinController" name="f" method="post">
