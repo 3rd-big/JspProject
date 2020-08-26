@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<!-- Navigation -->
+	<%@include file ="/views/common/header.jsp" %>
+	
 	<h3>상품 등록</h3>
 	<form action="${pageContext.request.contextPath }/ProductAddController" method="post" enctype="multipart/form-data">
 		상품명: <input type="text" name="name"><br>
