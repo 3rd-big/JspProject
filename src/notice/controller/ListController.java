@@ -38,10 +38,10 @@ public class ListController extends HttpServlet {
 		// TODO Auto-generated method stub
 		Service service = new ServiceImpl();
 
-		ArrayList<NoticeVO> notices = service.getProductAll();
-		request.setAttribute("notices", notices);
+		ArrayList<NoticeVO> notice = service.getProductAll();
+		request.setAttribute("notices", notice);
 		String path = "/views/notice_list.jsp";
-		System.out.println(notices.toString());
+		System.out.println(path.toString());
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}

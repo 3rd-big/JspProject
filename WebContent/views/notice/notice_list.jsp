@@ -15,12 +15,13 @@
 		<tr>
 			<th>글 번호</th><th>글제목</th>
 		</tr>
-		<c:forEach var="notices" items="${notices }">
+		<c:forEach var="notice" items="${notices }">
+		
 		<tr>
-			<td>${notices.num }</td>
+			<td>${notice.num }</td>
 			<td>
-				<a href="${pageContext.request.contextPath }/notice/List?num=${notices.num }">
-					${notices.title }
+				<a href="${pageContext.request.contextPath }/notice/Detail?num=${notice.num }">
+					${notice.title }
 				</a>
 			</td>
 		</tr>

@@ -1,4 +1,4 @@
-package notice.controller;
+package member.controller;
 
 import java.io.IOException;
 
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.NoticeVO;
-import notice.service.Service;
-import notice.service.ServiceImpl;
+import member.service.Service;
+import member.service.ServiceImpl;
+import model.MemberVO;
 
 /**
- * Servlet implementation class DetailController
+ * Servlet implementation class JoinController
  */
-@WebServlet(name = "noticeDetailController", urlPatterns = { "/noticeDetailController" })
-public class DetailController extends HttpServlet {
+@WebServlet("/JoinController")
+public class JoinController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DetailController() {
+    public JoinController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,22 +32,27 @@ public class DetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text'html; charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
 		
-		int num = Integer.parseInt(request.getParameter("num"));
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String addr = request.getParameter("addr");
 		
-		NoticeVO notice = service.getProduct(num);
 		
-		request.setAttribute("notice", notice);
+		MemberVO m = new MemberVO(id, pwd, name, email, addr, 1, 0);
+		service.join(m);
 		
-		String path = "/views/detail.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
+		if(dispatcher!=null) {
+			dispatcher.forward(request, response);
+			
+		}
 	}
 
 	/**
