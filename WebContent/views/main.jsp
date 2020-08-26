@@ -16,6 +16,10 @@
 	</style>	
 </head>
 <body>
+
+	<%@include file ="/views/header.jsp" %>
+
+
 	<div>
 		<h1>신상품</h1> 
 		<hr>
