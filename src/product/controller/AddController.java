@@ -39,17 +39,9 @@ public class AddController extends HttpServlet {
 		
 		int maxSize = 1024 * 1024 * 10;
 		MultipartRequest multi = null;
-//		String uploadPath = request.getSession().getServletContext().getRealPath("/");
-//		String uploadPath2 = request.getRealPath("/");
-//		System.out.println("AddController 페이지");
-//		System.out.println(uploadPath);
-//		System.out.println(uploadPath2);
+
+		// TODO 각자 Workspace 환경으로 바꿀 것
 		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
-//		String uploadPath = "/JspProject/upload_img";
-//		String uploadPath = request.getSession().getServletContext().getRealPath("upload_img");
-//		String uploadPath =  request.getRealPath("");
-
-
 		
 		try {
 			// request, 파일저장경로, 용량, 인코딩타입, 중복파일명에 대한 기본 정책
