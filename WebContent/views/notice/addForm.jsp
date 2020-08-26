@@ -1,25 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="model.NoticeVO"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" pageEncoding="UTf-8" import="model.NoticeVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>	
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>Insert title here</title>
+<!-- Bootstrap core CSS -->
+<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom styles for this template -->
+  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 </head>
 <body>
-
+<%@include file="/views/common/header.jsp"%>
 	<h3>공지사항 등록</h3>
 	<form action="${pageContext.request.contextPath }/WriteNoticeController" method="post">
 		제목 : <input type="text" name="title"><br>
