@@ -7,11 +7,11 @@ import model.NoticeVO;
 public interface Service {
 	void add(NoticeVO notice);
 
-	NoticeVO getProduct(int num);
+	NoticeVO getNotice(int num);
 
-	void editProduct(NoticeVO notice);
+	void editNotice(NoticeVO notice);
 
-	void delProduct(int num);
+	void delNotice(int num);
 
 	ArrayList<NoticeVO> getProductAll();
 

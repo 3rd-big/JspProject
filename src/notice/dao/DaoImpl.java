@@ -82,7 +82,7 @@ public class DaoImpl implements Dao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "select * from notice where num=?";
+		String sql = "select * from notice where num=? order by num";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -109,19 +109,80 @@ public class DaoImpl implements Dao {
 	@Override
 	public void update(NoticeVO notice) {
 		// TODO Auto-generated method stub
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
 
+		String sql = "update notice set title=?, content=?, n_date=sysdate where num=?";
+		try {
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getContent());
+			pstmt.setInt(3, notice.getNum());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
-
+				Connection conn = db.getConnection();
+				String sql = "delete notice where num=?";
+				
+				PreparedStatement pstmt = null;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					pstmt.executeUpdate();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {//자원반환
+						pstmt.close();
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
 	}
 
 	@Override
 	public ArrayList<NoticeVO> selectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<NoticeVO> notice = new ArrayList<>();
+		ResultSet rs = null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from notice";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				notice.add(new NoticeVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return notice;
 	}
 
 }

@@ -1,7 +1,9 @@
 package notice.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +15,16 @@ import notice.service.Service;
 import notice.service.ServiceImpl;
 
 /**
- * Servlet implementation class AddController
+ * Servlet implementation class EditController
  */
-@WebServlet(name = "noticeAddController", urlPatterns = { "/noticeAddController" })
-public class AddController extends HttpServlet {
+@WebServlet("/EditController")
+public class EditNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddController() {
+    public EditNoticeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,26 +33,29 @@ public class AddController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
-		System.out.println(request.getParameter("title"));
-		
-		
-		Service service = new ServiceImpl();
-		NoticeVO notice = new NoticeVO();
-		notice.setNum(service.makeNum());
-		
-		try {
-		//	notice.setNum(Integer.parseInt("num"));
-			notice.setTitle(request.getParameter("title"));
-			notice.setContent(request.getParameter("content"));
+				// 기능을 제공할 서비스 객체 생성
+				Service service = new ServiceImpl();
 
-		//	notice.setView_count(Integer.parseInt("view_count"));
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(notice.toString());
-		service.add(notice);
-		response.sendRedirect("/views/notice_list.jsp");
+				// 요청 파라메터 값 읽기
+				int num = Integer.parseInt(request.getParameter("num"));
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+
+
+				NoticeVO notice = new NoticeVO(num, title, content);
+
+				// 서비스의 글수정 기능 실행
+				service.editNotice(notice);
+
+				// 글목록으로 이동
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
+				if (dispatcher != null) {
+					dispatcher.forward(request, response);
+				}
 	}
 
 	/**
