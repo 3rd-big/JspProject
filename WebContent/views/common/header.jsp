@@ -51,7 +51,7 @@
 						<c:if test="${empty sessionScope.id }">
 							<li class="nav-item"><a class="nav-link" href="#">주문조회	</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/LoginController">로그인</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/member/login.jsp">로그인</a></li>
 							</li>
 						</c:if>
 
@@ -133,7 +133,7 @@
 						<!-- 비로그인 상태 -->
 						<c:if test="${empty sessionScope.memberType}">
 							<li class="nav-item active"><a class="nav-link"
-								href="<%=request.getContextPath()%>/views/main/main.jsp">Home
+								href="<%=request.getContextPath()%>/MainListController">Home
 									<span class="sr-only">(current)</span>
 							</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">TOP</a></li>
@@ -147,7 +147,7 @@
 						<!-- 일반사용자 로그인 상태 -->
 						<c:if test="${sessionScope.memberType == 1 }">
 							<li class="nav-item active"><a class="nav-link"
-								href="<%=request.getContextPath()%>/views/main/main.jsp">Home
+								href="<%=request.getContextPath()%>/MainListController">Home
 									<span class="sr-only">(current)</span>
 							</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">TOP</a></li>
@@ -161,7 +161,7 @@
 						<!-- 관리자 로그인 상태 -->
 
 						<c:if test="${sessionScope.memberType == 0 }">
-							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/ProductAllListController">상품관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">상품관리</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>

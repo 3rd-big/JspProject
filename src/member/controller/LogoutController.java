@@ -33,6 +33,7 @@ public class LogoutController extends HttpServlet {
 		// 메뉴 페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/MainListController");
 		if (dispatcher != null) {
+
 			dispatcher.forward(request, response);
 		}	
 	}

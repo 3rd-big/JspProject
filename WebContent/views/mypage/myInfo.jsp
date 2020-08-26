@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="model.MemberVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -18,44 +18,48 @@
 
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
-  
+
+
 
 </head>
 <body>
 	<!-- Navigation -->
-	
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
-	<div class = "logincomponent">
-		<form action="${pageContext.request.contextPath }/LoginController" name="fmethod="post">
-			<fieldset>
-				<legend>로그인</legend>
-				
-				<div class="form-group">
-					<label for="InputID">ID</label> 
-					<input type="text" class="form-control" id="id" name="id">
-				</div>
-				
-				<div class="form-group">
-					<label for="InputPwd">Password</label> <input
-						type="password" class="form-control" id="pwd" name="pwd"
-						placeholder="Password">
-				</div>
-
-				<button type="submit" class="btn btn-primary">로그인</button>
-				
-				<div class="searchUser">
-					<a href="${pageContext.request.contextPath }/signup.jsp">회원가입/</a>
-					<a href="${pageContext.request.contextPath }/searchId.jsp">아이디 찾기/</a>
-					<a href="${pageContext.request.contextPath }/searchPwd.jsp">비밀번호 찾기</a>
-				</div>
-			</fieldset>
+	<!-- 카테고리 -->
+	<c:if test="${not empty sessionScope.id }">
+	
+	
+		<div class="row2" >
+	
+	      <div class="col-lg-3">
+	        <h1 class="my-4">My Page</h1>
+	        <div class="list-group">
+	        	<a href="#" class="list-group-item">주문조회</a>
+	        	<a href="#" class="list-group-item">내가 쓴 리뷰 관리</a>
+	          <a href="${pageContext.request.contextPath }/SearchController" class="list-group-item ">내 정보 수정</a>
+	          
+	          
+	        </div>
+	      </div>
+	    </div>
+		
+		<div class = "rightcontent">
+			<h4 class="main">${sessionScope.id } 고객님, 안녕하세요!</h4>
 			
-		</form>
-	</div>
+			<div class="pointview">
+				포인트 : ${m.point} 점
+			</div>
+			
+			<div class="orderedlist">
+				<%@include file ="/views/mypage/orderlist.jsp" %>
+			</div>
+			
+			
+		</div>
+	
 
-
-
+	</c:if>
 
 
 
