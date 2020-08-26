@@ -34,7 +34,7 @@ public class DetailController extends HttpServlet {
 		
 		request.setAttribute("product", product);
 		
-		String path = "/views/detail.jsp";
+		String path = "/views/product/detail.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 		

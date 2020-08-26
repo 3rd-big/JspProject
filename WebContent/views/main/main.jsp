@@ -14,13 +14,12 @@
 			
 		}
 	</style>	
-	<script type="text/javascript">
-		function flag(a) {
-			alert(a);
-		}
-	</script>
 </head>
 <body>
+
+	<%@include file ="/views/common/header.jsp" %>
+
+
 	<div>
 		<h1>신상품</h1> 
 		<hr>
