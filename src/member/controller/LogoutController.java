@@ -23,7 +23,6 @@ public class LogoutController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-<<<<<<< HEAD
 
 		HttpSession session = request.getSession(false);
 	
@@ -31,13 +30,6 @@ public class LogoutController extends HttpServlet {
 		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
-=======
-		HttpSession session = request.getSession(false);
-		
-		session.invalidate();
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/MainListController");
->>>>>>> 3d3a7c494ebf688f3df9ade1ba41bdd7e8ea8bd1
 		if(dispatcher != null) {
 			dispatcher.forward(request, response);
 		}
