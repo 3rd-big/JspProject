@@ -16,14 +16,14 @@ import notice.service.ServiceImpl;
 /**
  * Servlet implementation class DetailController
  */
-@WebServlet(name = "noticeDetailController", urlPatterns = { "/noticeDetailController" })
-public class DetailController extends HttpServlet {
+@WebServlet("/ReadNoticeController")
+public class ReadNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DetailController() {
+    public ReadNoticeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,22 +32,29 @@ public class DetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text'html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
-		Service service = new ServiceImpl();
-		
-		int num = Integer.parseInt(request.getParameter("num"));
-		
-		NoticeVO notice = service.getProduct(num);
-		
-		request.setAttribute("notice", notice);
-		
-		String path = "/views/detail.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-		dispatcher.forward(request, response);
+
+				System.out.println("hhhjj");
+				// 기능을 제공할 서비스 객체 생성
+				Service service = new ServiceImpl();
+
+				// 요청 파라메터 값 읽기
+				int num = Integer.parseInt(request.getParameter("num"));
+
+				// 글 하나 검색 기능 실행
+				NoticeVO notice = service.getNotice(num);
+			    
+				System.out.println(notice.toString());
+				
+				request.setAttribute("notice", notice);
+
+				// 글정보 출력페이지로 이동
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/search.jsp");
+				if (dispatcher != null) {
+					dispatcher.forward(request, response);
+				}
 	}
 
 	/**

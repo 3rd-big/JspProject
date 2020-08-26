@@ -20,19 +20,19 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public NoticeVO getProduct(int num) {
+	public NoticeVO getNotice(int num) {
 		// TODO Auto-generated method stub
 		return dao.select(num);
 	}
 
 	@Override
-	public void editProduct(NoticeVO notice) {
+	public void editNotice(NoticeVO notice) {
 		// TODO Auto-generated method stub
 		dao.update(notice);
 	}
 
 	@Override
-	public void delProduct(int num) {
+	public void delNotice(int num) {
 		// TODO Auto-generated method stub
 		dao.delete(num);
 	}

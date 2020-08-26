@@ -42,10 +42,17 @@ public class LoginController extends HttpServlet {
 
 		// 세션 생성
 		HttpSession session = request.getSession();
+		
+		
+		
+		
 
 		// 로그인에 필요한 요청 파라메터을 읽는다.
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
+		
+		
+		
 
 		int type = 3;
 		// id로 멤버 검색
@@ -59,10 +66,11 @@ public class LoginController extends HttpServlet {
 				path = "/views/main/main.jsp";
 			} else if (type == 0) {
 				//관리자 type=0
-				path = "/views/admin/product/product_example.jsp";
+				path = "/views/main/main.jsp";
 			}
 		}
 
+		System.out.println(session);
 		// 메뉴 페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		if (dispatcher != null) {

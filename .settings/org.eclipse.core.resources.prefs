@@ -2,6 +2,18 @@
 <<<<<<<=HEAD
 >>>>>>>=2fcbd0e02aa8541ebf315a6f8fa5f8575f840551
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//WebContent/views/product/detail.jsp=UTF-8
 encoding//src/product/controller/ProductAddController.java=UTF-8
+=======
+<<<<<<< HEAD
+encoding//WebContent/views/notice/list.jsp=UTF-8
+encoding//WebContent/views/notice/test.jsp=UTF-8
+=======
+<<<<<<< HEAD
+=======
+encoding//src/product/controller/AddController.java=UTF-8
+>>>>>>> 2fcbd0e02aa8541ebf315a6f8fa5f8575f840551
+>>>>>>> 73f6f4697fed8cb2148aa20ee380db8ba6302d22
 encoding/<project>=UTF-8
+>>>>>>> 21c0dc5d6d5194eb3c1823130fadd105c0ecec6d
