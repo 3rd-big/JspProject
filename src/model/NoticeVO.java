@@ -9,7 +9,13 @@ public class NoticeVO {
 	private Date n_date;
 	private int view_count;
 	
-	
+	public NoticeVO(int num, String title, String content) {
+		super();
+		this.num = num;
+		this.title = title;
+		this.content = content;
+
+	}
 	public NoticeVO(int num, String title, String content, Date n_date, int view_count) {
 		super();
 		this.num = num;

@@ -1,6 +1,7 @@
-package member.controller;
+package product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,14 +9,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/LogoutController")
-public class LogoutController extends HttpServlet {
+import model.ProductVO;
+import product.service.Service;
+import product.service.ServiceImpl;
+
+@WebServlet("/ProductAllListController")
+public class ProductAllListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LogoutController() {
-
+    public ProductAllListController() {
+        super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,24 +27,14 @@ public class LogoutController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-<<<<<<< HEAD
-
-		HttpSession session = request.getSession(false);
-	
-		session.invalidate();
+		Service service = new ServiceImpl();
+		ArrayList<ProductVO> products = service.getProductAll();
 		
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
-=======
-		HttpSession session = request.getSession(false);
+		request.setAttribute("products", products);
 		
-		session.invalidate();
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/product/adminProductManagement.jsp");
+		dispatcher.forward(request, response);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/MainListController");
->>>>>>> 3d3a7c494ebf688f3df9ade1ba41bdd7e8ea8bd1
-		if(dispatcher != null) {
-			dispatcher.forward(request, response);
-		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

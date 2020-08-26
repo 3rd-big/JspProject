@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>상품 등록</h3>
-	<form action="${pageContext.request.contextPath }/AddController" method="post" enctype="multipart/form-data">
+	<form action="${pageContext.request.contextPath }/ProductAddController" method="post" enctype="multipart/form-data">
 		상품명: <input type="text" name="name"><br>
 		가격: <input type="text" name="price"><br>
 		상품이미지 등록: <input type="file" name="file"><br>

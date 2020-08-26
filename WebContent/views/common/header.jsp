@@ -46,7 +46,7 @@
 								<span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/views/member/login.jsp">로그인</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/MypageController">마이페이지</a>
 						</li>
 

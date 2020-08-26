@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,11 +19,11 @@ import product.service.Service;
 import product.service.ServiceImpl;
 
 
-@WebServlet("/AddController")
-public class AddController extends HttpServlet {
+@WebServlet("/ProductAddController")
+public class ProductAddController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddController() {
+    public ProductAddController() {
         super();
     }
 
@@ -39,17 +40,9 @@ public class AddController extends HttpServlet {
 		
 		int maxSize = 1024 * 1024 * 10;
 		MultipartRequest multi = null;
-//		String uploadPath = request.getSession().getServletContext().getRealPath("/");
-//		String uploadPath2 = request.getRealPath("/");
-//		System.out.println("AddController 페이지");
-//		System.out.println(uploadPath);
-//		System.out.println(uploadPath2);
-		String uploadPath = "C:\\Web\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
-//		String uploadPath = "/JspProject/upload_img";
-//		String uploadPath = request.getSession().getServletContext().getRealPath("upload_img");
-//		String uploadPath =  request.getRealPath("");
 
-
+		// TODO 각자 Workspace 환경으로 바꿀 것
+		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
 			// request, 파일저장경로, 용량, 인코딩타입, 중복파일명에 대한 기본 정책
@@ -83,7 +76,8 @@ public class AddController extends HttpServlet {
 		p.setImg("/upload_img/" + img);
 		service.add(p);
 		
-		// TODO 관리자가 상품등록 후 이동할 페이지 지정
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ProductAllListController");
+		dispatcher.forward(request, response);
 		
 	}
 
