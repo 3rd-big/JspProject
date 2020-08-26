@@ -1,11 +1,17 @@
 package notice.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.NoticeVO;
+import notice.service.Service;
+import notice.service.ServiceImpl;
 
 /**
  * Servlet implementation class DetailController
@@ -27,7 +33,21 @@ public class DetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text'html; charset=utf-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		Service service = new ServiceImpl();
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		NoticeVO notice = service.getProduct(num);
+		
+		request.setAttribute("notice", notice);
+		
+		String path = "/views/detail.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		dispatcher.forward(request, response);
 	}
 
 	/**
