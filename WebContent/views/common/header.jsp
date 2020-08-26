@@ -51,7 +51,7 @@
 						<c:if test="${empty sessionScope.id }">
 							<li class="nav-item"><a class="nav-link" href="#">주문조회	</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/member/login.jsp">로그인</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/LoginController">로그인</a></li>
 							</li>
 						</c:if>
 
@@ -60,7 +60,7 @@
 							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">주문조회</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="<%=request.getContextPath()%>/member/controller/logout.jsp">로그아웃</a></li>
+								href="<%=request.getContextPath()%>/LoginController">로그아웃</a></li>
 							</li>
 
 						</c:if>
@@ -70,7 +70,7 @@
 						<c:if test="${sessionScope.memberType == 0 }">
 							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="<%=request.getContextPath()%>/member/controller/logout.jsp">로그아웃</a></li>
+								href="<%=request.getContextPath()%>/LoginController">로그아웃</a></li>
 							</li>
 
 						</c:if>

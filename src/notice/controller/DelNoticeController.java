@@ -15,7 +15,7 @@ import notice.service.ServiceImpl;
 /**
  * Servlet implementation class DelController
  */
-@WebServlet("/DelController")
+@WebServlet("/DelNoticeController")
 public class DelNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
