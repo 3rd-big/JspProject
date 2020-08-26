@@ -1,11 +1,16 @@
 package notice.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.NoticeVO;
+import notice.service.Service;
+import notice.service.ServiceImpl;
 
 /**
  * Servlet implementation class EditController
@@ -27,7 +32,17 @@ public class EditController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Service service = new ServiceImpl();
+
+		NoticeVO notice = new NoticeVO();
+
+		notice.setNum(Integer.parseInt(request.getParameter("num")));
+		notice.setTitle(request.getParameter("title"));
+		notice.setContent(request.getParameter("content"));
+
+		
+		service.editProduct(notice);
+		response.sendRedirect("/views/notice_list.jsp");
 	}
 
 	/**
