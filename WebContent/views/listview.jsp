@@ -21,7 +21,7 @@
 </head>
 <body>
 	 <nav id ="top">
-          <jsp:include page = "header.jsp" /><br><br>
+          <jsp:include page = "/views/common/header.jsp" /><br><br>
      </nav>
 
 
