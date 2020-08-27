@@ -216,15 +216,9 @@ private DBConnect db;
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			System.out.println(pi.getNum());
-			System.out.println(pi.getP_num());
-			System.out.println(pi.getImg());
-			
 			pstmt.setInt(1, pi.getNum());
 			pstmt.setInt(2, pi.getP_num());
 			pstmt.setString(3, pi.getImg());
-
-			System.out.println(sql);
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
