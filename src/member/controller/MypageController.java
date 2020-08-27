@@ -1,6 +1,7 @@
 package member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import member.service.Service;
 import member.service.ServiceImpl;
 import model.MemberVO;
+import model.ProductOrderVO;
+import model.ProductVO;
 
 /**
  * Servlet implementation class MypageController
@@ -49,6 +52,30 @@ public class MypageController extends HttpServlet {
         //검색 결과인 객체 m을 request객체에 이름 m으로 저장
         request.setAttribute("m", m);
         //정보 페이지로 이동
+        
+       
+//        
+//        
+//        
+//        productorder.service.Service service_prod_order = new productorder.service.ServiceImpl();
+//		product.service.Service service_prod = new product.service.ServiceImpl();
+//		
+//		int o_state = Integer.parseInt(request.getParameter("o_state"));
+//		String m_id = (String)session.getAttribute("id");
+//		ArrayList<ProductOrderVO> list = service_prod_order.orderList(m_id, o_state);
+//		
+//
+//		for(ProductOrderVO o:list) {
+//			ProductVO p = service_prod.getProduct(o.getP_num());
+//			o.setProd_name(p.getName());
+//			o.setProd_img(p.getImg());
+//		}
+//
+//		
+//		request.setAttribute("list", list);
+//		request.setAttribute("o_state", o_state);
+
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/mypage/myInfo.jsp");
         if(dispatcher!=null) {
            dispatcher.forward(request, response);

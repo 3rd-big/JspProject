@@ -28,11 +28,17 @@
 
 		<!-- Main LOGO -->
 		<div class="logo">
-			<a href="<%=request.getContextPath()%>/MainListController"><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px"></a>
+
+			<img
+				src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px" href="<%=request.getContextPath()%>/views/main/main.jsp">
+
 		</div>
 		
 		<!-- top-navbar -->
 		<div class="container" style="flex-flow: column; max-width: none;">
+
+			<!-- top-navbar -->
+
 			<div class="container" id="top-navbar"
 				style="max-width: -webkit-fill-available;">
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -54,7 +60,9 @@
 
 						<!-- 일반사용자 로그인 상태 -->
 						<c:if test="${sessionScope.memberType == 1 }">
+
 							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/mypage/myInfo.jsp">마이페이지</a></li>
+
 							<li class="nav-item"><a class="nav-link" href="#">주문조회</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
@@ -161,9 +169,9 @@
 								<a class="nav-link" href="<%=request.getContextPath()%>/views/product/addForm.jsp">상품등록</a>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
-							</li>
+
 							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-							</li>
+
 						</c:if>
 
 						<%-- <li class="nav-item active"><a class="nav-link"

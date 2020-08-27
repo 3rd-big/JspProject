@@ -60,7 +60,7 @@
 					<td>${o.num } </td>
 					<td> ${o.prod_name } </td>
 					<td> <img src="${o.prod_img }" width="200" height="200"> </td>
-					<td>${o.order_num } </td> 
+					<td>${o.o_quantity} </td> 
 					<td>${o.total_price } </td> 
 					<td>${o.o_date } </td>
 
