@@ -9,23 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.NoticeVO;
 import notice.service.Service;
 import notice.service.ServiceImpl;
 
 /**
- * Servlet implementation class DeleteNoticeController
+ * Servlet implementation class EditNoticeController
  */
-
-@WebServlet("/DeleteNoticeController")
-public class DeleteNoticeController extends HttpServlet {
-
-
+@WebServlet("/EditNoticeController")
+public class EditNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteNoticeController() {
+    public EditNoticeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +35,14 @@ public class DeleteNoticeController extends HttpServlet {
 		Service service = new ServiceImpl();
 
 		int num = Integer.parseInt(request.getParameter("num"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 
-		service.delNotice(num);
+		NoticeVO notice = new NoticeVO(num, title, content);
+
+		System.out.println(notice.toString());
+		
+		service.editNotice(notice);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
 		if (dispatcher != null) {
