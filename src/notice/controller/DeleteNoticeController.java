@@ -34,16 +34,20 @@ public class DeleteNoticeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		Service service = new ServiceImpl();
 
 		int num = Integer.parseInt(request.getParameter("num"));
 
 		service.delNotice(num);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
-		if (dispatcher != null) {
-			dispatcher.forward(request, response);
-		}
+		System.out.println(num);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher( "/ListNoticeController");
+		dispatcher.forward(request, response);
+		
 	}
 
 	/**

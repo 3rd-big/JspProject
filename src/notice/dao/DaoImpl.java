@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import conn.DBConnect;
 import model.NoticeVO;
@@ -136,24 +137,33 @@ public class DaoImpl implements Dao {
 
 	@Override
 	public void delete(int num) {
-				Connection conn = db.getConnection();
-				String sql = "delete notice where num=?";
-				
-				PreparedStatement pstmt = null;
-				try {
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, num);
-					pstmt.executeUpdate();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}finally {
-					try {//자원반환
-						pstmt.close();
-						conn.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
+		Connection conn = null;
+
+		String sql = "delete notice where num=?";
+
+		PreparedStatement pstmt = null;
+		try {
+			conn = db.getConnection();
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, num);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	@Override
@@ -184,5 +194,53 @@ public class DaoImpl implements Dao {
 		}
 		return notice;
 	}
+
+	@Override
+	public int getTotalRows() {
+		// TODO Auto-generated method stub.
+		Connection conn = db.getConnection();
+		int cnt = 0;
+        try {
+       
+            String sql = "SELECT COUNT(*) cnt FROM notice";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                cnt = rs.getInt("cnt");
+            }
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        return cnt;
+	}
+	
+	
+	public List<NoticeVO> getRows(int start, int end) {
+	        List<NoticeVO> list = new ArrayList<NoticeVO>();
+	        Connection conn = db.getConnection();
+	        
+	        try {
+	       
+	            String selectList = "SELECT * from ( SELECT ROWNUM AS row_num, notice.* FROM ( SELECT num, title, content,  case to_char(n_date, 'yy/mm/dd') when to_char(sysdate, 'yy/mm/dd') then to_char(b_date,'hh24:mi:ss') else to_char(b_date,'yy/mm/dd'), 0 end regdate FROM board ORDER BY b_no DESC ) board ) WHERE row_num >= " + start + " AND row_num <=" + end;
+	            PreparedStatement pstmt = conn.prepareStatement(selectList);
+	            ResultSet rs = pstmt.executeQuery();
+	            while (rs.next()) { 
+	            	NoticeVO notice= new NoticeVO();
+	            	notice.setNum(rs.getInt("num"));
+	            	notice.setTitle(rs.getString("title"));
+	            	notice.setContent(rs.getString("num"));
+	            	notice.setN_date(rs.getDate("num"));
+	            	
+	                
+	                list.add(notice);
+	            }
+	            conn.close();
+	        } catch (Exception e) {
+	            System.out.println(e);
+	        }
+	        return list;
+	    }
 
 }

@@ -44,7 +44,7 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public ArrayList<NoticeVO> getProductAll() {
+	public ArrayList<NoticeVO> getNoticeAll() {
 		// TODO Auto-generated method stub
 		return dao.selectAll();
 	}
