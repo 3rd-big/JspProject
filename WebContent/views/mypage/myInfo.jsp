@@ -24,7 +24,7 @@
 </head>
 <body>
 	<!-- Navigation -->
-	<%@include file ="/views/common/headertestsj.jsp" %>
+	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<!-- 카테고리 -->
 	<c:if test="${not empty sessionScope.id }">

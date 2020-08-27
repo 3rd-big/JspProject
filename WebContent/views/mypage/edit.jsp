@@ -57,7 +57,7 @@
 </head>
 <body>
 	<!-- Navigation -->
-	<%@include file ="/views/common/headertestsj.jsp" %>
+	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 
 	

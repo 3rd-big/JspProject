@@ -44,6 +44,7 @@
 			</div>
 		</div>
 	</nav> -->
+	
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class = "enrollcomponent">
