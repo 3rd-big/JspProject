@@ -165,7 +165,7 @@
 								<a class="nav-link" href="<%=request.getContextPath()%>/ProductAllListController">상품관리</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="<%=request.getContextPath()%>/views/product/addForm.jsp">상품등록</a>
+								<a class="nav-link" href="<%=request.getContextPath()%>/views/admin/product/adminProductAddForm.jsp">상품등록</a>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
 							</li>
