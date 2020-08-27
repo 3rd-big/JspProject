@@ -2,6 +2,7 @@ package product.service;
 
 import java.util.ArrayList;
 
+import model.ProductImageVO;
 import model.ProductVO;
 import product.dao.Dao;
 import product.dao.DaoImpl;
@@ -30,19 +31,34 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public int makeNum() {
-		return dao.selectNum();
+	public int makeProductNum() {
+		return dao.selectProductNum();
 	}
 
 	@Override
+	public int makeProductImgNum() {
+		return dao.selectProductImgNum();
+	}
+	
+	@Override
 	public void add(ProductVO p) {
 		dao.insert(p);
+	}	
+	
+	@Override
+	public void add(ProductImageVO pi) {
+		System.out.println("ServiceImpl ProductImageVO: " + pi.toString());
+		 dao.insert(pi);
 	}
 
 	@Override
 	public ProductVO getProduct(int num) {
 		return dao.select(num);
 	}
+
+
+
+
 
 
 

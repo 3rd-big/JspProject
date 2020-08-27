@@ -5,6 +5,8 @@ public class ProductImageVO {
 	private int p_num;
 	private String img;
 	
+	public ProductImageVO() {}
+	
 	public ProductImageVO(int num, int p_num, String img) {
 		super();
 		this.num = num;

@@ -1,4 +1,4 @@
-package productorder.controller;
+package review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,23 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.ProductOrderVO;
-import model.ProductVO;
-import productorder.service.Service;
-import productorder.service.ServiceImpl;
-
+import model.ReviewVO;
+import review.service.Service;
+import review.service.ServiceImpl;
 
 /**
- * Servlet implementation class OrderlistController
+ * Servlet implementation class ListReviweController
  */
-@WebServlet("/OrderlistController")
-public class OrderlistController extends HttpServlet {
+@WebServlet("/ListReviewController")
+public class ListReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrderlistController() {
+    public ListReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,34 +35,16 @@ public class OrderlistController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Service service = new ServiceImpl();
-		product.service.Service service_prod = new product.service.ServiceImpl();
-		
-		int o_state = Integer.parseInt(request.getParameter("o_state"));
+		ArrayList<ReviewVO> review = service.getReviewAll();
+
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("id");
-		ArrayList<ProductOrderVO> list = service.orderList(m_id, o_state);
 		
-		System.out.println(m_id);
-		System.out.println(list);
+		request.setAttribute("review", review);
 		
-		for(ProductOrderVO o:list) {
-			ProductVO p = service_prod.getProduct(o.getP_num());
-			System.out.println(o.getP_num());
-			o.setProd_name(p.getName());
-			o.setProd_img(p.getImg());
-		}
-		String path=null;
-		if(o_state==0) {
-			path="/views/mypage/orderlist.jsp";
-		}else if(o_state==1){
-			path="/views/mypage/myCart.jsp";
-		}
-		request.setAttribute("list", list);
-		request.setAttribute("o_state", o_state);
-		
-		RequestDispatcher rd = request.getRequestDispatcher(path);
-		rd.forward(request, response);
-		
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
