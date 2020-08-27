@@ -28,13 +28,11 @@
 
 		<!-- Main LOGO -->
 		<div class="logo">
-			<img
-				src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px" href="<%=request.getContextPath()%>/views/main/main.jsp">
+			<a href="<%=request.getContextPath()%>/MainListController"><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px"></a>
 		</div>
 		
 		<!-- top-navbar -->
 		<div class="container" style="flex-flow: column; max-width: none;">
-			<!-- top-navbar -->
 			<div class="container" id="top-navbar"
 				style="max-width: -webkit-fill-available;">
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -50,14 +48,14 @@
 						<!-- 비로그인 상태 -->
 						<c:if test="${empty sessionScope.id }">
 							<li class="nav-item"><a class="nav-link" href="#">주문조회	</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/member/signup.jsp">회원가입</a></li>
 							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/member/login.jsp">로그인</a></li>
 							</li>
 						</c:if>
 
 						<!-- 일반사용자 로그인 상태 -->
 						<c:if test="${sessionScope.memberType == 1 }">
-							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/mypage/myInfo.jsp">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">주문조회</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
