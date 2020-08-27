@@ -47,7 +47,6 @@ public class ServiceImpl implements Service{
 	
 	@Override
 	public void add(ProductImageVO pi) {
-		System.out.println("ServiceImpl ProductImageVO: " + pi.toString());
 		 dao.insert(pi);
 	}
 
@@ -55,11 +54,5 @@ public class ServiceImpl implements Service{
 	public ProductVO getProduct(int num) {
 		return dao.select(num);
 	}
-
-
-
-
-
-
 
 }

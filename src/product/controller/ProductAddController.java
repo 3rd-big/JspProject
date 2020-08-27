@@ -51,62 +51,51 @@ public class ProductAddController extends HttpServlet {
 		MultipartRequest multi = null;
 
 		// TODO 각자 Workspace 환경으로 바꿀 것
-		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+//		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
-			// request, 파일저장경로, 용량, 인코딩타입, 중복파일명에 대한 기본 정책
-			multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			
+			if(-1 < request.getContentType().indexOf("multipart/form-data")) {
+				// request, 파일저장경로, 용량, 인코딩타입, 중복파일명에 대한 기본 정책
+				multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", new DefaultFileRenamePolicy());		
+			}
+
 			p.setName(multi.getParameter("name"));
 			p.setPrice(Integer.parseInt(multi.getParameter("price")));
 			p.setContent(multi.getParameter("content"));
-			
+
+			// 대표이미지 업로드
+			thumbnailImgName = multi.getOriginalFileName("file");	
+			p.setImg("/upload_img/" + thumbnailImgName);
+			service.add(p);
+			//파일 업로드
+			File file = multi.getFile("file");
+
+				
 			// 전송한 전체 파일이름들을 가져옴
-			Enumeration filesFirst = multi.getFileNames();
-			Enumeration filesSecond = multi.getFileNames();
+			Enumeration files = multi.getFileNames();
 			
-			System.out.println(multi.getFile("file"));
-			
-//			
-//			// 대표이미지 업로드
-//			while(filesFirst.hasMoreElements()) {
-//
-//				// form 태그에서 <input type="file" name="여기에 지정한 이름" />을 가져온다.
-//				inputTagName = (String) filesFirst.nextElement();	// 파일 input에 지정한 이름을 가져옴
-//				System.out.println("filesFirst: " + inputTagName);
-//				
-//				if(inputTagName.equals("file")) {
-//					// 그에 해당하는 실제 파일 이름을 가져옴
-//					thumbnailImgName = multi.getOriginalFileName(inputTagName);	
-//					p.setImg("/upload_img/" + thumbnailImgName);
-//					service.add(p);
-//					//파일 업로드
-//					File file = multi.getFile(inputTagName);
-//					break;
-//				}
-//			}
-//			
-//			
-//			// 상세이미지 업로드
-//			while(filesSecond.hasMoreElements()) {
-//
-//				// form 태그에서 <input type="file" name="여기에 지정한 이름" />을 가져온다.
-//				inputTagName = (String) filesSecond.nextElement();	// 파일 input에 지정한 이름을 가져옴
-//				System.out.println("filesSecond: " + inputTagName);
-//				
-//				if(!inputTagName.equals("file")) {
-//					// 그에 해당하는 실제 파일 이름을 가져옴
-//					detailImgName = multi.getOriginalFileName(inputTagName);
-//					if(detailImgName != null) {
-//						//StringUtils.isNotBlank(detailImgName)
-//						pi.setNum(service.makeProductImgNum());
-//						pi.setImg("/upload_img/" + detailImgName);
-//						System.out.println("ProductAddController: " + pi.toString());
-//						service.add(pi);
-//						//파일 업로드
-//						File file = multi.getFile(inputTagName);
-//					}
-//				}
-//			}
+			// 상세이미지 업로드
+			while(files.hasMoreElements()) {
+
+				// form 태그에서 <input type="file" name="여기에 지정한 이름" />을 가져온다.
+				inputTagName = (String) files.nextElement();	// 파일 input에 지정한 이름을 가져옴
+
+				if(!inputTagName.equals("file")) {
+					// 그에 해당하는 실제 파일 이름을 가져옴
+					detailImgName = multi.getOriginalFileName(inputTagName);
+					if(detailImgName != null) {
+						//StringUtils.isNotBlank(detailImgName)
+						pi.setNum(service.makeProductImgNum());
+						pi.setImg("/upload_img/" + detailImgName);
+						
+						service.add(pi);
+						//파일 업로드
+						File file1 = multi.getFile(inputTagName);
+					}
+				}
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

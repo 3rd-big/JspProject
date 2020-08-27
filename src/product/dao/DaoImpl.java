@@ -207,7 +207,6 @@ private DBConnect db;
 	
 	@Override
 	public void insert(ProductImageVO pi) {
-		System.out.println("DaoImpl insert ProductImageVO: " + pi.toString());
 		Connection conn = db.getConnection();
 		
 		String sql = "insert into product_image values(?, ?, ?)";
