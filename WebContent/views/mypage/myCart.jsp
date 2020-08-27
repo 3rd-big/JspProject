@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="model.MemberVO, model.ProductVO, model.ProductOrderVO"%>
+	pageEncoding="UTF-8" import="model.ProductVO" %>
+  <%@page import="model.ProductOrderVO" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -18,6 +19,7 @@
 
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+
 
 
 </head>
@@ -44,15 +46,45 @@
 	    </div>
 		
 		<section class = "rightcontent">
-			<h4 class="main">${sessionScope.id } 고객님, 안녕하세요!</h4>
+
+			<div class="cartlist">
 			
-			<div class="pointview">
-				포인트 : ${m.point} 점
+				<c:if test="${o_state==1 }">
+					<h3>장바구니 목록</h3>
+				</c:if>
+
+
+				<table class="table table-hover table-sm mt-3 mb-5" border="1">
+					<thead class="thead-light" style="background-color: white;">
+						<tr class="text-center">
+							<th scope="col">장바구니번호</th>
+							<th scope="col">제품명</th>
+							<th scope="col">사진</th>
+							<th scope="col">수량</th>
+							<th scope="col">결제금액</th>
+							<th scope="col">주문일?</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="o" items="${list }">
+							<tr class="text-center">
+								<td>${o.num }</td>
+								<td>${o.prod_name }</td>
+								<td><img src="${o.prod_img }" width="200" height="200">
+								</td>
+								<td>${o.o_quantity}</td>
+								<td>${o.total_price }</td>
+								<td>${o.o_date }</td>
+
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+
+
+
 			</div>
 			
-			<div class="orderedlist">
-					<%@include file ="/views/mypage/orderlist.jsp" %>
-			</div>
 			
 			
 		</section>
@@ -63,7 +95,13 @@
 
 
 	<!-- Footer -->
-		<%@include file ="/views/common/footer.jsp" %>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your
+				Website 2020</p>
+		</div>
+		<!-- /.container -->
+	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>

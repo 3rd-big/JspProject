@@ -233,7 +233,7 @@
 												.write("<div class='no_data_layer' style='display:none;'><span class='spt_bg'></span>장바구니가 비어있습니다.</div>");
 									}
 								</script>
-								<a href="javascript:fn_logIn(7);">
+								<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1">
 									<div>
 										<img
 											src="//image.adidas.co.kr/images/adidas/common/cart_DT.png"
