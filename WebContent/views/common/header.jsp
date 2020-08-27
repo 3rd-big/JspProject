@@ -165,7 +165,7 @@
 							<li class="nav-item">
 								<a class="nav-link" href="<%=request.getContextPath()%>/views/product/addForm.jsp">상품등록</a>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/MemberManageController">회원관리</a></li>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 							</li>
@@ -205,7 +205,7 @@
 							</li>
 
 							<div class="market abtest">
-								<script type="text/javascript">
+								<!-- <script type="text/javascript">
 									if (V_HD_MEM_CART_CNT != "null"
 											&& V_HD_MEM_CART_CNT != "") { /* 로그인상태인 경우 */
 										if (V_HD_MEM_CART_CNT > 0) {
@@ -225,7 +225,7 @@
 										document
 												.write("<div class='no_data_layer' style='display:none;'><span class='spt_bg'></span>장바구니가 비어있습니다.</div>");
 									}
-								</script>
+								</script> -->
 								<a href="javascript:fn_logIn(7);">
 									<div>
 										<img
