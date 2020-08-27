@@ -44,10 +44,12 @@ public class OrderlistController extends HttpServlet {
 		String m_id = (String)session.getAttribute("id");
 		ArrayList<ProductOrderVO> list = service.orderList(m_id, o_state);
 		
-		
+		System.out.println(m_id);
+		System.out.println(list);
 		
 		for(ProductOrderVO o:list) {
 			ProductVO p = service_prod.getProduct(o.getP_num());
+			System.out.println(o.getP_num());
 			o.setProd_name(p.getName());
 			o.setProd_img(p.getImg());
 		}
@@ -58,6 +60,7 @@ public class OrderlistController extends HttpServlet {
 		String path="/views/mypage/orderlist.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
+		
 	}
 
 	/**

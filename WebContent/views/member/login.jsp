@@ -24,7 +24,7 @@
 <body>
 	<!-- Navigation -->
 	
-	<%@include file ="/views/common/headertestsj.jsp" %>
+	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class = "logincomponent">
 		<form action="${pageContext.request.contextPath }/LoginController" name="fmethod="post">
