@@ -2,6 +2,7 @@ package product.dao;
 
 import java.util.ArrayList;
 
+import model.ProductImageVO;
 import model.ProductVO;
 
 public interface Dao {
@@ -12,9 +13,13 @@ public interface Dao {
 	
 	ArrayList<ProductVO> selectNewProducts();
 	
-	int selectNum();
+	int selectProductNum();
+	
+	int selectProductImgNum();
 	
 	void insert(ProductVO p);
+	
+	void insert(ProductImageVO pi);
 	
 	ProductVO select(int num);
 }

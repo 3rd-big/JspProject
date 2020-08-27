@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conn.DBConnect;
+import model.ProductImageVO;
 import model.ProductVO;
 
 public class DaoImpl implements Dao {
@@ -111,7 +112,7 @@ private DBConnect db;
 	
 
 	@Override
-	public int selectNum() {
+	public int selectProductNum() {
 		Connection conn = db.getConnection();
 
 		String sql = "select seq_shop_product.nextval from dual";
@@ -139,6 +140,38 @@ private DBConnect db;
 		}
 		return num;
 	}
+	
+	
+	@Override
+	public int selectProductImgNum() {
+		Connection conn = db.getConnection();
+
+		String sql = "select seq_product_image.nextval from dual";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int num = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
+	}
+	
 
 	@Override
 	public void insert(ProductVO p) {
@@ -170,6 +203,46 @@ private DBConnect db;
 			}
 		}
 	}
+	
+	
+	@Override
+	public void insert(ProductImageVO pi) {
+		System.out.println("DaoImpl insert ProductImageVO: " + pi.toString());
+		Connection conn = db.getConnection();
+		
+		String sql = "insert into product_image values(?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			System.out.println(pi.getNum());
+			System.out.println(pi.getP_num());
+			System.out.println(pi.getImg());
+			
+			pstmt.setInt(1, pi.getNum());
+			pstmt.setInt(2, pi.getP_num());
+			pstmt.setString(3, pi.getImg());
+
+			System.out.println(sql);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
 
 	@Override
 	public ProductVO select(int num) {
@@ -204,6 +277,10 @@ private DBConnect db;
 
 		return product;
 	}
+
+
+
+
 
 
 	

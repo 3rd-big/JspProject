@@ -23,9 +23,10 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 	<style type="text/css">
-		table, td{
-			border: 1px solid black;
+		td{
+			text-align: left;
 		}
 		table{
 			width: 30%;
@@ -34,47 +35,90 @@
 			text-align: center;
 		}
 	</style>
-	<script type="text/javascript">
-		$(document).ready
+
+
+<script src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		$("#detail_img1").hide();
+		$("#detail_img2").hide();
+		$("#detail_img3").hide();
+		
+		$("#addbtn").click(function() {
+			if(!$("#detail_img1").is(":visible")){
+				$("#detail_img1").show();
+			}else if(!$("#detail_img2").is(":visible")){
+				$("#detail_img2").show();
+			}else if(!$("#detail_img3").is(":visible")){
+				$("#detail_img3").show();
+			}
+		});
+		$("#delbtn").click(function() {
+			if($("#detail_img3").is(":visible")){
+				$("#detail_img3").hide();
+			}else if($("#detail_img2").is(":visible")){
+				$("#detail_img2").hide();
+			}else if($("#detail_img1").is(":visible")){
+				$("#detail_img1").hide();
+			}
+		});
+
+	});
 	
-	
-	</script>
+</script>
 </head>
 <body>
 
 	<!-- Navigation -->
 	<%@include file="/views/common/header.jsp"%>
 
-	<h1>상품등록 페이지</h1>
+	<h1 style="text-align: center;">상품등록 페이지</h1>
 
-	<form action="${pageContext.request.contextPath }/ProductAddController"
-		method="post" enctype="multipart/form-data">
+	
+	<input type="button" id="addbtn" value="상세 이미지 추가"> 
+	<input type="button" id="delbtn" value="상세 이미지 삭제">
+
+	<form action="${pageContext.request.contextPath }/ProductAddController" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>상품명</th>
-				<td colspan="2"><input type="text" name="name"></td>
+				<td><input type="text" name="name"></td>
 			<tr>
 			<tr>
 				<th>가격</th>
-				<td colspan="2"><input type="text" name="price"></td>
+				<td><input type="text" name="price"></td>
 			</tr>
 			<tr>
 				<th>대표 이미지</th>
-				<td colspan="2"><input type="file" name="file"></td>
+				<td><input type="file" name="file"></td>
 			</tr>
 			<tr>
-				<th>상세 이미지</th>
+				<th>상세 이미지1</th>
+				<td><input type="file" name="file1"></td>
+			</tr>
+			<tr id="detail_img1">
+				<th>상세 이미지2</th>
 				<td><input type="file" name="file2"></td>
-				<td><input type="button" id="addbtn" value="상세 이미지 추가"></td>
+			</tr>
+			<tr id="detail_img2">
+				<th>상세 이미지3</th>
+				<td><input type="file" name="file3"></td>
+			</tr>
+			<tr id="detail_img3">
+				<th>상세 이미지4</th>
+				<td><input type="file" name="file4"></td>
 			</tr>
 			<tr>
-				<th>상세설명</th>
-				<td colspan="2"><textarea rows="10" cols="30" name="content"></textarea></td>
+				<th rowspan="2">상세설명</th>
+				<td><textarea rows="10" cols="30" name="content"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="3"><input type="submit" value="등록"></td>
+				<td><input type="submit" value="등록"></td>
 			</tr>
 		</table>
 	</form>
+
 </body>
 </html>
