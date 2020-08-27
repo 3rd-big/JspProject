@@ -26,15 +26,17 @@
 <!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 
+		<!-- Main LOGO -->
 		<div class="logo">
 			<img
-				src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px">
+				src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px" href="<%=request.getContextPath()%>/views/main/main.jsp">
 		</div>
-
+		
 		<!-- top-navbar -->
 		<div class="container" style="flex-flow: column; max-width: none;">
 			<!-- top-navbar -->
-			<div class="container" id="top-navbar" style="max-width: -webkit-fill-available;">
+			<div class="container" id="top-navbar"
+				style="max-width: -webkit-fill-available;">
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -42,13 +44,69 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="#">주문조회
+
+
+
+						<!-- 비로그인 상태 -->
+						<c:if test="${empty sessionScope.id }">
+							<li class="nav-item"><a class="nav-link" href="#">주문조회	</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/member/login.jsp">로그인</a></li>
+							</li>
+						</c:if>
+
+						<!-- 일반사용자 로그인 상태 -->
+						<c:if test="${sessionScope.memberType == 1 }">
+							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">주문조회</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
+							</li>
+
+						</c:if>
+
+						<!-- 관리자 로그인 상태 -->
+
+						<c:if test="${sessionScope.memberType == 0 }">
+							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
+							</li>
+
+						</c:if>
+
+
+						<!-- <script type="text/javascript">
+					doucment.write("사랑")
+					
+					var loginSession = null;
+					document.write("<li class='nav-item'><a class='nav-link' href='#''>회원가입</a></li>");
+					loginSession = (String) sessionStorage.getItem(id);
+					console.log(loginSession)
+						if(loginSession != "null" && loginSession != "") { /* 로그인상태인 경우 */
+							if(V_HD_MEM_TYPE == "R" ) { /* 회원인 경우 */
+								document.write("<li class='nav-item'><a class='nav-link' href='#''>회원가입</a></li>");
+								document.write("<li><a href='javascript:fn_logIn(8);' onmousedown='javascript:fn_trkClickTrace(\"^최상단^마이페이지\");'>주문조회</a></li>");
+							}else {
+								document.write("<li><a href='javascript:fn_logIn(8);' onmousedown='javascript:fn_trkClickTrace(\"^최상단^마이페이지\");'>주문조회</a></li>");
+							}
+							document.write("<li class='login last'><a href='javascript:fn_logOut();'>로그아웃</a><div class='spt_bg ico_login'></div></li>");
+						}else { /* 로그아웃 상태인 경우 */
+							var myUrl = "https://shop.adidas.co.kr/PF060101.action";
+							document.write("<li><a href='javascript:go_myPageMan(\""+myUrl+"\");' onmousedown='javascript:fn_trkClickTrace(\"^최상단^마이페이지\");' title='새창 로그인'>주문조회</a></li>");
+							document.write("<li id='register_btn'><a href='javascript:fn_logIn(5);' onmousedown='javascript:fn_trkClickTrace(\"^최상단^회원가입\");'>회원가입</a></li>");
+							document.write("<li class='login last'><a href='javascript:fn_logIn(0);' onmousedown='javascript:fn_trkClickTrace(\"^최상단^로그인\");' title='새창 로그인'>로그인</a><div class='spt_bg ico_login'></div></li>");
+						}
+					</script> -->
+
+
+						<!-- <li class="nav-item active"><a class="nav-link" href="#">주문조회
 								<span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/MypageController">마이페이지</a>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="/views/login.jsp">로그인</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Contact</a>
+						</li> -->
 
 						<!-- 네비게이션 검색창 -->
 
@@ -59,7 +117,8 @@
 			</div>
 
 			<!-- bottom-navbar -->
-			<div class="container" id="bottom-navbar" style="max-width: -webkit-fill-available;">
+			<div class="container" id="bottom-navbar"
+				style="max-width: -webkit-fill-available;">
 
 
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -69,14 +128,60 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link" href="#">Home
+
+
+						<!-- 비로그인 상태 -->
+						<c:if test="${empty sessionScope.memberType}">
+							<li class="nav-item active"><a class="nav-link"
+								href="<%=request.getContextPath()%>/MainListController">Home
+									<span class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">TOP</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">BOTTOM</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#">SHOES</a>
+							</li>
+
+						</c:if>
+
+						<!-- 일반사용자 로그인 상태 -->
+						<c:if test="${sessionScope.memberType == 1 }">
+							<li class="nav-item active"><a class="nav-link"
+								href="<%=request.getContextPath()%>/MainListController">Home
+									<span class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">TOP</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">BOTTOM</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#">SHOES</a>
+							</li>
+
+						</c:if>
+
+						<!-- 관리자 로그인 상태 -->
+
+						<c:if test="${sessionScope.memberType == 0 }">
+							<li class="nav-item">
+								<a class="nav-link" href="<%=request.getContextPath()%>/ProductAllListController">상품관리</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="<%=request.getContextPath()%>/views/product/addForm.jsp">상품등록</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+							</li>
+						</c:if>
+
+						<%-- <li class="nav-item active"><a class="nav-link"
+							href="<%=request.getContextPath()%>/views/main/main.jsp">Home
 								<span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Services</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#">Contact</a>
-						</li>
+						</li> --%>
 					</ul>
 
 					<div class="collapse navbar-collapse" id="navbarResponsive">
@@ -142,6 +247,10 @@
 		</div>
 
 	</nav>
+	
+
+
+
 
 
 </body>
