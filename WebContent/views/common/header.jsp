@@ -50,7 +50,6 @@
 							<li class="nav-item"><a class="nav-link" href="#">주문조회	</a></li>
 							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/member/signup.jsp">회원가입</a></li>
 							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/views/member/login.jsp">로그인</a></li>
-							</li>
 						</c:if>
 
 						<!-- 일반사용자 로그인 상태 -->
@@ -59,8 +58,6 @@
 							<li class="nav-item"><a class="nav-link" href="#">주문조회</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
-							</li>
-
 						</c:if>
 
 						<!-- 관리자 로그인 상태 -->
@@ -69,8 +66,6 @@
 							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
-							</li>
-
 						</c:if>
 
 
