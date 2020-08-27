@@ -2,6 +2,7 @@ package product.service;
 
 import java.util.ArrayList;
 
+import model.ProductImageVO;
 import model.ProductVO;
 
 public interface Service {
@@ -14,7 +15,11 @@ public interface Service {
 	
 	ProductVO getProduct(int num);
 	
-	int makeNum();
+	int makeProductNum();
+	
+	int makeProductImgNum();
 	
 	void add(ProductVO p);
+	
+	void add(ProductImageVO pi);
 }

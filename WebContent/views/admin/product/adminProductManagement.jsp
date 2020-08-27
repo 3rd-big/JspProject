@@ -41,7 +41,7 @@
 	<!-- Navigation -->
 	<%@include file="/views/common/header.jsp"%>
 
-	<h1>상품관리 페이지</h1>
+	<h1 style="text-align: center;">상품관리 페이지</h1>
 
 	<table border="1">
 		<tr>
