@@ -16,14 +16,9 @@
 		
 		<div class="container">
 		
-			<p class="m-0 text-center text-white">Copyright &copy; Your
+			<p class="m-0 text-center text-white">Copyright &copy; 
 				Website 2020</p>
-			<br>
-			<ul class="navbar-nav mr-auto">
-			
-				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/ReadNoticeController">공지사항</a></li>
-			</ul>
-			
+			<br>			
 		</div>
 
 	</footer>
