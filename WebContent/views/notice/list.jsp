@@ -28,7 +28,13 @@
 <script
 	src="<%=request.getContextPath()%>/resource/js/jquery.twbsPagination.js"
 	type="text/javascript"></script>
+<script>
 
+function addbtn(){
+	location.href="${pageContext.request.contextPath }/views/notice/addForm.jsp";
+}
+
+</script>
 
 </head>
 <body><%@include file="/views/common/header.jsp"%>
@@ -89,7 +95,7 @@
 	</div>
 	<div align="right">
 		<button type="button" class="btn btn-primary active"
-			onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">글쓰기</button>
+			onclick="addbtn()">글쓰기</button>
 	</div>
 	<!--pagination -->
 	<div class="container" align="center">
