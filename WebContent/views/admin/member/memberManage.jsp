@@ -26,17 +26,30 @@
 	<!-- 팝업 스크립트 -->
 	<script type="text/javascript">
 	
-	function showPopup() {
+	
+	
+	
+	
+	
+	function showPopup(currentId) {
 		
-		var pop_title = "popupOpener";
+		
+		var index = currentId;
+		var pop_title = null;
+		
+		console.log(currentId);
 		
 		window.open("", pop_title, "width=400, height=300, left=200, top=200");
-		
 		var frmData = document.memberList;
+		frmData.action = "${pageContext.request.contextPath }/MemberManagePopupController?"+"showPopup.do?currentId=" + currentId.value;
 		frmData.target = pop_title;
-		frmData.action = "<%=request.getContextPath()%>/MemberManagePopupController";
-		
 		frmData.submit();
+		
+		
+		
+		
+		
+		
 	}
 			
 		
@@ -54,7 +67,7 @@
 	
 <h1>회원관리 페이지</h1>
 
-<form id="memberList" name="memberList" method="post">
+<form id="memberList" name="memberList" method="get">
 <table border="1">
 		<tr>
 			<th><input type="checkbox"></th>
@@ -77,12 +90,13 @@
 			<td>${list.addr }</td>
 			<td>${list.type }</td>
 			<td>${list.point }</td>
-			<input type="hidden" name="IdForEdit" value=${members[status.index].id }>
-			<td><input type="button" name="editBtn" value=${members[status.index].id } onclick="showPopup()"></td>
+				<input type="hidden" name="currentId${status.index }" value="${list.id }">
+			<td><input type="button"  value="수정" onClick="showPopup(currentId${status.index}.value)"></td>
 			
 		</tr>
 		</c:forEach>
 	</table>
+
 </form>
 
 </body>

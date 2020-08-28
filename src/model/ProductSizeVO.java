@@ -6,6 +6,8 @@ public class ProductSizeVO {
 	private String psize;
 	private int quantity;
 	
+	public ProductSizeVO() {}
+	
 	public ProductSizeVO(int num, int p_num, String psize, int quantity) {
 		super();
 		this.num = num;
