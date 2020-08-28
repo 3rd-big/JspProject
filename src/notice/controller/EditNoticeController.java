@@ -32,6 +32,9 @@ public class EditNoticeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		Service service = new ServiceImpl();
 
 		int num = Integer.parseInt(request.getParameter("num"));
@@ -40,14 +43,12 @@ public class EditNoticeController extends HttpServlet {
 
 		NoticeVO notice = new NoticeVO(num, title, content);
 
-		System.out.println(notice.toString());
+		//System.out.println(notice.toString());
 		
 		service.editNotice(notice);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
-		if (dispatcher != null) {
-			dispatcher.forward(request, response);
-		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListNoticeController");
+		dispatcher.forward(request, response);
 	}
 
 	/**

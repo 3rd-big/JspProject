@@ -1,6 +1,7 @@
 package notice.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.NoticeVO;
 
@@ -16,4 +17,8 @@ public interface Dao {
 	void delete(int num);
 
 	ArrayList<NoticeVO> selectAll();
+	
+	int getTotalRows();
+
+	List<NoticeVO> getRows(int start, int end);
 }

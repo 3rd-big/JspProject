@@ -17,14 +17,14 @@ import notice.service.ServiceImpl;
 /**
  * Servlet implementation class ListController
  */
-@WebServlet("/ListController")
-public class ListController extends HttpServlet {
+@WebServlet("/ListNoticeController")
+public class ListNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListController() {
+	public ListNoticeController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,13 +35,11 @@ public class ListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.setContentType("text/html;charset=utf-8");
-		//response.setCharacterEncoding("UTF-8");
-		//request.setCharacterEncoding("UTF-8");
-		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		Service service = new ServiceImpl();
-		ArrayList<NoticeVO> notice = service.getProductAll();
+		ArrayList<NoticeVO> notice = service.getNoticeAll();
 		
 		request.setAttribute("notice", notice);
 		

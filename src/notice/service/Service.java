@@ -13,7 +13,7 @@ public interface Service {
 
 	void delNotice(int num);
 
-	ArrayList<NoticeVO> getProductAll();
+	ArrayList<NoticeVO> getNoticeAll();
 
 	int makeNum();
 }
