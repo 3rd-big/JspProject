@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import conn.DBConnect;
 import model.ProductImageVO;
+import model.ProductSizeVO;
 import model.ProductVO;
 
 public class DaoImpl implements Dao {
@@ -172,6 +173,36 @@ private DBConnect db;
 		return num;
 	}
 	
+	@Override
+	public int selectProductSizeNum() {
+		Connection conn = db.getConnection();
+		
+		String sql = "select seq_product_size.nextval from dual";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int num = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return num;
+	}	
 
 	@Override
 	public void insert(ProductVO p) {
@@ -235,7 +266,36 @@ private DBConnect db;
 		
 	}
 	
-	
+	@Override
+	public void insert(ProductSizeVO ps) {
+		Connection conn = db.getConnection();
+		
+		String sql = "insert into product_size values(?, ?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, ps.getNum());
+			pstmt.setInt(2, ps.getP_num());
+			pstmt.setString(3, ps.getPsize());
+			pstmt.setInt(4, ps.getQuantity());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
 	@Override
 	public ProductVO select(int num) {
@@ -271,10 +331,4 @@ private DBConnect db;
 		return product;
 	}
 
-
-
-
-
-
-	
 }
