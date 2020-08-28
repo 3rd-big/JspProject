@@ -27,7 +27,7 @@
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class = "logincomponent">
-		<form action="${pageContext.request.contextPath }/LoginController" name="fmethod="post">
+		<form action="${pageContext.request.contextPath }/LoginController" name="f" method="post">
 			<fieldset>
 				<legend>로그인</legend>
 				

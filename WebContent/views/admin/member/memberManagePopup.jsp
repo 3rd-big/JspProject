@@ -9,12 +9,13 @@
 
 
 <script type="text/javascript">
-<%-- 
+ 
 function closeToEditMember() {
-	opener.location.href="<%=request.getContextPath()%>/MemberManageController";
+	opener.location.href="'<%=request.getContextPath()%>/MemberManageController'";
+	
 	self.close();
 	
-} --%>
+}
 
 
 

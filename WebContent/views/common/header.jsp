@@ -28,12 +28,13 @@
 
 		<!-- Main LOGO -->
 		<div class="logo">
-
-			<img
-				src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" width="100px", height="50px" href="<%=request.getContextPath()%>/views/main/main.jsp">
-
+			<a href="<%=request.getContextPath()%>/MainListController">
+				<img
+				src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+				width="100px" , height="50px">
+			</a>
 		</div>
-		
+
 		<!-- top-navbar -->
 		<div class="container" style="flex-flow: column; max-width: none;">
 
@@ -172,13 +173,8 @@
 							<li class="nav-item">
 								<a class="nav-link" href="<%=request.getContextPath()%>/views/admin/product/adminProductAddForm.jsp">상품등록</a>
 							</li>
-<<<<<<< HEAD
 							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/MemberManageController">회원관리</a></li>
 							</li>
-=======
-							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
-
->>>>>>> 6f9571e2339a09bbb8f13f0820b7e0f67add94f2
 							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 
 						</c:if>
@@ -237,13 +233,12 @@
 										document
 												.write("<div class='no_data_layer' style='display:none;'><span class='spt_bg'></span>장바구니가 비어있습니다.</div>");
 									}
-<<<<<<< HEAD
 								</script> -->
-								<a href="javascript:fn_logIn(7);">
-=======
-								</script>
+								
+								
+								
+								
 								<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1">
->>>>>>> 6f9571e2339a09bbb8f13f0820b7e0f67add94f2
 									<div>
 										<img
 											src="//image.adidas.co.kr/images/adidas/common/cart_DT.png"
