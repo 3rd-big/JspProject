@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
+import java.util.ArrayList;
 
 import conn.DBConnect;
 import model.MemberVO;
@@ -152,6 +151,44 @@ public class DaoImpl implements Dao {
 			}
 		}
 		
+	}
+
+	@Override
+	public ArrayList<MemberVO> selectAllMember() {
+		// TODO Auto-generated method stub
+		
+		Connection conn = db.getConnection();
+		ArrayList<MemberVO> members = new ArrayList();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from member";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				members.add(new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
+			}
+			
+			System.out.println("All member 불러오기 완료");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		return members;
 	}
 
 }

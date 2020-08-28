@@ -1,5 +1,7 @@
 package member.service;
 
+import java.util.ArrayList;
+
 import member.dao.Dao;
 import member.dao.DaoImpl;
 import model.MemberVO;
@@ -40,6 +42,12 @@ public class ServiceImpl implements Service {
 		} else {
 			return true;
 		}
+	}
+
+	@Override
+	public ArrayList<MemberVO> getMemberAll() {
+		// TODO Auto-generated method stub
+		return dao.selectAllMember();
 	}
 
 	
