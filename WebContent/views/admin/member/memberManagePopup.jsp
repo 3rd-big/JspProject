@@ -12,13 +12,40 @@
  
 function closeToEditMember() {
 	opener.location.href="'<%=request.getContextPath()%>/MemberManageController'";
-	
-	self.close();
-	
-}
 
+		self.close();
 
+	}
 
+	function check() {
+		var pwdtxt = document.f.pwd;
+		var addrtxt = document.f.addr;
+		if (pwdtxt.value == "") {
+			alert("빈공란이 존재합니다.");
+			pwdtxt.value = "";
+			pwdtxt.focus();
+			return false;
+		}
+
+		if (addrtxt.value == "") {
+			alert("빈공란이 존재합니다.");
+			addrtxt.value = "";
+			addrtxt.focus();
+			return false;
+		}
+
+		alert("수정되었습니다.");
+	}
+
+	function checkrem() {
+		var flag = confirm("정말 삭제하시겠습니까?")
+		if (flag) {
+			location.href = "${pageContext.request.contextPath}/DelController";
+
+		} else {
+			alert("삭제가 취소되었습니다.");
+		}
+	}
 </script>
 
 
