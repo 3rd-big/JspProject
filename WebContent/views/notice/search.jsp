@@ -53,12 +53,13 @@
 				<td><textarea name="content" rows="10" cols="100">${notice.content }</textarea></td>
 			</tr>
 			<%-- <c:if test="${sessionScope.id == notice.id }"> --%>
-			
+			<c:if test="${sessionScope.memberType == 0 }">
 				<tr>
 					<td colspan="2"><input type="submit" value="수정">
 					 <input type="button" value="삭제" onclick= "location.href = '${pageContext.request.contextPath }/DeleteNoticeController?num='+${notice.num}">
 					 </td>
 				</tr>
+			</c:if>
 			<%-- </c:if> --%>
 		</table>
 	</form>

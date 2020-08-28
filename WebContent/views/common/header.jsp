@@ -75,7 +75,7 @@
 						<!-- 관리자 로그인 상태 -->
 
 						<c:if test="${sessionScope.memberType == 0 }">
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/ListNoticeController">공지사항</a></li>
+			
 							<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
@@ -177,7 +177,7 @@
 							</li>
 							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/MemberManageController">회원관리</a></li>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/ListNoticeController"">공지사항</a></li>
 
 						</c:if>
 
