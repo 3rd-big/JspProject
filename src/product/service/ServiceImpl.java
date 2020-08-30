@@ -30,7 +30,18 @@ public class ServiceImpl implements Service{
 	public ArrayList<ProductVO> getNewProducts() {
 		return dao.selectNewProducts();
 	}
+	
 
+	@Override
+	public ArrayList<ProductImageVO> getDetailImgAll(int p_num) {
+		return dao.selectDetailImages(p_num);
+	}
+
+	@Override
+	public int checkQuantity(int productNum, String size) {
+		return dao.selectQuantity(productNum, size);
+	}
+	
 	@Override
 	public int makeProductNum() {
 		return dao.selectProductNum();
@@ -66,7 +77,8 @@ public class ServiceImpl implements Service{
 		return dao.select(num);
 	}
 
-
-
-
+	@Override
+	public void addQuantity(ProductSizeVO ps) {
+		dao.update(ps);
+	}
 }

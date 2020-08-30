@@ -37,9 +37,6 @@ public class DetailController extends HttpServlet {
 		String path = "/views/product/detail.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
-		
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

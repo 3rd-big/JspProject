@@ -39,10 +39,10 @@
 	<script type="text/javascript">
 		function showPopup() {
 			
-			var pop_title = "popupOpener";
-		
-			window.open("", pop_title, "width=300, height=400, left=200, top=200");
+			var pop_title = "재고 현황";
 
+			window.open("", pop_title, "width=300, height=400, left=200, top=200");
+			
 			var frmData = document.productList;
 			frmData.target = pop_title;
 			frmData.action = "<%=request.getContextPath()%>/ProductManagementPopupController";

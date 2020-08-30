@@ -14,6 +14,8 @@ public interface Dao {
 	
 	ArrayList<ProductVO> selectNewProducts();
 	
+	ArrayList<ProductImageVO> selectDetailImages(int p_num);
+	
 	int selectProductNum();
 	
 	int selectProductImgNum();
@@ -26,5 +28,9 @@ public interface Dao {
 	
 	void insert(ProductSizeVO ps);
 	
+	void update(ProductSizeVO ps);
+	
 	ProductVO select(int num);
+	
+	int selectQuantity(int productNum, String size);
 }

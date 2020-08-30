@@ -37,15 +37,23 @@ public class ProductSizeAddController extends HttpServlet {
 		Service service = new ServiceImpl();
 		ProductSizeVO ps = new ProductSizeVO();
 		
-		ps.setNum(service.makeProductSizeNum());
-		ps.setP_num(productNum);
-		ps.setPsize(size);
-		ps.setQuantity(quantity);
+		// 남은 재고의 수량
+		int remainingQuantity = service.checkQuantity(productNum, size);
 		
-		service.add(ps);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("");
-		dispatcher.forward(request, response);
+		if(-1 == remainingQuantity) {	// 입고된 기록이 없음, insert
+			ps.setNum(service.makeProductSizeNum());
+			ps.setP_num(productNum);
+			ps.setPsize(size);
+			ps.setQuantity(quantity);
+			service.add(ps);
+		}else {							// 재고가 남아있음, update
+			ps.setP_num(productNum);
+			ps.setPsize(size);
+			ps.setQuantity(remainingQuantity + quantity);
+			service.addQuantity(ps);
+		}
+
+		response.sendRedirect(request.getContextPath()+"/ProductAllListController"); 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

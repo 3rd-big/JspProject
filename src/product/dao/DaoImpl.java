@@ -109,7 +109,38 @@ private DBConnect db;
 		return newProducts;
 	}
 	
-	
+	@Override
+	public ArrayList<ProductImageVO> selectDetailImages(int p_num) {
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		ArrayList<ProductImageVO> detailImages = new ArrayList<>();
+		
+		String sql = "select * from product_image where p_num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, p_num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				detailImages.add(new ProductImageVO(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return detailImages;
+	}
+
 	
 
 	@Override
@@ -330,5 +361,69 @@ private DBConnect db;
 
 		return product;
 	}
+
+	@Override
+	public int selectQuantity(int productNum, String size) {
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "select quantity from product_size where p_num=? and psize=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNum);
+			pstmt.setString(2, size);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return -1;
+	}
+
+	@Override
+	public void update(ProductSizeVO ps) {
+		Connection conn = db.getConnection();
+		
+		String sql = "update product_size set quantity=? where p_num=? and psize=?";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, ps.getQuantity());
+			pstmt.setInt(2, ps.getP_num());
+			pstmt.setString(3, ps.getPsize());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+
 
 }

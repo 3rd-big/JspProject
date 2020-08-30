@@ -14,7 +14,11 @@ public interface Service {
 	
 	ArrayList<ProductVO> getNewProducts();
 	
+	ArrayList<ProductImageVO> getDetailImgAll(int p_num);
+	
 	ProductVO getProduct(int num);
+	
+	int checkQuantity(int productNum, String size);
 	
 	int makeProductNum();
 	
@@ -27,4 +31,6 @@ public interface Service {
 	void add(ProductImageVO pi);
 	
 	void add(ProductSizeVO ps);
+	
+	void addQuantity(ProductSizeVO ps);
 }
