@@ -15,6 +15,10 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.MemberVO;
+import model.ProductOrderVO;
+import model.ProductSizeVO;
+import model.ProductVO;
 import model.ReviewVO;
 import review.service.Service;
 import review.service.ServiceImpl;
@@ -54,9 +58,7 @@ public class AddReviewFormController extends HttpServlet {
 	    review.setM_id(m_id);
 	    review.setNum(service.makeNum());
 	    
-	    
-	    
-		
+
 		String r_img = "";
 		int maxSize = 1024 * 1024 * 10;
 		MultipartRequest multi = null;
@@ -82,7 +84,6 @@ public class AddReviewFormController extends HttpServlet {
 				// 파일업로드
 				File file = multi.getFile(file1);
 				review.setImg("/review_img/"+r_img);
-				
 				service.add(review);
 			}
 		} catch (Exception e) {

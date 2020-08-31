@@ -102,88 +102,80 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 
-	<div class="container">
-		<div class="row">
-			<h2 style="text-align: center">상품평 작성</h2>
-			<br>
-			<table width="100%" border="0">
-				<div class="col-md-9 col-md-offset-0">
-					<tr>
-						<td width="77%">
-							<div class="">
-								<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewFormController" method="post" enctype="multipart/form-data">
-									<fieldset>
+<div class="container">
+	<div class="row">
+		<h2 style="text-align: center">상품평 작성</h2>
+	<br>
+	<table width="100%" border="0">
+		<div class="col-md-9 col-md-offset-0">
+			<tr>
+			<td width="77%">
+			<div class="">
+				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewFormController" method="post" enctype="multipart/form-data">
+					<fieldset>
+
+					<!-- Name input-->
+					<!-- <div class="form-group">
+						<label class="col-md-3 control-label" for="name">Full
+							Name</label>
+						<div class="col-md-9">
+							<input id="name" name="name" type="text"
+								placeholder="Your name" class="form-control">
+						</div>
+					</div> -->
+
+				<!-- Rating -->
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="rating">Your rating</label>
+					<form>
+						<input type="text" name="rate" class="rating rating-loading"
+							data-size="md" title=""> <br>
+					</form>
+				</div>
 
 
-										주문한 상품명 :
+				<!-- Message body -->
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="message">Your message</label>
+					<div class="col-md-9">
+						<textarea class="form-control" id="message" name="message"
+							placeholder="Please enter your feedback here..." rows="5"></textarea>
+					</div>
+				</div>
 
-
-										<!-- Name input-->
-										<!-- <div class="form-group">
-											<label class="col-md-3 control-label" for="name">Full
-												Name</label>
-											<div class="col-md-9">
-												<input id="name" name="name" type="text"
-													placeholder="Your name" class="form-control">
-											</div>
-										</div> -->
-
-										<!-- Rating -->
-										<div class="form-group">
-											<label class="col-md-3 control-label" for="rating">Your
-												rating</label>
-											<form>
-
-												<input type="text" name="rate" class="rating rating-loading"
-													data-size="md" title=""> <br>
-
-											</form>
-										</div>
-
-
-										<!-- Message body -->
-										<div class="form-group">
-											<label class="col-md-3 control-label" for="message">Your
-												message</label>
-											<div class="col-md-9">
-												<textarea class="form-control" id="message" name="message"
-													placeholder="Please enter your feedback here..." rows="5"></textarea>
-											</div>
-										</div>
-
-										<!-- image input -->
-										<div class="form-group">
-											<label class="col-md-3 control-label" for="image">사진첨부</label>
-											<div class="col-md-9">
-												<!-- <label for="cma_file">사진첨부</label> -->
-												<form id="form1" runat="server">
-													<input type="file" name="r_img" onchange="readURL(this);" />
-													<img
-														style="height: 75px; border: 1px solid #000; margin: 5px"
-														id="blah" src="#" alt="" />
-												</form>
-
-											</div>
-										</div>
-
-										<div class="form-group">
-											<div class="col-md-12 text-center">
-												<button type="submit" class="btn btn-primary btn-md">Submit</button>
-												<button type="reset" class="btn btn-default btn-md">Clear</button>
-											</div>
-										</div>
-						</td>
-
-
-						</fieldset>
-
+				<!-- image input -->
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="image">사진첨부</label>
+					<div class="col-md-9">
+						<!-- <label for="cma_file">사진첨부</label> -->
+						<form id="form1" runat="server">
+							<input type="file" name="r_img" onchange="readURL(this);" />
+							<img
+								style="height: 75px; border: 1px solid #000; margin: 5px"
+								id="blah" src="#" alt="" />
 						</form>
-					</tr>
-			</table>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-12 text-center">
+						<button type="submit" class="btn btn-primary btn-md">Submit</button>
+						<button type="reset" class="btn btn-default btn-md">Clear</button>
+					</div>
+				</div>
+				</td>
+
+
+				</fieldset>
+
+				</form>
+			</tr>
+	</table>
 
 
 
-		</div>
+</div>
 </body>
 <script>
     $(document).on('ready', function () {
