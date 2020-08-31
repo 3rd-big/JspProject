@@ -37,16 +37,14 @@
 	</style>
 	
 	<script type="text/javascript">
+	
 		function productDel(num) {
 			var confirm_value = confirm('정말 삭제하시겠습니까?');
-			alert(confirm_value);
 			if(confirm_value){
 				location.href = "<%=request.getContextPath()%>/ProductDelController?num=" + num;
 			}
 		}
-	
-	
-	
+
 		function showPopup(num) {
 			var pop_title = "재고 현황";
 
@@ -56,9 +54,9 @@
 			frmData.target = pop_title;
 			frmData.action = "<%=request.getContextPath()%>/ProductManagementPopupController?num=" + num;
 		} 
+		
 	</script>
-	
-	
+
 </head>
 <body>
 
