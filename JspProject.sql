@@ -65,3 +65,6 @@ create SEQUENCE seq_product_size;
 create SEQUENCE seq_product_image;
 create SEQUENCE seq_shop_product;
 create SEQUENCE seq_notice;
+create SEQUENCE seq_product_order;
+
+alter table product_order add p_size varchar2(3);
