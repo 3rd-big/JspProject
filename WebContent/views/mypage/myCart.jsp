@@ -49,7 +49,7 @@
 
 			<div class="cartlist">
 			
-				<c:if test="${o_state==1 }">
+				<c:if test="${o_state==0 }">
 					<h3>장바구니 목록</h3>
 				</c:if>
 

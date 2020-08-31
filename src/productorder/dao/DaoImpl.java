@@ -16,35 +16,37 @@ public class DaoImpl implements Dao{
 		db = DBConnect.getInstance();
 	}
 	@Override
-	public void insert(ProductOrderVO o) {
-//		Connection conn = null;
-//		
-//		String sql = "insert into PRODUCT_ORDER values(seq_PRODUCT_order.nextval,?,?,?,?,sysdate,?,0)";
-//		
-//		PreparedStatement pstmt= null;
-//		
-//		try {
-//			conn = db.getConnection();
-//			
-//			pstmt=conn.prepareStatement(sql);
-//			
-//			pstmt.setInt(1, o.getPro_num());
-//			pstmt.setInt(2, o.getOrder_num());
-//			pstmt.setInt(3, o.getTotal_price());
-//			pstmt.setString(4, o.getO_id());
-//			pstmt.setInt(5, o.getO_state());
-//			
-//			pstmt.executeUpdate();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				pstmt.close();
-//				conn.close();
-//			} catch (Exception e2) {
-//				e2.printStackTrace();
-//			}
-//		}
+	public void insert(ProductOrderVO po) {
+		Connection conn = db.getConnection();
+		
+		String sql = "insert into product_order values(?, ?, ?, ?, ?, sysdate, ?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, po.getNum());
+			pstmt.setInt(2, po.getP_num());
+			pstmt.setInt(3, po.getO_quantity());
+			pstmt.setInt(4, po.getTotal_price());
+			pstmt.setString(5, po.getM_id());
+			pstmt.setInt(6, po.getO_state());
+			pstmt.setInt(7, po.getD_state());
+			pstmt.setString(8, po.getP_size());
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -138,6 +140,36 @@ public class DaoImpl implements Dao{
 	public void update(String type, int num) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public int selectProductOrderNum() {	
+		Connection conn = db.getConnection();
+
+		String sql = "select seq_product_order.nextval from dual";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		int num = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
 	}
 
 }

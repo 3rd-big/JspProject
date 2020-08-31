@@ -76,7 +76,7 @@
 				url: "${pageContext.request.contextPath }/AddProductCartController",
 				data: allData,
 				success: function (result) {
-					alert("성공");
+					alert("장바구니에 추가되었습니다");
 				}
 			});
 			
