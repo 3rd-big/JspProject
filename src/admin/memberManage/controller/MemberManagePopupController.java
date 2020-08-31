@@ -42,7 +42,7 @@ public class MemberManagePopupController extends HttpServlet {
         Service service = new ServiceImpl();
         
         
-        String id1 = (String) request.getAttribute("currentId");
+        String id1 = request.getParameter("h_field");
         System.out.println(id1);
         
         

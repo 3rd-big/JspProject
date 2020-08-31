@@ -34,15 +34,18 @@
 	function showPopup(currentId) {
 		
 		
-		var index = currentId;
-		var pop_title = null;
+		var idid = "ABC";
+		idid = currentId
+		 
+		var url = "/JspProject/MemberManagePopupController?h_field="+ idid;
+		window.open("", "pop_title", "width=400, height=300, left=200, top=200");
+		console.log("idid:" +idid);
 		
-		console.log(currentId);
 		
-		window.open("", pop_title, "width=400, height=300, left=200, top=200");
 		var frmData = document.memberList;
-		frmData.action = "${pageContext.request.contextPath }/MemberManagePopupController?"+"showPopup.do?currentId=" + currentId.value;
-		frmData.target = pop_title;
+		frmData.action = url;
+		console.log(frmData.action)
+		frmData.target = "pop_title";
 		frmData.submit();
 		
 		
