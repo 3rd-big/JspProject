@@ -37,7 +37,7 @@
 	</style>
 	
 	<script type="text/javascript">
-		function showPopup() {
+		function showPopup(num) {
 			
 			var pop_title = "재고 현황";
 
@@ -45,7 +45,7 @@
 			
 			var frmData = document.productList;
 			frmData.target = pop_title;
-			frmData.action = "<%=request.getContextPath()%>/ProductManagementPopupController";
+			frmData.action = "<%=request.getContextPath()%>/ProductManagementPopupController?num=" + num;
 
 		}
 	</script>
@@ -84,7 +84,7 @@
 				<td>${p.e_date }</td>
 				<td>${p.record }</td>
 				<td><input type="button" value="삭제"></td>
-				<td><input type="submit" name="productListNum" value="${p.num }" onClick="showPopup()"></td>
+				<td><input type="submit" name="productListNum" value="현황" onClick="showPopup('${p.num}')"></td>
 			</tr>
 			</c:forEach>
 			

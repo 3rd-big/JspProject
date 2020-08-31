@@ -27,7 +27,7 @@ public class ProductManagementPopupController extends HttpServlet {
 		response.setContentType("text'html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		int num = Integer.parseInt(request.getParameter("productListNum"));
+		int num = Integer.parseInt(request.getParameter("num"));
 		
 		Service service = new ServiceImpl();
 		
