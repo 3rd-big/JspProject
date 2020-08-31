@@ -11,5 +11,3 @@ public interface Service {
 	void editState(String type, int num);
 	void delOrder(int num);
 }
-
-

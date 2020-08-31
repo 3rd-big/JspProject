@@ -65,7 +65,7 @@ public class DaoImpl implements Dao{
 			
 			if(rs.next()) {
 				return new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8));
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9));
 			}
 			
 		} catch (Exception e) {
@@ -85,7 +85,7 @@ public class DaoImpl implements Dao{
 
 	@Override
 	public ArrayList<ProductOrderVO> selectAll(String m_id, int o_state) {
-		// 주문조회
+		// 二쇰Ц議고쉶
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -107,7 +107,7 @@ public class DaoImpl implements Dao{
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8)));
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9)));
 				
 			}
 

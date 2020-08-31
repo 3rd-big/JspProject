@@ -23,10 +23,12 @@ public class ProductDelController extends HttpServlet {
 		response.setContentType("text'html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		int num = Integer.parseInt(request.getParameter("num"));
-		
-		Service service = new ServiceImpl();
-		service.delProduct(num);
+//		int num = Integer.parseInt(request.getParameter("num"));
+//		
+//		Service service = new ServiceImpl();
+//		service.delProduct(num);
+//		
+//		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 	
 	}
