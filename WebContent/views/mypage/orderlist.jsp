@@ -58,8 +58,8 @@
 		<tbody >
 			<c:forEach var="o" items="${list }">
 				<tr class="text-center">
-					<td>${o.num } </td>
-					<td> ${o.prod_name } </td>
+					<td name="order_num">${o.num } </td>
+					<td name="order_product_name"> ${o.prod_name } </td>
 					<td> <img src="${o.prod_img }" width="200" height="200"> </td>
 					<td>${o.p_size} </td> 
 					<td>${o.o_quantity} </td> 

@@ -8,18 +8,33 @@
 
 
 
+
+<!-- Bootstrap core JavaScript -->
+<script
+	src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
 <script type="text/javascript">
  
 function closeToEditMember() {
-	opener.location.href="'<%=request.getContextPath()%>/MemberManageController'";
+	opener.location.href="<%=request.getContextPath()%>/MemberManageEditController";
 
 		self.close();
 
 	}
 
 	function check() {
+		
+		
+		
 		var pwdtxt = document.f.pwd;
 		var addrtxt = document.f.addr;
+		
+		var params = $("#f").serialize();
+		
 		if (pwdtxt.value == "") {
 			alert("빈공란이 존재합니다.");
 			pwdtxt.value = "";
@@ -33,14 +48,62 @@ function closeToEditMember() {
 			addrtxt.focus();
 			return false;
 		}
+       
+		
+	
+	$
+				.ajax({
+					url : "${pageContext.request.contextPath }/MemberManageEditController",
+					type : "post",
+					data : params,
+					success : function(data) {
 
-		alert("수정되었습니다.");
+						opener.parent.location.reload();
+						self.close();
+					},
+					error : function(request, status, error) {
+						alert("code = " + request.status + " message = "
+								+ request.responseText + " error = " + error);
+					},
+					complete : function(data) {
+						//  실패했어도 완료가 되었을 때 처리
+						alert("무ㅡㅓ징?.");
+					}
+
+				});
+
+	alert("수정되었습니다.");
+	
 	}
 
 	function checkrem() {
+		var params = $("#f").serialize();
 		var flag = confirm("정말 삭제하시겠습니까?")
-		if (flag) {
-			location.href = "${pageContext.request.contextPath}/DelController";
+		
+		if(flag){
+			$
+			.ajax({
+				url : "${pageContext.request.contextPath }/MemberManageDelController",
+				type : "post",
+				data : params,
+				success : function(data) {
+
+					opener.parent.location.reload();
+					self.close();
+				},
+				error : function(request, status, error) {
+					alert("code = " + request.status + " message = "
+							+ request.responseText + " error = " + error);
+				},
+				complete : function(data) {
+					//  실패했어도 완료가 되었을 때 처리
+				}
+
+			});
+			
+			alert("회원 삭제 되었습니다.")
+					
+
 
 		} else {
 			alert("삭제가 취소되었습니다.");
@@ -54,7 +117,7 @@ function closeToEditMember() {
 <h1>POP up</h1>
 
 <div class = "editusercomponent">
-		<form action="${pageContext.request.contextPath }/User_EditController" name="f" method="post" onsubmit="return check()">
+		<form name="f" id="f" method="post" onsubmit="return check()">
 			<fieldset>
 				<legend>내 정보 수정</legend>
 				
@@ -85,8 +148,8 @@ function closeToEditMember() {
 				</div>
 				
 			
-				<input type="button" value="수정" onclick="closeToEditMember();"> 
-				<input type="button" value="닫기" onclick="self.close();"> 
+				<input type="submit" value="수정" > 
+				<input type="button" value="회원탈퇴" onclick="checkrem()"> 
 				
 			</fieldset>
 		</form>

@@ -26,30 +26,19 @@
 	<!-- 팝업 스크립트 -->
 	<script type="text/javascript">
 	
-	
-	
-	
-	
-	
 	function showPopup(currentId) {
 		
+		var pop_title ="회원 관리";
+		var id = currentId;
+		window.open("", pop_title, "width=500, height=500, left=200, top=200");
 		
-		var index = currentId;
-		var pop_title = null;
-		
-		console.log(currentId);
-		
-		window.open("", pop_title, "width=400, height=300, left=200, top=200");
 		var frmData = document.memberList;
-		frmData.action = "${pageContext.request.contextPath }/MemberManagePopupController?"+"showPopup.do?currentId=" + currentId.value;
 		frmData.target = pop_title;
-		frmData.submit();
+		frmData.action = "<%=request.getContextPath()%>/MemberManagePopupController?currentId=" + currentId;
+		console.log("currentId: " + currentId);
+		console.log(frmData.action);
 		
-		
-		
-		
-		
-		
+	
 	}
 			
 		
@@ -62,12 +51,12 @@
 <body>
 
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%@include file="/views/common/header.jsp"%>
 	
 	
 <h1>회원관리 페이지</h1>
 
-<form id="memberList" name="memberList" method="get">
+<form id="memberList" name="memberList" method="post">
 <table border="1">
 		<tr>
 			<th><input type="checkbox"></th>
@@ -90,8 +79,7 @@
 			<td>${list.addr }</td>
 			<td>${list.type }</td>
 			<td>${list.point }</td>
-				<input type="hidden" name="currentId${status.index }" value="${list.id }">
-			<td><input type="button"  value="수정" onClick="showPopup(currentId${status.index}.value)"></td>
+			<td><input type="submit"  value="수정" onClick="showPopup('${list.id}')"></td>
 			
 		</tr>
 		</c:forEach>
