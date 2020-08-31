@@ -56,11 +56,33 @@
 		#select-quantity{
 			padding:10px;
 		}
+
 	</style>	
 
 
 
 	<script type="text/javascript">
+	
+		<!-- 장바구니 클릭 상품 번호 전달 -->
+		function addCart(productNum) {
+			var size = $(".size-selected").text();
+			var quantity = $("#select-quantity").text();
+			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
+			alert(productNum + size + quantity);
+			
+			$.ajax({
+				type: "post",
+				async: false,
+				url: "${pageContext.request.contextPath }/AddProductCartController",
+				data: allData,
+				success: function (result) {
+					alert("성공");
+				}
+			});
+			
+		}
+	
+	
 		$(document).ready(function(){
 			
 			$.ajax({
@@ -95,7 +117,7 @@
 				$(this).addClass("size-selected");
 			});
 			
-			<!-- 상품 수량 -->
+			<!-- 상품 수량 빼기 -->
 			$("#decQuantity").click(function countDown() { 
 				var quantity = Number($("#select-quantity").text());
 				if(quantity >= 2){
@@ -107,13 +129,14 @@
 				
 			});
 			
+			<!-- 상품 수량 증가 -->
 			$("#incQuantity").click(function countUp() {
 				var quantity = Number($("#select-quantity").text());
 				$("#select-quantity").html(quantity+1);
 				$("#countDown").attr("src", "sample_img/ico_decQ.png");
 			});
 			
-			
+
 			
 		});
 	</script>
@@ -162,9 +185,9 @@
 				<p>${product.content }</p>
 				<br>
 				<ul class="size-list">
-					<li>XL</li>
-					<li>L</li>
-					<li>M</li>
+					<li value="XL">XL</li>
+					<li value="L">L</li>
+					<li value="M">M</li>
 				</ul>
 				<br>
 				<div class="select-amount">
@@ -178,11 +201,11 @@
 				</div>
 				<br><br>
 				<div style="text-align: center;">
-					<div id="btn_buy">
+					<div id="btn_buy" >
 						구매하기
 					</div>
 					<div id="btn_cart">
-						장바구니
+						<a href="#" onClick="addCart('${product.num}');">장바구니</a>
 					</div>
 				</div>
 			</div>

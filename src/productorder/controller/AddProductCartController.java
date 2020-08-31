@@ -1,4 +1,4 @@
-package admin.product.controller;
+package productorder.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import product.service.Service;
-import product.service.ServiceImpl;
-
-@WebServlet("/ProductDelController")
-public class ProductDelController extends HttpServlet {
+@WebServlet("/AddProductCartController")
+public class AddProductCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ProductDelController() {
+    public AddProductCartController() {
 
     }
 
@@ -23,14 +20,12 @@ public class ProductDelController extends HttpServlet {
 		response.setContentType("text'html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-//		int num = Integer.parseInt(request.getParameter("num"));
-//		
-//		Service service = new ServiceImpl();
-//		service.delProduct(num);
-//		
-//		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		int productNum = Integer.parseInt(request.getParameter("productNum"));
+		String size = request.getParameter("size");
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		
-	
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
