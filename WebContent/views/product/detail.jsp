@@ -68,8 +68,7 @@
 			var size = $(".size-selected").text();
 			var quantity = $("#select-quantity").text();
 			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
-			alert(productNum + size + quantity);
-			
+	
 			$.ajax({
 				type: "post",
 				async: false,
