@@ -1,140 +1,252 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="model.ProductVO" %>
-  <%@page import="model.ProductOrderVO, model.ReviewVO" %>
+	pageEncoding="UTF-8"%>
+<%@page import="model.ProductOrderVO, model.ProductSizeVO"%>
+<%@page import="model.MemberVO, model.ProductVO, model.ReviewVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 
-<title>Shop Homepage - Start Bootstrap Template</title>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<!-- Bootstrap core CSS -->
-<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/views/review/star-rating/star-rating/css/star-rating.css"
+	media="all" type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/views/review/star-rating/star-rating/css/themes/krajee-fa/theme.css"
+	media="all" type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/views/review/star-rating/star-rating/css/themes/krajee-svg/theme.css"
+	media="all" type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/views/review/star-rating/star-rating/css/themes/krajee-uni/theme.css"
+	media="all" type="text/css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="${pageContext.request.contextPath }/views/review/star-rating/star-rating/js/star-rating.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.request.contextPath }/views/review/star-rating/star-rating/js/themes/krajee-fa/theme.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.request.contextPath }/views/review/star-rating/star-rating/js/themes/krajee-svg/theme.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.request.contextPath }/views/review/star-rating/star-rating/js/themes/krajee-uni/theme.js"
+	type="text/javascript"></script>
 
-  <!-- Custom styles for this template -->
-  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+<!-- 업로드 사진 미리보기 -->
+
+<script type="text/javascript">
+
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	
+
+	
+</script>
 <style type="text/css">
-.starR1{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
-    background-size: auto 100%;
-    width: 15px;
-    height: 30px;
-    float:left;
-    text-indent: -9999px;
-    cursor: pointer;
+.uploadhidden {
+	font-family: "campton", "Apple SD Gothic Neo", NanumBarunGothic,
+		"나눔바른고딕", Malgun Gothic, "맑은 고딕", dotum, sans-serif;
+	border-radius: 0;
+	background: transparent;
+	appearance: none;
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	border-radius: 0;
+	background: transparent;
+	appearance: none;
 }
-.starR2{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
-    background-size: auto 100%;
-    width: 15px;
-    height: 30px;
-    float:left;
-    text-indent: -9999px;
-    cursor: pointer;
-}
-.starR1.on{background-position:0 0;}
-.starR2.on{background-position:-15px 0;}
 
+/* 파일 필드 숨기기 */
+/* .filebox input[type="file"] {  
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+ */
 </style>
-
-
-
 </head>
 <body>
-	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
-	<!-- Page Container -->
-	<!-- 카테고리 -->
-	<c:if test="${not empty sessionScope.id }">
-	
-	
-		<div class="row2" >
-	
-	      <div class="col-lg-3">
-	        <h1 class="my-4">My Page</h1>
-	        <div class="list-group">
-	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=0" class="list-group-item">주문조회</a>
-	        	<a href="#" class="list-group-item">내가 쓴 리뷰 관리</a>
-	          <a href="${pageContext.request.contextPath }/SearchController" class="list-group-item ">내 정보 수정</a>
-	          
-	          
-	        </div>
-	      </div>
-	    </div>
-		
-		<section class = "rightcontent">
-			<div class="card mb-3">
-				<h3 class="card-header">상품평 작성</h3>
-				<div class="card-body">
-					<h5 class="card-title">상품의 후기를 적어주세요 </h5>
-				</div>
-				<img style="height: 200px; width: 100%; display: block;"
-					src="${r.img }"
-					alt="Card image">
-				<div class="card-body">
-					<input type="text" class="card-text" id="r_content" name="r_content">
-				</div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">
-						<div class="starRev">
-						  <span class="starR1 on">별1_왼쪽</span>
-						  <span class="starR2">별1_오른쪽</span>
-						  <span class="starR1">별2_왼쪽</span>
-						  <span class="starR2">별2_오른쪽</span>
-						  <span class="starR1">별3_왼쪽</span>
-						  <span class="starR2">별3_오른쪽</span>
-						  <span class="starR1">별4_왼쪽</span>
-						  <span class="starR2">별4_오른쪽</span>
-						  <span class="starR1">별5_왼쪽</span>
-						  <span class="starR2">별5_오른쪽</span>
-						</div>
-					
-					
-					</li>
 
-				</ul>
-				
-				<div class="card-footer text-muted">
-					등록 버튼
-				</div>
-			</div>
-			
+	<!------ Include the above in your HEAD tag ---------->
+
+	<div class="container">
+		<div class="row">
+			<h2 style="text-align: center">상품평 작성</h2>
+			<br>
+			<table width="100%" border="0">
+				<div class="col-md-9 col-md-offset-0">
+					<tr>
+						<td width="77%">
+							<div class="">
+								<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewFormController" method="post" enctype="multipart/form-data">
+									<fieldset>
 
 
-		</section>
-	
-
-	</c:if>
-	<script type="text/javascript">
+										주문한 상품명 :
 
 
-		$('.starRev span').click(function(){
-		  $(this).parent().children('span').removeClass('on');
-		  $(this).addClass('on').prevAll('span').addClass('on');
-		  return false;
-		});
+										<!-- Name input-->
+										<!-- <div class="form-group">
+											<label class="col-md-3 control-label" for="name">Full
+												Name</label>
+											<div class="col-md-9">
+												<input id="name" name="name" type="text"
+													placeholder="Your name" class="form-control">
+											</div>
+										</div> -->
+
+										<!-- Rating -->
+										<div class="form-group">
+											<label class="col-md-3 control-label" for="rating">Your
+												rating</label>
+											<form>
+
+												<input type="text" name="rate" class="rating rating-loading"
+													data-size="md" title=""> <br>
+
+											</form>
+										</div>
 
 
-	</script>
+										<!-- Message body -->
+										<div class="form-group">
+											<label class="col-md-3 control-label" for="message">Your
+												message</label>
+											<div class="col-md-9">
+												<textarea class="form-control" id="message" name="message"
+													placeholder="Please enter your feedback here..." rows="5"></textarea>
+											</div>
+										</div>
+
+										<!-- image input -->
+										<div class="form-group">
+											<label class="col-md-3 control-label" for="image">사진첨부</label>
+											<div class="col-md-9">
+												<!-- <label for="cma_file">사진첨부</label> -->
+												<form id="form1" runat="server">
+													<input type="file" name="r_img" onchange="readURL(this);" />
+													<img
+														style="height: 75px; border: 1px solid #000; margin: 5px"
+														id="blah" src="#" alt="" />
+												</form>
+
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="col-md-12 text-center">
+												<button type="submit" class="btn btn-primary btn-md">Submit</button>
+												<button type="reset" class="btn btn-default btn-md">Clear</button>
+											</div>
+										</div>
+						</td>
 
 
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2020</p>
+						</fieldset>
+
+						</form>
+					</tr>
+			</table>
+
+
+
 		</div>
-		<!-- /.container -->
-	</footer>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+<script>
+    $(document).on('ready', function () {
+        $('.kv-gly-star').rating({
+            containerClass: 'is-star'
+        });
+        $('.kv-gly-heart').rating({
+            containerClass: 'is-heart',
+            defaultCaption: '{rating} hearts',
+            starCaptions: function (rating) {
+                return rating == 1 ? 'One heart' : rating + ' hearts';
+            },
+            filledStar: '<i class="glyphicon glyphicon-heart"></i>',
+            emptyStar: '<i class="glyphicon glyphicon-heart-empty"></i>'
+        });
+        $('.kv-fa').rating({
+            theme: 'krajee-fa',
+            filledStar: '<i class="fa fa-star"></i>',
+            emptyStar: '<i class="fa fa-star-o"></i>'
+        });
+        $('.kv-fa-heart').rating({
+            defaultCaption: '{rating} hearts',
+            starCaptions: function (rating) {
+                return rating == 1 ? 'One heart' : rating + ' hearts';
+            },
+            theme: 'krajee-fa',
+            filledStar: '<i class="fa fa-heart"></i>',
+            emptyStar: '<i class="fa fa-heart-o"></i>'
+        });
+        $('.kv-uni-star').rating({
+            theme: 'krajee-uni',
+            filledStar: '&#x2605;',
+            emptyStar: '&#x2606;'
+        });
+        $('.kv-uni-rook').rating({
+            theme: 'krajee-uni',
+            defaultCaption: '{rating} rooks',
+            starCaptions: function (rating) {
+                return rating == 1 ? 'One rook' : rating + ' rooks';
+            },
+            filledStar: '&#9820;',
+            emptyStar: '&#9814;'
+        });
+        $('.kv-svg').rating({
+            theme: 'krajee-svg',
+            filledStar: '<span class="krajee-icon krajee-icon-star"></span>',
+            emptyStar: '<span class="krajee-icon krajee-icon-star"></span>'
+        });
+        $('.kv-svg-heart').rating({
+            theme: 'krajee-svg',
+            filledStar: '<span class="krajee-icon krajee-icon-heart"></span>',
+            emptyStar: '<span class="krajee-icon krajee-icon-heart"></span>',
+            defaultCaption: '{rating} hearts',
+            starCaptions: function (rating) {
+                return rating == 1 ? 'One heart' : rating + ' hearts';
+            },
+            containerClass: 'is-heart'
+        });
+
+        $('.rating,.kv-gly-star,.kv-gly-heart,.kv-uni-star,.kv-uni-rook,.kv-fa,.kv-fa-heart,.kv-svg,.kv-svg-heart').on(
+                'change', function () {
+                    console.log('Rating selected: ' + $(this).val());
+                });
+    });
+</script>
 </html>

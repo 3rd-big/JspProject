@@ -52,16 +52,18 @@ public class DaoImpl implements Dao{
 		String sql = "insert into review values(seq_review.nextval, ?, ?, ?, ?, sysdate)";
 
 		PreparedStatement pstmt = null;
-
+		System.out.println("리뷰insertdao실행");
 		try {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, review.getM_id());
-			pstmt.setInt(2, review.getRate());
+			pstmt.setDouble(2, review.getRate());
 			pstmt.setString(3, review.getContent());
-			pstmt.setNString(4, review.getImg());
+			pstmt.setString(4, review.getImg());
 
 			pstmt.executeUpdate();
+			
+			System.out.println(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -72,6 +74,8 @@ public class DaoImpl implements Dao{
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 
 	@Override
@@ -110,11 +114,12 @@ public class DaoImpl implements Dao{
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "update review set content=?, r_date=sysdate where num=?";
+		String sql = "update review set rate=?, content=?, r_date=sysdate where num=?";
 		try {
-			pstmt = conn.prepareStatement(sql);			
-			pstmt.setString(1, review.getContent());
-			pstmt.setInt(2, review.getNum());
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setDouble(1, review.getRate());
+			pstmt.setString(2, review.getContent());
+			pstmt.setInt(3, review.getNum());
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

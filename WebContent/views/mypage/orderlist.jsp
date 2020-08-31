@@ -13,6 +13,25 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 
+	<!-- popup -->
+
+<script type="text/javascript">
+	function showPopup(){
+		window.open("${pageContext.request.contextPath}/views/review/addForm.jsp");
+	}
+</script>
+
+<style type="text/css">
+.btn btn-link{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 680px;
+    min-height: 666px;
+    padding: 0 20px 88px;
+}
+
+</style>
 
 </head>
 <body>
@@ -27,7 +46,8 @@
 			<tr class="text-center">
 				<th scope="col">주문번호 </th> 
 				<th scope="col">제품명 </th> 
-				<th scope="col">사진 </th> 
+				<th scope="col">사진 </th>
+				<th scope="col">사이즈 </th> 
 				<th scope="col">주문수량 </th> 
 				<th scope="col">결제금액 </th> 
 				<th scope="col">주문일 </th>
@@ -41,14 +61,16 @@
 					<td>${o.num } </td>
 					<td> ${o.prod_name } </td>
 					<td> <img src="${o.prod_img }" width="200" height="200"> </td>
+					<td>${o.p_size} </td> 
 					<td>${o.o_quantity} </td> 
 					<td>${o.total_price } </td> 
 					<td>${o.o_date } </td>
 					<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp">상품평 작성</a></td>
-					<td><button type="button" class="btn btn-link">Link</button> </td>
+					<td><button type="button" class="btn btn-link" onclick="showPopup();">상품평 작성</button> </td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		</table>
+		
 </body>
 </html>
