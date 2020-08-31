@@ -55,7 +55,7 @@
 			var frmData = document.productList;
 			frmData.target = pop_title;
 			frmData.action = "<%=request.getContextPath()%>/ProductManagementPopupController?num=" + num;
-		}
+		} 
 	</script>
 	
 	

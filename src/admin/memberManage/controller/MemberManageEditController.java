@@ -44,7 +44,7 @@ public class MemberManageEditController extends HttpServlet {
         String email=request.getParameter("email");
         String addr=request.getParameter("addr");
 
-        
+        System.out.println("받은 데이터 : " + id + "," + pwd + "," + name +"," + email +"," + addr );
         //요청 파라미터로 읽은 값으로 Member 객체 생성
         MemberVO m = new MemberVO(id, pwd, name, email, addr);
         
@@ -55,7 +55,7 @@ public class MemberManageEditController extends HttpServlet {
         
 
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/MemberManageController");
         if(dispatcher!=null) {
            dispatcher.forward(request, response);
         }
