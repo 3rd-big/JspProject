@@ -33,4 +33,6 @@ public interface Service {
 	void add(ProductSizeVO ps);
 	
 	void addQuantity(ProductSizeVO ps);
+	
+	void delProduct(int num);
 }

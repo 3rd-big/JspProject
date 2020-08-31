@@ -424,6 +424,32 @@ private DBConnect db;
 		
 	}
 
+	@Override
+	public void delete(int num) {
+		Connection conn = db.getConnection();
+		
+		String sql = "delete product where num=?";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
 
 
 }

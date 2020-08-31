@@ -37,8 +37,17 @@
 	</style>
 	
 	<script type="text/javascript">
+		function productDel(num) {
+			var confirm_value = confirm('정말 삭제하시겠습니까?');
+			alert(confirm_value);
+			if(confirm_value){
+				location.href = "<%=request.getContextPath()%>/ProductDelController?num=" + num;
+			}
+		}
+	
+	
+	
 		function showPopup(num) {
-			
 			var pop_title = "재고 현황";
 
 			window.open("", pop_title, "width=300, height=400, left=200, top=200");
@@ -46,7 +55,6 @@
 			var frmData = document.productList;
 			frmData.target = pop_title;
 			frmData.action = "<%=request.getContextPath()%>/ProductManagementPopupController?num=" + num;
-
 		}
 	</script>
 	
@@ -83,7 +91,7 @@
 				<td>${p.price }</td>
 				<td>${p.e_date }</td>
 				<td>${p.record }</td>
-				<td><input type="button" value="삭제"></td>
+				<td><input type="button" value="삭제" onClick="productDel('${p.num}')"></td>
 				<td><input type="submit" name="productListNum" value="현황" onClick="showPopup('${p.num}')"></td>
 			</tr>
 			</c:forEach>

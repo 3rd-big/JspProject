@@ -81,4 +81,9 @@ public class ServiceImpl implements Service{
 	public void addQuantity(ProductSizeVO ps) {
 		dao.update(ps);
 	}
+
+	@Override
+	public void delProduct(int num) {
+		dao.delete(num);
+	}
 }

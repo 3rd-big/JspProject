@@ -33,4 +33,6 @@ public interface Dao {
 	ProductVO select(int num);
 	
 	int selectQuantity(int productNum, String size);
+	
+	void delete(int num);
 }
