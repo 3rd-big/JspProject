@@ -11,6 +11,7 @@ public class ProductOrderVO {
 	private Date o_date;
 	private int o_state;
 	private int d_state;
+	private String p_size;
 	private String prod_name;
 	private String prod_img;
 	
@@ -18,7 +19,7 @@ public class ProductOrderVO {
 		
 	}
 	
-	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state, int d_state) {
+	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state, int d_state, String p_size) {
 		super();
 		this.num = num;
 		this.p_num = p_num;
@@ -28,6 +29,7 @@ public class ProductOrderVO {
 		this.o_date = o_date;
 		this.o_state = o_state;
 		this.d_state = d_state;
+		this.p_size = p_size;
 	}
 
 	public int getNum() {
@@ -115,6 +117,14 @@ public class ProductOrderVO {
 
 	public void setProd_img(String prod_img) {
 		this.prod_img = prod_img;
+	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
 	}
 	
 	

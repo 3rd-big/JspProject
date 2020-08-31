@@ -5,12 +5,16 @@ import java.sql.Date;
 public class ReviewVO {
 	private int num;
 	private String m_id;
-	private int rate;
+	private double rate;
 	private String content;
 	private String img;
 	private Date r_date;
 	
-	public ReviewVO(int num, String m_id, int rate, String content, String img, Date r_date) {
+	public ReviewVO() {
+		
+	}
+	
+	public ReviewVO(int num, String m_id, double rate, String content, String img, Date r_date) {
 		super();
 		this.num = num;
 		this.m_id = m_id;
@@ -36,11 +40,11 @@ public class ReviewVO {
 		this.m_id = m_id;
 	}
 
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
 
-	public void setRate(int rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 
