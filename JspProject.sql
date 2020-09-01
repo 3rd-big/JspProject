@@ -69,3 +69,4 @@ create SEQUENCE seq_notice;
 create SEQUENCE seq_product_order;
 
 alter table product_order add p_size varchar2(3);
+alter table product_order add r_state number;

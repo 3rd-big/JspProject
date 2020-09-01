@@ -11,14 +11,15 @@ public class ProductOrderVO {
 	private Date o_date;
 	private int o_state;
 	private int d_state;
+	private int r_state;
 	private String p_size;
 	private String prod_name;
 	private String prod_img;
 	
+	
 	public ProductOrderVO() {
 		
 	}
-	
 	
 	
 
@@ -36,7 +37,20 @@ public class ProductOrderVO {
 		this.p_size = p_size;
 	}
 
-
+	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
+			int d_state, String p_size, int r_state) {
+		super();
+		this.num = num;
+		this.p_num = p_num;
+		this.o_quantity = o_quantity;
+		this.total_price = total_price;
+		this.m_id = m_id;
+		this.o_date = o_date;
+		this.o_state = o_state;
+		this.d_state = d_state;
+		this.p_size = p_size;
+		this.r_state=r_state;
+	}
 
 
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
@@ -55,6 +69,22 @@ public class ProductOrderVO {
 		this.prod_img = prod_img;
 	}
 
+	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
+			int d_state, int r_state, String p_size, String prod_name, String prod_img) {
+		super();
+		this.num = num;
+		this.p_num = p_num;
+		this.o_quantity = o_quantity;
+		this.total_price = total_price;
+		this.m_id = m_id;
+		this.o_date = o_date;
+		this.o_state = o_state;
+		this.d_state = d_state;
+		this.r_state = r_state;
+		this.p_size = p_size;
+		this.prod_name = prod_name;
+		this.prod_img = prod_img;
+	}
 
 
 	public int getNum() {
@@ -145,11 +175,26 @@ public class ProductOrderVO {
 		this.p_size = p_size;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
 				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
-				+ d_state + ", p_size=" + p_size + ", prod_name=" + prod_name + ", prod_img=" + prod_img + "]";
+				+ d_state + ", r_state=" + r_state + ", p_size=" + p_size + ", prod_name=" + prod_name + ", prod_img="
+				+ prod_img + "]";
+	}
+
+
+
+	public int getR_state() {
+		return r_state;
+	}
+
+
+
+	public void setR_state(int r_state) {
+		this.r_state = r_state;
 	}
 	
 	

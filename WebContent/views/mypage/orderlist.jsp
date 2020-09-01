@@ -15,11 +15,7 @@
 
 	<!-- popup -->
 
-<script type="text/javascript">
-	function showPopup(){
-		window.open("${pageContext.request.contextPath}/AddReviewFormController?num=${o.p_num}");
-	}
-</script>
+
 
 <style type="text/css">
 .btn btn-link{

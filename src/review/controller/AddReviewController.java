@@ -70,8 +70,8 @@ public class AddReviewController extends HttpServlet {
 		MultipartRequest multi = null;
 		
 //		TODO 나중에 경로 이걸로 바꾸셈
-//		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
-		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
+//		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
 			// request,파일저장경로,용량,인코딩타입,중복파일명에 대한 기본 정책
@@ -97,8 +97,8 @@ public class AddReviewController extends HttpServlet {
 		}
 
 //		TODO 나중에 경로 이걸로 바꾸셈
-//		review.setImg("/review_img/" + review_img);			// 태수
-		review.setImg("/upload_img/" + review_img);			// 태수
+		review.setImg("/review_img/" + review_img);			// 태수
+//		review.setImg("/upload_img/" + review_img);			// 태수
 
 		service.add(review);	
 

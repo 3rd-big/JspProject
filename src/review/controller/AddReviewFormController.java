@@ -1,8 +1,7 @@
 package review.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,13 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import model.MemberVO;
 import model.ProductOrderVO;
-import model.ProductSizeVO;
-import model.ProductVO;
 import model.ReviewVO;
 import review.service.Service;
 import review.service.ServiceImpl;
@@ -50,12 +43,20 @@ public class AddReviewFormController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
+		
 		HttpSession session = request.getSession(false);
 	    String m_id = (String) session.getAttribute("id");
+	    ReviewVO review = new ReviewVO();
+	    ProductOrderVO o = new ProductOrderVO();
+	    productorder.service.Service service_order = new productorder.service.ServiceImpl();
+	    int o_state = 0;
+	    ArrayList<ProductOrderVO> orderlist = service_order.orderList(m_id,o_state);
 	    
 	    int p_num = Integer.parseInt(request.getParameter("p_num"));
         
-	    ReviewVO review = new ReviewVO();
+	    request.setAttribute("o", o);
+	    request.setAttribute("review", review);
+	    
 	    
 	    
 	   
