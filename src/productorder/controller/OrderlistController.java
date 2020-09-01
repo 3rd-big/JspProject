@@ -54,9 +54,9 @@ public class OrderlistController extends HttpServlet {
 			o.setProd_img(p.getImg());
 		}
 		String path=null;
-		if(o_state==0) {
+		if(o_state==1) {
 			path="/views/mypage/orderlist.jsp";
-		}else if(o_state==1){
+		}else if(o_state==0){
 			path="/views/mypage/myCart.jsp";
 		}
 		request.setAttribute("list", list);

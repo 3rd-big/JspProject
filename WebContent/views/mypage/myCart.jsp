@@ -36,7 +36,7 @@
 	      <div class="col-lg-3">
 	        <h1 class="my-4">My Page</h1>
 	        <div class="list-group">
-	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=0" class="list-group-item">주문조회</a>
+	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1" class="list-group-item">주문조회</a>
 	        	<a href="#" class="list-group-item">내가 쓴 리뷰 관리</a>
 	          <a href="${pageContext.request.contextPath }/SearchController" class="list-group-item ">내 정보 수정</a>
 	          
