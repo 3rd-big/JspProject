@@ -3,7 +3,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
-<%@ page import = "notice.* " %>
+<%@ page import="notice.* "%>
 
 <!DOCTYPE html>
 <html>
@@ -28,65 +28,56 @@
 <script
 	src="<%=request.getContextPath()%>/resource/js/jquery.twbsPagination.js"
 	type="text/javascript"></script>
-<script>
 
-function addbtn(){
-	location.href="${pageContext.request.contextPath }/views/notice/addForm.jsp";
-}
 
+<script type="text/javascript">
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: 10,
+            visiblePages: 5,
+            onPageClick: function (event, page) {
+            	 $('#page-content').text('Page ' + page);
+            	   paging(page);
+            }
+        });
+    });
+    
+   
 </script>
-
 </head>
 <body><%@include file="/views/common/header.jsp"%>
 	<h3 class="text-center my-4">공지사항</h3>
 	<br>
 	<div class="table my-4 ">
-		<table class="table table-hover table-responsive-lg "
+		<table class="table table-hover table-responsive-lg " align="right"
 			id="twbsPagination">
 			<thead class="thead-light">
 				<tr class="d-flex">
 					<th class="text-center  col-1">글번호</th>
 					<th class="text-center col-5">제목</th>
 					<th class="text-center col-3">게시일</th>
+					<th class="text-center col-2">조회수</th>
 				</tr>
 			</thead>
-			<tbody>
-				<%
-				String pageParam = request.getParameter("page");
-				int totalCount = 10;
-				int pageCount = 5;
-				int start = 1;
-				int totalRows =  100;
-			
+			<tbody id="page_content">
+	
+				<c:forEach var="notice" items="${notices }" varStatus="status" >
+			<c:choose>
+			<%--  <c:when test="${status.count eq 2}"> --%>
 				
-				int totalPages = totalRows % totalCount == 0 ? totalRows / totalCount : (totalRows / totalCount) + 1;
-				if (totalPages == 0) {
-					totalPages = 1;
-				}
-				if (pageParam == null || pageParam.length() == 0 || Integer.parseInt(pageParam) > totalPages) {
-					pageParam = "1";
-				}
-				int cPage = Integer.parseInt(pageParam);
-				if (cPage != 1) {
-					start = (cPage - 1) * totalCount + 1;
-				}
-				int currentBlock = cPage % pageCount == 0 ? cPage / pageCount : (cPage / pageCount) + 1;
-				int startPage = (currentBlock - 1) * pageCount + 1;
-				int endPage = startPage + pageCount - 1;
-				if (endPage > totalPages) {
-					endPage = totalPages;
-				}
-
-				%>
-
-				<c:forEach var="notice" items="${notice }">
 					<tr class="text-center d-flex">
 						<td class="text-center  col-1">${notice.num }</td>
-						<td class="text-center  col-5"><a
-							href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}">${notice.title }</a>
+						<td class="text-center  col-5">
+						<a	href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}">
+						${notice.title }
+						</a>
 						</td>
 						<td class="text-center  col-3">${notice.n_date }</td>
+						<td class="text-center  col-2">${notice.view_count }</td>
 					</tr>
+					
+				 <%-- </c:when> --%> 
+		     </c:choose>
 				</c:forEach>
 
 
@@ -94,38 +85,20 @@ function addbtn(){
 		</table>
 	</div>
 	<div align="right">
-		<button type="button" class="btn btn-primary active"
-			onclick="addbtn()">글쓰기</button>
+	<c:if test="${sessionScope.memberType == 0 }">
+		<button id="addbtn" type="button" class="btn btn-primary active"
+			onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">글쓰기</button>
+		</c:if>
 	</div>
+
+
 	<!--pagination -->
-	<div class="container" align="center">
-		<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					<%
-						if (startPage == 1) {
-					%>
-					<%
-						for (int i = startPage; i <= endPage; i++) {
-						if (i == cPage) {
-					%>
-					<li class="page-item active"><a class="page-link"
-						href="list.jsp?page=<%=i%>"><%=i%></a></li>
-					<%
-						} else {
-					%>
-					<li class="page-item"><a class="page-link"
-						href="list.jsp?page=<%=i%>"><%=i%></a></li>
-					<%
-						}
-					%>
-					<%
-						}
-						}
-					%>
-				
-				</ul>
-			</nav>
+	<div class="container">
+		<nav aria-label="Page navigation">
+			<ul class="pagination" id="pagination"></ul>
+		</nav>
 	</div>
+
 
 </body>
 </html>

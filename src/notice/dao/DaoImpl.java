@@ -63,6 +63,7 @@ public class DaoImpl implements Dao {
 			pstmt.setString(2, notice.getContent());
 
 			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -73,6 +74,8 @@ public class DaoImpl implements Dao {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("=====insert======");
+		System.out.println(notice.toString());
 	}
 
 	@Override
@@ -169,6 +172,8 @@ public class DaoImpl implements Dao {
 	@Override
 	public ArrayList<NoticeVO> selectAll() {
 		// TODO Auto-generated method stub
+		
+		
 		ArrayList<NoticeVO> notice = new ArrayList<>();
 		ResultSet rs = null;
 		Connection conn = db.getConnection();
@@ -181,66 +186,27 @@ public class DaoImpl implements Dao {
 			while(rs.next()) {
 				notice.add(new NoticeVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5)));
 			}
+			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
 		}
+
 		return notice;
 	}
 
-	@Override
-	public int getTotalRows() {
-		// TODO Auto-generated method stub.
-		Connection conn = db.getConnection();
-		int cnt = 0;
-        try {
-       
-            String sql = "SELECT COUNT(*) cnt FROM notice";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next()) {
-                cnt = rs.getInt("cnt");
-            }
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-        return cnt;
-	}
-	
-	
-	public List<NoticeVO> getRows(int start, int end) {
-	        List<NoticeVO> list = new ArrayList<NoticeVO>();
-	        Connection conn = db.getConnection();
-	        
-	        try {
-	       
-	            String selectList = "SELECT * from ( SELECT ROWNUM AS row_num, notice.* FROM ( SELECT num, title, content,  case to_char(n_date, 'yy/mm/dd') when to_char(sysdate, 'yy/mm/dd') then to_char(b_date,'hh24:mi:ss') else to_char(b_date,'yy/mm/dd'), 0 end regdate FROM board ORDER BY b_no DESC ) board ) WHERE row_num >= " + start + " AND row_num <=" + end;
-	            PreparedStatement pstmt = conn.prepareStatement(selectList);
-	            ResultSet rs = pstmt.executeQuery();
-	            while (rs.next()) { 
-	            	NoticeVO notice= new NoticeVO();
-	            	notice.setNum(rs.getInt("num"));
-	            	notice.setTitle(rs.getString("title"));
-	            	notice.setContent(rs.getString("num"));
-	            	notice.setN_date(rs.getDate("num"));
-	            	
-	                
-	                list.add(notice);
-	            }
-	            conn.close();
-	        } catch (Exception e) {
-	            System.out.println(e);
-	        }
-	        return list;
-	    }
 
 }

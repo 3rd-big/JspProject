@@ -18,7 +18,4 @@ public interface Dao {
 
 	ArrayList<NoticeVO> selectAll();
 	
-	int getTotalRows();
-
-	List<NoticeVO> getRows(int start, int end);
 }

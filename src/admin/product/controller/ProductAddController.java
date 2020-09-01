@@ -1,4 +1,4 @@
-package product.controller;
+package admin.product.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,9 +51,9 @@ public class ProductAddController extends HttpServlet {
 		MultipartRequest multi = null;
 
 		// TODO 각자 Workspace 환경으로 바꿀 것
-		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+//		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 //		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
-		
+		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		try {
 			
 			if(-1 < request.getContentType().indexOf("multipart/form-data")) {

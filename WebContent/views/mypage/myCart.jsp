@@ -49,7 +49,7 @@
 
 			<div class="cartlist">
 			
-				<c:if test="${o_state==1 }">
+				<c:if test="${o_state==0 }">
 					<h3>장바구니 목록</h3>
 				</c:if>
 
@@ -60,6 +60,7 @@
 							<th scope="col">장바구니번호</th>
 							<th scope="col">제품명</th>
 							<th scope="col">사진</th>
+							<th scope="col">사이즈</th>
 							<th scope="col">수량</th>
 							<th scope="col">결제금액</th>
 							<th scope="col">주문일?</th>
@@ -70,8 +71,8 @@
 							<tr class="text-center">
 								<td>${o.num }</td>
 								<td>${o.prod_name }</td>
-								<td><img src="${o.prod_img }" width="200" height="200">
-								</td>
+								<td><img src="${o.prod_img }" width="200" height="200"></td>
+								<td>${o.p_size } </td>
 								<td>${o.o_quantity}</td>
 								<td>${o.total_price }</td>
 								<td>${o.o_date }</td>

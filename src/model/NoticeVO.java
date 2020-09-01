@@ -17,6 +17,7 @@ public class NoticeVO {
 		this.content = content;
 
 	}
+
 	public NoticeVO(int num, String title, String content, Date n_date, int view_count) {
 		super();
 		this.num = num;

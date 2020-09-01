@@ -11,6 +11,7 @@ public class ProductOrderVO {
 	private Date o_date;
 	private int o_state;
 	private int d_state;
+	private String p_size;
 	private String prod_name;
 	private String prod_img;
 	
@@ -18,7 +19,11 @@ public class ProductOrderVO {
 		
 	}
 	
-	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state, int d_state) {
+	
+	
+
+	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
+			int d_state, String p_size) {
 		super();
 		this.num = num;
 		this.p_num = p_num;
@@ -28,7 +33,29 @@ public class ProductOrderVO {
 		this.o_date = o_date;
 		this.o_state = o_state;
 		this.d_state = d_state;
+		this.p_size = p_size;
 	}
+
+
+
+
+	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
+			int d_state, String p_size, String prod_name, String prod_img) {
+		super();
+		this.num = num;
+		this.p_num = p_num;
+		this.o_quantity = o_quantity;
+		this.total_price = total_price;
+		this.m_id = m_id;
+		this.o_date = o_date;
+		this.o_state = o_state;
+		this.d_state = d_state;
+		this.p_size = p_size;
+		this.prod_name = prod_name;
+		this.prod_img = prod_img;
+	}
+
+
 
 	public int getNum() {
 		return num;
@@ -94,13 +121,6 @@ public class ProductOrderVO {
 		this.d_state = d_state;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
-				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
-				+ d_state + "]";
-	}
-
 	public String getProd_name() {
 		return prod_name;
 	}
@@ -116,6 +136,22 @@ public class ProductOrderVO {
 	public void setProd_img(String prod_img) {
 		this.prod_img = prod_img;
 	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
+				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
+				+ d_state + ", p_size=" + p_size + ", prod_name=" + prod_name + ", prod_img=" + prod_img + "]";
+	}
+	
 	
 	
 }

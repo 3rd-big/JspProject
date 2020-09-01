@@ -26,17 +26,19 @@
 	<!-- 팝업 스크립트 -->
 	<script type="text/javascript">
 	
-	function showPopup() {
+	function showPopup(currentId) {
 		
-		var pop_title = "popupOpener";
-		
-		window.open("", pop_title, "width=400, height=300, left=200, top=200");
+		var pop_title ="회원 관리";
+		var id = currentId;
+		window.open("", pop_title, "width=500, height=500, left=200, top=200");
 		
 		var frmData = document.memberList;
 		frmData.target = pop_title;
-		frmData.action = "<%=request.getContextPath()%>/MemberManagePopupController";
+		frmData.action = "<%=request.getContextPath()%>/MemberManagePopupController?currentId=" + currentId;
+		console.log("currentId: " + currentId);
+		console.log(frmData.action);
 		
-		frmData.submit();
+	
 	}
 			
 		
@@ -49,7 +51,7 @@
 <body>
 
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%@include file="/views/common/header.jsp"%>
 	
 	
 <h1>회원관리 페이지</h1>
@@ -77,12 +79,12 @@
 			<td>${list.addr }</td>
 			<td>${list.type }</td>
 			<td>${list.point }</td>
-			<input type="hidden" name="IdForEdit" value=${members[status.index].id }>
-			<td><input type="button" name="editBtn" value=${members[status.index].id } onclick="showPopup()"></td>
+			<td><input type="submit"  value="수정" onClick="showPopup('${list.id}')"></td>
 			
 		</tr>
 		</c:forEach>
 	</table>
+
 </form>
 
 </body>

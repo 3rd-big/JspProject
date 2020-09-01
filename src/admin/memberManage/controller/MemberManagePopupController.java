@@ -1,6 +1,7 @@
 package admin.memberManage.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,12 +42,12 @@ public class MemberManagePopupController extends HttpServlet {
         Service service = new ServiceImpl();
         
         
+        String id1 = request.getParameter("currentId");
+        System.out.println(id1);
         
-        String id = request.getParameter("IdForEdit");
         
-        System.out.println("request.getParameter('id') : " + id);
         
-        MemberVO member = service.getMember(id);
+        MemberVO member = service.getMember(id1);
         
         request.setAttribute("member", member);
         

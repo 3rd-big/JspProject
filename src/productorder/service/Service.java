@@ -10,6 +10,7 @@ public interface Service {
 	ArrayList<ProductOrderVO> orderList(String m_id, int o_state);
 	void editState(String type, int num);
 	void delOrder(int num);
+	
+	void add(ProductOrderVO po);
+	int makeProductOrderNum();
 }
-
-

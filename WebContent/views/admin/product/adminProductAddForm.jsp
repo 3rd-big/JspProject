@@ -76,7 +76,6 @@
 
 	<h1 style="text-align: center;">상품등록 페이지</h1>
 
-	
 	<input type="button" id="addbtn" value="상세 이미지 추가"> 
 	<input type="button" id="delbtn" value="상세 이미지 삭제">
 
