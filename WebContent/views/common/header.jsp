@@ -205,10 +205,13 @@
 												onfocus="this.value='';document.getElementById('S_SEARCH_WORDS_URL').value='';"
 												onmousedown="dqtop_charLen(this.value);"
 												onkeypress="keyDownTop('1',event);"
-												onkeydown="keyDownTop('1',event);"> <a href="#"
+												onkeydown="keyDownTop('1',event);"> 
+												<a href="#"
 												onclick="fn_search_top();"
 												onmousedown="javascript:fn_trkClickTrace('^최상단^검색');"
-												class="spt_bg btn">검색</a>
+												class="spt_bg btn" style="
+    background-color: white;
+">검색</a>
 										</form>
 									</div>
 								</div>
