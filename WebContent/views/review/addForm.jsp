@@ -111,7 +111,7 @@
 			<tr>
 			<td width="77%">
 			<div class="">
-				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewController" 
+				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewController?p_num=<%=request.getParameter("p_num") %>"	<%-- 태수 --%>   
 				enctype="multipart/form-data" method="post" >
 					<fieldset>
 
@@ -149,12 +149,12 @@
 					<label class="col-md-3 control-label" for="image">사진첨부</label>
 					<div class="col-md-9">
 						<!-- <label for="cma_file">사진첨부</label> -->
-						<form id="form1" runat="server">
+						<!-- <form id="form1" runat="server">  태수 --> 
 							<input type="file" name="r_img" onchange="readURL(this);">
 							<img
 								style="height: 75px; border: 1px solid #000; margin: 5px"
 								id="blah" src="#" alt="" />
-						</form>
+						<!-- </form> -->
 
 					</div>
 				</div>

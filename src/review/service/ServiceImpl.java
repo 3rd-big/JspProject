@@ -21,9 +21,9 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public ReviewVO getReview(int num) {
+	public ReviewVO getReview(int p_num) {
 		// TODO Auto-generated method stub
-		return dao.select(num);
+		return dao.select(p_num);
 	}
 
 	@Override

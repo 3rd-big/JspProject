@@ -9,7 +9,7 @@ import model.ReviewVO;
 public interface Service {
 	void add(ReviewVO notice);
 
-	ReviewVO getReview(int num);
+	ReviewVO getReview(int p_num);
 
 	void editReview(ReviewVO notice);
 

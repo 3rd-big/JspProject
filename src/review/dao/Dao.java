@@ -12,7 +12,7 @@ public interface Dao {
 
 	void insert(ReviewVO notice);
 
-	ReviewVO select(int num);
+	ReviewVO select(int p_num);
 
 	void update(ReviewVO notice);
 

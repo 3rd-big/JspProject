@@ -81,17 +81,17 @@ public class DaoImpl implements Dao{
 	}
 
 	@Override
-	public ReviewVO select(int num) {
+	public ReviewVO select(int p_num) {
 		ResultSet rs = null;
 		ReviewVO review = null;
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "select * from review where num=? order by num";
+		String sql = "select * from review where p_num=? order by num";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, p_num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				review = (new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6),
