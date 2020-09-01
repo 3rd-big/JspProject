@@ -15,21 +15,22 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.ProductOrderVO;
 import model.ReviewVO;
 import review.service.Service;
 import review.service.ServiceImpl;
 
 /**
- * Servlet implementation class EditReviewController
+ * Servlet implementation class AddReviewController
  */
-@WebServlet("/EditReviewController")
-public class EditReviewController extends HttpServlet {
+@WebServlet("/AddReviewController")
+public class AddReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditReviewController() {
+    public AddReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,57 +43,67 @@ public class EditReviewController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
+		int p_num = Integer.parseInt(request.getParameter("p_num"));	// 태수
+		
 		Service service = new ServiceImpl();
 		HttpSession session = request.getSession(false);
 	    String m_id = (String) session.getAttribute("id");
         
 	    ReviewVO review = new ReviewVO();
 	    
-	    int r_num = Integer.parseInt(request.getParameter("r_num"));
-	    service.getReview(r_num);
-	    
-	    
-	    //eidt
 	    review.setM_id(m_id);
 	    review.setNum(service.makeNum());
 	    
+//	    int num = service.makeNum();	// 태수
+//	    productorder.service.Service service_order = new productorder.service.ServiceImpl();	// 태수
+//	    ProductOrderVO o = service_order.getOrder(num);	// 태수
+//	    review.setP_num(o.getP_num());	// 태수
+	    review.setP_num(p_num);
+	    
+//	    review.setContent(request.getParameter("message"));
+////		review.setRate(Double.parseDouble(request.getParameter("rate")));	// 태수
+//	    review.setRate(Integer.parseInt(request.getParameter("rate")));		// 태수
+//		review.setImg(request.getParameter("r_img"));
 
-	    //
 	    String review_img = "";
 	    int maxSize =1024 *1024 *10;
 		MultipartRequest multi = null;
 		
-		
+//		TODO 나중에 경로 이걸로 바꾸셈
 		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
+//		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
 			// request,파일저장경로,용량,인코딩타입,중복파일명에 대한 기본 정책
 			multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", 
 		new DefaultFileRenamePolicy());
 			
-			review.setRate(Integer.parseInt(multi.getParameter("rate")));
-			review.setContent(multi.getParameter("message"));
+			review.setRate(Integer.parseInt(multi.getParameter("rate")));	
+			review.setContent(multi.getParameter("message"));				
+
 			// 전송한 전체 파일이름들을 가져옴
 			Enumeration files = multi.getFileNames();
-
+			
 			while (files.hasMoreElements()) {
 				// form 태그에서 <input type="file" name="여기에 지정한 이름" />을 가져온다.
-			String file1 = (String) files.nextElement();// 파일 input에 지정한 이름을 가져옴
+			String file1 = (String) files.nextElement();// 파일 input에 지정한 이름을 가져옴	
 				// 그에 해당하는 실재 파일 이름을 가져옴
 				review_img = multi.getOriginalFileName(file1);
 				//파일업로드
-				File file = multi.getFile(file1);
+				File file = multi.getFile(file1);	
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		review.setImg("/review_img/" + review_img);
+//		TODO 나중에 경로 이걸로 바꾸셈
+		review.setImg("/review_img/" + review_img);			// 태수
+//		review.setImg("/upload_img/" + review_img);			// 태수
 
-		
-		service.editReview(review);
+		service.add(review);	
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");	// 태수
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListReviewController");			// 태수
 		dispatcher.forward(request, response);
 	}
 

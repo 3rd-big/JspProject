@@ -15,11 +15,7 @@
 
 	<!-- popup -->
 
-<script type="text/javascript">
-	function showPopup(){
-		window.open("${pageContext.request.contextPath}/views/review/addForm.jsp");
-	}
-</script>
+
 
 <style type="text/css">
 .btn btn-link{
@@ -36,9 +32,9 @@
 </head>
 <body>
 
-	<c:if test="${o_state==0 }">
+	<c:if test="${o_state==1 }">
 			<h3>주문 목록</h3>
-		</c:if>
+	</c:if>
 		
 		
 		<table class="table table-hover table-sm mt-3 mb-5" border="1">
@@ -64,8 +60,8 @@
 					<td>${o.p_size} </td> 
 					<td>${o.o_quantity} </td> 
 					<td>${o.total_price } </td> 
-					<td>${o.o_date } </td>
-					<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp">상품평 작성</a></td>
+					<td>${o.o_date }</td>
+					<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp?p_num=${o.p_num }">상품평 작성</a></td><!-- o.p_num 전달 태수 -->
 					<td><button type="button" class="btn btn-link" onclick="showPopup();">상품평 작성</button> </td>
 				</tr>
 			</c:forEach>

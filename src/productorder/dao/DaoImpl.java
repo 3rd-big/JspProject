@@ -19,7 +19,7 @@ public class DaoImpl implements Dao{
 	public void insert(ProductOrderVO po) {
 		Connection conn = db.getConnection();
 		
-		String sql = "insert into product_order values(?, ?, ?, ?, ?, sysdate, ?, ?, ?)";
+		String sql = "insert into product_order values(?, ?, ?, ?, ?, sysdate, ?, ?, ?, ?)";
 		
 		PreparedStatement pstmt = null;
 		
@@ -34,6 +34,7 @@ public class DaoImpl implements Dao{
 			pstmt.setInt(6, po.getO_state());
 			pstmt.setInt(7, po.getD_state());
 			pstmt.setString(8, po.getP_size());
+			pstmt.setInt(9,po.getR_state());		//r_state 추가 // 선정 수정
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -56,8 +57,7 @@ public class DaoImpl implements Dao{
 		ResultSet rs = null;
 		ProductOrderVO o = null;
 		
-		String sql = "select * from PRODUCT_ORDER where num=?"
-				+ "?";
+		String sql = "select * from PRODUCT_ORDER where num=?";
 		try {
 			conn = db.getConnection();
 			
@@ -67,7 +67,7 @@ public class DaoImpl implements Dao{
 			
 			if(rs.next()) {
 				return new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9));
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10));
 			}
 			
 		} catch (Exception e) {
@@ -87,7 +87,7 @@ public class DaoImpl implements Dao{
 
 	@Override
 	public ArrayList<ProductOrderVO> selectAll(String m_id, int o_state) {
-		// 二쇰Ц議고쉶
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -109,7 +109,7 @@ public class DaoImpl implements Dao{
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9)));
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10)));
 				
 			}
 

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ProductVO;
+import model.ReviewVO;
 import product.service.Service;
 import product.service.ServiceImpl;
 
@@ -27,10 +28,12 @@ public class DetailController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
+		review.service.Service review_service = new review.service.ServiceImpl();
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		ProductVO product = service.getProduct(num);
+		ReviewVO review = review_service.getReview(num);
 		
 		request.setAttribute("product", product);
 		

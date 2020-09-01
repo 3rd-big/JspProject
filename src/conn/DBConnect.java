@@ -30,6 +30,7 @@ public class DBConnect {
 			conn = DriverManager.getConnection(jdbc_url, "c##ora_user", "kim");
 			
 			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

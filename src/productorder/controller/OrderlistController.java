@@ -44,19 +44,19 @@ public class OrderlistController extends HttpServlet {
 		String m_id = (String)session.getAttribute("id");
 		ArrayList<ProductOrderVO> list = service.orderList(m_id, o_state);
 		
-		System.out.println(m_id);
-		System.out.println(list);
-		
+
 		for(ProductOrderVO o:list) {
 			ProductVO p = service_prod.getProduct(o.getP_num());
-			System.out.println(o.getP_num());
+			
+			System.out.println("p_num은"+o.getP_num());
+			
 			o.setProd_name(p.getName());
 			o.setProd_img(p.getImg());
 		}
 		String path=null;
-		if(o_state==0) {
+		if(o_state==1) {
 			path="/views/mypage/orderlist.jsp";
-		}else if(o_state==1){
+		}else if(o_state==0){
 			path="/views/mypage/myCart.jsp";
 		}
 		request.setAttribute("list", list);

@@ -21,9 +21,9 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public ReviewVO getReview(int num) {
+	public ReviewVO getReview(int p_num) {
 		// TODO Auto-generated method stub
-		return dao.select(num);
+		return dao.select(p_num);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class ServiceImpl implements Service{
 	public int makeNum() {
 		// TODO Auto-generated method stub
 		return dao.selectNum();
+	}
+
+	@Override
+	public ArrayList<ReviewVO> getMyReviewAll(String m_id) {
+		// TODO Auto-generated method stub
+		return dao.myselectAll(m_id);
 	}
 
 }

@@ -1,8 +1,7 @@
 package review.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,13 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import model.MemberVO;
 import model.ProductOrderVO;
-import model.ProductSizeVO;
-import model.ProductVO;
 import model.ReviewVO;
 import review.service.Service;
 import review.service.ServiceImpl;
@@ -50,53 +43,24 @@ public class AddReviewFormController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
+		
 		HttpSession session = request.getSession(false);
 	    String m_id = (String) session.getAttribute("id");
-        
 	    ReviewVO review = new ReviewVO();
+	    ProductOrderVO o = new ProductOrderVO();
+	    productorder.service.Service service_order = new productorder.service.ServiceImpl();
+	    int o_state = 0;
+	    ArrayList<ProductOrderVO> orderlist = service_order.orderList(m_id,o_state);
 	    
-	    review.setM_id(m_id);
-	    review.setNum(service.makeNum());
+	    int p_num = Integer.parseInt(request.getParameter("p_num"));
+        
+	    request.setAttribute("o", o);
+	    request.setAttribute("review", review);
 	    
-//	    review.setContent(request.getParameter("message"));
-//		review.setRate(Double.parseDouble(request.getParameter("rate")));
-//		review.setImg(request.getParameter("r_img"));
-	    //
-	    String review_img = "";
-	    int maxSize =1024 *1024 *10;
-		MultipartRequest multi = null;
-		
-		
-		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
-		
-		try {
-			// request,파일저장경로,용량,인코딩타입,중복파일명에 대한 기본 정책
-			multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", 
-		new DefaultFileRenamePolicy());
-			
-			review.setRate(Integer.parseInt(multi.getParameter("rate")));
-			review.setContent(multi.getParameter("message"));
-			// 전송한 전체 파일이름들을 가져옴
-			Enumeration files = multi.getFileNames();
-
-			while (files.hasMoreElements()) {
-				// form 태그에서 <input type="file" name="여기에 지정한 이름" />을 가져온다.
-			String file1 = (String) files.nextElement();// 파일 input에 지정한 이름을 가져옴
-				// 그에 해당하는 실재 파일 이름을 가져옴
-				review_img = multi.getOriginalFileName(file1);
-				//파일업로드
-				File file = multi.getFile(file1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		review.setImg("/review_img/" + review_img);
-
-		
-		service.add(review);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");
+	    
+	    
+	   
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/addForm.jsp");
 		dispatcher.forward(request, response);
 		
 	}

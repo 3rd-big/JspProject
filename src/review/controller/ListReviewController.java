@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.ProductOrderVO;
+import model.ProductVO;
 import model.ReviewVO;
 import review.service.Service;
 import review.service.ServiceImpl;
@@ -35,15 +37,19 @@ public class ListReviewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Service service = new ServiceImpl();
-		ArrayList<ReviewVO> review = service.getReviewAll();
 
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("id");
 		
-		request.setAttribute("review", review);
+		ArrayList<ReviewVO> list = service.getMyReviewAll(m_id);
 		
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
+
+		request.setAttribute("list", list);
+
+		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");
 		dispatcher.forward(request, response);
 	}
 
