@@ -38,14 +38,20 @@ public class ListNoticeController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
-		
-		
+
 		Service service = new ServiceImpl();
 		
+
 		ArrayList<NoticeVO> notice = service.getNoticeAll();
-		
 		request.setAttribute("notices", notice);
+		
+		/*
+		 * int view_count = Integer.parseInt(request.getParameter("view_count")); int
+		 * num = Integer.parseInt(request.getParameter("num"));
+		 * 
+		 * NoticeVO up_viewCount = new NoticeVO(view_count, num);
+		 * service.updateViewCount(up_viewCount);
+		 */
 		
 		System.out.println("====ListNoticeController====");
 		System.out.println(notice.toString());

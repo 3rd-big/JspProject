@@ -26,6 +26,12 @@ public class NoticeVO {
 		this.n_date = n_date;
 		this.view_count = view_count;
 	}
+	public NoticeVO(int view_count, int num) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.view_count = view_count;
+		this.num = num;
+	}
 	public int getNum() {
 		return num;
 	}

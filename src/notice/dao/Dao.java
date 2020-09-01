@@ -17,5 +17,7 @@ public interface Dao {
 	void delete(int num);
 
 	ArrayList<NoticeVO> selectAll();
-	
+
+
+	void updateViewCount(NoticeVO notice);
 }
