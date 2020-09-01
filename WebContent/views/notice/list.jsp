@@ -41,7 +41,6 @@
             }
         });
     });
-    
    
 </script>
 </head>
@@ -60,45 +59,39 @@
 				</tr>
 			</thead>
 			<tbody id="page_content">
-	
-				<c:forEach var="notice" items="${notices }" varStatus="status" >
-			<c:choose>
-			<%--  <c:when test="${status.count eq 2}"> --%>
-				
+
+				<c:forEach var="notice" items="${notices }" varStatus="status">
+					<%-- <c:choose> --%>
+					<%--  <c:when test="${status.count eq 2}"> --%>
+
 					<tr class="text-center d-flex">
-						<td class="text-center  col-1">${notice.num }</td>
-						<td class="text-center  col-5">
-						<a	href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}">
-						${notice.title }
-						</a>
-						</td>
+						<td class="text-center  col-1" >${notice.num }</td>
+						<td class="text-center  col-5"><a
+							href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}">
+								${notice.title } </a></td>
 						<td class="text-center  col-3">${notice.n_date }</td>
 						<td class="text-center  col-2">${notice.view_count }</td>
 					</tr>
-					
-				 <%-- </c:when> --%> 
-		     </c:choose>
+
+					<%-- </c:when> --%>
+					<%-- </c:choose> --%>
 				</c:forEach>
-
-
 			</tbody>
 		</table>
 	</div>
+	
 	<div align="right">
-	<c:if test="${sessionScope.memberType == 0 }">
-		<button id="addbtn" type="button" class="btn btn-primary active"
-			onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">글쓰기</button>
+		<c:if test="${sessionScope.memberType == 0 }">
+			<button id="addbtn" type="button" class="btn btn-primary active"
+				onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">글쓰기</button>
 		</c:if>
 	</div>
 
-
-	<!--pagination -->
-	<div class="container">
+<!--pagination -->
+	<!-- <div class="container">
 		<nav aria-label="Page navigation">
 			<ul class="pagination" id="pagination"></ul>
 		</nav>
-	</div>
-
-
+	</div> -->
 </body>
 </html>

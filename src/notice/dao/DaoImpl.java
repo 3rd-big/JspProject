@@ -61,7 +61,7 @@ public class DaoImpl implements Dao {
 
 			pstmt.setString(1, notice.getTitle());
 			pstmt.setString(2, notice.getContent());
-
+			//pstmt.setInt(3, notice.getView_count());
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -85,16 +85,16 @@ public class DaoImpl implements Dao {
 		NoticeVO notice = null;
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
-		
-		String sql = "select * from notice where num=? order by num";
+		String sql1 = "select * from notice where num=? order by num";
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql1);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				notice = (new NoticeVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5)));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -207,6 +207,35 @@ public class DaoImpl implements Dao {
 		return notice;
 	}
 
+	@Override
+	public void updateViewCount(NoticeVO notice) {
+		// TODO Auto-generated method stub
+		
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
 
+		String sql = "update notice set view_count = view_count+1 where num=?";
+		try {
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setInt(1, notice.getView_count());
+			pstmt.setInt(2, notice.getNum());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
 
 }
