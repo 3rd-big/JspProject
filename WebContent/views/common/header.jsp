@@ -172,9 +172,11 @@
 							<li class="nav-item">
 								<a class="nav-link" href="<%=request.getContextPath()%>/ProductAllListController">상품관리</a>
 							</li>
+							<!-- 
 							<li class="nav-item">
 								<a class="nav-link" href="<%=request.getContextPath()%>/views/admin/product/adminProductAddForm.jsp">상품등록</a>
 							</li>
+							 -->
 							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/MemberManageController">회원관리</a></li>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/ListNoticeController"">공지사항</a></li>
