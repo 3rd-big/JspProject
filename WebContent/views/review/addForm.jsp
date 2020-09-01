@@ -111,7 +111,8 @@
 			<tr>
 			<td width="77%">
 			<div class="">
-				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewFormController" method="post" enctype="multipart/form-data">
+				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewFormController" 
+				enctype="multipart/form-data" method="post" >
 					<fieldset>
 
 					<!-- Name input-->
@@ -149,7 +150,7 @@
 					<div class="col-md-9">
 						<!-- <label for="cma_file">사진첨부</label> -->
 						<form id="form1" runat="server">
-							<input type="file" name="r_img" onchange="readURL(this);" />
+							<input type="file" name="r_img" onchange="readURL(this);">
 							<img
 								style="height: 75px; border: 1px solid #000; margin: 5px"
 								id="blah" src="#" alt="" />
@@ -160,7 +161,7 @@
 
 				<div class="form-group">
 					<div class="col-md-12 text-center">
-						<button type="submit" class="btn btn-primary btn-md">Submit</button>
+						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
 						<button type="reset" class="btn btn-default btn-md">Clear</button>
 					</div>
 				</div>

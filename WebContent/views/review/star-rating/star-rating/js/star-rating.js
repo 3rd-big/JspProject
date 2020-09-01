@@ -37,7 +37,7 @@
         NAMESPACE: '.rating',
         DEFAULT_MIN: 0,
         DEFAULT_MAX: 5,
-        DEFAULT_STEP: 0.5,
+        DEFAULT_STEP: 1,
         isEmpty: function (value, trim) {
             return value === null || value === undefined || value.length === 0 || (trim && $.trim(value) === '');
         },
