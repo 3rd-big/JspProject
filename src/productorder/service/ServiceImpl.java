@@ -41,4 +41,14 @@ public class ServiceImpl implements Service{
 		dao.delete(num);
 	}
 
+	@Override
+	public int makeProductOrderNum() {
+		return dao.selectProductOrderNum();
+	}
+
+	@Override
+	public void add(ProductOrderVO po) {
+		dao.insert(po);
+	}
+
 }

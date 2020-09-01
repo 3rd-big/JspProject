@@ -68,15 +68,14 @@
 			var size = $(".size-selected").text();
 			var quantity = $("#select-quantity").text();
 			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
-			alert(productNum + size + quantity);
-			
+	
 			$.ajax({
 				type: "post",
 				async: false,
 				url: "${pageContext.request.contextPath }/AddProductCartController",
 				data: allData,
 				success: function (result) {
-					alert("성공");
+					alert("장바구니에 추가되었습니다");
 				}
 			});
 			
