@@ -50,4 +50,10 @@ public class ServiceImpl implements Service{
 		return dao.selectNum();
 	}
 
+	@Override
+	public ArrayList<ReviewVO> getMyReviewAll(String m_id) {
+		// TODO Auto-generated method stub
+		return dao.myselectAll(m_id);
+	}
+
 }

@@ -15,21 +15,22 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.ProductOrderVO;
 import model.ReviewVO;
 import review.service.Service;
 import review.service.ServiceImpl;
 
 /**
- * Servlet implementation class EditReviewController
+ * Servlet implementation class AddReviewController
  */
-@WebServlet("/EditReviewController")
-public class EditReviewController extends HttpServlet {
+@WebServlet("/AddReviewController")
+public class AddReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditReviewController() {
+    public AddReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,15 +49,18 @@ public class EditReviewController extends HttpServlet {
         
 	    ReviewVO review = new ReviewVO();
 	    
-	    int r_num = Integer.parseInt(request.getParameter("r_num"));
-	    service.getReview(r_num);
-	    
-	    
-	    //eidt
 	    review.setM_id(m_id);
 	    review.setNum(service.makeNum());
 	    
-
+	    //
+	    int num = service.makeNum();
+	    productorder.service.Service service_order = new productorder.service.ServiceImpl();
+	    ProductOrderVO o = service_order.getOrder(num);
+	    review.setP_num(o.getP_num());
+	    
+//	    review.setContent(request.getParameter("message"));
+//		review.setRate(Double.parseDouble(request.getParameter("rate")));
+//		review.setImg(request.getParameter("r_img"));
 	    //
 	    String review_img = "";
 	    int maxSize =1024 *1024 *10;
@@ -90,7 +94,7 @@ public class EditReviewController extends HttpServlet {
 		review.setImg("/review_img/" + review_img);
 
 		
-		service.editReview(review);
+		service.add(review);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");
 		dispatcher.forward(request, response);

@@ -32,6 +32,7 @@ d_state		 number
 create table review(
 num     number primary key,
 m_id    varchar2(20) references member(id) on delete cascade,
+p_num   number references product(num) on delete cascade,
 rate    number,
 content   	varchar2(500),
 img     varchar2(500),

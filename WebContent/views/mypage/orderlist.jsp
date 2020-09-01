@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
 	function showPopup(){
-		window.open("${pageContext.request.contextPath}/views/review/addForm.jsp");
+		window.open("${pageContext.request.contextPath}/AddReviewFormController?num=${o.p_num}");
 	}
 </script>
 

@@ -5,7 +5,8 @@ import java.sql.Date;
 public class ReviewVO {
 	private int num;
 	private String m_id;
-	private double rate;
+	private int p_num;
+	private int rate;
 	private String content;
 	private String img;
 	private Date r_date;
@@ -14,10 +15,11 @@ public class ReviewVO {
 		
 	}
 	
-	public ReviewVO(int num, String m_id, double rate, String content, String img, Date r_date) {
+	public ReviewVO(int num, String m_id, int p_num, int rate, String content, String img, Date r_date) {
 		super();
 		this.num = num;
 		this.m_id = m_id;
+		this.p_num=p_num;
 		this.rate = rate;
 		this.content = content;
 		this.img = img;
@@ -40,11 +42,11 @@ public class ReviewVO {
 		this.m_id = m_id;
 	}
 
-	public double getRate() {
+	public int getRate() {
 		return rate;
 	}
 
-	public void setRate(double rate) {
+	public void setRate(int rate) {
 		this.rate = rate;
 	}
 
@@ -76,6 +78,14 @@ public class ReviewVO {
 	public String toString() {
 		return "ReviewVO [num=" + num + ", m_id=" + m_id + ", rate=" + rate + ", content=" + content + ", img=" + img
 				+ ", r_date=" + r_date + "]";
+	}
+
+	public int getP_num() {
+		return p_num;
+	}
+
+	public void setP_num(int p_num) {
+		this.p_num = p_num;
 	}
 	
 	

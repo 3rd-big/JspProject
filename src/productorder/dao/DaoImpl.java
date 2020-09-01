@@ -56,8 +56,7 @@ public class DaoImpl implements Dao{
 		ResultSet rs = null;
 		ProductOrderVO o = null;
 		
-		String sql = "select * from PRODUCT_ORDER where num=?"
-				+ "?";
+		String sql = "select * from PRODUCT_ORDER where num=?";
 		try {
 			conn = db.getConnection();
 			
@@ -87,7 +86,7 @@ public class DaoImpl implements Dao{
 
 	@Override
 	public ArrayList<ProductOrderVO> selectAll(String m_id, int o_state) {
-		// 二쇰Ц議고쉶
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

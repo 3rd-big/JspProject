@@ -18,4 +18,6 @@ public interface Service {
 	ArrayList<ReviewVO> getReviewAll();
 
 	int makeNum();
+	
+	ArrayList<ReviewVO> getMyReviewAll(String m_id);
 }

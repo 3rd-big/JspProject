@@ -2,6 +2,7 @@ package review.dao;
 
 import java.util.ArrayList;
 
+import model.ProductOrderVO;
 import model.ReviewVO;
 
 
@@ -18,4 +19,6 @@ public interface Dao {
 	void delete(int num);
 
 	ArrayList<ReviewVO> selectAll();
+
+	ArrayList<ReviewVO> myselectAll(String m_id);
 }

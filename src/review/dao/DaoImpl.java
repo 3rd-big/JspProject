@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conn.DBConnect;
+import model.ProductOrderVO;
 import model.ReviewVO;
 
 public class DaoImpl implements Dao{
@@ -49,7 +50,7 @@ public class DaoImpl implements Dao{
 	public void insert(ReviewVO review) {
 		Connection conn = db.getConnection();
 
-		String sql = "insert into review values(seq_review.nextval, ?, ?, ?, ?, sysdate)";
+		String sql = "insert into review values(seq_review.nextval, ?, ?, ?, ?, ?, sysdate)";
 
 		PreparedStatement pstmt = null;
 		System.out.println("리뷰insertdao실행");
@@ -57,9 +58,10 @@ public class DaoImpl implements Dao{
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, review.getM_id());
-			pstmt.setDouble(2, review.getRate());
-			pstmt.setString(3, review.getContent());
-			pstmt.setString(4, review.getImg());
+			pstmt.setInt(2, review.getP_num());
+			pstmt.setInt(3, review.getRate());
+			pstmt.setString(4, review.getContent());
+			pstmt.setString(5, review.getImg());
 
 			pstmt.executeUpdate();
 			
@@ -92,7 +94,8 @@ public class DaoImpl implements Dao{
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				review = (new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6)));
+				review = (new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+						rs.getDate(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -170,7 +173,8 @@ public class DaoImpl implements Dao{
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				review.add(new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6)));
+				review.add(new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+						rs.getDate(7)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -185,5 +189,48 @@ public class DaoImpl implements Dao{
 		}
 		return review;
 	}
+
+	@Override
+	public ArrayList<ReviewVO> myselectAll(String m_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
+		
+		String sql = "select * from Review where m_id=?";
+		
+		
+		try {
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m_id);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+						rs.getDate(7)));
+				
+			}
+
+			System.out.println(m_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list;
+	}
+	
+	
 
 }

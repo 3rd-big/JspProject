@@ -52,51 +52,14 @@ public class AddReviewFormController extends HttpServlet {
 		Service service = new ServiceImpl();
 		HttpSession session = request.getSession(false);
 	    String m_id = (String) session.getAttribute("id");
+	    
+	    int p_num = Integer.parseInt(request.getParameter("p_num"));
         
 	    ReviewVO review = new ReviewVO();
 	    
-	    review.setM_id(m_id);
-	    review.setNum(service.makeNum());
 	    
-//	    review.setContent(request.getParameter("message"));
-//		review.setRate(Double.parseDouble(request.getParameter("rate")));
-//		review.setImg(request.getParameter("r_img"));
-	    //
-	    String review_img = "";
-	    int maxSize =1024 *1024 *10;
-		MultipartRequest multi = null;
-		
-		
-		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
-		
-		try {
-			// request,파일저장경로,용량,인코딩타입,중복파일명에 대한 기본 정책
-			multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", 
-		new DefaultFileRenamePolicy());
-			
-			review.setRate(Integer.parseInt(multi.getParameter("rate")));
-			review.setContent(multi.getParameter("message"));
-			// 전송한 전체 파일이름들을 가져옴
-			Enumeration files = multi.getFileNames();
-
-			while (files.hasMoreElements()) {
-				// form 태그에서 <input type="file" name="여기에 지정한 이름" />을 가져온다.
-			String file1 = (String) files.nextElement();// 파일 input에 지정한 이름을 가져옴
-				// 그에 해당하는 실재 파일 이름을 가져옴
-				review_img = multi.getOriginalFileName(file1);
-				//파일업로드
-				File file = multi.getFile(file1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		review.setImg("/review_img/" + review_img);
-
-		
-		service.add(review);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");
+	   
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/addForm.jsp");
 		dispatcher.forward(request, response);
 		
 	}
