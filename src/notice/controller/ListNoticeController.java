@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import conn.DBConnect;
 import model.NoticeVO;
+import notice.dao.DaoImpl;
 import notice.service.Service;
 import notice.service.ServiceImpl;
 
@@ -40,11 +42,11 @@ public class ListNoticeController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		Service service = new ServiceImpl();
-		
 
 		ArrayList<NoticeVO> notice = service.getNoticeAll();
+
 		request.setAttribute("notices", notice);
-		
+
 		/*
 		 * int view_count = Integer.parseInt(request.getParameter("view_count")); int
 		 * num = Integer.parseInt(request.getParameter("num"));
@@ -52,13 +54,13 @@ public class ListNoticeController extends HttpServlet {
 		 * NoticeVO up_viewCount = new NoticeVO(view_count, num);
 		 * service.updateViewCount(up_viewCount);
 		 */
-		
+
 		System.out.println("====ListNoticeController====");
 		System.out.println(notice.toString());
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
-		if(dispatcher != null) {
-		dispatcher.forward(request, response);
+		if (dispatcher != null) {
+			dispatcher.forward(request, response);
 		}
 	}
 

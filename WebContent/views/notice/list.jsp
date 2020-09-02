@@ -19,17 +19,19 @@
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
 	rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<%--  
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script
-	src="<%=request.getContextPath()%>/resource/js/jquery.twbsPagination.js"
-	type="text/javascript"></script>
 
-
+ <script src="<%=request.getContextPath()/resource/js/jquery.twbsPagination.js" type="text/javascript"></script> 
+--%>
+<!-- pagination 
 <script type="text/javascript">
     $(function () {
         window.pagObj = $('#pagination').twbsPagination({
@@ -42,50 +44,54 @@
         });
     });
    
+</script> -->
+<script>
+ function titleclick(){
+
+ }
 </script>
 </head>
 <body><%@include file="/views/common/header.jsp"%>
 	<h3 class="text-center my-4">공지사항</h3>
 	<br>
-	<div class="table my-4 ">
-		<table class="table table-hover table-responsive-lg " align="right"
+	<div align =" right">
+		<c:if test="${sessionScope.memberType == 0 }">
+			<button id="addbtn" type="button" class="btn btn-primary active" style="margin : 0 100px ;width : 100px; height:35px;
+			background-color:#4CAF50;color:white;"
+				onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">write</button>
+		</c:if>
+	</div>
+	<br>
+	<div class="table my-4 " style ="margin :0 80px; padding: 0 60px;">
+		<table class="table table-hover table-responsive-lg"
 			id="twbsPagination">
 			<thead class="thead-light">
 				<tr class="d-flex">
-					<th class="text-center  col-1">글번호</th>
-					<th class="text-center col-5">제목</th>
-					<th class="text-center col-3">게시일</th>
-					<th class="text-center col-2">조회수</th>
+					<th class="text-center  col-1">no.</th>
+					<th class="text-center col-5">title</th>
+					<th class="text-center col-3">date</th>
+					<th class="text-center col-2">views</th>
 				</tr>
 			</thead>
 			<tbody id="page_content">
 
 				<c:forEach var="notice" items="${notices }" varStatus="status">
-					<%-- <c:choose> --%>
-					<%--  <c:when test="${status.count eq 2}"> --%>
+			
 
-					<tr class="text-center d-flex">
+					<tr class="text-center d-flex table-hover">
 						<td class="text-center  col-1" >${notice.num }</td>
-						<td class="text-center  col-5"><a
-							href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}">
-								${notice.title } </a></td>
+						<td class="text-center  col-5" id="title" name="title"><a href ="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}" 
+							 style="color:black";>
+								${notice.title }</a></td>
 						<td class="text-center  col-3">${notice.n_date }</td>
 						<td class="text-center  col-2">${notice.view_count }</td>
 					</tr>
 
-					<%-- </c:when> --%>
-					<%-- </c:choose> --%>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	
-	<div align="right">
-		<c:if test="${sessionScope.memberType == 0 }">
-			<button id="addbtn" type="button" class="btn btn-primary active"
-				onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">글쓰기</button>
-		</c:if>
-	</div>
+
 
 <!--pagination -->
 	<!-- <div class="container">
@@ -93,5 +99,5 @@
 			<ul class="pagination" id="pagination"></ul>
 		</nav>
 	</div> -->
+
 </body>
-</html>

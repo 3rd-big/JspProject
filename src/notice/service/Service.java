@@ -16,6 +16,7 @@ public interface Service {
 	ArrayList<NoticeVO> getNoticeAll();
 
 	int makeNum();
-	
-	void updateViewCount (NoticeVO notice );
+
+
+	void updateViewCount(NoticeVO notice);
 }

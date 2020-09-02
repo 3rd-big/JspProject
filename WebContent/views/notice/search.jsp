@@ -13,55 +13,51 @@
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
 	rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 	<%@include file="/views/common/header.jsp"%>
-	<!-- 관리자 아니면 readonly -->
-	<%-- <c:set var="str">
-		<c:if test="${sessionScope.id != notice.id }">
-			readonly
-		</c:if>
-	</c:set> --%>
+	<br>
+	<h4 style="margin : 0 50px; padding: 0 100px"> 공지사항 </h4><br>
+	<div >
 	<form action="${pageContext.request.contextPath }/EditNoticeController"
 		method="post">
-		<table class="table table-hover table-sm mt-3 mb-5" border="1"
-			cellspacing="0" style="width: 900px">
+		<table class="table table-sm mt-3 mb-5" 
+			cellspacing="0" style="width: 1000px; height: 400px; margin : 0 150px; padding: 0 100px">
 			<tr>
-				<th>글 번호</th>
-				<td><input type="text" value="${notice.num }" name="num"
-					size="45" readonly></td>
+				<th>no.</th>
+				<td><input type="text"class="form-control" value="${notice.num }" name="num"
+					size="100" readonly></td>
 			</tr>
-<%-- 		<tr>
-			<th>작성자</th>
-				<td><input type="text" value="${notice.id }" name="writer"
-					size="45" readonly></td>
-			</tr>
- --%>
 			<tr>
-				<th>작성날짜</th>
-				<td><input type="text" value="${notice.n_date }" size="100"
+				<th>date</th>
+				<td><input type="text" class="form-control" value="${notice.n_date }" size="100"
 					readonly></td>
 			</tr>
 			<tr>
-				<th>글 제목</th>
-				<td><input type="text" name="title" value="${notice.title }"
+				<th>title</th>
+				<td><input type="text" class="form-control" name="title" value="${notice.title }"
 					size="100" ${str }></td>
 			</tr>
 			<tr>
-				<th>글 내용</th>
-				<td><textarea name="content" rows="10" cols="100">${notice.content }</textarea></td>
+				<th>Content</th>
+				<td>
+				  
+                  <textarea class="form-control"  name="content" rows="7" cols="100">${notice.content }</textarea></td>
 			</tr>
-			<%-- <c:if test="${sessionScope.id == notice.id }"> --%>
 			<c:if test="${sessionScope.memberType == 0 }">
-				<tr>
-					<td colspan="2"><input type="submit" value="수정">
-					 <input type="button" value="삭제" onclick= "location.href = '${pageContext.request.contextPath }/DeleteNoticeController?num='+${notice.num}">
+				<tr align="right">
+					<td colspan="2">
+					<input class="form-control" type="submit" value="edit" style ="color:black;">
+					<input type="button" class="form-control" value="delete" style ="color:black;" onclick= "location.href = '${pageContext.request.contextPath }/DeleteNoticeController?num='+${notice.num}">
 					 </td>
 				</tr>
 			</c:if>
-			<%-- </c:if> --%>
 		</table>
 	</form>
+	</div>
+
 </body>
 </html>
