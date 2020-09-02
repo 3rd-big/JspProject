@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import conn.DBConnect;
 import model.MemberVO;
+import model.ReviewVO;
 
 public class DaoImpl implements Dao {
 	private DBConnect db;
@@ -188,6 +189,44 @@ public class DaoImpl implements Dao {
 		
 		
 		
+		return members;
+	}
+
+	@Override
+	public ArrayList<MemberVO> selectMemberByReviewId(ArrayList<ReviewVO> r) {
+		Connection conn = db.getConnection();
+		ArrayList<MemberVO> members = new ArrayList();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from member where id=?";
+		
+		try {
+			conn = db.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			for (ReviewVO reviewVO : r) {
+				pstmt.setString(1, reviewVO.getM_id());
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					members.add(new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
+				}
+			}
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
 		return members;
 	}
 

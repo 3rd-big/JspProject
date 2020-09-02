@@ -3,6 +3,7 @@ package member.dao;
 import java.util.ArrayList;
 
 import model.MemberVO;
+import model.ReviewVO;
 
 public interface Dao {
 
@@ -12,5 +13,6 @@ public interface Dao {
 	void delete(String id);
 	
 	ArrayList<MemberVO> selectAllMember();
+	ArrayList<MemberVO> selectMemberByReviewId(ArrayList<ReviewVO> r);
 
 }

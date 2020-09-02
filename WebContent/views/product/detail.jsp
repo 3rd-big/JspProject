@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -216,24 +218,32 @@
 		<div class="card card-outline-secondary my-4">
 			<div class="card-header" id="product-reviews">Product reviews</div>
 			<div class="card-body">
+			
+				<c:if test="${0 == reviews.size() }">
+					<p>리뷰가 없습니다.</p>
+				</c:if>
+				
+				<c:forEach var="review" items="${reviews }">
+					<div class="reviewer-info">
+						<div>
+							<img src="sample_img/profile_img.png" width="50">
+							<small class="text-muted"><b>${review.m_id }</b></small>
+							별점: ${review.rate } ${review.r_date }
+						</div>
+						
+						<img width="50px" height="75" src="${review.img}">
+						<p>${review.content }</p>
+						<hr>
+					</div>
+				</c:forEach>
+				<%--	
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 					Omnis et enim aperiam inventore, similique necessitatibus neque
 					non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
 					Sequi mollitia, necessitatibus quae sint natus.</p>
 				<small class="text-muted">Posted by Anonymous on 3/1/17</small>
 				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Omnis et enim aperiam inventore, similique necessitatibus neque
-					non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
-					Sequi mollitia, necessitatibus quae sint natus.</p>
-				<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Omnis et enim aperiam inventore, similique necessitatibus neque
-					non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
-					Sequi mollitia, necessitatibus quae sint natus.</p>
-				<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-				<hr>
+				 --%>
 				<a href="#" class="btn btn-success">Leave a Review</a>
 			</div>
 		</div>
