@@ -13,6 +13,8 @@ public interface Dao {
 	ArrayList<ProductVO> selectBestProducts();
 	
 	ArrayList<ProductVO> selectNewProducts();
+
+	ArrayList<ProductVO> selectCategoryProducts(String category);
 	
 	ArrayList<ProductImageVO> selectDetailImages(int p_num);
 	

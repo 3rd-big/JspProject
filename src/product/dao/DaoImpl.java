@@ -32,7 +32,7 @@ private DBConnect db;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				products.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
+				products.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ private DBConnect db;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				bestProducts.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
+				bestProducts.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -92,7 +92,7 @@ private DBConnect db;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				newProducts.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
+				newProducts.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -108,7 +108,37 @@ private DBConnect db;
 
 		return newProducts;
 	}
-	
+
+	@Override
+	public ArrayList<ProductVO> selectCategoryProducts(String category) {
+		ArrayList<ProductVO> products = new ArrayList<>();
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from product where category=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, category);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				products.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
+	}
+
 	@Override
 	public ArrayList<ProductImageVO> selectDetailImages(int p_num) {
 		Connection conn = db.getConnection();
@@ -140,8 +170,6 @@ private DBConnect db;
 		
 		return detailImages;
 	}
-
-	
 
 	@Override
 	public int selectProductNum() {
@@ -239,7 +267,7 @@ private DBConnect db;
 	public void insert(ProductVO p) {
 		Connection conn = db.getConnection();
 		
-		String sql = "insert into product values(?, ?, ?, ?, ?, sysdate, 0)";
+		String sql = "insert into product values(?, ?, ?, ?, ?, sysdate, 0, ?)";
 		
 		PreparedStatement pstmt = null;
 		
@@ -251,6 +279,7 @@ private DBConnect db;
 			pstmt.setInt(3, p.getPrice());
 			pstmt.setString(4, p.getImg());
 			pstmt.setString(5, p.getContent());
+			pstmt.setString(6, p.getCategory());
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -344,7 +373,7 @@ private DBConnect db;
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				product = (new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
+				product = (new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -449,4 +478,5 @@ private DBConnect db;
 		}
 		
 	}
+
 }

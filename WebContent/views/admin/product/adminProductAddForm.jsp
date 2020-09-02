@@ -32,7 +32,32 @@
 	
 	<script src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
+		
+	<%--
+		function check(){
+			var isEmpty = false;
+			https://do-study.tistory.com/5
+
+	        var idTxt = document.idForm.id;
 	
+	        
+	        if(idTxt.value == ""){
+	            alert("아이디를 기재해주세요");
+	            idTxt.value = "";
+	            idTxt.focus();
+	            return false;
+	        }
+	
+	        var nickTxt = document.idForm.nick;
+	
+	        if(nickTxt.value == ""){
+	            alert("닉네임을 기재해주세요.");
+	            nickTxt.value = "";
+	            nickTxt.focus();
+	            return false;
+	        }
+	    }
+	--%>
 		$(document).ready(function() {
 	
 			$("#detail_img1").hide();
@@ -79,7 +104,7 @@
 
 			<div class="col-lg-10">
 
-				<form action="${pageContext.request.contextPath }/ProductAddController" method="post" enctype="multipart/form-data">
+				<form action="${pageContext.request.contextPath }/ProductAddController" method="post" enctype="multipart/form-data" onsubmit="return check()">
 					<table class="table table-bordered">
 						<thead class="thead-dark">
 							<tr style="text-align: center;">
@@ -92,6 +117,16 @@
 								<th scope="col">상품명</th>
 								<td><input type="text" name="name"></td>
 							<tr>
+							<tr>
+								<th scope="col">카테고리</th>
+								<td>
+									<select name="category">
+										<option disabled selected>-----필수-----</option>
+										<option value="top">상의</option>
+										<option value="bottom">하의</option>
+									</select>
+								</td>
+							</tr>
 							<tr>
 								<th scope="col">가격</th>
 								<td><input type="text" name="price"></td>
@@ -125,7 +160,10 @@
 								<td><textarea rows="5" cols="100" name="content"></textarea></td>
 							</tr>
 							<tr>
-								<td><input class="btn btn-success" type="submit" value="Prod Add"></td>
+								<td>
+									<input class="btn btn-success" type="submit" value="Prod Add">
+									<input class="btn btn-primary" type="reset" value="Reset">
+								</td>
 							</tr>
 						</tbody>
 					</table>
