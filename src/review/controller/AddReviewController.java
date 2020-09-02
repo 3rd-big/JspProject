@@ -54,7 +54,7 @@ public class AddReviewController extends HttpServlet {
 	    ReviewVO review = new ReviewVO();
 	    
 	    review.setM_id(m_id);
-	    review.setNum(service.makeNum());
+//	    review.setNum(service.makeNum());
 	    
 //	    int num = service.makeNum();	// 태수
 //	    productorder.service.Service service_order = new productorder.service.ServiceImpl();	// 태수
@@ -104,6 +104,12 @@ public class AddReviewController extends HttpServlet {
 
 		service.add(review);	
 
+		productorder.service.Service service_po = new productorder.service.ServiceImpl();
+
+		service_po.editR_State(m_id,p_num);
+		System.out.println("pnum은"+p_num+"m_id는"+m_id);
+		
+		
 //		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");	// 태수
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListReviewController");			// 태수
 		dispatcher.forward(request, response);
