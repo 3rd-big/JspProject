@@ -61,6 +61,12 @@ public class ServiceImpl implements Service{
 		return dao.myselectAll(m_id);
 	}
 
+	@Override
+	public int getSelectedP_num(int r_num) {
+		// TODO Auto-generated method stub
+		return dao.selectP_Num(r_num);
+	}
+
 
 
 }

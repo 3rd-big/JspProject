@@ -2,17 +2,16 @@ package review.dao;
 
 import java.util.ArrayList;
 
-import model.ProductOrderVO;
 import model.ReviewVO;
 
 
 
 public interface Dao {
 	int selectNum();
+	int selectP_Num(int r_num);
+	void insert(ReviewVO review);
 
-	void insert(ReviewVO notice);
-
-	ReviewVO select(int p_num);
+	ReviewVO select(int num);
 	
 	ArrayList<ReviewVO> selectByP_Num(int p_num);
 

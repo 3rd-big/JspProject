@@ -64,8 +64,9 @@ public class DaoImpl implements Dao{
 			pstmt.setString(5, review.getImg());
 
 			pstmt.executeUpdate();
-			
 			System.out.println(sql);
+			//
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -76,7 +77,7 @@ public class DaoImpl implements Dao{
 				e.printStackTrace();
 			}
 		}
-		
+
 		
 	}
 
@@ -87,7 +88,7 @@ public class DaoImpl implements Dao{
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "select * from review where num=? order by num";
+		String sql = "select * from review where num=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -149,13 +150,16 @@ public class DaoImpl implements Dao{
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "update review set rate=?, content=?, r_date=sysdate where num=?";
+		String sql = "update review set rate=?, content=?, img=?, r_date=sysdate where num=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setDouble(1, review.getRate());
+			pstmt.setInt(1, review.getRate());
 			pstmt.setString(2, review.getContent());
-			pstmt.setInt(3, review.getNum());
+			pstmt.setString(3, review.getImg());
+			pstmt.setInt(4, review.getNum());
 			pstmt.executeUpdate();
+			
+			System.out.println("리뷰update dao실행");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -244,7 +248,6 @@ public class DaoImpl implements Dao{
 			while(rs.next()) {
 				list.add(new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6),
 						rs.getDate(7)));
-				
 			}
 
 			System.out.println(m_id);
@@ -261,6 +264,34 @@ public class DaoImpl implements Dao{
 		}
 
 		return list;
+	}
+
+	@Override
+	public int selectP_Num(int r_num) {
+		Connection conn = db.getConnection();
+
+		String sql = "select p_num from review where num="+r_num;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int p_num=0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				p_num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return p_num;
 	}
 
 

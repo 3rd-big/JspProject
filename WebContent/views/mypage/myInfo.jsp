@@ -40,7 +40,6 @@
 			<jsp:include page = "/views/common/mypageCategory.jsp" />
 			<!-- /leftNavigation -->
 
-	    
 
 			<div class = "membershowbox" style="height:500px;">
 				<h4 class="main">${sessionScope.id } 고객님, 안녕하세요!</h4>
