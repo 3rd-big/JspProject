@@ -45,6 +45,8 @@ public class AddReviewController extends HttpServlet {
 		
 		int p_num = Integer.parseInt(request.getParameter("p_num"));	// 태수
 		
+		System.out.println("AddReviewController들어감");
+		
 		Service service = new ServiceImpl();
 		HttpSession session = request.getSession(false);
 	    String m_id = (String) session.getAttribute("id");

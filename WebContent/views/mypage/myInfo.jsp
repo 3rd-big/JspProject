@@ -18,48 +18,41 @@
 
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+<style type="text/css">
 
+
+</style>
 
 </head>
 <body>
 	<!-- Navigation -->
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
-	<!-- 카테고리 -->
+	<div class="container">
 	<c:if test="${not empty sessionScope.id }">
 	
 	
-		<div class="row2" >
-	
-	      <div class="col-lg-3">
-	        <h1 class="my-4">My Page</h1>
-	        <div class="list-group">
-	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1" class="list-group-item">주문조회</a>
-	        	<a href="${pageContext.request.contextPath }/ListReviewController" class="list-group-item">내가 쓴 리뷰 관리</a>
-	          <a href="${pageContext.request.contextPath }/SearchController" class="list-group-item ">내 정보 수정</a>
-	          
-	          
-	        </div>
-	      </div>
-	    </div>
+		<h1 class="my-4">My Page</h1>
 		
-		<section class = "rightcontent">
-			<h4 class="main">${sessionScope.id } 고객님, 안녕하세요!</h4>
+		<div class="row">
 			
-			<div class="pointview">
-				포인트 : ${m.point} 점
-			</div>
-			
-			<div class="orderedlist">
-					<%@include file ="/views/mypage/orderlist.jsp" %>
-			</div>
-			
-			
-		</section>
-	
+			<!-- leftNavigation -->
+			<jsp:include page = "/views/common/mypageCategory.jsp" />
+			<!-- /leftNavigation -->
 
+	    
+
+			<div class = "membershowbox" style="height:500px;">
+				<h4 class="main">${sessionScope.id } 고객님, 안녕하세요!</h4>
+					포인트 : ${m.point} 점
+				<%-- <div class="orderedlist">
+						<%@include file ="/views/mypage/orderlist.jsp" %>
+				</div> --%>
+
+			</div>	
+		</div>
 	</c:if>
-
+ 	</div>
 
 
 	<!-- Footer -->

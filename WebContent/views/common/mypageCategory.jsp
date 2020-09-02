@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="col-lg-auto">
+
+		<div class="list-group">
+	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1" class="list-group-item">주문조회</a>
+	        	<a href="${pageContext.request.contextPath }/ListReviewController" class="list-group-item">내가 쓴 리뷰 관리</a>
+	          <a href="${pageContext.request.contextPath }/SearchController" class="list-group-item ">내 정보 수정</a>
+		</div>
+
+	</div>
+
+</body>
+</html>

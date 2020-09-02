@@ -18,7 +18,11 @@
 
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+<style type="text/css">
 
+
+
+</style>
 <script>
         function check(){
             var pwdtxt=document.f.pwd;
@@ -59,62 +63,55 @@
 	<!-- Navigation -->
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
-
-	<div class="row2" >
-	
-	      <div class="col-lg-3">
-	        <h1 class="my-4">My Page</h1>
-	        <div class="list-group">
-	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=0" class="list-group-item">주문조회</a>
-	        	<a href="#" class="list-group-item">내가 쓴 리뷰 관리</a>
-	          <a href="${pageContext.request.contextPath }/SearchController" class="list-group-item ">내 정보 수정</a>
-	          
-	          
-	        </div>
-	      </div>
-	    </div>
-	
-	<div class = "editusercomponent">
-		<form action="${pageContext.request.contextPath }/User_EditController" name="f" method="post" onsubmit="return check()">
-			<fieldset>
-				<legend>내 정보 수정</legend>
-				
-				<div class="form-group">
-					<label for="ViewID">ID</label> 
-					<input type="text" class="form-control" name="id" value="${m.id}" readonly>
-				</div>
-				
-				<div class="form-group">
-					<label for="EditPwd">Password</label> <input
-						type="password" class="form-control" name="pwd" value="${m.pwd }" >
-				</div>
-				
-				<div class="form-group">
-					<label for="ViewName">Name</label> <input
-						type="text" class="form-control" name="name" value="${m.name }" readonly>
-						
-				</div>
-				
-				<div class="form-group">
-					<label for="EidtEmail">Email address</label> <input
-						type="email" class="form-control" name="email" value="${m.email }" aria-describedby="emailHelp" > 
-				</div>
-				<!-- 주소api 추후 추가 -->
-				<div class="form-group">
-					<label for="EditAddress">Address</label> <input
-						type="text" class="form-control" name="addr" value="${m.addr }">
-				</div>
-				
+	<div class="container">
+	    <h1 class="my-4">My Page</h1>
+		  <div class="row">
 			
-				<button type="submit" class="btn btn-primary">수정</button>
-				
-				<button type="button" onclick="return checkrem();">회원탈퇴</button>
-			</fieldset>
-		</form>
-	</div>
-	
+			<!-- leftNavigation -->
+			<jsp:include page = "/views/common/mypageCategory.jsp" />
+			<!-- /leftNavigation -->
+			</div>
+			<div class = "edituserbox">
+				<form action="${pageContext.request.contextPath }/User_EditController" name="f" method="post" onsubmit="return check()">
+					<fieldset>
+						<legend>내 정보 수정</legend>
+						
+						<div class="form-group">
+							<label for="ViewID">ID</label> 
+							<input type="text" class="form-control" name="id" value="${m.id}" readonly>
+						</div>
+						
+						<div class="form-group">
+							<label for="EditPwd">Password</label> <input
+								type="password" class="form-control" name="pwd" value="${m.pwd }" >
+						</div>
+						
+						<div class="form-group">
+							<label for="ViewName">Name</label> <input
+								type="text" class="form-control" name="name" value="${m.name }" readonly>
+								
+						</div>
+						
+						<div class="form-group">
+							<label for="EidtEmail">Email address</label> <input
+								type="email" class="form-control" name="email" value="${m.email }" aria-describedby="emailHelp" > 
+						</div>
+						<!-- 주소api 추후 추가 -->
+						<div class="form-group">
+							<label for="EditAddress">Address</label> <input
+								type="text" class="form-control" name="addr" value="${m.addr }">
+						</div>
+						
+					
+						<button type="submit" class="btn btn-primary">수정</button>
+						
+						<button type="button" onclick="return checkrem();">회원탈퇴</button>
+					</fieldset>
+				</form>
+			</div>
+		</div>
 
-
+ 	</div>
 
 
 

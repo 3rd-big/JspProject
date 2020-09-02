@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="model.ProductOrderVO, model.ProductSizeVO"%>
 <%@page import="model.MemberVO, model.ProductVO, model.ReviewVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -60,7 +61,17 @@
 		}
 	}
 	
+	function addReview() {
+		
+		var p_num = document.getElementById("p_num");
+		var message = document.getElementById("message");
+		var r_img = document.getElementById("r_img");
+		var rate = document.getElementById("rate");
 
+		document.reviewform.action = '${pageContext.request.contextPath }/AddReviewController?p_num='+p_num;
+		opener.parent.location.reload(); 
+		window.close();
+	}
 	
 </script>
 <style type="text/css">
@@ -110,8 +121,8 @@
 			<tr>
 			<td width="77%">
 			<div class="">
-				<form class="form-horizontal" action="${pageContext.request.contextPath }/EditReviewFormController" 
-				enctype="multipart/form-data" method="post" >
+				<form class="form-horizontal" action="${pageContext.request.contextPath }/EditReviewController?p_num=<%=request.getParameter("p_num")%>&num=<%=request.getParameter("num") %>"	<%-- 태수 --%>   
+				name="reviewform" enctype="multipart/form-data" method="post" >
 					<fieldset>
 
 					<!-- Name input-->
@@ -129,7 +140,7 @@
 					<label class="col-md-3 control-label" for="rating">Your rating</label>
 					<form>
 						<input type="text" name="rate" class="rating rating-loading"
-							data-size="md" title="" value="${review.rate }"> <br>
+							data-size="md" title="" value="${r.rate}"> <br>
 					</form>
 				</div>
 
@@ -139,7 +150,7 @@
 					<label class="col-md-3 control-label" for="message">Your message</label>
 					<div class="col-md-9">
 						<textarea class="form-control" id="message" name="message"
-							value="${review.content }" rows="5"></textarea>
+							 rows="5"> ${r.content }</textarea>
 					</div>
 				</div>
 
@@ -148,12 +159,12 @@
 					<label class="col-md-3 control-label" for="image">사진첨부</label>
 					<div class="col-md-9">
 						<!-- <label for="cma_file">사진첨부</label> -->
-						<form id="form1" runat="server">
-							<input type="file" name="r_img" onchange="readURL(this);" value="${review.img }">
+						<!-- <form id="form1" runat="server">  태수 --> 
+							<input type="file" name="r_img" onchange="readURL(this);">
 							<img
 								style="height: 75px; border: 1px solid #000; margin: 5px"
-								id="blah" src="#" alt="" />
-						</form>
+								id="blah" src="/review_img/+${r.img}" alt="" />
+						<!-- </form> -->
 
 					</div>
 				</div>
@@ -162,6 +173,7 @@
 					<div class="col-md-12 text-center">
 						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
 						<button type="reset" class="btn btn-default btn-md">Clear</button>
+						<button type="submit" class="btn btn-primary btn-md" onclick="addReview();">Submit2</button>
 					</div>
 				</div>
 				</td>
