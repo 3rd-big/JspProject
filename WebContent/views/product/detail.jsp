@@ -80,6 +80,30 @@
 			});
 			
 		}
+		
+		function directOrder(productNum) {
+			var size = $(".size-selected").text();
+			var quantity = $("#select-quantity").text();
+			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
+	
+			$.ajax({
+				type: "get",
+				async: false,
+				url: "${pageContext.request.contextPath }/DirectOrderPageController",
+				data: allData,
+				success: function (result) {
+					console.log(result);
+					document.innerHTML = result;
+					
+					alert("결제페이지로 이동");
+
+				}
+				
+			});
+			
+		}
+		
+		
 	
 	
 		$(document).ready(function(){
@@ -91,14 +115,14 @@
 				success : function(result) {
 					arr = $.parseJSON(result);
 					var html = "";
-					for(i = 0; i<arr.length; i++){
+					for(i = 0; i<arr.length; i++) {
 						html += "<img id='smallImg' src='" + arr[i].img + "' width='50' height='75'><br><br>";
 					}
 					$("#detail-img").html(html);
 				}
 			});
 
-			<!-- 상세 이미지에 마우스 올려놓으면 우측 확대이미지 변경 -->
+			/* <!-- 상세 이미지에 마우스 올려놓으면 우측 확대이미지 변경 --> */
 			$(document).on('mouseover', '#smallImg', function () {
 				var img = $(this).attr('src');
 				$('#viewImg').attr('src', img);
@@ -138,6 +162,8 @@
 
 			
 		});
+		
+		
 	</script>
 
 
@@ -201,7 +227,7 @@
 				<br><br>
 				<div style="text-align: center;">
 					<div id="btn_buy" >
-						구매하기
+						<a href="#" onClick="directOrder('${product.num}');">구매하기</a>
 					</div>
 					<div id="btn_cart">
 						<a href="#" onClick="addCart('${product.num}');">장바구니</a>

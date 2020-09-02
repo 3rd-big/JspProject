@@ -1,6 +1,8 @@
 package productorder.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +57,11 @@ public class AddProductCartController extends HttpServlet {
 		po.setProd_img(p.getImg());
         
         service.add(po);
+        
+        String path = "/views/member/directOrderPage.jsp";
+        
+        response.sendRedirect(path);
+
 
 	}
 
