@@ -34,7 +34,7 @@ public class DaoImpl implements Dao{
 			pstmt.setInt(6, po.getO_state());
 			pstmt.setInt(7, po.getD_state());
 			pstmt.setString(8, po.getP_size());
-			pstmt.setInt(9,po.getR_state());		//r_state 추가 // 선정 수정
+			pstmt.setInt(9,po.getR_state());		//r_state 추가 // 선정 수정		// setR_state()를 해주지 않아도 기본 0값
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

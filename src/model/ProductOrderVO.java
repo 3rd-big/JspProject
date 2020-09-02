@@ -175,7 +175,15 @@ public class ProductOrderVO {
 		this.p_size = p_size;
 	}
 
-	
+	public int getR_state() {
+		return r_state;
+	}
+
+	public void setR_state(int r_state) {
+		this.r_state = r_state;
+	}
+
+
 
 	@Override
 	public String toString() {
@@ -183,18 +191,6 @@ public class ProductOrderVO {
 				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
 				+ d_state + ", r_state=" + r_state + ", p_size=" + p_size + ", prod_name=" + prod_name + ", prod_img="
 				+ prod_img + "]";
-	}
-
-
-
-	public int getR_state() {
-		return r_state;
-	}
-
-
-
-	public void setR_state(int r_state) {
-		this.r_state = r_state;
 	}
 	
 	

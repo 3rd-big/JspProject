@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import member.dao.Dao;
 import member.dao.DaoImpl;
 import model.MemberVO;
+import model.ReviewVO;
 
 public class ServiceImpl implements Service {
 
@@ -48,6 +49,11 @@ public class ServiceImpl implements Service {
 	public ArrayList<MemberVO> getMemberAll() {
 		// TODO Auto-generated method stub
 		return dao.selectAllMember();
+	}
+
+	@Override
+	public ArrayList<MemberVO> getMemberByReviewId(ArrayList<ReviewVO> r) {
+		return dao.selectMemberByReviewId(r);
 	}
 
 	

@@ -10,6 +10,8 @@ public interface Service {
 	void add(ReviewVO notice);
 
 	ReviewVO getReview(int p_num);
+	
+	ArrayList<ReviewVO> getReviewByProductNum(int p_num);
 
 	void editReview(ReviewVO notice);
 
