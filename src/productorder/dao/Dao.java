@@ -18,4 +18,6 @@ public interface Dao {
 	void updateR_State(String m_id, int p_num);
 	
 	ArrayList<ProductOrderVO> selectRecentOrder(String m_id);
+	
+	void updatePoint(String m_id, int o_num);
 }

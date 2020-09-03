@@ -16,10 +16,10 @@
 	<!-- popup -->
 <script type="text/javascript">
 
-function showPopup(num) {
+function showPopup(p_num,o_num) {
 			var title = "상품평 작성";
 
-			var url = "<%=request.getContextPath()%>/views/review/addForm.jsp?p_num="+num;
+			var url = "<%=request.getContextPath()%>/views/review/addForm.jsp?p_num="+p_num"&o_num="+o_num";
 			<%-- var url = "<%=request.getContextPath()%>/AddReviewFormController?p_num="+num; --%>
 			var options = 'top=50, left=400, width=800, height=700, status=no, menubar=no, toolbar=no';
 		    window.open(url, title, options);
@@ -37,6 +37,15 @@ function showPopup(num) {
 }
 .orderlistbox{
 	margin-left: 50px;
+	width:850px; 
+	max-width:100%;
+}
+table{
+	table-layout:fixed;
+}
+
+#product_name{
+	word-break:break-all;
 }
 </style>
 
@@ -61,7 +70,7 @@ function showPopup(num) {
 					<table class="table table-hover table-sm mt-3 mb-5" >
 					<thead class="thead-light1" style="background-color: white;" >
 						<tr class="text-center">
-							<th scope="col">주문번호 </th> 
+							<th scope="col">No. </th> 
 							<th scope="col">제품명 </th> 
 							<th scope="col">사진 </th>
 							<th scope="col">사이즈 </th> 
@@ -76,16 +85,18 @@ function showPopup(num) {
 					<tbody >
 						<c:forEach var="o" items="${list }">
 							<tr class="text-center">
-								<td name="order_num">${o.num } </td>
-								<td name="order_product_name"> ${o.prod_name } </td>
-								<td> <img src="${o.prod_img }" width="200" height="200"> </td>
+								<td name="o_num">${o.num } </td>
+								<td id="product_name" name="order_product_name"> ${o.prod_name } </td>
+								<td> <a href="${pageContext.request.contextPath }/DetailController?num=${o.p_num }">
+									<img src="${o.prod_img }" width="100" height="100"> </a>
+									</td>
 								<td>${o.p_size} </td> 
 								<td>${o.o_quantity} </td> 
 								<td>${o.total_price } </td> 
 								<td>${o.o_date }</td>
 								<c:if test="${o.r_state==0 }">
-									<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp?p_num=${o.p_num }">상품평 작성</a></td><!-- o.p_num 전달 태수 -->
-									<td><button type="button" class="btn btn-link" onclick="showPopup('${o.p_num }');">팝업에서작성</button> </td>
+									<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp?p_num=${o.p_num }&o_num=${o.num}">상품평 작성</a></td><!-- o.p_num 전달 태수 -->
+									<td><button type="button" class="btn btn-link" onclick="showPopup('${o.p_num }','${o.num }');">팝업에서작성</button> </td>
 								</c:if>
 								<c:if test="${o.r_state==1 }">
 									<td>작성완료</td>

@@ -25,6 +25,8 @@ body{
 }
 .membershowbox{
 	margin-left: 50px;
+	width:850px; 
+	max-width:100%;
 }
 .pointbox{
 	background-color: black; 
@@ -73,7 +75,7 @@ body{
 			<!-- /leftNavigation -->
 
 
-			<div class = "membershowbox" style="width:850px; max-width:100%; ">
+			<div class = "membershowbox">
 				<div class="hellouser">
 					<img src="sample_img/user_basic.png" alt="" width="75" height="75"> 
 					<h4 style="font-size:1.5em; "> &nbsp; ${sessionScope.id } 고객님, 안녕하세요!</h4>

@@ -19,7 +19,7 @@ public class DaoImpl implements Dao {
 	public void update(MemberVO m) {
 		Connection conn = null;
 
-		String sql = "update MEMBER set pwd=?, email=?, addr=? where id=?";
+		String sql = "update MEMBER set pwd=?, email=?, addr=?z where id=?";
 
 		PreparedStatement pstmt = null;
 		try {

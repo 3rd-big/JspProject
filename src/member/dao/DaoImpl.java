@@ -21,7 +21,7 @@ public class DaoImpl implements Dao {
 	public void insert(MemberVO m) {
 		Connection conn = null;
 		
-		String sql = "insert into MEMBER values(?, ?, ?, ?, ?, 1, 0)";
+		String sql = "insert into MEMBER values(?, ?, ?, ?, ?, 1, 2000)";
 		
 		PreparedStatement pstmt = null;
 		try {
@@ -228,6 +228,39 @@ public class DaoImpl implements Dao {
 		}
 
 		return members;
+	}
+
+	@Override
+	public String selectId(String email) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select id from MEMBER where email=?";
+		String id="";
+		try {
+			
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				id=rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return id;
 	}
 
 }

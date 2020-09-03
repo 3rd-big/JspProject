@@ -110,6 +110,15 @@
 	background: transparent;
 	appearance: none;
 }
+.ptag{
+	width: 75%;
+	float: left;
+	position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+	display: block;
+}
 
 /* 파일 필드 숨기기 */
 /* .filebox input[type="file"] {  
@@ -138,27 +147,17 @@
 			<tr>
 			<td width="77%">
 			<div class="">
-				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewController?p_num=<%=request.getParameter("p_num") %>"	<%-- 태수 --%>   
+				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewController?p_num=<%=request.getParameter("p_num") %>&o_num=<%=request.getParameter("o_num") %>"	<%-- 태수 --%>   
 				name="reviewform" enctype="multipart/form-data" method="post" >
-					<fieldset>
-
-					<!-- Name input-->
-					<!-- <div class="form-group">
-						<label class="col-md-3 control-label" for="name">Full
-							Name</label>
-						<div class="col-md-9">
-							<input id="name" name="name" type="text"
-								placeholder="Your name" class="form-control">
-						</div>
-					</div> -->
+				<fieldset>
 
 				<!-- Rating -->
 				<div class="form-group">
 					<label class="col-md-3 control-label" for="rating">Your rating</label>
-					<form>
+					<!-- <form> -->
 						<input type="text" name="rate" class="rating rating-loading"
-							data-size="md" title=""> <br>
-					</form>
+							data-size="md" title="">
+					<!-- </form> -->
 				</div>
 
 
@@ -185,7 +184,14 @@
 
 					</div>
 				</div>
-
+				<div class="form-group">
+				<label class="col-md-3 control-label"></label>
+					<div class="col-md-9">
+						<span style="font-size:12px; color:#778899;"> ※ 상품평 작성 시 결제금액의 2%를 적립해 드립니다. </span>
+						<input type="hidden" value="${o.num }" name="num">
+					</div>
+				</div>
+				 <br>
 				<div class="form-group">
 					<div class="col-md-12 text-center">
 						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
