@@ -66,31 +66,40 @@
 	
 		<!-- 장바구니 클릭 상품 번호 전달 -->
 		function addCart(productNum) {
-			
+	
 			if(${sessionScope.id == null}){
-				var result = confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?');
-					
-				if(result){
+				alert('2');
+				if(confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?')){
 					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
 					return;
 				}else{
 					return;	
 				}
-			}
+			}else{
+				
+				if(confirm('장바구니에 추가하시겠습니까?')){
+					
+					var size = $(".size-selected").text();
+					var quantity = $("#select-quantity").text();
+					var allData = {"productNum": productNum, "size": size, "quantity": quantity};
 			
-			var size = $(".size-selected").text();
-			var quantity = $("#select-quantity").text();
-			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
-	
-			$.ajax({
-				type: "post",
-				async: false,
-				url: "${pageContext.request.contextPath }/AddProductCartController",
-				data: allData,
-				success: function (result) {
-					alert("장바구니에 추가되었습니다");
+					$.ajax({
+						type: "post",
+						async: false,
+						url: "${pageContext.request.contextPath }/AddProductCartController",
+						data: allData,
+						success: function (result) {
+							if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
+								location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+							}
+							
+						}
+					});
+					
 				}
-			});
+				
+			}
+
 			
 		}
 		

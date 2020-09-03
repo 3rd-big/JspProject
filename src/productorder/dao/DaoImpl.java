@@ -94,7 +94,7 @@ public class DaoImpl implements Dao{
 		
 		ArrayList<ProductOrderVO> list = new ArrayList<ProductOrderVO>();
 		
-		String sql = "select * from PRODUCT_ORDER where m_id=? and o_state=?";
+		String sql = "select * from PRODUCT_ORDER where m_id=? and o_state=? order by o_date desc";
 		
 		
 		try {
@@ -196,6 +196,45 @@ public class DaoImpl implements Dao{
 				e.printStackTrace();
 			}
 		}
+	}
+	@Override
+	public ArrayList<ProductOrderVO> selectRecentOrder(String m_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<ProductOrderVO> recentlist = new ArrayList<ProductOrderVO>();
+		
+		String sql = "select * from (select * from product_order where m_id=? and o_state=1 order by o_date desc) where rownum <= 5;";
+		
+		
+		try {
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m_id);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				recentlist.add(new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10)));
+				
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return recentlist;
 	}
 
 }

@@ -18,7 +18,7 @@
 	function showUpdatePopup(num){
 		var title = "상품평 수정";
 
-		var url = "<%=request.getContextPath()%>/EachReviewController?num="+num;
+		var url = "<%=request.getContextPath()%>/EachReviewController?r_num="+num;
 		var options = 'top=50, left=400, width=800, height=700, status=no, menubar=no, toolbar=no';
 	    window.open(url, title, options);
 	}
@@ -34,7 +34,9 @@
     min-height: 666px;
     padding: 0 20px 88px;
 }
-
+.reviewlistbox{
+	margin-left: 50px;
+}
 </style>
 
 </head>
@@ -52,11 +54,11 @@
 			<div class="reviewlistbox">
 				
 				<h3>내가 쓴 리뷰 목록</h3>
-	     
+	     	
 	
 	
-				<table class="table table-hover table-sm mt-3 mb-5" border="1">
-				<thead class="thead-light" style="background-color: white;">
+				<table class="table table-hover table-sm mt-3 mb-5">
+				<thead class="thead-light1" style="background-color: white;">
 					<tr class="text-center">
 						<th scope="col">리뷰번호 </th> 
 						<th scope="col">별점 </th> 
@@ -74,10 +76,10 @@
 							<td name="r_num">${r.num } </td>
 							<td> ${r.rate } </td>
 							<td> ${r.content } </td>
-							<td> <img src="${r.img }" width="200" height="200"> </td>
+							<td> <img src="${r.img }" width="150" height="150"> </td>
 							<td>${r.r_date } </td>
 							<td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">상품평 수정</a> </td>
-							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup(${r.num });">팝업 수정</button> </td>
+							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup('${r.num }');">팝업 수정</button> </td>
 		
 						</tr>
 					</c:forEach>

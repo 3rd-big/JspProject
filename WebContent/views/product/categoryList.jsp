@@ -85,7 +85,7 @@
 						<li><a href="#">신상품</a></li>
 						<li><a href="#">낮은가격</a></li>
 						<li><a href="#">인기상품</a></li>
-						<li><a href="#">조회수</a></li>
+						<li><a href="#">평점순</a></li>
 					</ul>
 				</div>
 				<br><br><br>
@@ -100,10 +100,10 @@
 									<img class="card-img-top" src="${product.img }" alt="">
 								</a>
 								<div class="card-body">
-									<h4 class="card-title">
-										<a href="${pageContext.request.contextPath }/DetailController?num=${product.num }">${product.name }</a>
-									</h4>
-									<h5>￦ ${product.price }</h5>
+									<h6 class="card-title">
+										<a href="${pageContext.request.contextPath }/DetailController?num=${product.num }"><b>${product.name }</b></a>
+									</h6>
+									<h7>￦ ${product.price }</h7>
 									
 								</div>
 								<div class="card-footer">
@@ -118,7 +118,7 @@
 				<!-- /.row -->
 
 			</div>
-			<!-- /.col-lg-9 -->
+			<!-- /.col-lg-12 -->
 
 		</div>
 		<!-- /.row -->
