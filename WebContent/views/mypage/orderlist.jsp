@@ -16,7 +16,6 @@
 	<!-- popup -->
 <script type="text/javascript">
 
-
 function showPopup(num) {
 			var title = "상품평 작성";
 
@@ -36,7 +35,9 @@ function showPopup(num) {
     min-height: 666px;
     padding: 0 20px 88px;
 }
-
+.orderlistbox{
+	margin-left: 50px;
+}
 </style>
 
 </head>
@@ -54,11 +55,11 @@ function showPopup(num) {
 			<div class="orderlistbox">
 				
 				<h3>주문 목록</h3>
-				
+				<!-- <hr style="border: 0; height: 3px; background: #ccc;"> -->
 			
 				<form id="orderList" name="orderList" method="post">
 					<table class="table table-hover table-sm mt-3 mb-5" >
-					<thead class="thead-light" style="background-color: white;">
+					<thead class="thead-light1" style="background-color: white;" >
 						<tr class="text-center">
 							<th scope="col">주문번호 </th> 
 							<th scope="col">제품명 </th> 

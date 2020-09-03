@@ -70,11 +70,14 @@
 			<!-- leftNavigation -->
 			<jsp:include page = "/views/common/mypageCategory.jsp" />
 			<!-- /leftNavigation -->
-			</div>
+			
 			<div class = "edituserbox">
+			
+				<h3>내 정보 수정</h3>
+			
 				<form action="${pageContext.request.contextPath }/User_EditController" name="f" method="post" onsubmit="return check()">
 					<fieldset>
-						<legend>내 정보 수정</legend>
+						
 						
 						<div class="form-group">
 							<label for="ViewID">ID</label> 

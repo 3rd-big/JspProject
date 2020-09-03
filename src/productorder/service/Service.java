@@ -3,6 +3,7 @@ package productorder.service;
 import java.util.ArrayList;
 
 import model.ProductOrderVO;
+import model.ProductVO;
 
 public interface Service {
 	void addOrder(ProductOrderVO o);
@@ -15,4 +16,6 @@ public interface Service {
 	int makeProductOrderNum();
 	
 	void editR_State(String m_id, int p_num);
+	
+	ArrayList<ProductOrderVO> getRecentOrderList(String m_id);
 }
