@@ -52,7 +52,7 @@ public class DaoImpl implements Dao {
 		// TODO Auto-generated method stub
 		Connection conn = db.getConnection();
 
-		String sql = "insert into notice values(seq_notice.nextval, ?, ?, sysdate, 0 )";
+		String sql = "insert into notice values(seq_notice.nextval, ?, ?, sysdate, ? )";
 
 		PreparedStatement pstmt = null;
 
@@ -61,7 +61,7 @@ public class DaoImpl implements Dao {
 
 			pstmt.setString(1, notice.getTitle());
 			pstmt.setString(2, notice.getContent());
-			//pstmt.setInt(3, notice.getView_count());
+			pstmt.setInt(3, notice.getView_count());
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -218,7 +218,7 @@ public class DaoImpl implements Dao {
 		String sql = "update notice set view_count = view_count+1 where num=?";
 		try {
 			pstmt = conn.prepareStatement(sql);			
-			pstmt.setInt(1, notice.getNum());
+			pstmt.setInt(1,  notice.getNum());
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

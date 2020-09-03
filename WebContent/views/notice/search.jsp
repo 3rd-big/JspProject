@@ -1,3 +1,4 @@
+
 <%@ page language="java" pageEncoding="UTf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -29,19 +30,28 @@
 			action="${pageContext.request.contextPath }/EditNoticeController"
 			method="post">
 			<table class="table table-sm mt-3 mb-5" cellspacing="0"
-				style="width:900px; height: 300px; margin: 0 150px; padding: 0 100px">
+				style="width: 900px; height: 300px; margin: 0 150px; padding: 0 100px">
 
 				<tr>
-				<td>title<input type="text" class="form-control" name="title"
-						value="${notice.title }" size="100" ${str } readonly style="background-color:white"></td>
 					<td>no.<input type="text" class="form-control"
-						value="${notice.num }" name="num" size="20" readonly style="background-color:white"></td>
+						value="${notice.num }" name="num" size="20" readonly
+						style="background-color: white"></td>
+					<td>view_count <input type="text" class="form-control"
+						value="${notice.view_count }" name="num" size="20" readonly
+						style="background-color: white"></td>
 				</tr>
 				<tr>
-					<td>content<textarea class="form-control" name="content" rows="7"
-							cols="100" readonly style="background-color:white">${notice.content }</textarea></td>
+					<td>title<input type="text" class="form-control" name="title"
+						value="${notice.title }" size="100" ${str } readonly
+						style="background-color: white"></td>
+
 					<td>date<input type="text" class="form-control"
-						value="${notice.n_date }" size="20" readonly style="background-color:white"></td>
+						value="${notice.n_date }" size="20" readonly
+						style="background-color: white"></td>
+				</tr>
+				<tr>
+					<td>content<textarea class="form-control" name="content"
+							rows="7" cols="100" readonly style="background-color: white">${notice.content }</textarea></td>
 				</tr>
 
 				<c:if test="${sessionScope.memberType == 0 }">
@@ -59,3 +69,4 @@
 
 </body>
 </html>
+

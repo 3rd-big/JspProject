@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="UTf-8" import="model.NoticeVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
@@ -44,13 +46,8 @@
     });
    
 </script> -->
-<script type="text/javascript">
-	var count = 1;
-	function showCount() {
-		var view_count = document.getElementById("view_count").innerHTML + 1;
-		alert(count);
-	}
-</script>
+
+
 </head>
 <body><%@include file="/views/common/header.jsp"%>
 
@@ -80,8 +77,7 @@
 					<c:forEach var="notice" items="${notices }">
 						<tr class="text-center d-flex">
 							<td class="text-center  col-1">${notice.num }</td>
-							<td class="text-center  col-6" id="title" name="title"
-								onclick="showCount()"><a
+							<td class="text-center  col-6" id="title" name="title"><a
 								href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}"
 								style="color: black;"> ${notice.title }</a></td>
 							<td class="text-center  col-3">${notice.n_date }</td>
@@ -90,6 +86,23 @@
 					</c:forEach>
 				</tbody>
 			</table>
+<%-- 			<!-- 현재 페이지 -->
+			<fmt:parseNumber value="${page/10 +1}"type="number" integerOnly="true"/>
+			<!-- 이전 페이지 -->
+			<c:if test="${page >0 }">
+			<a href =" list.do?page=${page-10 }">이전 페이지</a>
+			</c:if>
+			<c:if test="${page==0 }">
+			<a href="#">이전페이지</a>
+			</c:if>
+			<!-- 다음 페이지 -->
+			<c:if test="${fn:length(page_content)<10 }">
+			<a href="#">다음 페이지</a>
+			
+			</c:if>
+			<c:if test="${fn:length(page_content)==10 }">
+			<a href =" list.do?page=${page-10 }">이전 페이지</a>
+			</c:if> --%>
 		</div>
 	</div>
 
