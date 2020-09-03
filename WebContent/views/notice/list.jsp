@@ -46,27 +46,25 @@
    
 </script> -->
 <script>
- function titleclick(){
-
- }
 </script>
 </head>
 <body><%@include file="/views/common/header.jsp"%>
+<div class="container">	<br>
 	<h3 class="text-center my-4">공지사항</h3>
-	<br>
-	<div align =" right">
+	<div class="container"align =" right">
 		<c:if test="${sessionScope.memberType == 0 }">
-			<button id="addbtn" type="button" class="btn btn-primary active" style="margin : 0 100px ;width : 100px; height:35px;
-			background-color:#4CAF50;color:white;"
+			<button id="addbtn" type="button" class="btn btn-primary active" style="margin : 0 90px ;width : 100px; height:35px;
+				background-color:#4CAF50;color:white;"
 				onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">write</button>
 		</c:if>
 	</div>
 	<br>
-	<div class="table my-4 " style ="margin :0 80px; padding: 0 60px;">
+	<div class="container">
+	<div class="table my-4 " style ="margin :0 60px; padding: 0 60px;">
 		<table class="table table-hover table-responsive-lg"
 			id="twbsPagination">
 			<thead class="thead-light">
-				<tr class="d-flex">
+				<tr class="d-flex">		
 					<th class="text-center  col-1">no.</th>
 					<th class="text-center col-5">title</th>
 					<th class="text-center col-3">date</th>
@@ -74,10 +72,7 @@
 				</tr>
 			</thead>
 			<tbody id="page_content">
-
-				<c:forEach var="notice" items="${notices }" varStatus="status">
-			
-
+				<c:forEach var="notice" items="${notices }" >
 					<tr class="text-center d-flex table-hover">
 						<td class="text-center  col-1" >${notice.num }</td>
 						<td class="text-center  col-5" id="title" name="title"><a href ="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}" 
@@ -90,7 +85,9 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		</div>
 	</div>
+</div>
 
 
 <!--pagination -->

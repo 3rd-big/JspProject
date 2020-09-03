@@ -49,9 +49,9 @@ public class WriteNoticeController extends HttpServlet {
 		String content = request.getParameter("content");
 
 		NoticeVO notice = new NoticeVO();
-		
-		
-		notice.setNum(service.makeNum());
+
+		//dao에 makenum 함수를 안쓰려고 사용
+		//notice.setNum(service.makeNum());
 		notice.setTitle(request.getParameter("title"));
 		notice.setContent(request.getParameter("content"));
 		
