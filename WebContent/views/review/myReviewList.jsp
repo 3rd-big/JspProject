@@ -15,8 +15,12 @@
 
 <!-- 수정popup -->
 <script type="text/javascript">
-	function showUpdatePopup(){
-		window.open("${pageContext.request.contextPath}/views/review/updateForm.jsp?p_num=${o.p_num }");
+	function showUpdatePopup(num){
+		var title = "상품평 수정";
+
+		var url = "<%=request.getContextPath()%>/EachReviewController?num="+num;
+		var options = 'top=50, left=400, width=800, height=700, status=no, menubar=no, toolbar=no';
+	    window.open(url, title, options);
 	}
 </script>
 
@@ -59,7 +63,7 @@
 						<th scope="col">리뷰 내용 </th>
 						<th scope="col">이미지 </th> 
 						<th scope="col">리뷰 쓴 날짜 </th> 
-						<th scope="col"> </th> 
+						<th scope="col">상품평</th> 
 		
 						
 					</tr>
@@ -72,8 +76,8 @@
 							<td> ${r.content } </td>
 							<td> <img src="${r.img }" width="200" height="200"> </td>
 							<td>${r.r_date } </td>
-							<td><a href="${pageContext.request.contextPath }/EachReviewController?p_num=${o.p_num }&num=${r.num}">상품평 수정</a> </td>
-							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup();">상품평 수정</button> </td>
+							<td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">상품평 수정</a> </td>
+							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup(${r.num });">팝업 수정</button> </td>
 		
 						</tr>
 					</c:forEach>

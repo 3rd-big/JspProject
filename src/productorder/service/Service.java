@@ -13,4 +13,6 @@ public interface Service {
 	
 	void add(ProductOrderVO po);
 	int makeProductOrderNum();
+	
+	void editR_State(String m_id, int p_num);
 }

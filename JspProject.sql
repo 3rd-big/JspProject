@@ -15,7 +15,8 @@ price		 number not null,
 img		 varchar2(500),
 content   	varchar2(500),
 e_date        date,
-record      number(10)
+record      number(10),
+category    VARCHAR2(20)
 );
 
 create table product_order(
@@ -26,7 +27,9 @@ total_price	 number,
 m_id		 varchar2(20) references member(id) on delete cascade,
 o_date		 date,
 o_state		 number,
-d_state		 number
+d_state		 number,
+p_size       varchar2(3),
+r_state      number
 );
 
 create table review(
@@ -62,11 +65,10 @@ quantity    number
 );
 
 
+create SEQUENCE seq_review;
 create SEQUENCE seq_product_size;
 create SEQUENCE seq_product_image;
 create SEQUENCE seq_shop_product;
 create SEQUENCE seq_notice;
 create SEQUENCE seq_product_order;
 
-alter table product_order add p_size varchar2(3);
-alter table product_order add r_state number;

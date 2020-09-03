@@ -13,4 +13,6 @@ public interface Dao {
 	void update(String type, int num);
 	
 	int selectProductOrderNum();
+	
+	void updateR_State(String m_id, int p_num);
 }

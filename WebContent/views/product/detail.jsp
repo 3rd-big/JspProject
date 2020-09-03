@@ -46,11 +46,13 @@
 		}
 
 		#btn_buy, #btn_cart{
-			display: inline;
-			border: 1px solid #bcbcbc;
-			margin: 10px;
-			padding: 15px;
+			float: left;
 		}
+		
+		#btn_cart{
+			margin-left: 20px;
+		}
+
 		.size-selected{
 			background-color: gray;
 			color: white;
@@ -67,6 +69,18 @@
 	
 		<!-- 장바구니 클릭 상품 번호 전달 -->
 		function addCart(productNum) {
+			
+			if(${sessionScope.id == null}){
+				var result = confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?');
+					
+				if(result){
+					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
+					return;
+				}else{
+					return;	
+				}
+			}
+			
 			var size = $(".size-selected").text();
 			var quantity = $("#select-quantity").text();
 			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
@@ -82,8 +96,17 @@
 			});
 			
 		}
+		
+		function addReview(id) {
+			alert(id);
+			if(id == null){
+				alert('로그인 후 시도해주세요');
+			}else{
+				alert('구매 후 시도해주세요');
+			}
+		}
 	
-	
+		
 		$(document).ready(function(){
 			
 			$.ajax({
@@ -92,7 +115,7 @@
 				data : "p_num=" + ${product.num},
 				success : function(result) {
 					arr = $.parseJSON(result);
-					var html = "";
+					var html = "<img id='smallImg' src='${product.img }' width='50' height='75'><br><br>";
 					for(i = 0; i<arr.length; i++){
 						html += "<img id='smallImg' src='" + arr[i].img + "' width='50' height='75'><br><br>";
 					}
@@ -201,12 +224,12 @@
 					</a>
 				</div>
 				<br><br>
-				<div style="text-align: center;">
-					<div id="btn_buy" >
-						구매하기
+				<div class="buy-cart">
+					<div id="btn_buy">
+						<input class="btn btn-outline-dark" type="button" value="결제하기">
 					</div>
 					<div id="btn_cart">
-						<a href="#" onClick="addCart('${product.num}');">장바구니</a>
+						<input class="btn btn-dark" type="button" value="장바구니" onClick="addCart('${product.num}');">
 					</div>
 				</div>
 			</div>
@@ -244,7 +267,7 @@
 				<small class="text-muted">Posted by Anonymous on 3/1/17</small>
 				<hr>
 				 --%>
-				<a href="#" class="btn btn-success">Leave a Review</a>
+				<input type="button" class="btn btn-success" value="Leave a Review" onClick="addReview(<%=(String)session.getAttribute("id")%>);" > <!-- 미완성 -->
 			</div>
 		</div>
 		<!-- /.card -->

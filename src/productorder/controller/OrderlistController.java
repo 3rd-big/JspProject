@@ -49,7 +49,7 @@ public class OrderlistController extends HttpServlet {
 			ProductVO p = service_prod.getProduct(o.getP_num());
 			
 			System.out.println("p_num은"+o.getP_num());
-			
+			System.out.println("r_state는"+o.getR_state());
 			o.setProd_name(p.getName());
 			o.setProd_img(p.getImg());
 		}

@@ -61,18 +61,35 @@
 		}
 	}
 	
-	function addReview() {
+	function reviewInsert() {
 		
-		var p_num = document.getElementById("p_num");
-		var message = document.getElementById("message");
-		var r_img = document.getElementById("r_img");
-		var rate = document.getElementById("rate");
+		var p_num = document.getElementById("p_num").value;
+		var message = document.getElementById("message").value;
+		var img = document.getElementById("r_img").value;
+		var rate = document.getElementById("rate").value;
 
-		document.reviewform.action = '${pageContext.request.contextPath }/AddReviewController?p_num='+p_num;
-		opener.parent.location.reload(); 
+		
+		/* document.reviewform.action = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img; */
+		window.opener.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img;			
+		self.close();
+		/* document.reviewform.action = '${pageContext.request.contextPath }/AddReviewController?p_num='+p_num;
+		opener.parent.location.reload(); */
 		window.close();
+ 	}
+	
+	function reviewInsert2(){
+		var p_num = document.getElementById("p_num").value;
+		var message = document.getElementById("message").value;
+		var r_img = document.getElementById("r_img").value;
+		var rate = document.getElementById("rate").value;
+
+		/* window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img; */
+		window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img;
+		
+
 	}
 	
+
 </script>
 <style type="text/css">
 .uploadhidden {
@@ -173,7 +190,7 @@
 					<div class="col-md-12 text-center">
 						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
 						<button type="reset" class="btn btn-default btn-md">Clear</button>
-						<button type="submit" class="btn btn-primary btn-md" onclick="addReview();">Submit2</button>
+						<button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2();window.close();">팝업일땐 여기</button>
 					</div>
 				</div>
 				</td>
