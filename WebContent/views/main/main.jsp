@@ -21,24 +21,40 @@
 	<!-- Navigation -->
 	<%@include file ="/views/common/header.jsp" %>
 
+	<div class="container">
+	
+		<div class="row">
+	
+			<div class="col-lg-12">
+			
+				<div>
+					<h1>신상품</h1> 
+					<hr>
+					<c:forEach var="newProduct" items="${newProducts }">
+						<a href="${pageContext.request.contextPath }/DetailController?num=${newProduct.num }">
+							<img src="${newProduct.img}" width="200" height="300">
+						</a>
+					</c:forEach>
+				</div>
+				<div>
+					<h1>인기순</h1>
+					<hr>
+					<c:forEach var="bestProduct" items="${bestProducts }">
+						<a href="${pageContext.request.contextPath }/DetailController?num=${bestProduct.num }">
+							<img src="${bestProduct.img}" width="200" height="300">
+						</a>
+					</c:forEach>
+				</div>
+		
+			</div>
+			<!-- /.col-lg-12 -->
+		
+		</div>
+		<!-- /.row -->
 
-	<div>
-		<h1>신상품</h1> 
-		<hr>
-		<c:forEach var="newProduct" items="${newProducts }">
-			<a href="${pageContext.request.contextPath }/DetailController?num=${newProduct.num }">
-				<img src="${newProduct.img}" width="200" height="300">
-			</a>
-		</c:forEach>
 	</div>
-	<div>
-		<h1>인기순</h1>
-		<hr>
-		<c:forEach var="bestProduct" items="${bestProducts }">
-			<a href="${pageContext.request.contextPath }/DetailController?num=${bestProduct.num }">
-				<img src="${bestProduct.img}" width="200" height="300">
-			</a>
-		</c:forEach>
-	</div>
+	<!-- /.container -->
+
+
 </body>
 </html>
