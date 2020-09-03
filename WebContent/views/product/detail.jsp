@@ -44,7 +44,6 @@
 			border: 1px solid #bcbcbc;
 			padding: 10px;
 		}
-
 		#btn_buy, #btn_cart{
 			float: left;
 		}
@@ -52,7 +51,6 @@
 		#btn_cart{
 			margin-left: 20px;
 		}
-
 		.size-selected{
 			background-color: gray;
 			color: white;
@@ -60,7 +58,6 @@
 		#select-quantity{
 			padding:10px;
 		}
-
 	</style>	
 
 
@@ -122,7 +119,6 @@
 					$("#detail-img").html(html);
 				}
 			});
-
 			<!-- 상세 이미지에 마우스 올려놓으면 우측 확대이미지 변경 -->
 			$(document).on('mouseover', '#smallImg', function () {
 				var img = $(this).attr('src');
@@ -134,7 +130,6 @@
 				var offset = $("#product-reviews").offset();
 				$("html").animate({scrollTop:offset.top}, 400);
 			});
-
 			<!-- 사이즈 선택 -->
 			$("ul.size-list li").click(function () {
 				$("ul.size-list li").removeClass("size-selected");
@@ -160,7 +155,6 @@
 				$("#countDown").attr("src", "sample_img/ico_decQ.png");
 			});
 			
-
 			
 		});
 	</script>
