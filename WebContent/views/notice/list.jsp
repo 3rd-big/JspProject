@@ -56,19 +56,18 @@
 
 	<div class="container">
 		<br>
-		<h3 class="text-center my-5">공지사항</h3>
-
+		<h3 class="text-center my-4">공지사항</h3>
 		<div class="button" align=" right">
 			<c:if test="${sessionScope.memberType == 0 }">
 				<button id="addbtn" type="button" class="btn btn-primary active"
-					style="margin: 0 90px; width: 100px; height: 35px; background-color: #4CAF50; color: white;"
+					style="margin: 0 auto; width: 100px; height: 35px; background-color: #4CAF50; color: white;"
 					onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">write</button>
 			</c:if>
 		</div>
 		<br>
 		<div class="table">
 			<table class="table table-hover  table-sm mt-3 mb-5"
-				style="margin: 0 60px;" id="twbsPagination">
+				style="margin: 0 auto;" id="twbsPagination">
 				<thead class="thead-light ">
 					<tr class="d-flex ">
 						<th class="text-center col-1">no.</th>
@@ -87,7 +86,6 @@
 								style="color: black;"> ${notice.title }</a></td>
 							<td class="text-center  col-3">${notice.n_date }</td>
 							<td class="text-center  col-2" id="view_count">${notice.view_count }</td>
-
 						</tr>
 					</c:forEach>
 				</tbody>
