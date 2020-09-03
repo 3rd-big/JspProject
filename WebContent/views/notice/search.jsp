@@ -32,18 +32,15 @@
 				style="width:900px; height: 300px; margin: 0 150px; padding: 0 100px">
 
 				<tr>
-				<th>title</th>
-				<td><input type="text" class="form-control" name="title"
+				<td>title<input type="text" class="form-control" name="title"
 						value="${notice.title }" size="100" ${str } readonly style="background-color:white"></td>
-					<th>no.</th>
-					<td><input type="text" class="form-control"
+					<td>no.<input type="text" class="form-control"
 						value="${notice.num }" name="num" size="20" readonly style="background-color:white"></td>
 				</tr>
 				<tr>
-					<th>content</th>
-					<td><textarea class="form-control" name="content" rows="7"
+					<td>content<textarea class="form-control" name="content" rows="7"
 							cols="100" readonly style="background-color:white">${notice.content }</textarea></td>
-					<th>date</th><td><input type="text" class="form-control"
+					<td>date<input type="text" class="form-control"
 						value="${notice.n_date }" size="20" readonly style="background-color:white"></td>
 				</tr>
 

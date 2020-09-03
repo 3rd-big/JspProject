@@ -218,8 +218,7 @@ public class DaoImpl implements Dao {
 		String sql = "update notice set view_count = view_count+1 where num=?";
 		try {
 			pstmt = conn.prepareStatement(sql);			
-			pstmt.setInt(1, notice.getView_count());
-			pstmt.setInt(2, notice.getNum());
+			pstmt.setInt(1, notice.getNum());
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
