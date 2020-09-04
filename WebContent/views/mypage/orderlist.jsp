@@ -54,7 +54,7 @@
 }
 .orderlistbox{
 	margin-left: 50px;
-	width:850px; 
+	width:850px;
 	max-width:100%;
 }
 table{
