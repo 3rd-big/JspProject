@@ -31,8 +31,9 @@
 body{
 	font:Apple SD Gothic Neo;
 }
-.btn{
+.btns{
 	width: 100%;
+	margin-left: 40%;
 }
 
 .btn_signup{
@@ -55,6 +56,7 @@ function hello(){
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class="container">
+	 <div class="row">
 	<div class = "enrollcomponent">
 		
 		<form action="${pageContext.request.contextPath }/JoinController" name="f" method="post">
@@ -89,7 +91,7 @@ function hello(){
 					<label for="InputAddress">Address</label> <input
 						type="text" class="form-control" id="addr" name="addr">
 				</div>
-				<div class="btn">
+				<div class="btns">
 					<div class="btn_signup">
 						<button type="submit" class="btn btn-primary" onclick="hello();">SignUp</button>
 					</div>
@@ -98,7 +100,7 @@ function hello(){
 		</form>
 	</div>
 	</div>
-
+	</div>
 
 
 

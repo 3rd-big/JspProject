@@ -12,6 +12,9 @@ public class MemberVO {
 	public MemberVO() {
 		
 	}
+	public MemberVO(String id) {
+		
+	}
 	
 	public MemberVO(String id, String pwd, String name, String email, String addr, int type, int point) {
 		super();

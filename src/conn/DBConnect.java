@@ -10,7 +10,7 @@ public class DBConnect {
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
 
 
-	String jdbc_url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String jdbc_url = "jdbc:oracle:thin:@192.168.0.6:1521:XE";
 
 
 
@@ -28,7 +28,7 @@ public class DBConnect {
 
 			// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
 
-			conn = DriverManager.getConnection(jdbc_url, "c##user_ora", "yeon");
+			conn = DriverManager.getConnection(jdbc_url, "c##ora_user", "kim");
 
 
 

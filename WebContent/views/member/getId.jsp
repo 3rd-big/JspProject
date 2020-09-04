@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="model.MemberVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -51,20 +51,14 @@ body{
 	 <div class="row">
 	<div class = "searchIDcomponent">
 		
-		<form action="${pageContext.request.contextPath }/SearchIdController" name="f" method="post">
+		
 			<fieldset>
 				<legend style="text-align:center;">아이디 찾기</legend>
 					<br>
+				
 				<div class="form-group1">
-					<!-- <label for="InputID">ID</label>  -->
-					<input type="text" class="form-control" id="name" name="name" placeholder="name">
-				</div>
-					<br>
-				<div class="form-group1">
-					<input type="email" class="form-control" id="email" name="email"
-						placeholder="email">
-						<small 
-						id="searchIdHelp" class="form-text text-muted">가입 시 입력했던 이메일 주소</small>
+					${m.id }
+						
 				</div>
 					<br>
 					
@@ -72,13 +66,12 @@ body{
 					<div class="btn_login">
 						<button type="submit" class="btn btn-outline-success">아이디 찾기</button>
 					</div>
-					
 				</div>
 					
 				
 			</fieldset>
 			
-		</form>
+		
 		</div>
 	</div>
 	</div>
