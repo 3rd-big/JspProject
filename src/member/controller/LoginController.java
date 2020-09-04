@@ -46,8 +46,6 @@ public class LoginController extends HttpServlet {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		
-		
-		
 
 		int type = 3;
 		// id로 멤버 검색
@@ -67,8 +65,14 @@ public class LoginController extends HttpServlet {
 				path = "/MainListController";
 			}
 		}
+
+		/* String[] previousUriTokens = (request.getHeader("Referer")).split("/"); */
+		String[] previousUriTokens = (request.getParameter("previousUriToken")).split("/"); 
+		String previousUri = previousUriTokens[previousUriTokens.length - 1];
+		System.out.println(request.getParameter("previousUriToken") + " Uri를 갖고 LoginController로 넘어옴");
+		
 		// 메뉴 페이지로 이동
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(previousUri);
 		if (dispatcher != null) {
 			dispatcher.forward(request, response);
 		}

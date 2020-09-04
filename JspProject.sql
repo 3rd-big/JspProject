@@ -29,7 +29,8 @@ o_date		 date,
 o_state		 number,
 d_state		 number,
 p_size       varchar2(3),
-r_state      number
+r_state      number,
+code_num     number
 );
 
 create table review(
@@ -73,3 +74,4 @@ create SEQUENCE seq_notice;
 create SEQUENCE seq_product_order;
 
 alter table product_order add code_num number;
+

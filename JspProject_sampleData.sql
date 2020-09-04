@@ -433,70 +433,70 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 15, '/upload_img/LW
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '프랙티컬 플레이 쇼츠 3.5"', 93000, '/upload_img/LW7BF4S_036763_1.jpg', 
                             '벼우면서도 모양이 흐트러지지 않는 속건성 원단으로 통기성이 탁월하고 4방 스트레치로 신축성이 뛰어나요|미디엄 라이즈, 인심길이 9cm (3.5”)', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 21, '/upload_img/LW7BF4S_036763_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 21, '/upload_img/LW7BF4S_036763_3.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 21, '/upload_img/LW7BF4S_036763_4.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 21, '/upload_img/LW7BF4S_036763_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 16, '/upload_img/LW7BF4S_036763_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 16, '/upload_img/LW7BF4S_036763_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 16, '/upload_img/LW7BF4S_036763_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 16, '/upload_img/LW7BF4S_036763_5.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '트랙 댓 MR 쇼츠 5" *라이너', 78000, '/upload_img/LW7AVKS_0002_1.jpg', 
                             '장거리 러닝에 필요한 기능성 디테일을 갖춘 쇼츠예요. 마음이 이끄는 곳으로 달려보세요
 스위프트 원단은 땀 배출력이 탁월하고 (2-way) 스트레치라 신축성이 뛰어나요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 22, '/upload_img/LW7AVKS_0002_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 22, '/upload_img/LW7AVKS_0002_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 17, '/upload_img/LW7AVKS_0002_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 17, '/upload_img/LW7AVKS_0002_3.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '스피드 업 MR 쇼츠 4" *라이너', 78000, '/upload_img/LW7AVNT_035167_1.jpg', 
                             '가벼운 스위프트 원단은 땀 배출력이 탁월하고 4방 스트레치라 신축성이 뛰어나요
 Lycra™ 엘라스테인 원사가 더해진 라이너는 가볍고 땀 배출력이 탁월하며 속건성이에요', 
                            sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 23, '/upload_img/LW7AVNT_035167_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 23, '/upload_img/LW7AVNT_035167_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 18, '/upload_img/LW7AVNT_035167_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 18, '/upload_img/LW7AVNT_035167_3.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '킵 무빙 팬츠', 29000, '/upload_img/LW5CWDS_0001_1.jpg', 
                             '시원하고 부드러운 Full-On™ Luxtreme™ 원단은 땀 배출력이 탁월하고 4방 스트레치라 신축성이 뛰어나요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 24, '/upload_img/LW5CWDS_0001_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 24, '/upload_img/LW5CWDS_0001_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 19, '/upload_img/LW5CWDS_0001_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 19, '/upload_img/LW5CWDS_0001_3.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '패스트 앤 프리 HR 타이츠 25" *리플렉티브', 184000, '/upload_img/LW5BUGS_034135_1.jpg', 
                             '속건성에 땀 배출력이 탁월한 Nulux™ 원단은 가벼우면서도 커버력이 좋아요
 Lycra™ 엘라스테인 원사가 더해져 신축성과 복원력이 탁월해요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 25, '/upload_img/LW5BUGS_034135_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 25, '/upload_img/LW5BUGS_034135_7.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 20, '/upload_img/LW5BUGS_034135_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 20, '/upload_img/LW5BUGS_034135_7.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '트레인 타임즈 7/8 팬츠 *아시아', 138000, '/upload_img/LW5CFEA_0002_1.jpg', 
                             '유산소부터 근력 운동까지 함께할 수 있는 하이라이즈 타이츠예요. 메쉬 패널을 더해 바람이 솔솔 통하고 웨이스트 밴드가 몸에 밀착되어 흘러내리거나 조이지 않아요', 
                            sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 26, '/upload_img/LW5CFEA_0002_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 26, '/upload_img/LW5CFEA_0002_3.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 26, '/upload_img/LW5CFEA_0002_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 21, '/upload_img/LW5CFEA_0002_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 21, '/upload_img/LW5CFEA_0002_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 21, '/upload_img/LW5CFEA_0002_4.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '얼라인 HR 팬츠 25"', 65000, '/upload_img/LW5BYXS_044947_1.jpg', 
                             '가벼운 하이라이즈 팬츠로 거슬림은 최소화하고 편안함은 최대화했어요. 물 흐르듯 자연스럽게 요가 동작을 이어가 보세요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 27, '/upload_img/LW5BYXS_044947_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 27, '/upload_img/LW5BYXS_044947_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 22, '/upload_img/LW5BYXS_044947_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 22, '/upload_img/LW5BYXS_044947_3.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '트레인 타임즈 7/8 팬츠', 138000, '/upload_img/LW5AMOS_0001_1.jpg', 
                             '트레이닝부터 부트 캠프까지 모두 커버하는 활용도 높은 타이츠예요. 웨이스트 밴드가 몸에 밀착되어 흘러내리거나 조이지 않아요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 28, '/upload_img/LW5AMOS_0001_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 28, '/upload_img/LW5AMOS_0001_3jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 23, '/upload_img/LW5AMOS_0001_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 23, '/upload_img/LW5AMOS_0001_3jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '온 더 플라이 조거 *Luxtreme', 169000, '/upload_img/LW5CUWS_024921_1.jpg', 
                             '온 더 플라이 컬렉션: 편안하면서도 세련된 스타일의 조거예요. 신비롭고 아름다운 자연을 마음에 담는 여행 파트너로 또는 데일리 오피스웨어로 제격이에요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 29, '/upload_img/LW5CUWS_024921_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 29, '/upload_img/LW5CUWS_024921_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 24, '/upload_img/LW5CUWS_024921_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 24, '/upload_img/LW5CUWS_024921_3.jpg');
 
 
 
