@@ -42,9 +42,9 @@ public class SearchIdController extends HttpServlet {
 
 		String email = request.getParameter("email");
 
-
 		MemberVO m=service.searchId(email);
-
+		request.setAttribute("m", m);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/member/getId.jsp");
 		if (dispatcher != null) {
 			dispatcher.forward(request, response);

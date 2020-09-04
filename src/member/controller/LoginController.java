@@ -40,18 +40,7 @@ public class LoginController extends HttpServlet {
 		String path = "/views/member/login.jsp";
 		// 기능을 제공할 서비스 객체 생성
 		Service service = new ServiceImpl();
-
-		// 세션 생성
 		HttpSession session = request.getSession();
-		
-		
-		/*
-		 * System.out.println(request.getParameter("previousUriToken")); String[]
-		 * previousUriTokens = (request.getHeader("Referer")).split("/"); String
-		 * previousUri = previousUriTokens[previousUriTokens.length - 1];
-		 * System.out.println(previousUri);
-		 */
-		
 
 		// 로그인에 필요한 요청 파라메터을 읽는다.
 		String id = request.getParameter("id");

@@ -32,7 +32,14 @@ table{
 #product_name{
 	word-break:break-all;
 }
+.btns{
+	width: 100%;
+	margin-left: 40%;
+}
 
+.btn_gopay{
+	display: inline-block;
+}
 </style>
 
 
@@ -59,7 +66,7 @@ table{
 						<h3>장바구니 목록</h3>
 					</c:if>
 	
-	
+				<form action="${pageContext.request.contextPath }/User_EditController" name="f" method="post">
 					<table class="table table-hover table-sm mt-3 mb-5">
 						<thead class="thead-light1" style="background-color: white;">
 							<tr class="text-center">
@@ -83,12 +90,25 @@ table{
 									<td>${o.p_size } </td>
 									<td>${o.o_quantity}</td>
 									<td>${o.total_price }</td>
-									<td> 주문창연결</td>
+									<td scope="row"><input type="checkbox"></td>
 	
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					
+					<!-- 버튼 div -->
+					<div class="form-group">
+						<div class="btns">
+							<div class="btn_gopay">
+								<button type="submit" class="btn btn-outline-dark">결제</button>
+							</div>
+						</div>
+						</div>
+					
+				</form>
+					
+					
 				</div>
 			</div>
 		</div>

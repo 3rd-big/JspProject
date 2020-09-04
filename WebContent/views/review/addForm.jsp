@@ -83,8 +83,6 @@
 		var message = document.getElementById("message").text();
 		var r_img = document.getElementById("r_img").value;
 		var rate = document.getElementById("rate").value;   tsseo */
-		
-		
 
 		/* window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img; */
 		/* window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img;  tsseo */
@@ -93,8 +91,7 @@
 		var rate = document.getElementById("rate").value;
 		var img = document.getElementById("r_img").value;
 		// alert(img);	// C:\fakepath\top15.jpg
-		
-		
+
 		
 		close();	// tsseo
 		window.onunload = function () {
@@ -247,11 +244,8 @@
 				 <br>
 				<div class="form-group">
 					<div class="col-md-12 text-center">
-						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
+						<input type="button" class="btn btn-primary btn-md" value="작성" id="file_send" >
 						<button type="reset" class="btn btn-default btn-md">Clear</button>
-						<!-- <button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2();window.close();">팝업일땐 여기</button>	 tsseo -->
-						<button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2('<%=request.getParameter("p_num")%>');">팝업일땐 여기</button>
-						<input type="button" class="btn btn-primary btn-md" value="태수" id="file_send" >
 						<%-- <input type="hidden" id="hidden" value="<%=request.getParameter("num")%>"> <!-- tsseo 이거 필요함 --> --%>
 						<input type="hidden" id="hidden" value="<%=request.getAttribute("p_num")%>">
 						<input type="hidden" id="hidden2" value="<%=request.getAttribute("num")%>">
@@ -259,16 +253,16 @@
 						
 					</div>
 				</div>
+				</fieldset>
+				</form>
+				
+			</div>
 				</td>
 
-
-				</fieldset>
-
-				</form>
 			</tr>
+			</div>
 	</table>
-
-
+	</div>
 
 </div>
 </body>

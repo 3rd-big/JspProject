@@ -26,6 +26,7 @@
     margin-left: 30%;
     padding-top: 100px;
     padding-bottom: 200px;
+    height:600px;
 }
 
 
@@ -36,8 +37,8 @@ body{
 	width: 100%;
 	margin-left: 30%;
 }
-.btn_login,
-.btn_signup{
+
+btn_find{
 	display: inline-block;
 }
 </style>
@@ -69,7 +70,7 @@ body{
 					<br>
 					
 				<div class="btns">
-					<div class="btn_login">
+					<div class="btn_find">
 						<button type="submit" class="btn btn-outline-success">아이디 찾기</button>
 					</div>
 					

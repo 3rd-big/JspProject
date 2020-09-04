@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.ProductOrderVO;
 import model.ReviewVO;
 import review.service.Service;
 import review.service.ServiceImpl;
@@ -46,8 +47,8 @@ public class AddReviewController2 extends HttpServlet {
 		MultipartRequest multi = null;
 	   
 		
-		
-		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		//TODO 여기 
+		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
 			// 객체 생성하는 부분이 실제 톰캣서버에 업로드하는 과정이였음..
@@ -89,7 +90,13 @@ public class AddReviewController2 extends HttpServlet {
 		productorder.service.Service service_po = new productorder.service.ServiceImpl();
 		service_po.editR_State(m_id,Integer.parseInt(multi.getParameter("p_num")));
 		
-		
+		// 적립금
+		int o_num = Integer.parseInt(multi.getParameter("num"));
+		ProductOrderVO po = new ProductOrderVO();
+				
+		service_po.editPoint(m_id, o_num);
+
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

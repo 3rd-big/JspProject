@@ -112,10 +112,7 @@ table{
 								<td>${o.total_price } </td> 
 								<td>${o.o_date }</td>
 								<c:if test="${o.r_state==0 }">
-									<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp?p_num=${o.p_num }&o_num=${o.num}">상품평 작성</a></td><!-- o.p_num 전달 태수 -->
-									<td><button type="button" class="btn btn-link" onclick="showPopup('${o.p_num }','${o.num }');">팝업에서작성</button> </td>
-									<td><button type="submit" class="btn btn-link" onclick="reviewAddFormPopUp('${o.p_num }','${o.num }');">태수</button> </td>
-
+									<td><button type="submit" class="btn btn-outline-secondary" onclick="reviewAddFormPopUp('${o.p_num }','${o.num }');">작성하기</button> </td>
 								</c:if>
 								<c:if test="${o.r_state==1 }">
 									<td>작성완료</td>

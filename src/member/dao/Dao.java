@@ -16,5 +16,5 @@ public interface Dao {
 	ArrayList<MemberVO> selectMemberByReviewId(ArrayList<ReviewVO> r);
 	
 	MemberVO selectId(String email);
-
+	void updatePwd(String email, String id);
 }

@@ -62,6 +62,12 @@ public class ServiceImpl implements Service {
 		return dao.selectId(email);
 	}
 
+	@Override
+	public void editPwd(String email, String id) {
+		dao.updatePwd(email, id);
+		
+	}
+
 	
 	
 

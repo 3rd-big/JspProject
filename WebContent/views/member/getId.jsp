@@ -26,18 +26,21 @@
     margin-left: 30%;
     padding-top: 100px;
     padding-bottom: 200px;
+    height:600px;
 }
-
+.spantext{
+	text-align: center;
+}
 
 body{
 	font:Apple SD Gothic Neo;
 }
 .btns{
 	width: 100%;
-	margin-left: 30%;
+	margin-left:10%;
 }
 .btn_login,
-.btn_signup{
+.btn_findpwd{
 	display: inline-block;
 }
 </style>
@@ -57,15 +60,23 @@ body{
 					<br>
 				
 				<div class="form-group1">
-					${m.id }
-						
+					<c:if test="${m.id ==null}">
+						<p class="spantext"> 잘못된 이메일 혹은 아이디를 찾을 수 없습니다.</p>
+					</c:if>
+					<c:if test="${m.id !=null}">
+						<p class="spantext" >${m.name }님의 아이디는  ' ${m.id } '입니다.</p>
+					</c:if>
 				</div>
 					<br>
 					
 				<div class="btns">
 					<div class="btn_login">
-						<button type="submit" class="btn btn-outline-success">아이디 찾기</button>
+						<input type="button" class="btn btn-primary" value="로그인하러가기" onclick="location.href='views/member/login.jsp'"/>
 					</div>
+					<div class="btn_findpwd">
+						<input type="button" class="btn btn-outline-primary" value="패스워드찾기" onclick="location.href='views/member/searchPwd.jsp'"/>
+					</div>
+
 				</div>
 					
 				
