@@ -57,6 +57,11 @@ public class AddReviewController2 extends HttpServlet {
 			review.setContent(multi.getParameter("message"));
 			review.setRate(Integer.parseInt(multi.getParameter("rate")));
 			
+			
+			// TODO 이 부분 적립금수정에 사용
+			System.out.println("num값: " + Integer.parseInt(multi.getParameter("num")));
+			
+			
 			// 전송한 전체 파일이름들을 가져옴
 			Enumeration files = multi.getFileNames();
 			

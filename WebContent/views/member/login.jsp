@@ -50,7 +50,6 @@ body{
 	<div class="container">
 	 <div class="row">
 	<div class = "logincomponent">
-		
 		<form action="${pageContext.request.contextPath }/LoginController" name="f" method="post">
 			<fieldset>
 				<legend style="text-align:center;">LOG IN</legend>
@@ -82,7 +81,7 @@ body{
 					<a href="${pageContext.request.contextPath }/views/member/searchPwd.jsp">비밀번호 찾기</a>
 				</div>
 			</fieldset>
-			
+			<input type="hidden" name="previousUriToken" value="<%=request.getHeader("Referer") %>" />
 		</form>
 		</div>
 	</div>

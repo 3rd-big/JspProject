@@ -124,6 +124,7 @@
  		var formData = new FormData(form);
  		
  		formData.append('p_num', $('#hidden').val());
+ 		formData.append('num', $('#hidden2').val());
 
 		$.ajax({
 			url: "${pageContext.request.contextPath }/AddReviewController2",
@@ -251,7 +252,10 @@
 						<!-- <button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2();window.close();">팝업일땐 여기</button>	 tsseo -->
 						<button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2('<%=request.getParameter("p_num")%>');">팝업일땐 여기</button>
 						<input type="button" class="btn btn-primary btn-md" value="태수" id="file_send" >
-						<input type="hidden" id="hidden" value="<%=request.getParameter("num")%>"> <!-- tsseo 이거 필요함 -->
+						<%-- <input type="hidden" id="hidden" value="<%=request.getParameter("num")%>"> <!-- tsseo 이거 필요함 --> --%>
+						<input type="hidden" id="hidden" value="<%=request.getAttribute("p_num")%>">
+						<input type="hidden" id="hidden2" value="<%=request.getAttribute("num")%>">
+						
 						
 					</div>
 				</div>
