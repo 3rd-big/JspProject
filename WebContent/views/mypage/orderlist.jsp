@@ -16,14 +16,31 @@
 	<!-- popup -->
 <script type="text/javascript">
 
-function showPopup(p_num,o_num) {
+
+<%-- 		function showPopup(p_num,o_num) {		tsseo 주석처리 0904 15:33
+
 			var title = "상품평 작성";
 
 			var url = "<%=request.getContextPath()%>/views/review/addForm.jsp?p_num="+p_num"&o_num="+o_num";
-			<%-- var url = "<%=request.getContextPath()%>/AddReviewFormController?p_num="+num; --%>
+			var url = "<%=request.getContextPath()%>/AddReviewFormController?p_num="+num;
 			var options = 'top=50, left=400, width=800, height=700, status=no, menubar=no, toolbar=no';
 		    window.open(url, title, options);
-		} 
+		} --%>
+		
+		function popUpClosed() {
+			location.href="${pageContext.request.contextPath }/OrderlistController?o_state=1";
+		}
+		
+		function reviewAddFormPopUp(num) {
+
+ 			var pop_title = "리뷰 작성";
+
+			window.open("", pop_title, "width=800, height=700, left=200, top=200");
+			
+			var frmData = document.orderList;
+			frmData.target = pop_title;
+			frmData.action = "<%=request.getContextPath()%>/AddReviewPopupController?num=" + num;
+		}
 		
 </script>
 <style type="text/css">
@@ -97,6 +114,8 @@ table{
 								<c:if test="${o.r_state==0 }">
 									<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp?p_num=${o.p_num }&o_num=${o.num}">상품평 작성</a></td><!-- o.p_num 전달 태수 -->
 									<td><button type="button" class="btn btn-link" onclick="showPopup('${o.p_num }','${o.num }');">팝업에서작성</button> </td>
+									<td><button type="submit" class="btn btn-link" onclick="reviewAddFormPopUp('${o.p_num }');">태수</button> </td>
+
 								</c:if>
 								<c:if test="${o.r_state==1 }">
 									<td>작성완료</td>

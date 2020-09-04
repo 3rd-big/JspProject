@@ -77,18 +77,69 @@
 		window.close();
  	}
 	
-	function reviewInsert2(){
-		var p_num = document.getElementById("p_num").value;
-		var message = document.getElementById("message").value;
+	function reviewInsert2(p_num){
+		
+/* 		var p_num = document.getElementById("p_num").value;
+		var message = document.getElementById("message").text();
 		var r_img = document.getElementById("r_img").value;
-		var rate = document.getElementById("rate").value;
-
-		/* window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img; */
-		window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img;
+		var rate = document.getElementById("rate").value;   tsseo */
+		
 		
 
+		/* window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img; */
+		/* window.parent.location.href = '${pageContext.request.contextPath}/AddReviewController?p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img;  tsseo */
+		
+		var message = document.getElementById("message").value;
+		var rate = document.getElementById("rate").value;
+		var img = document.getElementById("r_img").value;
+		// alert(img);	// C:\fakepath\top15.jpg
+		
+		
+		
+		close();	// tsseo
+		window.onunload = function () {
+			if(window.opener && !window.opener.closed){
+				window.opener.popUpClosed(p_num, message, rate, img);
+			}
+		}
 	}
 	
+	function ParentRedirect() {
+		
+   		/* opener.location.href = '${pageContext.request.contextPath }/OrderlistController?o_state=1'; */
+		
+		self.close();
+   		
+		window.onunload = function () {
+			if(window.opener && !window.opener.closed){
+				window.opener.popUpClosed();
+			}
+		}
+		
+	}
+	
+	$(document).on('click', '#file_send', function () {
+		
+  		var form = $('#fileUploadForm')[0];
+ 		var formData = new FormData(form);
+ 		
+ 		formData.append('p_num', $('#hidden').val());
+
+		$.ajax({
+			url: "${pageContext.request.contextPath }/AddReviewController2",
+			data: formData,
+			async: false,	// ajax 동기처리로 바꿈
+			processData: false,
+			contentType: false,
+			type: 'POST',
+			success: function (result) {
+				ParentRedirect();
+			}
+		});
+		
+	});
+	
+
 
 </script>
 <style type="text/css">
@@ -139,6 +190,8 @@
 	<!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
+
+
 	<div class="row">
 		<h2 style="text-align: center">상품평 작성</h2>
 	<br>
@@ -147,17 +200,16 @@
 			<tr>
 			<td width="77%">
 			<div class="">
-				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewController?p_num=<%=request.getParameter("p_num") %>&o_num=<%=request.getParameter("o_num") %>"	<%-- 태수 --%>   
-				name="reviewform" enctype="multipart/form-data" method="post" >
+				<%-- <form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewController?p_num=<%=request.getParameter("p_num") %>&o_num=<%=request.getParameter("o_num") %>"	태수   
+				name="reviewform" enctype="multipart/form-data" method="post" > --%>
+				<form class="form-horizontal" id="fileUploadForm" name="reviewform" enctype="multipart/form-data" method="post" >
 				<fieldset>
+
 
 				<!-- Rating -->
 				<div class="form-group">
 					<label class="col-md-3 control-label" for="rating">Your rating</label>
-					<!-- <form> -->
-						<input type="text" name="rate" class="rating rating-loading"
-							data-size="md" title="">
-					<!-- </form> -->
+					<input type="text" name="rate" class="rating rating-loading" data-size="md" title=""  id="rate"> <br>
 				</div>
 
 
@@ -166,7 +218,7 @@
 					<label class="col-md-3 control-label" for="message">Your message</label>
 					<div class="col-md-9">
 						<textarea class="form-control" id="message" name="message"
-							placeholder="Please enter your feedback here..." rows="5"></textarea>
+							placeholder="Please enter your feedback here..." rows="5" ></textarea>
 					</div>
 				</div>
 
@@ -176,7 +228,7 @@
 					<div class="col-md-9">
 						<!-- <label for="cma_file">사진첨부</label> -->
 						<!-- <form id="form1" runat="server">  태수 --> 
-							<input type="file" name="r_img" onchange="readURL(this);">
+							<input type="file" name="r_img" onchange="readURL(this);" id="r_img">
 							<img
 								style="height: 75px; border: 1px solid #000; margin: 5px"
 								id="blah" src="#" alt="" />
@@ -196,7 +248,11 @@
 					<div class="col-md-12 text-center">
 						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
 						<button type="reset" class="btn btn-default btn-md">Clear</button>
-						<button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2();window.close();">팝업일땐 여기</button>
+						<!-- <button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2();window.close();">팝업일땐 여기</button>	 tsseo -->
+						<button type="submit" class="btn btn-primary btn-md" onclick="reviewInsert2('<%=request.getParameter("p_num")%>');">팝업일땐 여기</button>
+						<input type="button" class="btn btn-primary btn-md" value="태수" id="file_send" >
+						<input type="hidden" id="hidden" value="<%=request.getParameter("num")%>"> <!-- tsseo 이거 필요함 -->
+						
 					</div>
 				</div>
 				</td>
