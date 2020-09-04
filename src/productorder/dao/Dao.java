@@ -3,6 +3,7 @@ package productorder.dao;
 import java.util.ArrayList;
 
 import model.ProductOrderVO;
+import model.ProductVO;
 
 
 public interface Dao {
@@ -13,4 +14,10 @@ public interface Dao {
 	void update(String type, int num);
 	
 	int selectProductOrderNum();
+	
+	void updateR_State(String m_id, int p_num);
+	
+	ArrayList<ProductOrderVO> selectRecentOrder(String m_id);
+	
+	void updatePoint(String m_id, int o_num);
 }

@@ -39,11 +39,13 @@ public class EachReviewController extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("id");
 		
-		ArrayList<ReviewVO> list = service.getMyReviewAll(m_id);
+		int r_num = Integer.parseInt(request.getParameter("r_num"));
+		
+//		ArrayList<ReviewVO> list = service.getMyReviewAll(m_id);
 
-		ReviewVO r = new ReviewVO();
+		ReviewVO r = service.getReview(r_num);
 		request.setAttribute("r", r);
-		request.setAttribute("list", list);
+
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/updateForm.jsp");
 		dispatcher.forward(request, response);

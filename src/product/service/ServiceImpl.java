@@ -30,7 +30,11 @@ public class ServiceImpl implements Service{
 	public ArrayList<ProductVO> getNewProducts() {
 		return dao.selectNewProducts();
 	}
-	
+
+	@Override
+	public ArrayList<ProductVO> getCategoryProducts(String category) {
+		return dao.selectCategoryProducts(category);
+	}
 
 	@Override
 	public ArrayList<ProductImageVO> getDetailImgAll(int p_num) {

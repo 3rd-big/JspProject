@@ -51,4 +51,22 @@ public class ServiceImpl implements Service{
 		dao.insert(po);
 	}
 
+	@Override
+	public void editR_State(String m_id, int p_num) {
+		// TODO Auto-generated method stub
+		dao.updateR_State(m_id, p_num);
+	}
+
+	@Override
+	public ArrayList<ProductOrderVO> getRecentOrderList(String m_id) {
+		// TODO Auto-generated method stub
+		return dao.selectRecentOrder(m_id);
+	}
+
+	@Override
+	public void editPoint(String m_id, int o_num) {
+		dao.updatePoint(m_id, o_num);
+		
+	}
+
 }

@@ -20,6 +20,40 @@
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
 
+body{
+	font:Apple SD Gothic Neo;
+}
+.membershowbox{
+	margin-left: 50px;
+	width:850px; 
+	max-width:100%;
+}
+.pointbox{
+	background-color: black; 
+	padding:0.8em; 
+
+}
+#mypointmore{
+	font-size: 14px;
+	color: white; 
+	text-decoration: none;
+	cursor: pointer;
+	float: right;
+}
+.pointbox h6,
+.pointbox a{
+	display: inline;
+}
+
+.pointbox h6{
+ 	color: white;
+ 	font:Apple SD Gothic Neo;
+}
+.hellouser img,
+.hellouser h4{
+	display: inline;
+}
+
 
 </style>
 
@@ -32,7 +66,7 @@
 	<c:if test="${not empty sessionScope.id }">
 	
 	
-		<h1 class="my-4">My Page</h1>
+		<h1 class="my-4">MY PAGE</h1>
 		
 		<div class="row">
 			
@@ -40,14 +74,22 @@
 			<jsp:include page = "/views/common/mypageCategory.jsp" />
 			<!-- /leftNavigation -->
 
-	    
 
-			<div class = "membershowbox" style="height:500px;">
-				<h4 class="main">${sessionScope.id } 고객님, 안녕하세요!</h4>
-					포인트 : ${m.point} 점
-				<%-- <div class="orderedlist">
-						<%@include file ="/views/mypage/orderlist.jsp" %>
-				</div> --%>
+			<div class = "membershowbox">
+				<div class="hellouser">
+					<img src="sample_img/user_basic.png" alt="" width="75" height="75"> 
+					<h4 style="font-size:1.5em; "> &nbsp; ${sessionScope.id } 고객님, 안녕하세요!</h4>
+				</div>
+					<br>
+
+					<div class="pointbox" >
+						<h6> POINTS : &nbsp; ${m.point} 점 </h6>
+						 <a href="#" id="mypointmore" > more>> </a>		
+					</div>
+					<br> 
+				<div class="orderedlist">
+					<%@include file ="/views/mypage/recentOrderlist.jsp" %>
+				</div> 
 
 			</div>	
 		</div>

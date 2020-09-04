@@ -26,6 +26,7 @@ public class ReviewVO {
 		this.r_date = r_date;
 	}
 
+	
 	public int getNum() {
 		return num;
 	}

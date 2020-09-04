@@ -40,12 +40,10 @@ public class ProductAddController extends HttpServlet {
 		int seqProductNum = service.makeProductNum();
 		p.setNum(seqProductNum);
 		pi.setP_num(seqProductNum);
-		
-		
+				
 		String thumbnailImgName = "";
 		String detailImgName = "";
 		String inputTagName = "";
-		
 		
 		int maxSize = 1024 * 1024 * 10;
 		MultipartRequest multi = null;
@@ -53,7 +51,8 @@ public class ProductAddController extends HttpServlet {
 		// TODO 각자 Workspace 환경으로 바꿀 것
 //		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 //		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
-		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+//		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		try {
 			
 			if(-1 < request.getContentType().indexOf("multipart/form-data")) {
@@ -62,6 +61,12 @@ public class ProductAddController extends HttpServlet {
 			}
 
 			p.setName(multi.getParameter("name"));
+			
+			String[] categorys = multi.getParameterValues("category");
+			for (String category : categorys) {
+				p.setCategory(category);
+			}
+			
 			p.setPrice(Integer.parseInt(multi.getParameter("price")));
 			p.setContent(multi.getParameter("content"));
 

@@ -60,18 +60,22 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	
-	function addReview() {
+	function reviewEdit() {
+		var r_num = document.getElementBYId("r_num").value;
+		var p_num = document.getElementById("p_num").value;
+		var message = document.getElementById("message").value;
+		var img = document.getElementById("r_img").value;
+		var rate = document.getElementById("rate").value;
+		var r_date = document.getElementById("r_date").value;
 		
-		var p_num = document.getElementById("p_num");
-		var message = document.getElementById("message");
-		var r_img = document.getElementById("r_img");
-		var rate = document.getElementById("rate");
+		
+		window.parent.location.href = '${pageContext.request.contextPath}/EditReviewController?r_num=' + r_num +p_num=' + p_num + 'rate' + rate + 'message' + message+ 'img' + img + 'r_date=' + r_date;			
 
-		document.reviewform.action = '${pageContext.request.contextPath }/AddReviewController?p_num='+p_num;
-		opener.parent.location.reload(); 
+		self.close();
+
 		window.close();
-	}
+ 	}
+	
 	
 </script>
 <style type="text/css">
@@ -121,7 +125,7 @@
 			<tr>
 			<td width="77%">
 			<div class="">
-				<form class="form-horizontal" action="${pageContext.request.contextPath }/EditReviewController?p_num=<%=request.getParameter("p_num")%>&num=<%=request.getParameter("num") %>"	<%-- 태수 --%>   
+				<form class="form-horizontal" action="${pageContext.request.contextPath }/EditReviewController?r_num=<%=request.getParameter("r_num") %>" 
 				name="reviewform" enctype="multipart/form-data" method="post" >
 					<fieldset>
 
@@ -134,13 +138,16 @@
 								placeholder="Your name" class="form-control">
 						</div>
 					</div> -->
-
+				
+				
+				<input type="hidden" name="r_num" value="${r.num }" >
+				<input type="hidden" name="r_date" value="${r.r_date }">
 				<!-- Rating -->
 				<div class="form-group">
 					<label class="col-md-3 control-label" for="rating">Your rating</label>
 					<form>
 						<input type="text" name="rate" class="rating rating-loading"
-							data-size="md" title="" value="${r.rate}"> <br>
+							data-size="md" title="" value="${r.rate}"><br>
 					</form>
 				</div>
 
@@ -150,7 +157,7 @@
 					<label class="col-md-3 control-label" for="message">Your message</label>
 					<div class="col-md-9">
 						<textarea class="form-control" id="message" name="message"
-							 rows="5"> ${r.content }</textarea>
+							 rows="5">${r.content }</textarea>
 					</div>
 				</div>
 
@@ -163,7 +170,7 @@
 							<input type="file" name="r_img" onchange="readURL(this);">
 							<img
 								style="height: 75px; border: 1px solid #000; margin: 5px"
-								id="blah" src="/review_img/+${r.img}" alt="" />
+								id="blah" src="${r.img}" alt="" name="r_img2"/>
 						<!-- </form> -->
 
 					</div>
@@ -171,9 +178,9 @@
 
 				<div class="form-group">
 					<div class="col-md-12 text-center">
-						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
-						<button type="reset" class="btn btn-default btn-md">Clear</button>
-						<button type="submit" class="btn btn-primary btn-md" onclick="addReview();">Submit2</button>
+						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">수정</button>
+						<button type="button" class="btn btn-default btn-md" onclick="window.close();">취소</button>
+						<button type="submit" class="btn btn-primary btn-md" onclick="reviewEdit();">팝업수정</button>
 					</div>
 				</div>
 				</td>

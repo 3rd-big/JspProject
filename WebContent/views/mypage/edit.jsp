@@ -16,11 +16,21 @@
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+  
 <style type="text/css">
 
-
+.edituserbox{
+	width:700px;
+	margin-left: 50px;
+	max-width:100%;
+}
+.btn{
+	width: 100%;
+}
+.btn_modify,
+.btn_delAccount{
+	display: inline-block;
+}
 
 </style>
 <script>
@@ -62,6 +72,8 @@
 <body>
 	<!-- Navigation -->
 	<%@include file ="/views/common/header.jsp" %>
+	
+	
 	<!-- Page Container -->
 	<div class="container">
 	    <h1 class="my-4">My Page</h1>
@@ -70,12 +82,13 @@
 			<!-- leftNavigation -->
 			<jsp:include page = "/views/common/mypageCategory.jsp" />
 			<!-- /leftNavigation -->
-			</div>
+			
 			<div class = "edituserbox">
+			
+				<h3>내 정보 수정</h3>
+			
 				<form action="${pageContext.request.contextPath }/User_EditController" name="f" method="post" onsubmit="return check()">
 					<fieldset>
-						<legend>내 정보 수정</legend>
-						
 						<div class="form-group">
 							<label for="ViewID">ID</label> 
 							<input type="text" class="form-control" name="id" value="${m.id}" readonly>
@@ -101,16 +114,21 @@
 							<label for="EditAddress">Address</label> <input
 								type="text" class="form-control" name="addr" value="${m.addr }">
 						</div>
-						
-					
-						<button type="submit" class="btn btn-primary">수정</button>
-						
-						<button type="button" onclick="return checkrem();">회원탈퇴</button>
-					</fieldset>
+						<div class="btn">
+							<div class="btn_modify">
+								<button type="submit" class="btn btn-primary">수정</button>
+							</div>
+							<c:if test="${m.type==1}">
+							<div class="btn_delAccount">
+								<input type="button" class="btn btn-danger" onclick="return checkrem();"
+									value="탈퇴">
+							</div>
+							</c:if>
+						</div>
+						</fieldset>
 				</form>
 			</div>
 		</div>
-
  	</div>
 
 

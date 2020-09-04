@@ -44,12 +44,12 @@
 			border: 1px solid #bcbcbc;
 			padding: 10px;
 		}
-
 		#btn_buy, #btn_cart{
-			display: inline;
-			border: 1px solid #bcbcbc;
-			margin: 10px;
-			padding: 15px;
+			float: left;
+		}
+		
+		#btn_cart{
+			margin-left: 20px;
 		}
 		.size-selected{
 			background-color: gray;
@@ -58,7 +58,6 @@
 		#select-quantity{
 			padding:10px;
 		}
-
 	</style>	
 
 
@@ -67,19 +66,41 @@
 	
 		<!-- 장바구니 클릭 상품 번호 전달 -->
 		function addCart(productNum) {
-			var size = $(".size-selected").text();
-			var quantity = $("#select-quantity").text();
-			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
 	
-			$.ajax({
-				type: "post",
-				async: false,
-				url: "${pageContext.request.contextPath }/AddProductCartController",
-				data: allData,
-				success: function (result) {
-					alert("장바구니에 추가되었습니다");
+			if(${sessionScope.id == null}){
+				if(confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?')){
+					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
+					/* location.href= "${pageContext.request.contextPath }/LoginController"; */
+					return;
+				}else{
+					return;	
 				}
-			});
+			} else{
+				
+				if(confirm('장바구니에 추가하시겠습니까?')){
+					
+					var size = $(".size-selected").text();
+					var quantity = $("#select-quantity").text();
+					var allData = {"productNum": productNum, "size": size, "quantity": quantity};
+			
+					$.ajax({
+						type: "post",
+						async: false,
+						url: "${pageContext.request.contextPath }/AddProductCartController",
+						data: allData,
+						success: function (result) {
+							if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
+								<%-- location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0"; --%>
+								location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+							}
+							
+						}
+					});
+					
+				}
+				
+			}
+
 			
 		}
 		
@@ -93,8 +114,16 @@
 		}
 		
 		
+		function addReview(id) {
+			alert(id);
+			if(id == null){
+				alert('로그인 후 시도해주세요');
+			}else{
+				alert('구매 후 시도해주세요');
+			}
+		}
 	
-	
+		
 		$(document).ready(function(){
 			
 			$.ajax({
@@ -103,15 +132,15 @@
 				data : "p_num=" + ${product.num},
 				success : function(result) {
 					arr = $.parseJSON(result);
-					var html = "";
-					for(i = 0; i<arr.length; i++) {
+					var html = "<img id='smallImg' src='${product.img }' width='50' height='75'><br><br>";
+					for(i = 0; i<arr.length; i++){
 						html += "<img id='smallImg' src='" + arr[i].img + "' width='50' height='75'><br><br>";
 					}
 					$("#detail-img").html(html);
 				}
 			});
 
-			/* <!-- 상세 이미지에 마우스 올려놓으면 우측 확대이미지 변경 --> */
+			<!-- 상세 이미지에 마우스 올려놓으면 우측 확대이미지 변경 -->
 			$(document).on('mouseover', '#smallImg', function () {
 				var img = $(this).attr('src');
 				$('#viewImg').attr('src', img);
@@ -122,7 +151,6 @@
 				var offset = $("#product-reviews").offset();
 				$("html").animate({scrollTop:offset.top}, 400);
 			});
-
 			<!-- 사이즈 선택 -->
 			$("ul.size-list li").click(function () {
 				$("ul.size-list li").removeClass("size-selected");
@@ -148,7 +176,6 @@
 				$("#countDown").attr("src", "sample_img/ico_decQ.png");
 			});
 			
-
 			
 		});
 		
@@ -217,9 +244,14 @@
 				<div style="text-align: center;">
 					<div id="btn_buy" >
 						<a href="#" onClick="directOrder('${product.num}');">구매하기</a>
+<!-- =======
+				<div class="buy-cart">
+					<div id="btn_buy">
+						<input class="btn btn-outline-dark" type="button" value="결제하기">
+>>>>>>> c581696fac8162a4035ab84aeae888777d182010 -->
 					</div>
 					<div id="btn_cart">
-						<a href="#" onClick="addCart('${product.num}');">장바구니</a>
+						<input class="btn btn-dark" type="button" value="장바구니" onClick="addCart('${product.num}');">
 					</div>
 				</div>
 			</div>
@@ -257,7 +289,7 @@
 				<small class="text-muted">Posted by Anonymous on 3/1/17</small>
 				<hr>
 				 --%>
-				<a href="#" class="btn btn-success">Leave a Review</a>
+				<input type="button" class="btn btn-success" value="Leave a Review" onClick="addReview(<%=(String)session.getAttribute("id")%>);" > <!-- 미완성 -->
 			</div>
 		</div>
 		<!-- /.card -->

@@ -42,13 +42,9 @@ public class ListReviewController extends HttpServlet {
 		String m_id = (String)session.getAttribute("id");
 		
 		ArrayList<ReviewVO> list = service.getMyReviewAll(m_id);
-		
-
 
 		request.setAttribute("list", list);
 
-		
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");
 		dispatcher.forward(request, response);
 	}

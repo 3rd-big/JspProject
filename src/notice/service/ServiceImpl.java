@@ -37,18 +37,16 @@ public class ServiceImpl implements Service {
 		dao.delete(num);
 	}
 
-	@Override
-	public int makeNum() {
-		// TODO Auto-generated method stub
-		return dao.selectNum();
-	}
+	/* 시퀀스 사용안 할 때 num 생성하는 함수
+	 * @Override public int makeNum() { // TODO Auto-generated method stub return
+	 * dao.selectNum(); }
+	 */
 
 	@Override
 	public ArrayList<NoticeVO> getNoticeAll() {
 		// TODO Auto-generated method stub
 		return dao.selectAll();
 	}
-
 	@Override
 	public void updateViewCount(NoticeVO notice) {
 		// TODO Auto-generated method stub

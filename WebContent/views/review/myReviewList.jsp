@@ -15,8 +15,12 @@
 
 <!-- 수정popup -->
 <script type="text/javascript">
-	function showUpdatePopup(){
-		window.open("${pageContext.request.contextPath}/views/review/updateForm.jsp?p_num=${o.p_num }");
+	function showUpdatePopup(num){
+		var title = "상품평 수정";
+
+		var url = "<%=request.getContextPath()%>/EachReviewController?r_num="+num;
+		var options = 'top=50, left=400, width=800, height=700, status=no, menubar=no, toolbar=no';
+	    window.open(url, title, options);
 	}
 </script>
 
@@ -30,7 +34,18 @@
     min-height: 666px;
     padding: 0 20px 88px;
 }
+.reviewlistbox{
+	margin-left: 50px;
+	width:850px; 
+	max-width:100%;
+}
+table{
+	table-layout:fixed;
+}
 
+#content{
+	word-break:break-all;
+}
 </style>
 
 </head>
@@ -48,18 +63,18 @@
 			<div class="reviewlistbox">
 				
 				<h3>내가 쓴 리뷰 목록</h3>
-	     
+	     	
 	
 	
-				<table class="table table-hover table-sm mt-3 mb-5" border="1">
-				<thead class="thead-light" style="background-color: white;">
+				<table class="table table-hover table-sm mt-3 mb-5">
+				<thead class="thead-light1" style="background-color: white;">
 					<tr class="text-center">
-						<th scope="col">리뷰번호 </th> 
+						<th scope="col">No. </th> 
 						<th scope="col">별점 </th> 
-						<th scope="col">리뷰 내용 </th>
+						<th id="content" scope="col">리뷰 내용 </th>
 						<th scope="col">이미지 </th> 
 						<th scope="col">리뷰 쓴 날짜 </th> 
-						<th scope="col"> </th> 
+						<th scope="col">상품평 수정</th> 
 		
 						
 					</tr>
@@ -70,10 +85,10 @@
 							<td name="r_num">${r.num } </td>
 							<td> ${r.rate } </td>
 							<td> ${r.content } </td>
-							<td> <img src="${r.img }" width="200" height="200"> </td>
+							<td> <img src="${r.img }" width="100" height="100"> </td>
 							<td>${r.r_date } </td>
-							<td><a href="${pageContext.request.contextPath }/EachReviewController?p_num=${o.p_num }&num=${r.num}">상품평 수정</a> </td>
-							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup();">상품평 수정</button> </td>
+							<td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">수정하기</a> </td>
+							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup('${r.num }');">팝업 수정</button> </td>
 		
 						</tr>
 					</c:forEach>

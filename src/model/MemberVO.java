@@ -9,6 +9,10 @@ public class MemberVO {
 	private int type;
 	private int point;
 	
+	public MemberVO() {
+		
+	}
+	
 	public MemberVO(String id, String pwd, String name, String email, String addr, int type, int point) {
 		super();
 		this.id = id;
@@ -28,6 +32,7 @@ public class MemberVO {
 		this.email = email;
 		this.addr = addr;
 	}
+
 
 	public String getId() {
 		return id;

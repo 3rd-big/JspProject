@@ -18,39 +18,48 @@
 
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+<style type="text/css">
+.enrollcomponent{
+	padding: 2em;
+    width: 500px;
+    margin-left: 30%;
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+
+
+body{
+	font:Apple SD Gothic Neo;
+}
+.btn{
+	width: 100%;
+}
+
+.btn_signup{
+	display: inline-block;
+}
+
+</style>
+<script type="text/javascript">
+function hello(){
+	
+	alert("회원가입을 축하합니다! 가입 축하 적립금 2000원을 드립니다");
+	
+}
+
+</script>
 
 </head>
 <body>
 	<!-- Navigation -->
-	<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Services</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Contact</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav> -->
-	
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
+	<div class="container">
 	<div class = "enrollcomponent">
+		
 		<form action="${pageContext.request.contextPath }/JoinController" name="f" method="post">
 			<fieldset>
-				<legend>회원가입</legend>
+				<legend style="text-align:center;">SIGN UP</legend>
 				
 				<div class="form-group">
 					<label for="InputID">ID</label> 
@@ -80,87 +89,15 @@
 					<label for="InputAddress">Address</label> <input
 						type="text" class="form-control" id="addr" name="addr">
 				</div>
-				
-				<!-- <div class="form-group">
-					<label for="exampleSelect1">Example select</label> <select
-						class="form-control" id="exampleSelect1">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
+				<div class="btn">
+					<div class="btn_signup">
+						<button type="submit" class="btn btn-primary" onclick="hello();">SignUp</button>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="exampleSelect2">Example multiple select</label> <select
-						multiple="" class="form-control" id="exampleSelect2">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="exampleTextarea">Example textarea</label>
-					<textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputFile">File input</label> <input type="file"
-						class="form-control-file" id="exampleInputFile"
-						aria-describedby="fileHelp"> <small id="fileHelp"
-						class="form-text text-muted">This is some placeholder
-						block-level help text for the above input. It's a bit lighter and
-						easily wraps to a new line.</small>
-				</div>
-				<fieldset class="form-group">
-					<legend>Radio buttons</legend>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="optionsRadios" id="optionsRadios1"
-							value="option1" checked=""> Option one is this and
-							that—be sure to include why it's great
-						</label>
-					</div>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="optionsRadios" id="optionsRadios2"
-							value="option2"> Option two can be something else and
-							selecting it will deselect option one
-						</label>
-					</div>
-					<div class="form-check disabled">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="optionsRadios" id="optionsRadios3"
-							value="option3" disabled=""> Option three is disabled
-						</label>
-					</div>
-				</fieldset>
-				<fieldset class="form-group">
-					<legend>Checkboxes</legend>
-					<div class="form-check">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" value="" checked="">
-							Option one is this and that—be sure to include why it's great
-						</label>
-					</div>
-					<div class="form-check disabled">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" value="" disabled="">
-							Option two is disabled
-						</label>
-					</div>
-				</fieldset>
-				<fieldset class="form-group">
-					<legend>Sliders</legend>
-					<label for="customRange1">Example range</label> <input type="range"
-						class="custom-range" id="customRange1">
-				</fieldset> -->
-				<button type="submit" class="btn btn-primary">가입하기</button>
 			</fieldset>
 		</form>
 	</div>
-
+	</div>
 
 
 
