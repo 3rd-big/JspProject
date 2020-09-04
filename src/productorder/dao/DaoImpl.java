@@ -236,5 +236,34 @@ public class DaoImpl implements Dao{
 
 		return recentlist;
 	}
+	@Override
+	public void updatePoint(String m_id, int o_num) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update Member \r\n" + 
+				"set point=(select point from member where id=?)+ (select total_price from product_order where num=? and m_id=?)*0.02\r\n" + 
+				"where id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			pstmt.setInt(2, o_num);
+			pstmt.setString(3, m_id);
+			pstmt.setString(4, m_id);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
 }

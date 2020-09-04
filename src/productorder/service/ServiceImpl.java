@@ -63,4 +63,10 @@ public class ServiceImpl implements Service{
 		return dao.selectRecentOrder(m_id);
 	}
 
+	@Override
+	public void editPoint(String m_id, int o_num) {
+		dao.updatePoint(m_id, o_num);
+		
+	}
+
 }

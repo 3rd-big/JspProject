@@ -13,7 +13,6 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 
-	<!-- popup -->
 
 <style type="text/css">
 .btn btn-link{
@@ -68,7 +67,9 @@
 							<tr class="text-center">
 								<td>${o.o_date }</td>
 								<td name="order_product_name"> ${o.prod_name } </td>
-								<td> <img src="${o.prod_img }" width="100" height="100"> </td>
+								<td> <a href="${pageContext.request.contextPath }/DetailController?num=${o.p_num }">
+									<img src="${o.prod_img }" width="100" height="100"> </a>
+									</td>
 								<td>${o.total_price } </td> 
 								<td>배송완료? </td>
 							</tr>																

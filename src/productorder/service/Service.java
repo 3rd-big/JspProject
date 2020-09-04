@@ -18,4 +18,6 @@ public interface Service {
 	void editR_State(String m_id, int p_num);
 	
 	ArrayList<ProductOrderVO> getRecentOrderList(String m_id);
+	
+	void editPoint(String m_id, int o_num);
 }

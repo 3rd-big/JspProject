@@ -19,76 +19,79 @@
 
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+<style type="text/css">
+.cartlistbox{
+	margin-left: 50px;
+	width:850px; 
+	max-width:100%;
+}
+table{
+	table-layout:fixed;
+}
 
+#product_name{
+	word-break:break-all;
+}
+
+</style>
 
 
 </head>
 <body>
+
+	
+	
 	<!-- Navigation -->
 	<%@include file ="/views/common/header.jsp" %>
-	<!-- Page Container -->
-	<!-- 카테고리 -->
-	<c:if test="${not empty sessionScope.id }">
-	
-	
-		<div class="row2" >
-	
-	      <div class="col-lg-3">
-	        <h1 class="my-4">My Page</h1>
-	        <div class="list-group">
-	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1" class="list-group-item">주문조회</a>
-	        	<a href="#" class="list-group-item">내가 쓴 리뷰 관리</a>
-	          <a href="${pageContext.request.contextPath }/SearchController" class="list-group-item ">내 정보 수정</a>
-	          
-	          
-	        </div>
-	      </div>
-	    </div>
+		<c:if test="${not empty sessionScope.id }">
+			<div class="container">
+				<h1 class="my-4">My Page</h1>
+			 	<div class="row">
+			
+				<!-- leftNavigation -->
+				<jsp:include page = "/views/common/mypageCategory.jsp" />
+				<!-- /leftNavigation -->
 		
-		<section class = "rightcontent">
 
-			<div class="cartlist">
-			
-				<c:if test="${o_state==0 }">
-					<h3>장바구니 목록</h3>
-				</c:if>
-
-
-				<table class="table table-hover table-sm mt-3 mb-5" border="1">
-					<thead class="thead-light" style="background-color: white;">
-						<tr class="text-center">
-							<th scope="col">장바구니번호</th>
-							<th scope="col">제품명</th>
-							<th scope="col">사진</th>
-							<th scope="col">사이즈</th>
-							<th scope="col">수량</th>
-							<th scope="col">결제금액</th>
-							<th scope="col">주문일?</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="o" items="${list }">
+				<div class="cartlistbox">
+				
+					<c:if test="${o_state==0 }">
+						<h3>장바구니 목록</h3>
+					</c:if>
+	
+	
+					<table class="table table-hover table-sm mt-3 mb-5">
+						<thead class="thead-light1" style="background-color: white;">
 							<tr class="text-center">
-								<td>${o.num }</td>
-								<td>${o.prod_name }</td>
-								<td><img src="${o.prod_img }" width="200" height="200"></td>
-								<td>${o.p_size } </td>
-								<td>${o.o_quantity}</td>
-								<td>${o.total_price }</td>
-								<td>${o.o_date }</td>
-
+								<th scope="col">No.</th>
+								<th scope="col">제품명</th>
+								<th scope="col">사진</th>
+								<th scope="col">사이즈</th>
+								<th scope="col">수량</th>
+								<th scope="col">결제금액</th>
+								<th scope="col">주문하기</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-
-
-
+						</thead>
+						<tbody>
+							<c:forEach var="o" items="${list }">
+								<tr class="text-center">
+									<td>${o.num }</td>
+									<td id="product_name">${o.prod_name }</td>
+									<td><a href="${pageContext.request.contextPath }/DetailController?num=${o.p_num }">
+										<img src="${o.prod_img }" width="100" height="100"></a>
+										</td>
+									<td>${o.p_size } </td>
+									<td>${o.o_quantity}</td>
+									<td>${o.total_price }</td>
+									<td> 주문창연결</td>
+	
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			
-			
-			
-		</section>
+		</div>
 	
 
 	</c:if>

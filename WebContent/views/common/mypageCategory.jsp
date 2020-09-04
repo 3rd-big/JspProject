@@ -9,7 +9,7 @@
 .list-group-item{
 	cursor: pointer;
 	color: black; 
-	
+	text-decoration: none;
 }
 
 </style>

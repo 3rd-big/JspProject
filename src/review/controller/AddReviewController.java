@@ -109,6 +109,11 @@ public class AddReviewController extends HttpServlet {
 		service_po.editR_State(m_id,p_num);
 		System.out.println("pnum은"+p_num+"m_id는"+m_id);
 		
+		// 적립금
+		int o_num = Integer.parseInt(request.getParameter("o_num"));
+		ProductOrderVO po = new ProductOrderVO();
+		
+		service_po.editPoint(m_id, o_num);
 		
 //		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/myReviewList.jsp");	// 태수
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListReviewController");			// 태수

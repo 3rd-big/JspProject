@@ -18,40 +18,71 @@
 
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
-  
+<style type="text/css">
+
+.logincomponent{
+	padding: 2em;
+    width: 400px;
+    margin-left: 30%;
+    padding-top: 100px;
+    padding-bottom: 200px;
+}
+
+
+body{
+	font:Apple SD Gothic Neo;
+}
+.btn{
+	width: 100%;
+}
+.btn_login,
+.btn_signup{
+	display: inline-block;
+}
+</style>
 
 </head>
 <body>
 	<!-- Navigation -->
-	
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
+	<div class="container">
 	<div class = "logincomponent">
+		
 		<form action="${pageContext.request.contextPath }/LoginController" name="f" method="post">
 			<fieldset>
-				<legend>로그인</legend>
-				
-				<div class="form-group">
-					<label for="InputID">ID</label> 
-					<input type="text" class="form-control" id="id" name="id">
+				<legend style="text-align:center;">LOG IN</legend>
+					<br>
+				<div class="form-group1">
+					<!-- <label for="InputID">ID</label>  -->
+					<input type="text" class="form-control" id="id" name="id" placeholder="ID">
 				</div>
-				
-				<div class="form-group">
-					<label for="InputPwd">Password</label> <input
-						type="password" class="form-control" id="pwd" name="pwd"
+					<br>
+				<div class="form-group1">
+					<!-- <label for="InputPwd">Password</label>  -->
+					<input type="password" class="form-control" id="pwd" name="pwd"
 						placeholder="Password">
 				</div>
-
-				<button type="submit" class="btn btn-primary">로그인</button>
-				
-				<div class="searchUser">
-					<a href="${pageContext.request.contextPath }/signup.jsp">회원가입/</a>
-					<a href="${pageContext.request.contextPath }/searchId.jsp">아이디 찾기/</a>
-					<a href="${pageContext.request.contextPath }/searchPwd.jsp">비밀번호 찾기</a>
+					<br>
+				<div class="btn">
+					<div class="btn_login">
+						<button type="submit" class="btn btn-primary">Login</button>
+					</div>
+					<div class="btn_signup">
+						<input type="button" class="btn btn-outline-primary" value="SignUp"
+							onclick="location.href='signup.jsp'">
+					</div>
+				</div>
+					<br>
+					<br>
+				<div class="searchUser" style="text-align:center;">
+					<a href="${pageContext.request.contextPath }/views/member/searchId.jsp">아이디 찾기/</a>
+					<a href="${pageContext.request.contextPath }/views/member/searchPwd.jsp">비밀번호 찾기</a>
 				</div>
 			</fieldset>
 			
 		</form>
+		</div>
 	</div>
 
 

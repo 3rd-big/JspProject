@@ -56,6 +56,12 @@ public class ServiceImpl implements Service {
 		return dao.selectMemberByReviewId(r);
 	}
 
+	@Override
+	public String searchId(String email) {
+		// TODO Auto-generated method stub
+		return dao.selectId(email);
+	}
+
 	
 
 }

@@ -36,6 +36,15 @@
 }
 .reviewlistbox{
 	margin-left: 50px;
+	width:850px; 
+	max-width:100%;
+}
+table{
+	table-layout:fixed;
+}
+
+#content{
+	word-break:break-all;
 }
 </style>
 
@@ -60,12 +69,12 @@
 				<table class="table table-hover table-sm mt-3 mb-5">
 				<thead class="thead-light1" style="background-color: white;">
 					<tr class="text-center">
-						<th scope="col">리뷰번호 </th> 
+						<th scope="col">No. </th> 
 						<th scope="col">별점 </th> 
-						<th scope="col">리뷰 내용 </th>
+						<th id="content" scope="col">리뷰 내용 </th>
 						<th scope="col">이미지 </th> 
 						<th scope="col">리뷰 쓴 날짜 </th> 
-						<th scope="col">상품평</th> 
+						<th scope="col">상품평 수정</th> 
 		
 						
 					</tr>
@@ -76,9 +85,9 @@
 							<td name="r_num">${r.num } </td>
 							<td> ${r.rate } </td>
 							<td> ${r.content } </td>
-							<td> <img src="${r.img }" width="150" height="150"> </td>
+							<td> <img src="${r.img }" width="100" height="100"> </td>
 							<td>${r.r_date } </td>
-							<td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">상품평 수정</a> </td>
+							<td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">수정하기</a> </td>
 							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup('${r.num }');">팝업 수정</button> </td>
 		
 						</tr>
