@@ -72,3 +72,4 @@ create SEQUENCE seq_shop_product;
 create SEQUENCE seq_notice;
 create SEQUENCE seq_product_order;
 
+alter table product_order add code_num number;
