@@ -61,7 +61,17 @@
 		}
 	}
 	
+	function addReview() {
+		
+		var p_num = document.getElementById("p_num");
+		var message = document.getElementById("message");
+		var r_img = document.getElementById("r_img");
+		var rate = document.getElementById("rate");
 
+		document.reviewform.action = '${pageContext.request.contextPath }/AddReviewController?p_num='+p_num;
+		opener.parent.location.reload(); 
+		window.close();
+	}
 	
 </script>
 <style type="text/css">
@@ -112,7 +122,7 @@
 			<td width="77%">
 			<div class="">
 				<form class="form-horizontal" action="${pageContext.request.contextPath }/AddReviewController?p_num=<%=request.getParameter("p_num") %>"	<%-- 태수 --%>   
-				enctype="multipart/form-data" method="post" >
+				name="reviewform" enctype="multipart/form-data" method="post" >
 					<fieldset>
 
 					<!-- Name input-->
@@ -163,6 +173,7 @@
 					<div class="col-md-12 text-center">
 						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">Submit</button>
 						<button type="reset" class="btn btn-default btn-md">Clear</button>
+						<button type="submit" class="btn btn-primary btn-md" onclick="addReview();">Submit2</button>
 					</div>
 				</div>
 				</td>

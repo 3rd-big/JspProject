@@ -53,7 +53,7 @@ public class ReadNoticeController extends HttpServlet {
 		// 글정보 출력페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/search.jsp");
 		if(dispatcher != null){
-		service.updateViewCount(notice);
+		//service.updateViewCount(notice);
 		dispatcher.forward(request, response);
 		}
 	}

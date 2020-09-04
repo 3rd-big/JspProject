@@ -81,17 +81,17 @@ public class DaoImpl implements Dao{
 	}
 
 	@Override
-	public ReviewVO select(int p_num) {
+	public ReviewVO select(int num) {
 		ResultSet rs = null;
 		ReviewVO review = null;
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "select * from review where p_num=? order by num";
+		String sql = "select * from review where num=? order by num";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, p_num);
+			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				review = (new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6),
@@ -111,6 +111,38 @@ public class DaoImpl implements Dao{
 		
 		return review;
 	}
+	
+	@Override
+	public ArrayList<ReviewVO> selectByP_Num(int p_num) {
+		ResultSet rs = null;
+		ArrayList<ReviewVO> review = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from review where p_num=? order by num";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, p_num);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				review.add(new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getDate(7)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return review;
+	}
+	
 
 	@Override
 	public void update(ReviewVO review) {
@@ -230,6 +262,8 @@ public class DaoImpl implements Dao{
 
 		return list;
 	}
+
+
 	
 	
 

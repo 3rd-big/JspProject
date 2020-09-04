@@ -1,4 +1,4 @@
-package notice.dao;
+ package notice.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

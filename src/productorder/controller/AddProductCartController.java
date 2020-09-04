@@ -55,7 +55,8 @@ public class AddProductCartController extends HttpServlet {
 		po.setP_size(size);
 		po.setProd_name(p.getName());
 		po.setProd_img(p.getImg());
-        
+		po.setR_state(0);	// r_state 값: 0 == 리뷰작성 전, 1 == 리뷰 작성 완료
+        System.out.println(po.toString());
         service.add(po);
         
         String path = "/views/member/directOrderPage.jsp";

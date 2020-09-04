@@ -45,6 +45,8 @@ public class AddReviewController extends HttpServlet {
 		
 		int p_num = Integer.parseInt(request.getParameter("p_num"));	// 태수
 		
+		System.out.println("AddReviewController들어감");
+		
 		Service service = new ServiceImpl();
 		HttpSession session = request.getSession(false);
 	    String m_id = (String) session.getAttribute("id");
@@ -70,7 +72,7 @@ public class AddReviewController extends HttpServlet {
 		MultipartRequest multi = null;
 		
 //		TODO 나중에 경로 이걸로 바꾸셈
-		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
+		String uploadPath = "C:\\Users\\KITRI\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
 //		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {

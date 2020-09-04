@@ -6,20 +6,37 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <!-- Bootstrap core CSS -->
-<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
-
-
+<!-- Custom styles for this template -->
+<link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
+	rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<%@include file="/views/common/header.jsp"%>
-	<h3>공지사항 등록</h3>
-	<form name ="noticeadd"action="${pageContext.request.contextPath }/WriteNoticeController" method="post">
-		제목 : <input type="text" name="title"><br>
-	         내용 : <textarea rows="5" cols="30"name="content"></textarea><br>
-		<input type="submit" value="등록">
-	</form>
+	<%@include file="/views/common/header.jsp"%><br>
+<h4 style="margin : 0 50px; padding: 0 100px"> 공지사항 작성</h4><br>
+	<div class="container">
+		<form name="noticeadd"
+			action="${pageContext.request.contextPath }/WriteNoticeController"
+			method="post">
+			<div class="form-group">
+				<label>title</label>
+				<textarea rows="1" cols="80" placeholder="title" name="title"></textarea>
+				<br>
+			</div>
+			<div class="form-group">
+				<label>content</label>
+				<textarea rows="10" cols="80" placeholder="content" name="content"></textarea>
+				<br>
+			</div>
+			<button type="submit" class="btn btn-hover" align="right" style="width:100px; background-color:#4CAF50;color:white;">Submit</button>
+		</form>
+	</div> 
+
 </body>
 </html>

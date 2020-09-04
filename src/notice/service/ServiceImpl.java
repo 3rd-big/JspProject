@@ -54,4 +54,5 @@ public class ServiceImpl implements Service {
 		// TODO Auto-generated method stub
 		dao.updateViewCount(notice);
 	}
+
 }
