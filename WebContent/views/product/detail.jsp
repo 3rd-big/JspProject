@@ -68,9 +68,9 @@
 		function addCart(productNum) {
 	
 			if(${sessionScope.id == null}){
-				alert('2');
 				if(confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?')){
 					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
+					/* location.href= "${pageContext.request.contextPath }/LoginController"; */
 					return;
 				}else{
 					return;	
@@ -90,7 +90,8 @@
 						data: allData,
 						success: function (result) {
 							if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
-								location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+								<%-- location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0"; --%>
+								location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
 							}
 							
 						}
