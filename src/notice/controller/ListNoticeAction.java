@@ -41,7 +41,7 @@ public class ListNoticeAction extends HttpServlet {
 		}
 		ArrayList<NoticeVO> notice = service.getNoticeAll();
 		
-		request.setAttribute(" notice", notice);
+		request.setAttribute("notice", notice);
 		request.setAttribute("num", num);
 		
 		return "list.jsp";

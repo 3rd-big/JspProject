@@ -65,7 +65,7 @@
 		<div class="table">
 			<table class="table table-hover  table-sm mt-3 mb-5"
 				style="margin: 0 auto;" id="twbsPagination">
-				<thead class="thead-light ">
+				<thead class="thead-light " >
 					<tr class="d-flex ">
 						<th class="text-center col-1">no.</th>
 						<th class="text-center col-6">title</th>
