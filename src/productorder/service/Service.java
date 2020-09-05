@@ -14,10 +14,14 @@ public interface Service {
 	
 	void add(ProductOrderVO po);
 	int makeProductOrderNum();
+	int makeProductOrderCodeNum();
 	
 	void editR_State(String m_id, int p_num);
 	
 	ArrayList<ProductOrderVO> getRecentOrderList(String m_id);
 	
 	void editPoint(String m_id, int o_num);
+	
+	int findProductInCartNum(String m_id, int p_num, String size);
+	int findProductQuantity(int p_num, String psize);
 }

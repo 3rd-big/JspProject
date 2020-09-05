@@ -38,23 +38,11 @@
 			margin-top: 30px;
 			padding-left: 200px;
 		}
-		
-		.size-list > li{
-			display: inline;
-			border: 1px solid #bcbcbc;
-			padding: 10px;
-		}
-		#btn_buy, #btn_cart{
-			float: left;
-		}
-		
+
 		#btn_cart{
-			margin-left: 20px;
+			margin-top: 10px;
 		}
-		.size-selected{
-			background-color: gray;
-			color: white;
-		}
+
 		#select-quantity{
 			padding:10px;
 		}
@@ -64,9 +52,11 @@
 
 	<script type="text/javascript">
 	
-		<!-- 장바구니 클릭 상품 번호 전달 -->
-		function addCart(productNum) {
+		
 	
+		<!-- 장바구니 클릭 상품 번호 전달 -->
+		 function addCart(productNum) {
+			
 			if(${sessionScope.id == null}){
 				if(confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?')){
 					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
@@ -77,9 +67,15 @@
 				}
 			}else{
 				
+				var unSizeCheck = $("#selected").length ? false : true;
+				if(unSizeCheck){
+					alert('사이즈를 선택해주세요');
+					return;
+				}
+				
 				if(confirm('장바구니에 추가하시겠습니까?')){
 					
-					var size = $(".size-selected").text();
+					var size = $("#selected").text();
 					var quantity = $("#select-quantity").text();
 					var allData = {"productNum": productNum, "size": size, "quantity": quantity};
 			
@@ -89,17 +85,29 @@
 						url: "${pageContext.request.contextPath }/AddProductCartController",
 						data: allData,
 						success: function (result) {
-							if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
-								<%-- location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0"; --%>
-								location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+							var resultMessage = $.trim(result);
+    							if(resultMessage == "AddCart Success"){
+								if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
+									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+								}
+							}else if(resultMessage == "Already Existed"){
+								if(confirm('장바구니에 이미 해당 상품이 있습니다. 장바구니로 이동하시겠습니까?')){
+									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+								}
+							}else if(resultMessage == "Sold Out"){
+								alert('재고가 부족합니다');
+							}else{
+								alert('error');
 							}
-							
+
 						}
 					});
 					
 				}
 				
-			}
+			} 
 
 			
 		}
@@ -115,6 +123,8 @@
 	
 		
 		$(document).ready(function(){
+			
+			var DefaultPrice = ${product.price };
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath }/DetailImgListController",
@@ -141,9 +151,11 @@
 				$("html").animate({scrollTop:offset.top}, 400);
 			});
 			<!-- 사이즈 선택 -->
-			$("ul.size-list li").click(function () {
-				$("ul.size-list li").removeClass("size-selected");
-				$(this).addClass("size-selected");
+			$("ul.size-selected li").click(function () {
+				$("ul.size-selected li").attr("class", "btn btn-outline-secondary");
+				$("ul.size-selected li").attr("id", "un-selected")
+				$(this).attr("class", "btn btn-secondary");
+				$(this).attr("id", "selected");
 			});
 			
 			<!-- 상품 수량 빼기 -->
@@ -151,6 +163,7 @@
 				var quantity = Number($("#select-quantity").text());
 				if(quantity >= 2){
 					$("#select-quantity").html(quantity-1);	
+					$(".quantity-total-price").html('￦'+((quantity-1) * DefaultPrice));
 				}
 				if(quantity == 2){
 					$("#countDown").attr("src", "sample_img/ico_decQ_disabled.png");
@@ -162,6 +175,7 @@
 			$("#incQuantity").click(function countUp() {
 				var quantity = Number($("#select-quantity").text());
 				$("#select-quantity").html(quantity+1);
+				$(".quantity-total-price").html('￦'+((quantity+1) * DefaultPrice));
 				$("#countDown").attr("src", "sample_img/ico_decQ.png");
 			});
 			
@@ -187,35 +201,17 @@
 			
 			<div class="col-lg-4">
 				<img class="card-img-top img-fluid" id="viewImg" src="${product.img }">
-
-				
-				<!--
-				<div class="card mt-4">
-					<img class="card-img-top img-fluid" id="viewImg" src="${product.img }" alt="">
-					<div class="card-body">
-					
-						<h3 class="card-title">${product.name }</h3>
-						<h4>￦${product.price }</h4>
-						<p class="card-text">
-							${product.content }
-						</p>
-						<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
-				
-					</div>
-				</div>
-				-->
 			</div>
-			
 			<div class="col-lg-7" id="product-info">
 				<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 <a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
 				<h3>${product.name }</h3><br>
-				<h4>￦${product.price }</h4><br>
+				<h4 class="quantity-total-price">￦${product.price }</h4><br>
 				<p>${product.content }</p>
 				<br>
-				<ul class="size-list">
-					<li value="XL">XL</li>
-					<li value="L">L</li>
-					<li value="M">M</li>
+				<ul class="size-selected">
+					<li class="btn btn-outline-secondary" id="un-selected" value="XL">XL</li>
+					<li class="btn btn-outline-secondary" id="un-selected" value="L">L</li>
+					<li class="btn btn-outline-secondary" id="un-selected" value="M">M</li>
 				</ul>
 				<br>
 				<div class="select-amount">
@@ -230,10 +226,10 @@
 				<br><br>
 				<div class="buy-cart">
 					<div id="btn_buy">
-						<input class="btn btn-outline-dark" type="button" value="결제하기">
+						<input class="btn btn-outline-dark btn-lg btn-block" type="button" value="결제하기">
 					</div>
 					<div id="btn_cart">
-						<input class="btn btn-dark" type="button" value="장바구니" onClick="addCart('${product.num}');">
+						<input class="btn btn-dark btn-lg btn-block" type="button" value="장바구니" onClick="addCart('${product.num}');">
 					</div>
 				</div>
 			</div>
@@ -263,14 +259,7 @@
 						<hr>
 					</div>
 				</c:forEach>
-				<%--	
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Omnis et enim aperiam inventore, similique necessitatibus neque
-					non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
-					Sequi mollitia, necessitatibus quae sint natus.</p>
-				<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-				<hr>
-				 --%>
+
 				<input type="button" class="btn btn-success" value="Leave a Review" onClick="addReview(<%=(String)session.getAttribute("id")%>);" > <!-- 미완성 -->
 			</div>
 		</div>
