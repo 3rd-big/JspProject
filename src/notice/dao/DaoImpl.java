@@ -1,4 +1,4 @@
- package notice.dao;
+package notice.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conn.DBConnect;
+import model.NoticePaging;
 import model.NoticeVO;
 
 public class DaoImpl implements Dao {
@@ -63,7 +64,7 @@ public class DaoImpl implements Dao {
 			pstmt.setString(2, notice.getContent());
 			pstmt.setInt(3, notice.getView_count());
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -86,15 +87,15 @@ public class DaoImpl implements Dao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		String sql1 = "select * from notice where num=? order by num";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql1);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				notice = (new NoticeVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5)));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -106,7 +107,7 @@ public class DaoImpl implements Dao {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return notice;
 	}
 
@@ -118,12 +119,12 @@ public class DaoImpl implements Dao {
 
 		String sql = "update notice set title=?, content=?, n_date=sysdate where num=?";
 		try {
-			pstmt = conn.prepareStatement(sql);			
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, notice.getTitle());
 			pstmt.setString(2, notice.getContent());
 			pstmt.setInt(3, notice.getNum());
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -147,13 +148,9 @@ public class DaoImpl implements Dao {
 		PreparedStatement pstmt = null;
 		try {
 			conn = db.getConnection();
-
 			pstmt = conn.prepareStatement(sql);
-
 			pstmt.setInt(1, num);
-
 			pstmt.executeUpdate();
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -165,28 +162,26 @@ public class DaoImpl implements Dao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 	}
 
 	@Override
 	public ArrayList<NoticeVO> selectAll() {
 		// TODO Auto-generated method stub
-		
-		
+
 		ArrayList<NoticeVO> notice = new ArrayList<>();
 		ResultSet rs = null;
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
-		
+
 		String sql = "select * from notice order by num desc";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				notice.add(new NoticeVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5)));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -201,26 +196,23 @@ public class DaoImpl implements Dao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
-
 		return notice;
 	}
 
 	@Override
 	public void updateViewCount(NoticeVO notice) {
 		// TODO Auto-generated method stub
-		
-		
+
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
 		String sql = "update notice set view_count = view_count+1 where num=?";
 		try {
-			pstmt = conn.prepareStatement(sql);			
-			pstmt.setInt(1,  notice.getNum());
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, notice.getNum());
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -233,5 +225,35 @@ public class DaoImpl implements Dao {
 				e.printStackTrace();
 			}
 		}
+	}
+
+
+
+	@Override
+	public ArrayList<NoticeVO> getCount(NoticePaging paging) {
+		// TODO Auto-generated method stub
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		NoticeVO notice = null;
+		String sql = "select count(*) from notice";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, notice.getNum());
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+
 	}
 }

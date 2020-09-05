@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTf-8" import="model.NoticeVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
@@ -15,9 +15,11 @@
 <title>Insert title here</title>
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"rel="stylesheet">
+	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/resource/css/shop-item.css"rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
+	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -65,7 +67,7 @@
 		<div class="table">
 			<table class="table table-hover  table-sm mt-3 mb-5"
 				style="margin: 0 auto;" id="twbsPagination">
-				<thead class="thead-light " >
+				<thead class="thead-light ">
 					<tr class="d-flex ">
 						<th class="text-center col-1">no.</th>
 						<th class="text-center col-6">title</th>
@@ -86,23 +88,25 @@
 					</c:forEach>
 				</tbody>
 			</table>
-<%-- 			<!-- 현재 페이지 -->
-			<fmt:parseNumber value="${notice/10 +1}"type="number" integerOnly="true"/>
+			<!-- 현재 페이지 -->
+			<fmt:parseNumber value="${notice/10 +1}" type="number"
+				integerOnly="true" />
 			<!-- 이전 페이지 -->
 			<c:if test="${notice > 0 }">
-			<a href =" list.do?page=${notice-10 }">이전 페이지</a>
+				<a href=" list.do?page=${notice-10 }">이전 페이지</a>
 			</c:if>
 			<c:if test="${notice == 0 }">
-			<a href="#">이전페이지</a>
+				<a href="#">이전페이지</a>
 			</c:if>
 			<!-- 다음 페이지 -->
 			<c:if test="${fn:length(notice.num)<10 }">
-			<a href="#">다음 페이지</a>
-			
+				<a href="#">다음 페이지</a>
+
 			</c:if>
 			<c:if test="${fn:length(notice.num)==10 }">
-			<a href =" list.do?page=${notice-10 }">이전 페이지</a>
-			</c:if> --%> 
+				<a href=" list.do?page=${notice-10 }">이전 페이지</a>
+			</c:if> 
+
 		</div>
 	</div>
 
