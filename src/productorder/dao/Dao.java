@@ -14,10 +14,14 @@ public interface Dao {
 	void update(String type, int num);
 	
 	int selectProductOrderNum();
+	int selectProductOrderCodeNum();
 	
 	void updateR_State(String m_id, int p_num);
 	
 	ArrayList<ProductOrderVO> selectRecentOrder(String m_id);
 	
 	void updatePoint(String m_id, int o_num);
+	
+	int selectProductInCartNum(String m_id, int p_num, String size);
+	int selectProductQuantity(int p_num, String psize);
 }
