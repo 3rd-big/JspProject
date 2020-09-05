@@ -13,6 +13,7 @@ public class ProductOrderVO {
 	private int d_state;
 	private int r_state;
 	private String p_size;
+	private int code_num;
 	private String prod_name;
 	private String prod_img;
 	
@@ -38,7 +39,7 @@ public class ProductOrderVO {
 	}
 
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
-			int d_state, String p_size, int r_state) {
+			int d_state, String p_size, int r_state, int code_num) {
 		super();
 		this.num = num;
 		this.p_num = p_num;
@@ -50,6 +51,7 @@ public class ProductOrderVO {
 		this.d_state = d_state;
 		this.p_size = p_size;
 		this.r_state=r_state;
+		this.code_num=code_num;
 	}
 
 
@@ -184,13 +186,24 @@ public class ProductOrderVO {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
 				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
-				+ d_state + ", r_state=" + r_state + ", p_size=" + p_size + ", prod_name=" + prod_name + ", prod_img="
-				+ prod_img + "]";
+				+ d_state + ", r_state=" + r_state + ", p_size=" + p_size + ", code_num=" + code_num + ", prod_name="
+				+ prod_name + ", prod_img=" + prod_img + "]";
+	}
+
+
+
+	public int getCode_num() {
+		return code_num;
+	}
+
+
+
+	public void setCode_num(int code_num) {
+		this.code_num = code_num;
 	}
 	
 	

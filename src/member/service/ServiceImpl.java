@@ -57,11 +57,18 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public String searchId(String email) {
+	public MemberVO searchId(String email) {
 		// TODO Auto-generated method stub
 		return dao.selectId(email);
 	}
 
+	@Override
+	public void editPwd(String email, String id) {
+		dao.updatePwd(email, id);
+		
+	}
+
+	
 	
 
 }

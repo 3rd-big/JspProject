@@ -19,7 +19,7 @@ public class DaoImpl implements Dao{
 	public void insert(ProductOrderVO po) {
 		Connection conn = db.getConnection();
 		
-		String sql = "insert into product_order values(?, ?, ?, ?, ?, sysdate, ?, ?, ?, ?)";
+		String sql = "insert into product_order values(?, ?, ?, ?, ?, sysdate, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement pstmt = null;
 		
@@ -35,7 +35,8 @@ public class DaoImpl implements Dao{
 			pstmt.setInt(7, po.getD_state());
 			pstmt.setString(8, po.getP_size());
 			pstmt.setInt(9,po.getR_state());		//r_state 추가 // 선정 수정		// setR_state()를 해주지 않아도 기본 0값
-
+			pstmt.setInt(10,po.getCode_num());		//code_num추가 // 선정 
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,7 +68,7 @@ public class DaoImpl implements Dao{
 			
 			if(rs.next()) {
 				return new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10));
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10),rs.getInt(11));
 			}
 			
 		} catch (Exception e) {
@@ -109,7 +110,7 @@ public class DaoImpl implements Dao{
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10)));
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10),rs.getInt(11)));
 				
 			}
 
@@ -218,7 +219,7 @@ public class DaoImpl implements Dao{
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				recentlist.add(new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10)));
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10),rs.getInt(11)));
 				
 			}
 

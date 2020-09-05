@@ -31,7 +31,7 @@
 			location.href="${pageContext.request.contextPath }/OrderlistController?o_state=1";
 		}
 		
-		function reviewAddFormPopUp(num) {
+		function reviewAddFormPopUp(p_num, num) {
 
  			var pop_title = "리뷰 작성";
 
@@ -39,7 +39,7 @@
 			
 			var frmData = document.orderList;
 			frmData.target = pop_title;
-			frmData.action = "<%=request.getContextPath()%>/AddReviewPopupController?num=" + num;
+			frmData.action = "<%=request.getContextPath()%>/AddReviewPopupController?p_num=" + p_num + "&num=" + num;
 		}
 		
 </script>
@@ -54,7 +54,7 @@
 }
 .orderlistbox{
 	margin-left: 50px;
-	width:850px; 
+	width:850px;
 	max-width:100%;
 }
 table{
@@ -112,10 +112,7 @@ table{
 								<td>${o.total_price } </td> 
 								<td>${o.o_date }</td>
 								<c:if test="${o.r_state==0 }">
-									<td><a href="${pageContext.request.contextPath }/views/review/addForm.jsp?p_num=${o.p_num }&o_num=${o.num}">상품평 작성</a></td><!-- o.p_num 전달 태수 -->
-									<td><button type="button" class="btn btn-link" onclick="showPopup('${o.p_num }','${o.num }');">팝업에서작성</button> </td>
-									<td><button type="submit" class="btn btn-link" onclick="reviewAddFormPopUp('${o.p_num }');">태수</button> </td>
-
+									<td><button type="submit" class="btn btn-outline-secondary" onclick="reviewAddFormPopUp('${o.p_num }','${o.num }');">작성하기</button> </td>
 								</c:if>
 								<c:if test="${o.r_state==1 }">
 									<td>작성완료</td>

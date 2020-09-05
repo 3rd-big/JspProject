@@ -15,6 +15,6 @@ public interface Service {
 	ArrayList<MemberVO> getMemberAll();
 	ArrayList<MemberVO> getMemberByReviewId(ArrayList<ReviewVO> r);
 	
-	String searchId(String email);
-	
+	MemberVO searchId(String email);
+	void editPwd(String email, String id); 
 }

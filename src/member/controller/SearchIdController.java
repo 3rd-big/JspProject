@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.service.Service;
 import member.service.ServiceImpl;
@@ -34,27 +35,20 @@ public class SearchIdController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
-        response.setCharacterEncoding("utf-8");
-        
-        Service service = new ServiceImpl();
-        
-        String id = request.getParameter("id");
-        String email=request.getParameter("email");
+		response.setContentType("text/html; charset=utf-8");
+		response.setCharacterEncoding("utf-8");
 
+		Service service = new ServiceImpl();
 
-        //요청 파라미터로 읽은 값으로 Member 객체 생성
-        MemberVO m = new MemberVO();
+		String email = request.getParameter("email");
 
-        
-        //서비스의 수정 메소드 호출
-        service.searchId(email);
-
-        //
-        PrintWriter out = response.getWriter();
-		//클라이언트의 요청 정보에서 아이디를 얻어온다.
-		out.println(id);
-		out.close();
+		MemberVO m=service.searchId(email);
+		request.setAttribute("m", m);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/member/getId.jsp");
+		if (dispatcher != null) {
+			dispatcher.forward(request, response);
+		}
 
 	}
 

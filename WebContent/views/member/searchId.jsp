@@ -1,34 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Shop Homepage - Start Bootstrap Template</title>
+
+<!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/views/member/MDB-Free_4.19.1/css/mdb.min.css" rel="stylesheet">
 
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resource/vendor/bootstrap/js/bootstrap.js"></script>
-
+  <!-- Custom styles for this template -->
+  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
-.searchIdcomponent{
 
+.searchIDcomponent{
 	padding: 2em;
     width: 400px;
     margin-left: 30%;
     padding-top: 100px;
     padding-bottom: 200px;
-
-}
-li{
-	width:50%;
+    height:600px;
 }
 
-a{
-	text-align:center;
-	color: black; 
-	text-decoration: none;
+
+body{
+	font:Apple SD Gothic Neo;
+}
+.btns{
+	width: 100%;
+	margin-left: 30%;
+}
+
+btn_find{
+	display: inline-block;
 }
 </style>
 
@@ -38,56 +49,56 @@ a{
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class="container">
-
-		<div class="searchIdcomponent">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item"><a class="nav-link active" id="home-tab"
-					data-toggle="tab" href="#home" role="tab" aria-controls="home"
-					aria-selected="true"> 아이디 찾기 </a></li>
-				<li class="nav-item"><a class="nav-link" id="profile-tab"
-					data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-					aria-selected="false"> 비밀번호 찾기 </a></li>
-				
-			</ul>
-			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="home" role="tabpanel"
-					aria-labelledby="home-tab">
-					.
-					<div class="md-form mt-0">
-
-						가입시 입력했던 이메일을 입력해 주세요 <input class="form-control" type="text"
-							placeholder="Email" name="email">
-					</div>
-
+	 <div class="row">
+	<div class = "searchIDcomponent">
+		
+		<form action="${pageContext.request.contextPath }/SearchIdController" name="f" method="post">
+			<fieldset>
+				<legend style="text-align:center;">아이디 찾기</legend>
+					<br>
+				<div class="form-group1">
+					<!-- <label for="InputID">ID</label>  -->
+					<input type="text" class="form-control" id="name" name="name" placeholder="name">
 				</div>
-				<div class="tab-pane fade" id="profile" role="tabpanel"
-					aria-labelledby="profile-tab">
+					<br>
+				<div class="form-group1">
+					<input type="email" class="form-control" id="email" name="email"
+						placeholder="email">
+						<small 
+						id="searchIdHelp" class="form-text text-muted">가입 시 입력했던 이메일 주소</small>
+				</div>
+					<br>
 					
-					..ㅎ.
-					
-					<div class="md-form mt-0">
-
-						아이디 입력해 주세요 <input class="form-control" type="text"
-							placeholder="Id" name="id">
-					</div>
-					<div class="md-form mt-0">
-
-						이메일 <input class="form-control" type="text"
-							placeholder="email" name="email">
+				<div class="btns">
+					<div class="btn_find">
+						<button type="submit" class="btn btn-outline-success">아이디 찾기</button>
 					</div>
 					
+				</div>
 					
-					</div>
 				
-			</div>
-		//
-		
-		
+			</fieldset>
+			
+		</form>
 		</div>
-
+	</div>
 	</div>
 
 
 
+
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your
+				Website 2020</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

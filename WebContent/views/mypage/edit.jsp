@@ -24,8 +24,9 @@
 	margin-left: 50px;
 	max-width:100%;
 }
-.btn{
+.btns{
 	width: 100%;
+	margin-left: 40%;
 }
 .btn_modify,
 .btn_delAccount{
@@ -112,7 +113,9 @@
 							<label for="EditAddress">Address</label> <input
 								type="text" class="form-control" name="addr" value="${m.addr }">
 						</div>
-						<div class="btn">
+						
+						<div class="form-group">
+						<div class="btns">
 							<div class="btn_modify">
 								<button type="submit" class="btn btn-primary">수정</button>
 							</div>
@@ -122,6 +125,7 @@
 									value="탈퇴">
 							</div>
 							</c:if>
+						</div>
 						</div>
 						</fieldset>
 				</form>

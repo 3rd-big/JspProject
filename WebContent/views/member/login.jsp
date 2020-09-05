@@ -26,14 +26,16 @@
     margin-left: 30%;
     padding-top: 100px;
     padding-bottom: 200px;
+    height:600px;
 }
 
 
 body{
 	font:Apple SD Gothic Neo;
 }
-.btn{
+.btns{
 	width: 100%;
+	margin-left: 30%;
 }
 .btn_login,
 .btn_signup{
@@ -47,8 +49,8 @@ body{
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class="container">
+	 <div class="row">
 	<div class = "logincomponent">
-		
 		<form action="${pageContext.request.contextPath }/LoginController" name="f" method="post">
 			<fieldset>
 				<legend style="text-align:center;">LOG IN</legend>
@@ -64,9 +66,9 @@ body{
 						placeholder="Password">
 				</div>
 					<br>
-				<div class="btn">
+				<div class="btns">
 					<div class="btn_login">
-						<button type="submit" class="btn btn-primary">Login</button>
+						<button type="submit" class="btn btn-primary">Log In</button>
 					</div>
 					<div class="btn_signup">
 						<input type="button" class="btn btn-outline-primary" value="SignUp"
@@ -80,11 +82,11 @@ body{
 					<a href="${pageContext.request.contextPath }/views/member/searchPwd.jsp">비밀번호 찾기</a>
 				</div>
 			</fieldset>
-			
+			<input type="hidden" name="previousUriToken" value="<%=request.getHeader("Referer") %>" />
 		</form>
 		</div>
 	</div>
-
+	</div>
 
 
 
