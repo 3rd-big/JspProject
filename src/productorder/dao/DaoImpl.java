@@ -172,38 +172,6 @@ public class DaoImpl implements Dao{
 		}
 		return num;
 	}
-	
-	@Override
-	public int selectProductOrderCodeNum() {
-		Connection conn = db.getConnection();
-
-		String sql = "select seq_product_order_code.nextval from dual";
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		
-		int num = 0;
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				num = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// 자원 반환
-				rs.close();
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return num;
-	}
-	
 	@Override
 	public void updateR_State(String m_id, int p_num) {
 		// TODO Auto-generated method stub
@@ -298,71 +266,5 @@ public class DaoImpl implements Dao{
 		}
 		
 	}
-	@Override
-	public int selectProductInCartNum(String m_id, int p_num, String size) {
-		Connection conn = db.getConnection();
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		
-		String sql = "select num from product_order where m_id=? and p_num=? and p_size=?";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m_id);
-			pstmt.setInt(2, p_num);
-			pstmt.setString(3, size);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// 자원 반환
-				rs.close();
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return -1;
-		
-	}
-	
-	@Override
-	public int selectProductQuantity(int p_num, String psize) {
-		Connection conn = db.getConnection();
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		
-		String sql = "select quantity from product_size where p_num=? and psize=?";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, p_num);
-			pstmt.setString(2, psize);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// 자원 반환
-				rs.close();
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return -1;
-	}
-
 
 }

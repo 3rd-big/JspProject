@@ -1,8 +1,6 @@
 package productorder.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +32,7 @@ public class AddProductCartController extends HttpServlet {
 		HttpSession session = request.getSession(false);
         String id = (String) session.getAttribute("id");
 		
-		int p_num = Integer.parseInt(request.getParameter("productNum"));
+		int productNum = Integer.parseInt(request.getParameter("productNum"));
 		String size = request.getParameter("size");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		
@@ -42,54 +40,24 @@ public class AddProductCartController extends HttpServlet {
 		product.service.Service service_prod = new product.service.ServiceImpl();
 		ProductOrderVO po = new ProductOrderVO();
 		
-		ProductVO p = service_prod.getProduct(p_num);
-
-        // product_size 테이블의 재고 확인 ( return 값이 -1 이면 아직 입고하지 않은 상태 )
-		int findProductQuantity = service.findProductQuantity(p_num, size) ;
-
-        int findCartNum = service.findProductInCartNum(id, p_num, size);
-
-        if(findProductQuantity >= quantity) {	// 재고 >= 주문수량 :: 주문 가능
-        	
-        	if(-1 == findCartNum) {		// 장바구니에 해당삼품이 존재하지 않음 :: 장바구니 추가
-        		
-            	po.setNum(service.makeProductOrderNum());
-        		po.setP_num(p_num);
-        		po.setO_quantity(quantity);
-        		po.setTotal_price(p.getPrice()*quantity);
-        		po.setM_id(id);
-        		po.setO_state(0);	// o_state 값: 0 == 장바구니, 1 == 결제완료
-        		po.setD_state(0);	// d_state 값: 0 == 배송 전, 1 == 배송 완료
-        		po.setP_size(size);
-        		po.setProd_name(p.getName());
-        		po.setProd_img(p.getImg());
-        		po.setR_state(0);	// r_state 값: 0 == 리뷰작성 전, 1 == 리뷰 작성 완료
-//        		po.setCode_num(service.makeProductOrderCodeNum());	// TODO CodeNum 정확한 용도 확인 후 수정
-        		
-            	service.add(po);
-            	
-            	request.setAttribute("resultMessage", "AddCart Success");
-            	
-            }else {						// 장바구니에 해당상품 존재
-            	
-            	request.setAttribute("resultMessage", "Already Existed");
-            	
-            }
-        	
-        }else {									// 재고 < 주문수량 :: 주문 불가
-        	
-        	request.setAttribute("resultMessage", "Sold Out");
-        	
-        }
-        
-
-		 RequestDispatcher dispatcher = request.getRequestDispatcher("/views/json/AddCartResult_JSON.jsp");
-		 dispatcher.forward(request, response);
-
+		ProductVO p = service_prod.getProduct(productNum);
+		
+		
+		po.setNum(service.makeProductOrderNum());
+		po.setP_num(productNum);
+		po.setO_quantity(quantity);
+		po.setTotal_price(p.getPrice()*quantity);
+		po.setM_id(id);
+		po.setO_state(0);	// o_state 값: 0 == 장바구니, 1 == 결제완료
+		po.setD_state(0);	// d_state 값: 0 == 배송 전, 1 == 배송 완료
+		po.setP_size(size);
+		po.setProd_name(p.getName());
+		po.setProd_img(p.getImg());
+		po.setR_state(0);	// r_state 값: 0 == 리뷰작성 전, 1 == 리뷰 작성 완료
+        System.out.println(po.toString());
+        service.add(po);
 
 	}
-	
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

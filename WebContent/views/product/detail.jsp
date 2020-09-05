@@ -38,17 +38,23 @@
 			margin-top: 30px;
 			padding-left: 200px;
 		}
-
-		/*
- 		#btn_buy, #btn_cart{
+		
+		.size-list > li{
+			display: inline;
+			border: 1px solid #bcbcbc;
+			padding: 10px;
+		}
+		#btn_buy, #btn_cart{
 			float: left;
-		}*/ 
+		}
 		
 		#btn_cart{
-			margin-top: 10px;
+			margin-left: 20px;
 		}
-
-		
+		.size-selected{
+			background-color: gray;
+			color: white;
+		}
 		#select-quantity{
 			padding:10px;
 		}
@@ -59,8 +65,8 @@
 	<script type="text/javascript">
 	
 		<!-- 장바구니 클릭 상품 번호 전달 -->
-		 function addCart(productNum) {
-			
+		function addCart(productNum) {
+	
 			if(${sessionScope.id == null}){
 				if(confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?')){
 					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
@@ -73,7 +79,7 @@
 				
 				if(confirm('장바구니에 추가하시겠습니까?')){
 					
-					var size = $("#selected").text();
+					var size = $(".size-selected").text();
 					var quantity = $("#select-quantity").text();
 					var allData = {"productNum": productNum, "size": size, "quantity": quantity};
 			
@@ -83,29 +89,17 @@
 						url: "${pageContext.request.contextPath }/AddProductCartController",
 						data: allData,
 						success: function (result) {
-							var resultMessage = $.trim(result);
-    							if(resultMessage == "AddCart Success"){
-								if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
-									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
-									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
-								}
-							}else if(resultMessage == "Already Existed"){
-								if(confirm('장바구니에 이미 해당 상품이 있습니다. 장바구니로 이동하시겠습니까?')){
-									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
-									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
-								}
-							}else if(resultMessage == "Sold Out"){
-								alert('재고가 부족합니다');
-							}else{
-								alert('error');
+							if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
+								<%-- location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0"; --%>
+								location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
 							}
-
+							
 						}
 					});
 					
 				}
 				
-			} 
+			}
 
 			
 		}
@@ -147,11 +141,9 @@
 				$("html").animate({scrollTop:offset.top}, 400);
 			});
 			<!-- 사이즈 선택 -->
-			$("ul.size-selected li").click(function () {
-				$("ul.size-selected li").attr("class", "btn btn-outline-secondary");
-				$("ul.size-selected li").attr("id", "un-selected")
-				$(this).attr("class", "btn btn-secondary");
-				$(this).attr("id", "selected");
+			$("ul.size-list li").click(function () {
+				$("ul.size-list li").removeClass("size-selected");
+				$(this).addClass("size-selected");
 			});
 			
 			<!-- 상품 수량 빼기 -->
@@ -220,10 +212,10 @@
 				<h4>￦${product.price }</h4><br>
 				<p>${product.content }</p>
 				<br>
-				<ul class="size-selected">
-					<li class="btn btn-outline-secondary" id="un-selected" value="XL">XL</li>
-					<li class="btn btn-outline-secondary" id="un-selected" value="L">L</li>
-					<li class="btn btn-outline-secondary" id="un-selected" value="M">M</li>
+				<ul class="size-list">
+					<li value="XL">XL</li>
+					<li value="L">L</li>
+					<li value="M">M</li>
 				</ul>
 				<br>
 				<div class="select-amount">
@@ -238,10 +230,10 @@
 				<br><br>
 				<div class="buy-cart">
 					<div id="btn_buy">
-						<input class="btn btn-outline-dark btn-lg btn-block" type="button" value="결제하기">
+						<input class="btn btn-outline-dark" type="button" value="결제하기">
 					</div>
 					<div id="btn_cart">
-						<input class="btn btn-dark btn-lg btn-block" type="button" value="장바구니" onClick="addCart('${product.num}');">
+						<input class="btn btn-dark" type="button" value="장바구니" onClick="addCart('${product.num}');">
 					</div>
 				</div>
 			</div>

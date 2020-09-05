@@ -45,11 +45,6 @@ public class ServiceImpl implements Service{
 	public int makeProductOrderNum() {
 		return dao.selectProductOrderNum();
 	}
-	
-	@Override
-	public int makeProductOrderCodeNum() {
-		return dao.selectProductOrderCodeNum();
-	}
 
 	@Override
 	public void add(ProductOrderVO po) {
@@ -73,16 +68,5 @@ public class ServiceImpl implements Service{
 		dao.updatePoint(m_id, o_num);
 		
 	}
-
-	@Override
-	public int findProductInCartNum(String m_id, int p_num, String size) {
-		return dao.selectProductInCartNum(m_id, p_num, size);
-	}
-
-	@Override
-	public int findProductQuantity(int p_num, String psize) {
-		return dao.selectProductQuantity(p_num, psize);
-	}
-
 
 }
