@@ -35,6 +35,11 @@ public class ServiceImpl implements Service{
 	public ArrayList<ProductVO> getCategoryProducts(String category) {
 		return dao.selectCategoryProducts(category);
 	}
+	
+	@Override
+	public ArrayList<ProductVO> getCategoryProductsByPageNum(String category, int page) {
+		return dao.selectCategoryProductsByPageNum(category, page);
+	}
 
 	@Override
 	public ArrayList<ProductImageVO> getDetailImgAll(int p_num) {
@@ -90,4 +95,7 @@ public class ServiceImpl implements Service{
 	public void delProduct(int num) {
 		dao.delete(num);
 	}
+
+
+
 }

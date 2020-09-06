@@ -16,6 +16,8 @@ public interface Dao {
 
 	ArrayList<ProductVO> selectCategoryProducts(String category);
 	
+	ArrayList<ProductVO> selectCategoryProductsByPageNum(String category, int page);
+	
 	ArrayList<ProductImageVO> selectDetailImages(int p_num);
 	
 	int selectProductNum();

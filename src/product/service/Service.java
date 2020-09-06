@@ -16,6 +16,8 @@ public interface Service {
 	
 	ArrayList<ProductVO> getCategoryProducts(String category);
 	
+	ArrayList<ProductVO> getCategoryProductsByPageNum(String category, int page);
+	
 	ArrayList<ProductImageVO> getDetailImgAll(int p_num);
 	
 	ProductVO getProduct(int num);

@@ -144,8 +144,8 @@
 								href="<%=request.getContextPath()%>/MainListController">Home
 									<span class="sr-only">(current)</span>
 							</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top">TOP</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom">BOTTOM</a>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top&page=1">TOP</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom&page=1">BOTTOM</a>
 
 						</c:if>
 
@@ -155,8 +155,8 @@
 								href="<%=request.getContextPath()%>/MainListController">Home
 									<span class="sr-only">(current)</span>
 							</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top">TOP</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom">BOTTOM</a>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top&page=1">TOP</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom&page=1">BOTTOM</a>
 
 						</c:if>
 

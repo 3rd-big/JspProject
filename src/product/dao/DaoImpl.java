@@ -139,6 +139,46 @@ private DBConnect db;
 		return products;
 	}
 
+
+
+	@Override
+	public ArrayList<ProductVO> selectCategoryProductsByPageNum(String category, int page) {
+		ArrayList<ProductVO> products = new ArrayList<>();
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		int startRange = (page - 1) * 8 + 1;
+		int endRange = page * 8;
+		
+//		String sql = "select * from (select * from (select * from product where category=? order by num) where num <= 8) where num >= 1";
+		
+		String sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by record desc) A where rownum <= ?) X where x.rnum >= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, category);
+			pstmt.setInt(2, endRange);
+			pstmt.setInt(3, startRange);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				products.add(new ProductVO(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getDate(7), rs.getInt(8), rs.getString(9)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
+	}
+	
+	
 	@Override
 	public ArrayList<ProductImageVO> selectDetailImages(int p_num) {
 		Connection conn = db.getConnection();
@@ -478,5 +518,6 @@ private DBConnect db;
 		}
 		
 	}
+
 
 }
