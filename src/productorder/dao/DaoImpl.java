@@ -238,8 +238,13 @@ public class DaoImpl implements Dao{
 		
 		ArrayList<ProductOrderVO> recentlist = new ArrayList<ProductOrderVO>();
 		
-		String sql = "select * from (select * from product_order where m_id=? and o_state=1 order by o_date desc) where rownum <= 5;";
-		
+//		String sql = "select * from (select * from product_order where m_id=? and o_state=1 order by o_date desc) where rownum <= 5;";
+		String sql= "select * from\r\n" + 
+				"(select code_num, max(o_date), sum(total_price), max(d_state) \r\n" + 
+				"from product_order \r\n" + 
+				"where m_id='z' and o_state=1\r\n" + 
+				"group by code_num) \r\n" + 
+				"where rownum<=5";
 		
 		try {
 			conn = db.getConnection();
@@ -362,6 +367,92 @@ public class DaoImpl implements Dao{
 		}
 
 		return -1;
+	}
+	@Override
+	public ArrayList<ProductOrderVO> selectAllByCNum(String m_id, int code_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<ProductOrderVO> list = new ArrayList<ProductOrderVO>();
+		
+		String sql = "select * from PRODUCT_ORDER where m_id=? and code_num=? order by o_date desc";
+		
+		
+		try {
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m_id);
+			pstmt.setInt(2, code_num);
+			
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
+						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10),rs.getInt(11)));
+				
+			}
+
+			System.out.println(m_id);
+			System.out.println(code_num);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list;
+	}
+	@Override
+	public ArrayList<ProductOrderVO> selectAllsimpleorderlist(String m_id, int o_state) {
+		//주문조회 페이지 method
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<ProductOrderVO> list = new ArrayList<ProductOrderVO>();
+		
+		String sql = "select code_num, max(o_date), sum(total_price), max(d_state), max(p_num), count(*) from product_order where m_id=? and o_state=? group by code_num";
+		
+		
+		try {
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m_id);
+			pstmt.setInt(2, o_state);
+			
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new ProductOrderVO(rs.getInt(1), rs.getDate(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
+				
+			}
+
+			System.out.println(m_id);
+			System.out.println(o_state);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list;
 	}
 
 

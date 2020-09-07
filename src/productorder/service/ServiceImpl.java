@@ -84,5 +84,17 @@ public class ServiceImpl implements Service{
 		return dao.selectProductQuantity(p_num, psize);
 	}
 
+	@Override
+	public ArrayList<ProductOrderVO> orderListByCNum(String m_id, int code_num) {
+		// TODO Auto-generated method stub
+		return dao.selectAllByCNum(m_id, code_num);
+	}
+
+	@Override
+	public ArrayList<ProductOrderVO> simpleorderlist(String m_id, int o_state) {
+		// TODO Auto-generated method stub
+		return dao.selectAllsimpleorderlist(m_id, o_state);
+	}
+
 
 }

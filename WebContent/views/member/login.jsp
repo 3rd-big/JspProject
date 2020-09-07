@@ -43,6 +43,10 @@ body{
 }
 </style>
 
+
+<script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+ 
+
 </head>
 <body>
 	<!-- Navigation -->

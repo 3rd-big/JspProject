@@ -17,6 +17,11 @@ public class ProductOrderVO {
 	private String prod_name;
 	private String prod_img;
 	
+	private int sum_total_price;
+	private Date max_o_date;
+	private int max_d_state;
+	private int max_p_num;
+	private int ctnrow; 	//한 주문번호 당 주문한 상품 개수
 	
 	public ProductOrderVO() {
 		
@@ -54,6 +59,15 @@ public class ProductOrderVO {
 		this.code_num=code_num;
 	}
 
+	public ProductOrderVO(int code_num, Date max_o_date, int sum_total_price, int max_d_state, int max_p_num, int ctnrow) {
+		super();
+		this.code_num=code_num;
+		this.max_o_date=max_o_date;
+		this.max_d_state=max_d_state;
+		this.sum_total_price=sum_total_price;
+		this.max_p_num=max_p_num;
+		this.ctnrow=ctnrow;
+	}
 
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
 			int d_state, String p_size, String prod_name, String prod_img) {
@@ -204,6 +218,66 @@ public class ProductOrderVO {
 
 	public void setCode_num(int code_num) {
 		this.code_num = code_num;
+	}
+
+
+
+	public int getSum_total_price() {
+		return sum_total_price;
+	}
+
+
+
+	public void setSum_total_price(int sum_total_price) {
+		this.sum_total_price = sum_total_price;
+	}
+
+
+
+	public Date getMax_o_date() {
+		return max_o_date;
+	}
+
+
+
+	public void setMax_o_date(Date max_o_date) {
+		this.max_o_date = max_o_date;
+	}
+
+
+
+	public int getMax_d_state() {
+		return max_d_state;
+	}
+
+
+
+	public void setMax_d_state(int max_d_state) {
+		this.max_d_state = max_d_state;
+	}
+
+
+
+	public int getMax_p_num() {
+		return max_p_num;
+	}
+
+
+
+	public void setMax_p_num(int max_p_num) {
+		this.max_p_num = max_p_num;
+	}
+
+
+
+	public int getCtnrow() {
+		return ctnrow;
+	}
+
+
+
+	public void setCtnrow(int ctnrow) {
+		this.ctnrow = ctnrow;
 	}
 	
 	

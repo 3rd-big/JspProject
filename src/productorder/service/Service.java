@@ -9,6 +9,8 @@ public interface Service {
 	void addOrder(ProductOrderVO o);
 	ProductOrderVO getOrder(int num);
 	ArrayList<ProductOrderVO> orderList(String m_id, int o_state);
+	ArrayList<ProductOrderVO> orderListByCNum(String m_id, int code_num);
+	ArrayList<ProductOrderVO> simpleorderlist(String m_id, int o_state);
 	void editState(String type, int num);
 	void delOrder(int num);
 	

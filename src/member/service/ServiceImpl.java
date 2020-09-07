@@ -68,6 +68,12 @@ public class ServiceImpl implements Service {
 		
 	}
 
+	@Override
+	public int userIdCheck(String id) {
+		// TODO Auto-generated method stub
+		return dao.checkOverId(id);
+	}
+
 	
 	
 

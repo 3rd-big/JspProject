@@ -17,16 +17,16 @@ import productorder.service.Service;
 import productorder.service.ServiceImpl;
 
 /**
- * Servlet implementation class AllOrderListController
+ * Servlet implementation class OrderlistController2
  */
-@WebServlet("/AllOrderListController")
-public class AllOrderListController extends HttpServlet {
+@WebServlet("/OrderlistController2")
+public class OrderlistController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AllOrderListController() {
+    public OrderlistController2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,25 +35,30 @@ public class AllOrderListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//주문조회 페이지를 위한 리스트. code_num별로 묶여있는 주문 내역 리스트
 		Service service = new ServiceImpl();
 		product.service.Service service_prod = new product.service.ServiceImpl();
 		
-		int o_state = Integer.parseInt(request.getParameter("o_state"));
+		
+		int code_num = Integer.parseInt(request.getParameter("code_num"));
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("id");
-		ArrayList<ProductOrderVO> list = service.simpleorderlist(m_id, o_state);
+		ArrayList<ProductOrderVO> list = service.orderListByCNum(m_id, code_num);
+		
 
 		for(ProductOrderVO o:list) {
-			ProductVO p = service_prod.getProduct(o.getMax_p_num());
+			ProductVO p = service_prod.getProduct(o.getP_num());
 			
+			System.out.println("p_num은"+o.getP_num());
+			System.out.println("r_state는"+o.getR_state());
 			o.setProd_name(p.getName());
 			o.setProd_img(p.getImg());
 		}
+		String path=null;
 		
 		request.setAttribute("list", list);
-
-		RequestDispatcher rd = request.getRequestDispatcher("/views/mypage/neworderlist.jsp");
+		request.setAttribute("code_num", code_num);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/views/mypage/orderlist.jsp");
 		rd.forward(request, response);
 	}
 

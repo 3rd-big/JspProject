@@ -310,4 +310,39 @@ public class DaoImpl implements Dao {
 		}
 	}
 
+	@Override
+	public int checkOverId(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int ch = 2;
+		String sql = "select count (*) from member where id=?";
+		
+		try {
+			
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ch = rs.getInt(1);
+				return ch;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return ch;
+	}
+
 }

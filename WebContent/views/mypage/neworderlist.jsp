@@ -30,6 +30,11 @@
 table{
 	table-layout:fixed;
 }
+#code_num_link{
+	color: black; 
+	text-decoration: none;
+	cursor: pointer;
+}
 
 #product_name{
 	word-break:break-all;
@@ -58,20 +63,30 @@ table{
 						<tr class="text-center">
 							<th scope="col">주문코드</th> 
 							<th scope="col">주문일</th>
-							<th scope="col">주문상품</th>  
+							<th scope="col">상품명</th>
+							<th scope="col">상품 이미지</th>
 							<th scope="col">총 결제금액</th> 
 							<th scope="col">배송상태</th> 
+							<th scope="col">결제정보</th> 
+							
 							
 						</tr>
 					</thead>
 					<tbody >
 						<c:forEach var="o" items="${list }">
 							<tr class="text-center">
-								<td name="code_num">${o.code_num } </td>
-								<td>${o.o_date }</td>
-								<td id="product_name" name="order_product_name"> ${o.prod_name } </td>
-								<td>${o.total_price } </td>
+								<td name="code_num">
+								 <a id="code_num_link" style="text-decoration: none;" href="${pageContext.request.contextPath }/OrderlistController2?code_num=${o.code_num }">${o.code_num }</a>
+								</td>
+								<td>${o.max_o_date }</td>
+								<td>${o.prod_name } <span style="font-size:12px;">..포함 ${o.ctnrow} 개</span>
+								</td>
+								<td><img src="${o.prod_img }" width="100" height="100"> </td>
+								<td>${o.sum_total_price } </td>
+								
 								<td> 배송상태? </td>
+								<td> 결제정보연결 </td>
+								
 							</tr>																
 						</c:forEach>
 					</tbody>

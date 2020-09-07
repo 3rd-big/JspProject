@@ -56,7 +56,6 @@ function hello(){
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class="container">
-	 <div class="row">
 	<div class = "enrollcomponent">
 		
 		<form action="${pageContext.request.contextPath }/JoinController" name="f" method="post">
@@ -100,7 +99,7 @@ function hello(){
 		</form>
 	</div>
 	</div>
-	</div>
+
 
 
 

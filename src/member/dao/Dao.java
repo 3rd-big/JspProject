@@ -17,4 +17,5 @@ public interface Dao {
 	
 	MemberVO selectId(String email);
 	void updatePwd(String email, String id);
+	int checkOverId(String id);
 }
