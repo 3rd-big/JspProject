@@ -153,8 +153,6 @@ private DBConnect db;
 		int startRange = (page - 1) * 8 + 1;
 		int endRange = page * 8;
 		
-//		String sql = "select * from (select * from (select * from product where category=? order by num) where num <= 8) where num >= 1";
-		
 		String sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by record desc) A where rownum <= ?) X where x.rnum >= ?";
 		
 		try {
@@ -191,16 +189,13 @@ private DBConnect db;
 		int startRange = (page - 1) * 8 + 1;
 		int endRange = page * 8;
 		
-		System.out.println(startRange);
-		System.out.println(endRange);
-		
 		String sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by " +orderBy + " desc) A where rownum <= ?) X where x.rnum >= ?";
 		if(orderBy.equals("price")) {
 			sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by price) A where rownum <= ?) X where x.rnum >= ?";
 		}else if(orderBy.equals("rate")) {
 			sql = "select * from (select rownum as rnum, a.* from (select * from ratinginproduct where category=? order by rate desc) a where rownum <= ?) X where rnum >= ?";
 		}
-		System.out.println(sql);
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, category);

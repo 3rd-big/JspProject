@@ -114,8 +114,36 @@
 									<h7>￦ ${product.price }</h7>
 									
 								</div>
-								<div class="card-footer">
-									<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+								<div class="card-footer">			
+									<!-- 평점 총합 변수 선언 -->
+									<c:set var="totalReRating" value="0" />
+									
+									<!-- 해당 상품의 모든 리뷰 forEach -->
+									<c:forEach var="reviews" items="${product.reviews}" varStatus="status">
+										<!-- 평점 총합에 누적 -->
+										<c:set var="totalReRating" value="${totalReRating + reviews.rate}"/>
+										<!-- 마지막 리뷰일 경우 -->
+										<c:if test="${status.last }">
+											<!-- 평점 평균 반올림 -->
+											<c:set var="avgReRating" value="${totalReRating / status.count}" />
+											<c:set var="avgReRating" value="${avgReRating + (((avgReRating%1)>=0.5)?(1-(avgReRating%1)):-(avgReRating%1)) }" />
+										</c:if>
+									</c:forEach>
+															
+									<!-- 채워진 별 -->															
+									<c:forEach var="colorStar" begin="1" end="${avgReRating}">
+										<small class="text-warning">&#9733;</small>
+									</c:forEach>
+									
+									<!-- 빈 별 -->
+									<c:forEach var="emptyStar" begin="1" end="${5 - avgReRating}">
+										<small class="text-warning">&#9734;</small>
+									</c:forEach>
+									
+									<!-- 평점 초기화 -->
+									<c:set var="totalReRating" value="0" />
+									<c:set var="avgReRating" value="0" />
+									<small>Reviews ${product.reviews.size() }</small>
 								</div>
 							</div>
 						</div>

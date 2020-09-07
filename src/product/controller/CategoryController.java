@@ -45,8 +45,6 @@ public class CategoryController extends HttpServlet {
 		}else{
 			products = service.getCategoryProductsSort(category, page, orderBy);
 		}
-
-		System.out.println(products.toString());
 		
 		for (ProductVO product : products) {
 			ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(product.getNum());

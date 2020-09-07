@@ -46,6 +46,15 @@
 		#select-quantity{
 			padding:10px;
 		}
+		#profile-img{
+			float: right;
+		}
+		#review-img{
+			
+		}
+		#review-id{
+			float: right;
+		}
 	</style>	
 
 
@@ -203,7 +212,34 @@
 				<img class="card-img-top img-fluid" id="viewImg" src="${product.img }">
 			</div>
 			<div class="col-lg-7" id="product-info">
-				<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 <a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
+			
+				<!-- 평점 총합 변수 선언 -->
+				<c:set var="totalReRating" value="0" />
+				
+				<!-- 해당 상품의 모든 리뷰 forEach -->
+				<c:forEach var="review" items="${reviews}" varStatus="status">
+					<!-- 평점 총합에 누적 -->
+					<c:set var="totalReRating" value="${totalReRating + review.rate}"/>
+					<!-- 마지막 리뷰일 경우 -->
+					<c:if test="${status.last }">
+						<!-- 평점 평균 반올림 -->
+						<c:set var="avgReRating" value="${totalReRating / status.count}" />
+						<c:set var="avgReRating" value="${avgReRating + (((avgReRating%1)>=0.5)?(1-(avgReRating%1)):-(avgReRating%1)) }" />
+					</c:if>
+				</c:forEach>
+			
+				<!-- 채워진 별 -->															
+				<c:forEach var="colorStar" begin="1" end="${avgReRating}">
+					<small class="text-warning">&#9733;</small>
+				</c:forEach>
+				
+				<!-- 빈 별 -->
+				<c:forEach var="emptyStar" begin="1" end="${5 - avgReRating}">
+					<small class="text-warning">&#9734;</small>
+				</c:forEach>
+				<small>${reviews.size() } </small><a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
+					
+					
 				<h3>${product.name }</h3><br>
 				<h4 class="quantity-total-price">￦${product.price }</h4><br>
 				<p>${product.content }</p>
@@ -249,13 +285,22 @@
 				<c:forEach var="review" items="${reviews }">
 					<div class="reviewer-info">
 						<div>
-							<img src="sample_img/profile_img.png" width="50">
-							<small class="text-muted"><b>${review.m_id }</b></small>
-							별점: ${review.rate } ${review.r_date }
+							<img src="sample_img/user_basic.png" width="50" id="profile-img">
+							<p><small class="text-muted" id="review-id"><b>${review.m_id }</b></small></p>
+							<smal>${review.r_date }</smal>
+							<!-- 채워진 별 -->															
+							<c:forEach var="colorStar" begin="1" end="${review.rate}">
+								<small class="text-warning">&#9733;</small>
+							</c:forEach>
+							
+							<!-- 빈 별 -->
+							<c:forEach var="emptyStar" begin="1" end="${5 - review.rate}">
+								<small class="text-warning">&#9734;</small>
+							</c:forEach>
 						</div>
 						
-						<img width="50px" height="75" src="${review.img}">
-						<p>${review.content }</p>
+						<img width="50px" height="75" src="${review.img}" id="review-img">
+						${review.content }
 						<hr>
 					</div>
 				</c:forEach>

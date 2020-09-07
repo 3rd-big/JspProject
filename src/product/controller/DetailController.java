@@ -38,13 +38,13 @@ public class DetailController extends HttpServlet {
 		ProductVO product = service.getProduct(num);
 		ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(num);
 		ArrayList<MemberVO> members = member_service.getMemberByReviewId(reviews);
-
-//		System.out.println(reviews.toString());
-//		System.out.println(members.toString());
-				
+		
+		product.setReviews(reviews);
+		
 		request.setAttribute("product", product);
 		request.setAttribute("reviews", reviews);
-		request.setAttribute("members", members);	// TODO 추후 쓸 일 있으면 사용
+
+//		request.setAttribute("members", members);	// TODO 추후 쓸 일 있으면 사용
 		
 		String path = "/views/product/detail.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
