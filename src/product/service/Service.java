@@ -10,13 +10,15 @@ public interface Service {
 
 	ArrayList<ProductVO> getProductAll();
 	
-	ArrayList<ProductVO> getBestProducts();
+	ArrayList<ProductVO> getBestProducts(int numberItems);
 	
-	ArrayList<ProductVO> getNewProducts();
+	ArrayList<ProductVO> getNewProducts(int numberItems);
 	
 	ArrayList<ProductVO> getCategoryProducts(String category);
 	
 	ArrayList<ProductVO> getCategoryProductsByPageNum(String category, int page);
+	
+	ArrayList<ProductVO> getCategoryProductsSort(String category, int page, String orderBy);
 	
 	ArrayList<ProductImageVO> getDetailImgAll(int p_num);
 	

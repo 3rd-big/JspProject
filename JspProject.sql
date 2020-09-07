@@ -65,6 +65,12 @@ psize    varchar2(10),
 quantity    number
 );
 
+------------------------------------------- product테이블에 review 테이블 rate 조인한 결과 뷰로 생성
+create or replace view RatingInProduct as
+select p.num, p.name, p.price, p.img, p.content, p.e_date, p.record, p.category, nvl(r.rate, 0) rate
+from product p left join review r on p.num=r.p_num;
+----------------------------------------------------------------------------------------------------
+
 
 create SEQUENCE seq_review;
 create SEQUENCE seq_product_size;

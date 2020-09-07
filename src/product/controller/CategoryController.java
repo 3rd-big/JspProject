@@ -31,13 +31,22 @@ public class CategoryController extends HttpServlet {
 		
 		String category = request.getParameter("category");
 		int page = Integer.parseInt(request.getParameter("page"));
+		String orderBy = request.getParameter("orderBy");
+		
 		Service service = new ServiceImpl();
 		review.service.Service review_service = new review.service.ServiceImpl();
 		
 		
 		ArrayList<ProductVO> categoryProducts = service.getCategoryProducts(category);
-		ArrayList<ProductVO> products = service.getCategoryProductsByPageNum(category, page);
+		ArrayList<ProductVO> products = new ArrayList<ProductVO>();
+		
+		if(orderBy == null) {
+			products = service.getCategoryProductsByPageNum(category, page);	
+		}else{
+			products = service.getCategoryProductsSort(category, page, orderBy);
+		}
 
+		System.out.println(products.toString());
 		
 		for (ProductVO product : products) {
 			ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(product.getNum());
@@ -81,7 +90,7 @@ public class CategoryController extends HttpServlet {
 		}
 		
 		request.setAttribute("pn", pn);
-
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product/categoryList.jsp");
 		dispatcher.forward(request, response);
 	}
