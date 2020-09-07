@@ -38,17 +38,17 @@ public class NoticePaging {
 
     // 총 페이지의 마지막 번호
     public void makeLastPageNum() {
-        notice.service.Service service = new notice.service.ServiceImpl();
-
-		int total = service.getCount();
-		
-		System.out.println("total:"+total);
-        if( total % pageCount == 0 ) {
-            lastPageNum = (int)Math.floor(total/pageCount);
-        }
-        else {
-            lastPageNum = (int)Math.floor(total/pageCount) + 1;
-        }
+//        notice.service.Service service = new notice.service.ServiceImpl();
+//
+//		int total = service.getCount();
+//		
+//		System.out.println("total:"+total);
+//        if( total % pageCount == 0 ) {
+//            lastPageNum = (int)Math.floor(total/pageCount);
+//        }
+//        else {
+//            lastPageNum = (int)Math.floor(total/pageCount) + 1;
+//        }
     }
 
 	@Override

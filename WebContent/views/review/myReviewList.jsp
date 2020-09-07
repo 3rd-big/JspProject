@@ -13,8 +13,27 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 
-<!-- 수정popup -->
+
+<!-- popup -->
 <script type="text/javascript">
+
+		function popUpClosed() {
+			location.href="${pageContext.request.contextPath }/ListReviewController";
+		} 
+		
+		function reviewUpdatePopup(num) {
+
+ 			var pop_title = "리뷰 수정";
+
+			window.open("", pop_title, "width=800, height=700, left=200, top=200");
+			
+			var frmData = document.myreviewList;
+			frmData.target = pop_title;
+			frmData.action = "<%=request.getContextPath()%>/EachReviewPopupController?num="+num;
+		}
+		
+
+
 	function showUpdatePopup(num){
 		var title = "상품평 수정";
 
@@ -65,7 +84,7 @@ table{
 				<h3>내가 쓴 리뷰 목록</h3>
 	     	
 	
-	
+		<form id="myreviewList" name="myreviewList" method="post">
 				<table class="table table-hover table-sm mt-3 mb-5">
 				<thead class="thead-light1" style="background-color: white;">
 					<tr class="text-center">
@@ -82,18 +101,20 @@ table{
 				<tbody >
 					<c:forEach var="r" items="${list }">
 						<tr class="text-center">
-							<td name="r_num">${r.num } </td>
+							<td name="num">${r.num } </td>
 							<td> ${r.rate } </td>
 							<td> ${r.content } </td>
 							<td> <img src="${r.img }" width="100" height="100"> </td>
 							<td>${r.r_date } </td>
-							<td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">수정하기</a> </td>
-							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup('${r.num }');">팝업 수정</button> </td>
+							<%-- <td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">수정하기</a> </td>
+							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup('${r.num }');">팝업 수정</button> </td> --%>
+							<td><button type="submit" class="btn btn-link" onclick="reviewUpdatePopup('${r.num }');">수정하기</button> </td>
 		
 						</tr>
 					</c:forEach>
 				</tbody>
 				</table>
+			</form>
 		</div>
 	</div>
 	</div>
