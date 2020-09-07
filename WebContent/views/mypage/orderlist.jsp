@@ -28,7 +28,7 @@
 		} --%>
 		
 		function popUpClosed() {
-			location.href="${pageContext.request.contextPath }/OrderlistController2?o_state=1"; //09-07 18:51 controller2로 수정 // 선정
+			location.href="${pageContext.request.contextPath }/OrderlistController?o_state=1"; 
 		}
 		
 		function reviewAddFormPopUp(p_num, num) {

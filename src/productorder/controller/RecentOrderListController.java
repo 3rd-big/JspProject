@@ -42,17 +42,16 @@ public class RecentOrderListController extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("id");
 		ArrayList<ProductOrderVO> recentlist = service.getRecentOrderList(m_id);
-		
 
 		for(ProductOrderVO o:recentlist) {
-			ProductVO p = service_prod.getProduct(o.getP_num());
-
+			ProductVO p = service_prod.getProduct(o.getMax_p_num());
+			
 			o.setProd_name(p.getName());
 			o.setProd_img(p.getImg());
 		}
-
+		
 		request.setAttribute("list", recentlist);
-
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/mypage/recentOrderlist.jsp");
 		rd.forward(request, response);
 	}

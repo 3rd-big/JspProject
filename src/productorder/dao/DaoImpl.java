@@ -238,26 +238,16 @@ public class DaoImpl implements Dao{
 		
 		ArrayList<ProductOrderVO> recentlist = new ArrayList<ProductOrderVO>();
 		
-//		String sql = "select * from (select * from product_order where m_id=? and o_state=1 order by o_date desc) where rownum <= 5;";
-		String sql= "select * from\r\n" + 
-				"(select code_num, max(o_date), sum(total_price), max(d_state) \r\n" + 
-				"from product_order \r\n" + 
-				"where m_id='z' and o_state=1\r\n" + 
-				"group by code_num) \r\n" + 
-				"where rownum<=5";
+		String sql= "select code_num, max(o_date), sum(total_price), max(d_state), max(p_num), count(*) from product_order where m_id=? and o_state=1 and rownum<=5 group by code_num order by max(o_date) desc";
 		
 		try {
 			conn = db.getConnection();
-			
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setString(1, m_id);
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				recentlist.add(new ProductOrderVO(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getDate(6), rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10),rs.getInt(11)));
-				
+				recentlist.add(new ProductOrderVO(rs.getInt(1), rs.getDate(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));	
 			}
 
 
@@ -420,7 +410,7 @@ public class DaoImpl implements Dao{
 		
 		ArrayList<ProductOrderVO> list = new ArrayList<ProductOrderVO>();
 		
-		String sql = "select code_num, max(o_date), sum(total_price), max(d_state), max(p_num), count(*) from product_order where m_id=? and o_state=? group by code_num";
+		String sql = "select code_num, max(o_date), sum(total_price), max(d_state), max(p_num), count(*) from product_order where m_id=? and o_state=? group by code_num order by max(o_date) desc";
 		
 		
 		try {

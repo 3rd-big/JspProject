@@ -30,6 +30,11 @@
 	cursor: pointer;
 	float: right;
 }
+#code_num_link{
+	color: black; 
+	text-decoration: none;
+	cursor: pointer;
+}
 .listtitle h4,
 .listtitle a{
 	display: inline;
@@ -48,30 +53,33 @@
 				<div class="listtitle">
 					<h4>최근 주문 목록</h4>
 				<!-- <hr style="border: 0; height: 3px; background: #ccc;"> -->
-					<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1" id="orderlistmore" style="text-align: right;"> more >> </a>		
+					<a href="${pageContext.request.contextPath }/AllOrderListController?o_state=1" id="orderlistmore" style="text-align: right;"> more >> </a>		
 				</div>
-				<form id="orderList" name="orderList" method="post">
+				<form id="recentorderList" name="recentorderList" method="post">
 					<table class="table table-hover table-sm mt-3 mb-5" >
 					<thead class="thead-light1" style="background-color: white;" >
 						<tr class="text-center">
-							<th scope="col">주문일 </th>
-							<th scope="col">제품명 </th> 
-							<th scope="col">사진 </th>
-							<th scope="col">결제금액 </th>
-							<th scope="col">배송 </th>
-							
+							<th scope="col">주문코드</th> 
+							<th scope="col">주문일</th>
+							<th scope="col">상품명</th>
+							<th scope="col">상품 이미지</th>
+							<th scope="col">총 결제금액</th> 
+							<th scope="col">배송상태</th> 
+
 						</tr>
 					</thead>
 					<tbody >
 						<c:forEach var="o" items="${list }">
 							<tr class="text-center">
-								<td>${o.o_date }</td>
-								<td name="order_product_name"> ${o.prod_name } </td>
-								<td> <a href="${pageContext.request.contextPath }/DetailController?num=${o.p_num }">
-									<img src="${o.prod_img }" width="100" height="100"> </a>
-									</td>
-								<td>${o.total_price } </td> 
-								<td>배송완료? </td>
+								<td name="code_num">
+								 <a id="code_num_link" style="text-decoration: none;" href="${pageContext.request.contextPath }/OrderlistController2?code_num=${o.code_num }">${o.code_num }</a>
+								</td>
+								<td>${o.max_o_date }</td>
+								<td>${o.prod_name } <span style="font-size:12px;">..포함 ${o.ctnrow} 개</span>
+								</td>
+								<td><img src="${o.prod_img }" width="100" height="100"> </td>
+								<td>${o.sum_total_price } </td>
+								<td> 배송상태? </td>
 							</tr>																
 						</c:forEach>
 					</tbody>
