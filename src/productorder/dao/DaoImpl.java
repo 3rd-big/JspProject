@@ -205,17 +205,17 @@ public class DaoImpl implements Dao{
 	}
 	
 	@Override
-	public void updateR_State(String m_id, int p_num) {
+	public void updateR_State(String m_id, int o_num) {
 		// TODO Auto-generated method stub
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "update product_order set r_state=1 where m_id=? and p_num=?";
+		String sql = "update product_order set r_state=1 where m_id=? and num=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m_id);
-			pstmt.setInt(2, p_num);
-			System.out.println("p_num은" + p_num+"m_id는"+m_id);
+			pstmt.setInt(2, o_num);
+			System.out.println("o_num은" + o_num+"m_id는"+m_id);
 			System.out.println("r_state변경 dao실행 완료");
 			
 			pstmt.executeUpdate();

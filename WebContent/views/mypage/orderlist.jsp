@@ -28,7 +28,9 @@
 		} --%>
 		
 		function popUpClosed() {
-			location.href="${pageContext.request.contextPath }/OrderlistController?o_state=1"; 
+			var code_num = document.getElementById('code_num').value;
+			var param = encodeURI(code_num);
+			location.href="${pageContext.request.contextPath }/OrderlistController2?code_num="+code_num; 
 		}
 		
 		function reviewAddFormPopUp(p_num, num) {
@@ -102,6 +104,7 @@ table{
 					<tbody >
 						<c:forEach var="o" items="${list }">
 							<tr class="text-center">
+								<input type="hidden" id="code_num" name="code_num" value="${o.code_num }">
 								<td name="o_num">${o.num } </td>
 								<td id="product_name" name="order_product_name"> ${o.prod_name } </td>
 								<td> <a href="${pageContext.request.contextPath }/DetailController?num=${o.p_num }">

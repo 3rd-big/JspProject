@@ -18,7 +18,7 @@ public interface Dao {
 	int selectProductOrderNum();
 	int selectProductOrderCodeNum();
 	
-	void updateR_State(String m_id, int p_num);
+	void updateR_State(String m_id, int o_num);
 	
 	ArrayList<ProductOrderVO> selectRecentOrder(String m_id);
 	

@@ -123,6 +123,7 @@
  		formData.append('p_num', $('#hidden').val());
  		formData.append('num', $('#hidden2').val());
 
+
 		$.ajax({
 			url: "${pageContext.request.contextPath }/AddReviewController2",
 			data: formData,

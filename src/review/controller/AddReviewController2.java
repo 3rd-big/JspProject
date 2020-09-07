@@ -88,7 +88,7 @@ public class AddReviewController2 extends HttpServlet {
 		service.add(review);
 		
 		productorder.service.Service service_po = new productorder.service.ServiceImpl();
-		service_po.editR_State(m_id,Integer.parseInt(multi.getParameter("p_num")));
+		service_po.editR_State(m_id,Integer.parseInt(multi.getParameter("num")));
 		
 		// 적립금
 		int o_num = Integer.parseInt(multi.getParameter("num"));

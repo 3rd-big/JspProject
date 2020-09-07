@@ -57,9 +57,9 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public void editR_State(String m_id, int p_num) {
+	public void editR_State(String m_id, int o_num) {
 		// TODO Auto-generated method stub
-		dao.updateR_State(m_id, p_num);
+		dao.updateR_State(m_id, o_num);
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public class OrderlistController2 extends HttpServlet {
 		Service service = new ServiceImpl();
 		product.service.Service service_prod = new product.service.ServiceImpl();
 		
-		
+
 		int code_num = Integer.parseInt(request.getParameter("code_num"));
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("id");
@@ -57,6 +57,7 @@ public class OrderlistController2 extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		request.setAttribute("code_num", code_num);
+
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/mypage/orderlist.jsp");
 		rd.forward(request, response);

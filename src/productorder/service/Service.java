@@ -18,7 +18,7 @@ public interface Service {
 	int makeProductOrderNum();
 	int makeProductOrderCodeNum();
 	
-	void editR_State(String m_id, int p_num);
+	void editR_State(String m_id, int o_num);
 	
 	ArrayList<ProductOrderVO> getRecentOrderList(String m_id);
 	
