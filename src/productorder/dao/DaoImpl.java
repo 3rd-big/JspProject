@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import conn.DBConnect;
@@ -402,16 +403,18 @@ public class DaoImpl implements Dao{
 		return list;
 	}
 	@Override
-	public ArrayList<ProductOrderVO> selectAllsimpleorderlist(String m_id, int o_state) {
+	public ArrayList<ProductOrderVO> selectAllsimpleorderlist(String m_id, int o_state, int page) {
 		//주문조회 페이지 method
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		int startRange = (page - 1) * 4 + 1;
+		int endRange = page * 4;
+		
 		ArrayList<ProductOrderVO> list = new ArrayList<ProductOrderVO>();
 		
-		String sql = "select code_num, max(o_date), sum(total_price), max(d_state), max(p_num), count(*) from product_order where m_id=? and o_state=? group by code_num order by max(o_date) desc";
-		
+		String sql="select * from (select rownum as rnum, a.* from (select code_num, max(o_date), sum(total_price), max(d_state), max(p_num), count(*) from product_order where m_id=? and o_state=? group by code_num order by max(o_date) desc) A where rownum<=?) X where x.rnum>=?";
 		
 		try {
 			conn = db.getConnection();
@@ -420,11 +423,12 @@ public class DaoImpl implements Dao{
 			
 			pstmt.setString(1, m_id);
 			pstmt.setInt(2, o_state);
-			
+			pstmt.setInt(3, endRange);
+			pstmt.setInt(4, startRange);
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				list.add(new ProductOrderVO(rs.getInt(1), rs.getDate(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
+				list.add(new ProductOrderVO(rs.getInt(2), rs.getDate(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7)));
 				
 			}
 
@@ -443,6 +447,37 @@ public class DaoImpl implements Dao{
 		}
 
 		return list;
+	}
+	@Override
+	public int countAllByCNum(String m_id, int o_state) {
+		Connection conn = db.getConnection();
+
+		String sql = "select count(*) from (select code_num from product_order where m_id='"+m_id+"' and o_state="+o_state+" group by code_num)";
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		int num = 0;
+
+		try {
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			if (rs.next()) {
+				num = rs.getInt(1);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
 	}
 
 

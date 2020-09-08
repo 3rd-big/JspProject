@@ -21,5 +21,6 @@ public interface Dao {
 
 	ArrayList<ReviewVO> selectAll();
 
-	ArrayList<ReviewVO> myselectAll(String m_id);
+	ArrayList<ReviewVO> myselectAll(String m_id, int page);
+	int countallmine(String m_id);
 }

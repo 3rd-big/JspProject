@@ -91,9 +91,15 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public ArrayList<ProductOrderVO> simpleorderlist(String m_id, int o_state) {
+	public ArrayList<ProductOrderVO> simpleorderlist(String m_id, int o_state, int page) {
 		// TODO Auto-generated method stub
-		return dao.selectAllsimpleorderlist(m_id, o_state);
+		return dao.selectAllsimpleorderlist(m_id, o_state, page);
+	}
+
+	@Override
+	public int getCountOrder(String m_id, int o_state) {
+		// TODO Auto-generated method stub
+		return dao.countAllByCNum(m_id, o_state);
 	}
 
 

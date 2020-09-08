@@ -56,15 +56,21 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public ArrayList<ReviewVO> getMyReviewAll(String m_id) {
+	public ArrayList<ReviewVO> getMyReviewAll(String m_id, int page) {
 		// TODO Auto-generated method stub
-		return dao.myselectAll(m_id);
+		return dao.myselectAll(m_id, page);
 	}
 
 	@Override
 	public int getSelectedP_num(int r_num) {
 		// TODO Auto-generated method stub
 		return dao.selectP_Num(r_num);
+	}
+
+	@Override
+	public int getcountMine(String m_id) {
+		// TODO Auto-generated method stub
+		return dao.countallmine(m_id);
 	}
 
 

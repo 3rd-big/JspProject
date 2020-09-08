@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="model.ReviewVO" %>
+    pageEncoding="UTF-8" import="model.ReviewVO, model.PaginationVO" %>
 
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 		function popUpClosed() {
-			location.href="${pageContext.request.contextPath }/ListReviewController";
+			location.href="${pageContext.request.contextPath }/ListReviewController?page=1";
 		} 
 		
 		function reviewUpdatePopup(num) {
@@ -74,6 +74,10 @@ table{
 	<!-- Page Container -->
 
 		<div class="container">
+				<%
+					PaginationVO pn = (PaginationVO)request.getAttribute("pn");
+					int currentPage = Integer.parseInt(request.getParameter("page"));
+				%>
 	        <h1 class="my-4">My Page</h1>
 	        <div class="row">
 		       <!-- leftNavigation -->
@@ -117,6 +121,68 @@ table{
 			</form>
 		</div>
 	</div>
+						<!-- pagination -->
+			<br> <br>
+			<nav aria-label="...">
+				<ul class="pagination justify-content-center">
+				<c:if test="${1 != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=1" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=currentPage-1 %>" aria-label="Previous">
+							<span aria-hidden="true">&lsaquo;</span>
+						</a>
+					</li>
+				</c:if>
+				<%
+					for(int i = pn.getStartPage(); i <= pn.getEndPage(); i++){
+						if(i == currentPage){
+				%>
+							<li class="page-item active" aria-current="page">
+				<%
+						}else{
+				%>
+							<li class="page-item">
+				<%
+						}
+				%>
+								<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=i %>">
+				<%
+									out.print(i);
+						if(i == currentPage){
+				%>
+									<span class="sr-only">(current)</span>
+				<%
+						}
+				%>
+								</a>
+							</li>
+				<%
+					}
+				%>
+				<c:if test="${pn.totalPage != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=currentPage+1 %>" aria-label="Next">
+							<span aria-hidden="true">&rsaquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=pn.getTotalPage() %>" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+					
+				</ul>
+			</nav>
+			<br>
+		<!-- /pagination -->
+	
+	
+	
 	</div>
 	
 	 

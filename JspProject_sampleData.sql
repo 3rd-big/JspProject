@@ -279,7 +279,7 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 37, '/upload_img/bo
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-/* 샘플 데이터 추가 - 스포츠      // 선정
+/* 샘플 데이터 추가 - 스포츠      // 선정     //이미지 크기, 이름 수정 09-08
 */
 -------------------------------------------------------------------------------------------------------------------------------
 
@@ -302,13 +302,13 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 39, '/upload_img/LW
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 39, '/upload_img/LW1BTUS_040549_5.jpg');
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '어나더 마일 숏슬리브', 93000, '/upload_img/LW1BTUS_040549_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '어나더 마일 숏슬리브', 93000, '/upload_img/LW3BROS_034306_1.jpg', 
                             '항균 기능이 더해진 Seriously Light™ Luon 원단은 부드럽고 땀 배출력이 탁월하며 4방 스트레치로 신축성이 뛰어난 Luon™ 원단의 경량 버전이에요', 
                             sysdate, 150, 'top');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW1BTUS_040549_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW1BTUS_040549_3.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW1BTUS_040549_4.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW1BTUS_040549_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW3BROS_034306_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW3BROS_034306_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW3BROS_034306_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 40, '/upload_img/LW3BROS_034306_5.jpg');
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '올 유어스 보이프렌드 티', 93000, '/upload_img/LW3EB9S_047687_1.jpg', 
                             '특수 염색 기법을 사용해 제품마다 조금씩 다른 개성의 프린트가 탄생했어요', 
@@ -346,38 +346,37 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 44, '/upload_img/LW
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 44, '/upload_img/LW4BFRS_0002_3.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 44, '/upload_img/LW4BFRS_0002_4.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 44, '/upload_img/LW4BFRS_0002_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 44, '/upload_img/LW4BFRS_0002_6.jpg');
 
-
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '디파인 재킷 *Luon', 159000, '/upload_img/LW4AWKS_030437_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '디파인 재킷 *Luon', 159000, '/upload_img/LW4AWLS_0001_1.jpg', 
                             '부드러운 Luon™ 원단은 땀 배출력이 탁월하고 4방 스트레치로 신축성이 뛰어나요
 Lycra™ 엘라스테인 원사가 더해져 신축성과 복원력이 탁월해요', 
                             sysdate, 70, 'top');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 45, '/upload_img/LW4AWKS_030437_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 45, '/upload_img/LW4AWKS_030437_3.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 45, '/upload_img/LW4AWKS_030437_4.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 45, '/upload_img/LW4AWKS_030437_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 45, '/upload_img/LW4AWLS_0001_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 45, '/upload_img/LW4AWLS_0001_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 45, '/upload_img/LW4AWLS_0001_4.jpg');
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '후드 디파인 재킷 *Nulu', 184000, '/upload_img/LW4BFLS_026950_1.jpg', 
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '후드 디파인 재킷 *Nulu', 184000, '/upload_img/LW4BFLS_026950_2.jpg', 
                             '가볍고 버터처럼 부드러운 Nulu™ 원단은 땀 배출력이 탁월하고 4방 스트레치라 신축성이 뛰어나요. 썸홀과 Cuffins™ 커버가 있어 소매가 올라가지 않고 따뜻해요', 
                             sysdate, 13, 'top');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 46, '/upload_img/LW4BFLS_026950_3.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 46, '/upload_img/LW4BFLS_026950_4.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 46, '/upload_img/LW4BFLS_026950_5.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 46, '/upload_img/LW4BFLS_026950_6.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '스쿠바 풀집 후디', 159000, '/upload_img/LW4AWNS_032493_1.jpg', 
                             '바람이 솔솔 통하는 코튼 플리스 혼방 소재는 감촉이 부드럽고 따뜻해요
 팔 아래와 사이드에 결이 들어간 패널이 있어 움직임이 자유로워요', 
                             sysdate, 15, 'top');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 47, '/upload_img/LW4AWNS_032493_2.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 47, '/upload_img/LW4AWNS_032493_3.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 47, '/upload_img/LW4AWNS_032493_4.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 47, '/upload_img/LW4AWNS_032493_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 47, '/upload_img/LW4AWNS_032493_6.jpg');
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '팩 잇 업 재킷', 184000, '/upload_img/LW4AVRS_034135_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '팩 잇 업 재킷', 184000, '/upload_img/LW4AVRS_034135_6.jpg', 
                             '변덕스러운 날씨가 예상되는 날은 DWR 처리로 가벼운 비 정도는 걱정 없이 맞을 수 있는 재킷과 함께 해보세요. 참, 패커블 디자인이라 비가 그치면 작게 접어 가방에 넣을 수 있어요', 
                             sysdate, 67, 'top');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 48, '/upload_img/LW4AVRS_034135_2.jpg');
@@ -385,24 +384,23 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 48, '/upload_img/LW
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 48, '/upload_img/LW4AVRS_034135_4.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 48, '/upload_img/LW4AVRS_034135_5.jpg');
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '러브 탱크 *플리츠', 61000, '/upload_img/LW1BEJS_033068_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '러브 탱크 *플리츠', 61000, '/upload_img/LW1BEJS_033068_2.jpg', 
                             '바람이 솔솔 통하는 코튼 소재로 정말 부드럽고 신축성이 탁월해요
 Lycra™ 엘라스테인 원사가 더해져 신축성과 복원력이 탁월해요', 
                             sysdate, 67, 'top');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 49, '/upload_img/LW1BEJS_033068_2.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 49, '/upload_img/LW1BEJS_033068_3.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 49, '/upload_img/LW1BEJS_033068_4.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 49, '/upload_img/LW1BEJS_033068_5.jpg');
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '쇼 유어 엣지 머슬 탱크', 61000, '/upload_img/LW1BXMS_0002_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '쇼 유어 엣지 머슬 탱크', 61000, '/upload_img/LW1BXMS_0001_1.jpg', 
                             '커버력이 높은 탱크탑으로 어디든 함께하고 싶을 거예요 
 감촉이 부드럽고 바람이 솔솔 통하는 코튼 원단을 사용했어요', 
                             sysdate, 10, 'top');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0002_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0002_3.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0002_4.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0002_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0001_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0001_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0001_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 50, '/upload_img/LW1BXMS_0001_5.jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '퍼펙틀리 오버사이즈드 크루', 159000, '/upload_img/LW3CQWS_035521_1.jpg', 
@@ -415,13 +413,13 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 51, '/upload_img/LW
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 51, '/upload_img/LW3CQWS_035521_5.jpg');
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '백 인 액션 롱슬리브', 78000, '/upload_img/LW3CE0S_0001_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '백 인 액션 롱슬리브', 78000, '/upload_img/LW3CE0S_031882_1.jpg', 
                             '라운드 처리한 밑단이 엉덩이를 가려주는 롱슬리브 탑이에요. 감촉이 정말 부드럽고 신축성이 탁월해 오늘도 그리고 내일도 입고 싶을 거예요', 
                             sysdate, 24, 'top');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_0001_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_0001_3.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_0001_4.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_0001_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_031882_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_031882_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_031882_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 52, '/upload_img/LW3CE0S_031882_5.jpg');
 
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -447,11 +445,11 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 54, '/upload_img/LW
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 54, '/upload_img/LW7AVKS_0002_3.jpg');
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '스피드 업 MR 쇼츠 4" *라이너', 78000, '/upload_img/LW7AVNT_035167_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '스피드 업 MR 쇼츠 4" *라이너', 78000, '/upload_img/LW7AVNT_035167_2.jpg', 
                             '가벼운 스위프트 원단은 땀 배출력이 탁월하고 4방 스트레치라 신축성이 뛰어나요
 Lycra™ 엘라스테인 원사가 더해진 라이너는 가볍고 땀 배출력이 탁월하며 속건성이에요', 
                            sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 55, '/upload_img/LW7AVNT_035167_2.jpg');
+
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 55, '/upload_img/LW7AVNT_035167_3.jpg');
 
 
@@ -466,16 +464,16 @@ insert into product values (SEQ_SHOP_PRODUCT.nextval, '패스트 앤 프리 HR �
                             '속건성에 땀 배출력이 탁월한 Nulux™ 원단은 가벼우면서도 커버력이 좋아요
 Lycra™ 엘라스테인 원사가 더해져 신축성과 복원력이 탁월해요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 57, '/upload_img/LW5BUGS_034135_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 57, '/upload_img/LW5BUGS_034135_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 57, '/upload_img/LW5BUGS_034135_4.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 57, '/upload_img/LW5BUGS_034135_7.jpg');
-
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '트레인 타임즈 7/8 팬츠 *아시아', 138000, '/upload_img/LW5CFEA_0002_1.jpg', 
                             '유산소부터 근력 운동까지 함께할 수 있는 하이라이즈 타이츠예요. 메쉬 패널을 더해 바람이 솔솔 통하고 웨이스트 밴드가 몸에 밀착되어 흘러내리거나 조이지 않아요', 
                            sysdate, 250, 'bottom');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 58, '/upload_img/LW5CFEA_0002_2.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 58, '/upload_img/LW5CFEA_0002_3.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 58, '/upload_img/LW5CFEA_0002_4.jpg');
+
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '얼라인 HR 팬츠 25"', 65000, '/upload_img/LW5BYXS_044947_1.jpg', 
@@ -488,17 +486,112 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 59, '/upload_img/LW
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '트레인 타임즈 7/8 팬츠', 138000, '/upload_img/LW5AMOS_0001_1.jpg', 
                             '트레이닝부터 부트 캠프까지 모두 커버하는 활용도 높은 타이츠예요. 웨이스트 밴드가 몸에 밀착되어 흘러내리거나 조이지 않아요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 60, '/upload_img/LW5AMOS_0001_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 60, '/upload_img/LW5AMOS_0001_3jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 60, '/upload_img/LW5AMOS_0001_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 60, '/upload_img/LW5AMOS_0001_6jpg');
 
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '온 더 플라이 조거 *Luxtreme', 169000, '/upload_img/LW5CUWS_024921_1.jpg', 
                             '온 더 플라이 컬렉션: 편안하면서도 세련된 스타일의 조거예요. 신비롭고 아름다운 자연을 마음에 담는 여행 파트너로 또는 데일리 오피스웨어로 제격이에요', 
                             sysdate, 250, 'bottom');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 60, '/upload_img/LW5CUWS_024921_2.jpg');
-insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 60, '/upload_img/LW5CUWS_024921_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 61, '/upload_img/LW5CUWS_024921_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 61, '/upload_img/LW5CUWS_024921_3.jpg');
+
 
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
+---샘플 데이터 2차 추가 
+---------------------------------
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '모달 탱크 탑', 29000, '/upload_img/tee1_1.jpg', 
+                            '모달 소재의 라운드넥 반소매 티셔츠.', 
+                            sysdate, 550, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 62, '/upload_img/tee1_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 62, '/upload_img/tee1_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 62, '/upload_img/tee1_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 62, '/upload_img/tee1_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '모달 크로스 티셔츠', 29000, '/upload_img/tee2_1.jpg', 
+                            '모달 섬유는 인증된 산림의 목재를 원료로 사용하고 유럽 친환경 마크인 EU Ecolabel을 받아 환경 보호 및 생물의 다양성 보호에 도움이 됩니다.', 
+                            sysdate, 550, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 63, '/upload_img/tee2_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 63, '/upload_img/tee2_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 63, '/upload_img/tee2_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 63, '/upload_img/tee2_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '오픈 백 티셔츠', 35000, '/upload_img/tee3_1.jpg', 
+                            '모달 소재 민소매 라운드넥 티셔츠.오픈백 디자인.', 
+                            sysdate, 550, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 64, '/upload_img/tee3_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 64, '/upload_img/tee3_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 64, '/upload_img/tee3_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 64, '/upload_img/tee3_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '크롭 스웨트 셔츠', 88000, '/upload_img/tee4_1.jpg', 
+                            '코튼과 모달 소재로 제작된 라운드넥 크롭 스웨트셔츠.', 
+                            sysdate, 550, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 65, '/upload_img/tee4_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 65, '/upload_img/tee4_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 65, '/upload_img/tee4_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 65, '/upload_img/tee4_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 65, '/upload_img/tee4_6.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 터치 롱 스웨트셔츠', 79000, '/upload_img/tee5_1.jpg', 
+                            '매우 부드러운 모달 소재의 오버 사이즈 긴소매 스웨트셔츠. 앞면 포켓과 끈으로 조절 가능한 후드.', 
+                            sysdate, 550, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/tee5_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/tee5_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/tee5_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/tee5_5.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/tee5_6.jpg');
+
+
+-bottom
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 터치 조거 팬츠', 59000, '/pants1_1.jpg', 
+                            '매우 따뜻하고 부드러운 모달 소재의 조거 팬츠. 허리 부분은 끈으로 조절 가능하고 밴딩 처리된 밑단. 옆면 포켓.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 67, '/upload_img/pants1_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 67, '/upload_img/pants1_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 67, '/upload_img/pants1_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 67, '/upload_img/pants1_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '그레이 백그라운드 플라워 프린트 레깅스', 59000, '/pants2_1.jpg', 
+                            '발목까지 내려오는 길이의 더블 레이어드 하이웨이스트 프린트 레깅스. UPF40+ 자외선 차단 기능이 있고 마찰에 강한 퀵 드라이 소재. 허리 뒷면의 내부 포켓.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 68, '/upload_img/pants2_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 68, '/upload_img/pants2_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 68, '/upload_img/pants2_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 68, '/upload_img/pants2_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '에코 레더 조거 팬츠', 49000, '/pants3_1.jpg', 
+                            '신축성 있는 허리 부분에서 끈으로 핏 조절이 가능한 하이웨이스트 팬츠. 앞면 포켓과 뒷면 페이크 파이핑 포켓. 앵클 밴디드 마감 밑단.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 69, '/upload_img/pants3_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 69, '/upload_img/pants3_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 69, '/upload_img/pants3_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 69, '/upload_img/pants3_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '스튜디오 와이디 요가 팬츠', 86000, '/pants4_1.jpg', 
+                            'Indoor and outdoor yoga practice, and life off the mat', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 70, '/upload_img/pants4_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 70, '/upload_img/pants4_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 70, '/upload_img/pants4_4.jpg');
+
+------------------------------------------------------------------------------------------------------------
+
 commit;

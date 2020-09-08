@@ -53,7 +53,7 @@
 				<div class="listtitle">
 					<h4>최근 주문 목록</h4>
 				<!-- <hr style="border: 0; height: 3px; background: #ccc;"> -->
-					<a href="${pageContext.request.contextPath }/AllOrderListController?o_state=1" id="orderlistmore" style="text-align: right;"> more >> </a>		
+					<a href="${pageContext.request.contextPath }/AllOrderListController?o_state=1&page=1" id="orderlistmore" style="text-align: right;"> more >> </a>		
 				</div>
 				<form id="recentorderList" name="recentorderList" method="post">
 					<table class="table table-hover table-sm mt-3 mb-5" >

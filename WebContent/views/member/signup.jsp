@@ -42,6 +42,26 @@ body{
 
 </style>
 <script type="text/javascript">
+	$(document).ready(function(){
+		
+		$('#chk_btn').click(function(){
+			var id = document.getElementById("id").value;
+			var data = "id="+id;
+			alert(data);
+			
+			$.ajax({
+				type: 'POST',
+				url: "${pageContext.request.contextPath }/IdCheckController?id="+id,
+				
+				data: data,
+				success:function(data){
+					$('#here').append(data);
+				}
+			});
+	
+		});
+	});
+
 function hello(){
 	
 	alert("회원가입을 축하합니다! 가입 축하 적립금 2000원을 드립니다");
@@ -93,6 +113,8 @@ function hello(){
 				<div class="btns">
 					<div class="btn_signup">
 						<button type="submit" class="btn btn-primary" onclick="hello();">SignUp</button>
+						<input type="button" class="btn btn-primary" id="check_btn" value="중복" onclick="idcheck();">
+							<div id="here"></div>
 					</div>
 				</div>
 			</fieldset>

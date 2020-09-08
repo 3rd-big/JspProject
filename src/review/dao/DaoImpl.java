@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import conn.DBConnect;
-import model.ProductOrderVO;
 import model.ReviewVO;
 
 public class DaoImpl implements Dao{
@@ -227,14 +227,17 @@ public class DaoImpl implements Dao{
 	}
 
 	@Override
-	public ArrayList<ReviewVO> myselectAll(String m_id) {
+	public ArrayList<ReviewVO> myselectAll(String m_id, int page) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		int startRange = (page - 1) * 4 + 1;
+		int endRange = page * 4;
+		
 		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 		
-		String sql = "select * from Review where m_id=?";
+		String sql = "select * from (select rownum as rnum, a.* from (select * from review where m_id=? order by num desc) A where rownum<=?) X where x.rnum>=?";
 		
 		
 		try {
@@ -243,11 +246,13 @@ public class DaoImpl implements Dao{
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, m_id);
+			pstmt.setInt(2, endRange);
+			pstmt.setInt(3, startRange);
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				list.add(new ReviewVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6),
-						rs.getDate(7)));
+				list.add(new ReviewVO(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7),
+						rs.getDate(8)));
 			}
 
 			System.out.println(m_id);
@@ -292,6 +297,38 @@ public class DaoImpl implements Dao{
 			}
 		}
 		return p_num;
+	}
+
+	@Override
+	public int countallmine(String m_id) {
+		Connection conn = db.getConnection();
+
+		String sql = "select count(*) from review where m_id='"+m_id+"'";
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		int num = 0;
+
+		try {
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			if (rs.next()) {
+				num = rs.getInt(1);
+				System.out.println("count="+num);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
 	}
 
 
