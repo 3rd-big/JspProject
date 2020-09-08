@@ -299,7 +299,7 @@ public class DaoImpl implements Dao{
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = "select num from product_order where m_id=? and p_num=? and p_size=?";
+		String sql = "select num from product_order where m_id=? and p_num=? and p_size=? and o_state=0";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
