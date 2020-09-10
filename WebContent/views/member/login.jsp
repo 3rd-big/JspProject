@@ -32,8 +32,9 @@
 body{
 	font:Apple SD Gothic Neo;
 }
-.btn{
+.btns{
 	width: 100%;
+	margin-left: 30%;
 }
 .btn_login,
 .btn_signup{
@@ -47,6 +48,7 @@ body{
 	<%@include file ="/views/common/header.jsp" %>
 	<!-- Page Container -->
 	<div class="container">
+	 <div class="row">
 	<div class = "logincomponent">
 		
 		<form action="${pageContext.request.contextPath }/LoginController" name="f" method="post">
@@ -64,9 +66,9 @@ body{
 						placeholder="Password">
 				</div>
 					<br>
-				<div class="btn">
+				<div class="btns">
 					<div class="btn_login">
-						<button type="submit" class="btn btn-primary">Login</button>
+						<button type="submit" class="btn btn-primary">Log In</button>
 					</div>
 					<div class="btn_signup">
 						<input type="button" class="btn btn-outline-primary" value="SignUp"
@@ -84,7 +86,7 @@ body{
 		</form>
 		</div>
 	</div>
-
+	</div>
 
 
 

@@ -233,8 +233,5 @@ public class DaoImpl implements Dao {
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
-
 }

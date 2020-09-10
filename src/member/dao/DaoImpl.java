@@ -231,22 +231,23 @@ public class DaoImpl implements Dao {
 	}
 
 	@Override
-	public String selectId(String email) {
+	public MemberVO selectId(String email) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
-		String sql = "select id from MEMBER where email=?";
-		String id="";
+		MemberVO m = null;
+		
+		String sql = "select * from MEMBER where email=?";
+		
 		try {
 			
 			conn = db.getConnection();
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				id=rs.getString(1);
+				return new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -260,7 +261,7 @@ public class DaoImpl implements Dao {
 			}
 		}
 		
-		return id;
+		return null;
 	}
 
 }

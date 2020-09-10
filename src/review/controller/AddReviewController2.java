@@ -47,7 +47,7 @@ public class AddReviewController2 extends HttpServlet {
 	   
 		
 		
-		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		String uploadPath = "C:\\Users\\KITRI\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
 			// 객체 생성하는 부분이 실제 톰캣서버에 업로드하는 과정이였음..

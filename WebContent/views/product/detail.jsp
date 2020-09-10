@@ -243,7 +243,7 @@
 				<br><br>
 				<div style="text-align: center;">
 					<div id="btn_buy" >
-						<a href="#" onClick="directOrder('${product.num}');">구매하기</a>
+						<input class="btn btn-outline-dark" type="button" value="구매하기" onClick="directOrder('${product.num}');" >
 <!-- =======
 				<div class="buy-cart">
 					<div id="btn_buy">

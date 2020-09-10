@@ -15,5 +15,6 @@ public interface Dao {
 	ArrayList<MemberVO> selectAllMember();
 	ArrayList<MemberVO> selectMemberByReviewId(ArrayList<ReviewVO> r);
 	
-	String selectId(String email);
+	MemberVO selectId(String email);
+
 }

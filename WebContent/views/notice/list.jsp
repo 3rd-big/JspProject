@@ -65,7 +65,7 @@
 		<div class="table">
 			<table class="table table-hover  table-sm mt-3 mb-5"
 				style="margin: 0 auto;" id="twbsPagination">
-				<thead class="thead-light ">
+				<thead class="thead-light " >
 					<tr class="d-flex ">
 						<th class="text-center col-1">no.</th>
 						<th class="text-center col-6">title</th>
@@ -87,22 +87,22 @@
 				</tbody>
 			</table>
 <%-- 			<!-- 현재 페이지 -->
-			<fmt:parseNumber value="${page/10 +1}"type="number" integerOnly="true"/>
+			<fmt:parseNumber value="${notice/10 +1}"type="number" integerOnly="true"/>
 			<!-- 이전 페이지 -->
-			<c:if test="${page >0 }">
-			<a href =" list.do?page=${page-10 }">이전 페이지</a>
+			<c:if test="${notice > 0 }">
+			<a href =" list.do?page=${notice-10 }">이전 페이지</a>
 			</c:if>
-			<c:if test="${page==0 }">
+			<c:if test="${notice == 0 }">
 			<a href="#">이전페이지</a>
 			</c:if>
 			<!-- 다음 페이지 -->
-			<c:if test="${fn:length(page_content)<10 }">
+			<c:if test="${fn:length(notice.num)<10 }">
 			<a href="#">다음 페이지</a>
 			
 			</c:if>
-			<c:if test="${fn:length(page_content)==10 }">
-			<a href =" list.do?page=${page-10 }">이전 페이지</a>
-			</c:if> --%>
+			<c:if test="${fn:length(notice.num)==10 }">
+			<a href =" list.do?page=${notice-10 }">이전 페이지</a>
+			</c:if> --%> 
 		</div>
 	</div>
 
