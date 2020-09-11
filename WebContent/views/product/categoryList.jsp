@@ -17,6 +17,9 @@
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 	<style type="text/css">
+		#back_img{
+			max-width: 100%;
+		}
 		ul.orderby-menu{
 			float: right;
 		}
@@ -41,7 +44,8 @@
 </head>
 <body>
 	<nav id="top">
-		<jsp:include page="/views/common/header.jsp" /><br>
+		<%-- <jsp:include page="/views/common/header.jsp" /><br> --%>
+		<jsp:include page="/views/common/header2.jsp" /><br>
 		<br>
 	</nav>
 
@@ -49,30 +53,20 @@
 	<!-- Page Content -->
 
 
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="sample_img/carousel-first.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="sample_img/carousel-first.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="sample_img/carousel-first.jpg" class="d-block w-100" alt="...">
+	<div id="Advertising-signboard">
+
+
+		<div>
+			<div>
+				<img id="back_img" src="sample_img/category_wide_back.png">
 			</div>
 		</div>
-		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span>
-		</a>
+
+
+
 	</div>
+
+
 
 	<div class="container">
 				<%
@@ -221,7 +215,7 @@
 			
 	</div>
 	<!-- /.container -->
-
+<%--
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
@@ -229,6 +223,10 @@
 		</div>
 		<!-- /.container -->
 	</footer>
+ --%>
+ 
+		<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>

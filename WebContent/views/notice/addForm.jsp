@@ -18,7 +18,9 @@
 </head>
 
 <body>
-	<%@include file="/views/common/header.jsp"%><br>
+	<!-- Navigation -->
+	<%-- <%@include file ="/views/common/header.jsp" %> --%>
+	<%@include file ="/views/common/header2.jsp" %>
 <h4 style="margin : 0 50px; padding: 0 100px"> 공지사항 작성</h4><br>
 	<div class="container">
 		<form name="noticeadd"
@@ -37,6 +39,7 @@
 			<button type="submit" class="btn btn-hover" align="right" style="width:100px; background-color:#4CAF50;color:white;">Submit</button>
 		</form>
 	</div> 
-
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 </body>
 </html>

@@ -27,4 +27,6 @@ public interface Service {
 	
 	int findProductInCartNum(String m_id, int p_num, String size);
 	int findProductQuantity(int p_num, String psize);
+	
+	int getCartListCountById(String m_id);
 }

@@ -479,6 +479,41 @@ public class DaoImpl implements Dao{
 		}
 		return num;
 	}
+	@Override
+	public int selectCartListCountById(String m_id) {
+		Connection conn = db.getConnection();
+
+		String sql = "select count(*) from product_order where m_id=? and o_state=0";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int num = 0;
+
+		try {
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m_id);
+	
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
+	}
 
 
 }

@@ -553,7 +553,7 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/te
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/tee5_6.jpg');
 
 
--bottom
+--bottom
 
 insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 터치 조거 팬츠', 59000, '/pants1_1.jpg', 
                             '매우 따뜻하고 부드러운 모달 소재의 조거 팬츠. 허리 부분은 끈으로 조절 가능하고 밴딩 처리된 밑단. 옆면 포켓.', 

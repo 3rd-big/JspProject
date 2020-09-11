@@ -50,7 +50,8 @@ body{
 </head>
 <body>
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%-- <%@include file ="/views/common/header.jsp" %> --%>
+	<%@include file ="/views/common/header2.jsp" %>
 	<!-- Page Container -->
 	<div class="container">
 	 <div class="row">
@@ -95,7 +96,7 @@ body{
 
 
 
-
+<%--
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
@@ -104,6 +105,9 @@ body{
 		</div>
 		<!-- /.container -->
 	</footer>
+ --%>
+	 <!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>

@@ -102,5 +102,10 @@ public class ServiceImpl implements Service{
 		return dao.countAllByCNum(m_id, o_state);
 	}
 
+	@Override
+	public int getCartListCountById(String m_id) {
+		return dao.selectCartListCountById(m_id);
+	}
+
 
 }

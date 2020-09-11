@@ -44,7 +44,8 @@ table{
 </head>
 <body>
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%-- <%@include file ="/views/common/header.jsp" %> --%>
+	<%@include file ="/views/common/header2.jsp" %>
 	
 	<div class="container">
 					<%
@@ -160,10 +161,13 @@ table{
 		<!-- /pagination -->
 		
 		
-		
+
 		
 		
 		
 		</div>
+		
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 </body>
 </html>
