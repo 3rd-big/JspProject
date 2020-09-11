@@ -199,8 +199,18 @@
 	    $(document).ready(function(){
 	    	var uri = $(location).attr('href');
 	    	var uriTokens = uri.split('/');
+	    	var filterList = ['MainListController', 'LogoutController', 'LoginController'];
+	    	var canProceed = true;
 	    	
-	    	if(uriTokens[uriTokens.length-1] != "MainListController"){
+	    	for(var list of filterList){
+	    		if(uriTokens[uriTokens.length-1] == list){
+	    			canProceed = false;
+	    			break;
+	    		}
+	    	}
+	    	
+	    	if(canProceed){
+		
 		    	var sessionId = "${sessionScope.id}";
 		    	
 				$.ajax({
