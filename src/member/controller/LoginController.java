@@ -36,22 +36,15 @@ public class LoginController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("utf-8");
+
 		String path = "/views/member/login.jsp";
 		// 기능을 제공할 서비스 객체 생성
 		Service service = new ServiceImpl();
-
-		// 세션 생성
 		HttpSession session = request.getSession();
-		
-		
-		
-		
 
 		// 로그인에 필요한 요청 파라메터을 읽는다.
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		
-		
 		
 
 		int type = 3;
@@ -72,8 +65,14 @@ public class LoginController extends HttpServlet {
 				path = "/MainListController";
 			}
 		}
+
+		/* String[] previousUriTokens = (request.getHeader("Referer")).split("/"); */
+		String[] previousUriTokens = (request.getParameter("previousUriToken")).split("/"); 
+		String previousUri = previousUriTokens[previousUriTokens.length - 1];
+		System.out.println(request.getParameter("previousUriToken") + " Uri를 갖고 LoginController로 넘어옴");
+		
 		// 메뉴 페이지로 이동
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(previousUri);
 		if (dispatcher != null) {
 			dispatcher.forward(request, response);
 		}

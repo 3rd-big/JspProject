@@ -29,8 +29,8 @@ public class MainListController extends HttpServlet {
 		
 		
 		Service service = new ServiceImpl(); 
-		ArrayList<ProductVO> bestProducts = service.getBestProducts();
-		ArrayList<ProductVO> newProducts = service.getNewProducts();
+		ArrayList<ProductVO> bestProducts = service.getBestProducts(4);
+		ArrayList<ProductVO> newProducts = service.getNewProducts(4);
 		
 		request.setAttribute("bestProducts", bestProducts);
 		request.setAttribute("newProducts", newProducts);

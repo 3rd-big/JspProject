@@ -51,7 +51,7 @@
 
 <script type="text/javascript">
 
-	function readURL(input) {
+	/* function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
@@ -74,8 +74,53 @@
 		self.close();
 
 		window.close();
- 	}
+ 	} */
+ 	
+ 	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 	
+	
+	
+	function ParentRedirect() {
+
+		self.close();
+   		
+		window.onunload = function () {
+			if(window.opener && !window.opener.closed){
+				window.opener.popUpClosed();
+			}
+		}
+		
+	}
+	
+	$(document).on('click', '#file_send2', function () {
+		
+  		var form = $('#fileEditForm')[0];
+ 		var formData = new FormData(form);
+ 		
+ 		formData.append('num', $('#hidden_r_num').val());
+
+
+		$.ajax({
+			url: "${pageContext.request.contextPath }/EditReviewController",
+			data: formData,
+			async: false,	// ajax 동기처리로 바꿈
+			processData: false,
+			contentType: false,
+			type: 'POST',
+			success: function (result) {
+				ParentRedirect();
+			}
+		});
+		
+	});
 	
 </script>
 <style type="text/css">
@@ -124,31 +169,19 @@
 		<div class="col-md-9 col-md-offset-0">
 			<tr>
 			<td width="77%">
-			<div class="">
-				<form class="form-horizontal" action="${pageContext.request.contextPath }/EditReviewController?r_num=<%=request.getParameter("r_num") %>" 
-				name="reviewform" enctype="multipart/form-data" method="post" >
-					<fieldset>
 
-					<!-- Name input-->
-					<!-- <div class="form-group">
-						<label class="col-md-3 control-label" for="name">Full
-							Name</label>
-						<div class="col-md-9">
-							<input id="name" name="name" type="text"
-								placeholder="Your name" class="form-control">
-						</div>
-					</div> -->
+				<%-- <form class="form-horizontal" action="${pageContext.request.contextPath }/EditReviewController?r_num=<%=request.getParameter("r_num") %>" 
+				name="reviewform" enctype="multipart/form-data" method="post" > --%>
+				<form class="form-horizontal" id="fileEditForm" name="reviewform" enctype="multipart/form-data" method="post" >
+				<fieldset>
+
 				
-				
-				<input type="hidden" name="r_num" value="${r.num }" >
-				<input type="hidden" name="r_date" value="${r.r_date }">
+				<input type="hidden" name="r_date" id="r_date" value="${r.r_date }">
 				<!-- Rating -->
 				<div class="form-group">
 					<label class="col-md-3 control-label" for="rating">Your rating</label>
-					<form>
 						<input type="text" name="rate" class="rating rating-loading"
 							data-size="md" title="" value="${r.rate}"><br>
-					</form>
 				</div>
 
 
@@ -178,17 +211,22 @@
 
 				<div class="form-group">
 					<div class="col-md-12 text-center">
-						<button type="submit" class="btn btn-primary btn-md" onclick="window.close();">수정</button>
+						<!-- <button type="submit" class="btn btn-primary btn-md" onclick="window.close();">수정</button> -->
+						<input type="button" class="btn btn-primary btn-md" value="수정" id="file_send2">
 						<button type="button" class="btn btn-default btn-md" onclick="window.close();">취소</button>
-						<button type="submit" class="btn btn-primary btn-md" onclick="reviewEdit();">팝업수정</button>
+						<!-- <button type="submit" class="btn btn-primary btn-md" onclick="reviewEdit();">팝업수정</button> -->
+						
+					
+						<%-- <input type="hidden" name="r_num" id="r_num" value="${r.num }" > --%>
+						<input type="hidden" id="hidden_r_num" value="<%=request.getAttribute("num")%>">
 					</div>
 				</div>
-				</td>
-
-
 				</fieldset>
 
 				</form>
+				
+				</td>
+
 			</tr>
 	</table>
 

@@ -21,5 +21,6 @@ public interface Service {
 
 	int makeNum();
 	int getSelectedP_num(int r_num);
-	ArrayList<ReviewVO> getMyReviewAll(String m_id);
+	ArrayList<ReviewVO> getMyReviewAll(String m_id, int page);
+	int getcountMine(String m_id);
 }

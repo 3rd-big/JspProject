@@ -10,11 +10,15 @@ public interface Dao {
 	
 	ArrayList<ProductVO> selectAll();
 	
-	ArrayList<ProductVO> selectBestProducts();
+	ArrayList<ProductVO> selectBestProducts(int numberItems);
 	
-	ArrayList<ProductVO> selectNewProducts();
+	ArrayList<ProductVO> selectNewProducts(int numberItems);
 
 	ArrayList<ProductVO> selectCategoryProducts(String category);
+	
+	ArrayList<ProductVO> selectCategoryProductsByPageNum(String category, int page);
+	
+	ArrayList<ProductVO> selectCategoryProductsSort(String category, int page, String orderBy);
 	
 	ArrayList<ProductImageVO> selectDetailImages(int p_num);
 	

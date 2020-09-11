@@ -36,13 +36,16 @@
 					<td>no.<input type="text" class="form-control"
 						value="${notice.num }" name="num" size="20" readonly
 						style="background-color: white"></td>
+
+
 					<td>view_count <input type="text" class="form-control"
 						value="${notice.view_count }" name="num" size="20" readonly
 						style="background-color: white"></td>
+
 				</tr>
 				<tr>
 					<td>title<input type="text" class="form-control" name="title"
-						value="${notice.title }" size="100" ${str } readonly
+						value="${notice.title }" size="100" ${str }
 						style="background-color: white"></td>
 
 					<td>date<input type="text" class="form-control"
@@ -50,8 +53,14 @@
 						style="background-color: white"></td>
 				</tr>
 				<tr>
-					<td>content<textarea class="form-control" name="content"
-							rows="7" cols="100" readonly style="background-color: white">${notice.content }</textarea></td>
+				<c:if test="${sessionScope.memberType != 1 }">
+						<td>content<textarea class="form-control" name="content" readonly
+								rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
+					</c:if>
+					<c:if test="${sessionScope.memberType == 1 }">
+						<td>content<textarea class="form-control" name="content"
+								rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
+					</c:if>
 				</tr>
 
 				<c:if test="${sessionScope.memberType == 0 }">

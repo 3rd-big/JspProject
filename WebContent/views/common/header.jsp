@@ -65,7 +65,7 @@
 						<c:if test="${sessionScope.memberType == 1 }">
 							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/ListNoticeController">공지사항</a></li>
 							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/MypageController?o_state=1">마이페이지</a></li>
-							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/OrderlistController?o_state=1">주문조회</a></li>
+							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/AllOrderListController?o_state=1">주문조회</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
 
@@ -144,8 +144,8 @@
 								href="<%=request.getContextPath()%>/MainListController">Home
 									<span class="sr-only">(current)</span>
 							</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top">TOP</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom">BOTTOM</a>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top&page=1">TOP</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom&page=1">BOTTOM</a>
 
 						</c:if>
 
@@ -155,8 +155,8 @@
 								href="<%=request.getContextPath()%>/MainListController">Home
 									<span class="sr-only">(current)</span>
 							</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top">TOP</a></li>
-							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom">BOTTOM</a>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=top&page=1">TOP</a></li>
+							<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/CategoryController?category=bottom&page=1">BOTTOM</a>
 
 						</c:if>
 

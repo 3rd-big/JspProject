@@ -2,6 +2,7 @@ package notice.service;
 
 import java.util.ArrayList;
 
+import model.NoticePaging;
 import model.NoticeVO;
 
 public interface Service {
@@ -15,7 +16,9 @@ public interface Service {
 
 	ArrayList<NoticeVO> getNoticeAll();
 
-	//int makeNum();
+	// int makeNum();
 
 	void updateViewCount(NoticeVO notice);
+	ArrayList<NoticeVO> getCount();
+
 }

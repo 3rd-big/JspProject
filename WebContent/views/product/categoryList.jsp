@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.PaginationVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,10 @@
 			border-left: none;				/* 메뉴 분류중 제일 왼쪽의 "|"는 삭제 */
 		}
 	</style>
-
+	<script type="text/javascript">
+		
+	
+	</script>
 
 </head>
 <body>
@@ -71,7 +75,12 @@
 	</div>
 
 	<div class="container">
-		
+				<%
+					PaginationVO pn = (PaginationVO)request.getAttribute("pn");
+					String category = request.getParameter("category");
+					int currentPage = Integer.parseInt(request.getParameter("page"));
+					String orderBy = request.getParameter("orderBy");
+				%>
 		<div class="row">
 
 			<div class="col-lg-12">
@@ -82,16 +91,15 @@
 				<div>
 					<strong style="float: left;">${products.size() }</strong><span style="float: left;">&nbsp;개의 상품</span>
 					<ul class="orderby-menu">
-						<li><a href="#">신상품</a></li>
-						<li><a href="#">낮은가격</a></li>
-						<li><a href="#">인기상품</a></li>
-						<li><a href="#">평점순</a></li>
+						<li><a href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=1&orderBy=e_date">신상품</a></li>
+						<li><a href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=1&orderBy=price">낮은가격</a></li>
+						<li><a href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=1&orderBy=record">인기상품</a></li>
+						<li><a href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=1&orderBy=rate">평점순</a></li>
 					</ul>
 				</div>
 				<br><br><br>
 				
 				<div class="row">
-
 					<c:forEach var="product" items="${products }">
 					
 						<div class="col-lg-3 col-md-6 mb-4">
@@ -106,8 +114,36 @@
 									<h7>￦ ${product.price }</h7>
 									
 								</div>
-								<div class="card-footer">
-									<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+								<div class="card-footer">			
+									<!-- 평점 총합 변수 선언 -->
+									<c:set var="totalReRating" value="0" />
+									
+									<!-- 해당 상품의 모든 리뷰 forEach -->
+									<c:forEach var="reviews" items="${product.reviews}" varStatus="status">
+										<!-- 평점 총합에 누적 -->
+										<c:set var="totalReRating" value="${totalReRating + reviews.rate}"/>
+										<!-- 마지막 리뷰일 경우 -->
+										<c:if test="${status.last }">
+											<!-- 평점 평균 반올림 -->
+											<c:set var="avgReRating" value="${totalReRating / status.count}" />
+											<c:set var="avgReRating" value="${avgReRating + (((avgReRating%1)>=0.5)?(1-(avgReRating%1)):-(avgReRating%1)) }" />
+										</c:if>
+									</c:forEach>
+															
+									<!-- 채워진 별 -->															
+									<c:forEach var="colorStar" begin="1" end="${avgReRating}">
+										<small class="text-warning">&#9733;</small>
+									</c:forEach>
+									
+									<!-- 빈 별 -->
+									<c:forEach var="emptyStar" begin="1" end="${5 - avgReRating}">
+										<small class="text-warning">&#9734;</small>
+									</c:forEach>
+									
+									<!-- 평점 초기화 -->
+									<c:set var="totalReRating" value="0" />
+									<c:set var="avgReRating" value="0" />
+									<small>Reviews ${product.reviews.size() }</small>
 								</div>
 							</div>
 						</div>
@@ -122,7 +158,67 @@
 
 		</div>
 		<!-- /.row -->
-
+		
+			<!-- pagination -->
+			<br> <br>
+			<nav aria-label="...">
+				<ul class="pagination justify-content-center">
+				<c:if test="${1 != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=1&orderBy=<%=orderBy%>" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=<%=currentPage-1 %>&orderBy=<%=orderBy%>" aria-label="Previous">
+							<span aria-hidden="true">&lsaquo;</span>
+						</a>
+					</li>
+				</c:if>
+				<%
+					for(int i = pn.getStartPage(); i <= pn.getEndPage(); i++){
+						if(i == currentPage){
+				%>
+							<li class="page-item active" aria-current="page">
+				<%
+						}else{
+				%>
+							<li class="page-item">
+				<%
+						}
+				%>
+								<a class="page-link" href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=<%=i %>&orderBy=<%=orderBy%>">
+				<%
+									out.print(i);
+						if(i == currentPage){
+				%>
+									<span class="sr-only">(current)</span>
+				<%
+						}
+				%>
+								</a>
+							</li>
+				<%
+					}
+				%>
+				<c:if test="${pn.totalPage != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=<%=currentPage+1 %>&orderBy=<%=orderBy%>" aria-label="Next">
+							<span aria-hidden="true">&rsaquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/CategoryController?category=<%=category%>&page=<%=pn.getTotalPage() %>&orderBy=<%=orderBy%>" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+					
+				</ul>
+			</nav>
+			<br>
+		<!-- /pagination -->
+			
 	</div>
 	<!-- /.container -->
 

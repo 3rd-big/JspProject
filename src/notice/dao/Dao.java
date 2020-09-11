@@ -3,6 +3,7 @@ package notice.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.NoticePaging;
 import model.NoticeVO;
 
 public interface Dao {
@@ -17,6 +18,9 @@ public interface Dao {
 	void delete(int num);
 
 	ArrayList<NoticeVO> selectAll();
+	
 	void updateViewCount(NoticeVO notice);
+	
+	ArrayList<NoticeVO> getCount(NoticePaging paging);
 
 }

@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import conn.DBConnect;
+import model.NoticePaging;
 import model.NoticeVO;
-import notice.dao.DaoImpl;
 import notice.service.Service;
 import notice.service.ServiceImpl;
 
@@ -42,13 +41,22 @@ public class ListNoticeController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		Service service = new ServiceImpl();
+		NoticePaging paging = new NoticePaging();
+
+		Integer blockStartNum = paging.getBlockStartNum();
+		Integer blockLastNum = paging.getBlockLastNum();
+		Integer lastPageNum = paging.getLastPageNum();
 
 		ArrayList<NoticeVO> notice = service.getNoticeAll();
-				
+
 		request.setAttribute("notices", notice);
-	
+		request.setAttribute("paging", blockStartNum);
+		request.setAttribute("paging", blockLastNum);
+		request.setAttribute("paging", lastPageNum);
+		
 		System.out.println("====ListNoticeController====");
 		System.out.println(notice.toString());
+		System.out.println(paging.toString());
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/list.jsp");
 		if (dispatcher != null) {

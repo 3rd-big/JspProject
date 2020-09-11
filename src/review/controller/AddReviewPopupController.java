@@ -22,9 +22,11 @@ public class AddReviewPopupController extends HttpServlet {
 		response.setContentType("text'html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		int p_num = Integer.parseInt(request.getParameter("num"));
-		System.out.println(p_num);
+		int p_num = Integer.parseInt(request.getParameter("p_num"));
+		int num = Integer.parseInt(request.getParameter("num"));
+		
 		request.setAttribute("p_num", p_num);
+		request.setAttribute("num", num);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/review/addForm.jsp");
 		dispatcher.forward(request, response);

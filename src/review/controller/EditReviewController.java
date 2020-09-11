@@ -48,21 +48,24 @@ public class EditReviewController extends HttpServlet {
 	    String m_id = (String) session.getAttribute("id");
 
 	    
-	    int r_num = Integer.parseInt(request.getParameter("r_num"));
-	    System.out.println("r_num은"+r_num);
-//	    int p_num = Integer.parseInt(request.getParameter("p_num"));
-	    int p_num = service.getSelectedP_num(r_num);
-
-
-	    ReviewVO review = new ReviewVO();
-	    review.setNum(r_num);
-	    review.setM_id(m_id);
-	    review.setP_num(p_num);
+//	    int r_num = Integer.parseInt(request.getParameter("r_num"));
+//	    System.out.println("r_num은"+r_num);
+////	    int p_num = Integer.parseInt(request.getParameter("p_num"));
+//	    int p_num = service.getSelectedP_num(r_num);
+//
+//
+//	    ReviewVO review = new ReviewVO();
+//	    review.setNum(r_num);
+//	    review.setM_id(m_id);
+//	    review.setP_num(p_num);
 
 	    
+	    ReviewVO review = new ReviewVO();
+	    review.setM_id(m_id);
+
 	    //
-	    ReviewVO before = service.getReview(r_num);
-	    String before_img = before.getImg();
+//	    ReviewVO before = service.getReview(r_num);
+//	    String before_img = before.getImg();
 	    
 	    
 	    String review_img = "";
@@ -76,7 +79,15 @@ public class EditReviewController extends HttpServlet {
 			// request,파일저장경로,용량,인코딩타입,중복파일명에 대한 기본 정책
 			multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", 
 		new DefaultFileRenamePolicy());
-			
+			//
+			int num = Integer.parseInt(multi.getParameter("num"));
+			review.setNum(num);
+			int p_num = service.getSelectedP_num(num);
+			ReviewVO before = service.getReview(num);
+		    String before_img = before.getImg();
+			//
+		    review.setP_num(p_num);
+		    
 			review.setRate(Integer.parseInt(multi.getParameter("rate")));
 			review.setContent(multi.getParameter("message"));
 			// 전송한 전체 파일이름들을 가져옴
@@ -106,8 +117,8 @@ public class EditReviewController extends HttpServlet {
 		
 		service.editReview(review);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListReviewController");
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListReviewController");
+//		dispatcher.forward(request, response);
 	}
 
 	/**

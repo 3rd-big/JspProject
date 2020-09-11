@@ -45,6 +45,11 @@ public class ServiceImpl implements Service{
 	public int makeProductOrderNum() {
 		return dao.selectProductOrderNum();
 	}
+	
+	@Override
+	public int makeProductOrderCodeNum() {
+		return dao.selectProductOrderCodeNum();
+	}
 
 	@Override
 	public void add(ProductOrderVO po) {
@@ -52,9 +57,9 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public void editR_State(String m_id, int p_num) {
+	public void editR_State(String m_id, int o_num) {
 		// TODO Auto-generated method stub
-		dao.updateR_State(m_id, p_num);
+		dao.updateR_State(m_id, o_num);
 	}
 
 	@Override
@@ -68,5 +73,34 @@ public class ServiceImpl implements Service{
 		dao.updatePoint(m_id, o_num);
 		
 	}
+
+	@Override
+	public int findProductInCartNum(String m_id, int p_num, String size) {
+		return dao.selectProductInCartNum(m_id, p_num, size);
+	}
+
+	@Override
+	public int findProductQuantity(int p_num, String psize) {
+		return dao.selectProductQuantity(p_num, psize);
+	}
+
+	@Override
+	public ArrayList<ProductOrderVO> orderListByCNum(String m_id, int code_num) {
+		// TODO Auto-generated method stub
+		return dao.selectAllByCNum(m_id, code_num);
+	}
+
+	@Override
+	public ArrayList<ProductOrderVO> simpleorderlist(String m_id, int o_state, int page) {
+		// TODO Auto-generated method stub
+		return dao.selectAllsimpleorderlist(m_id, o_state, page);
+	}
+
+	@Override
+	public int getCountOrder(String m_id, int o_state) {
+		// TODO Auto-generated method stub
+		return dao.countAllByCNum(m_id, o_state);
+	}
+
 
 }

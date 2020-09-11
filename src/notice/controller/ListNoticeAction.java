@@ -39,7 +39,7 @@ public class ListNoticeAction extends HttpServlet {
 		if(request.getParameter("num")!=null){
 			num=Integer.parseInt(request.getParameter("num"));
 		}
-		ArrayList<NoticeVO> notice = service.getNoticeAll();
+		ArrayList<NoticeVO> notice = service.getCount();
 		
 		request.setAttribute("notice", notice);
 		request.setAttribute("num", num);

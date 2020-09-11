@@ -38,25 +38,22 @@
 			margin-top: 30px;
 			padding-left: 200px;
 		}
-		
-		.size-list > li{
-			display: inline;
-			border: 1px solid #bcbcbc;
-			padding: 10px;
-		}
-		#btn_buy, #btn_cart{
-			float: left;
-		}
-		
+
 		#btn_cart{
-			margin-left: 20px;
+			margin-top: 10px;
 		}
-		.size-selected{
-			background-color: gray;
-			color: white;
-		}
+
 		#select-quantity{
 			padding:10px;
+		}
+		#profile-img{
+			float: right;
+		}
+		#review-img{
+			
+		}
+		#review-id{
+			float: right;
 		}
 	</style>	
 
@@ -64,10 +61,12 @@
 
 	<script type="text/javascript">
 	
-		<!-- 장바구니 클릭 상품 번호 전달 -->
-		function addCart(productNum) {
+		
 	
-			if(${sessionScope.id == null}){
+		<!-- 장바구니 클릭 상품 번호 전달 -->
+		 function addCart(productNum) {
+			
+			if(${sessionScope.id == null }){
 				if(confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?')){
 					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
 					/* location.href= "${pageContext.request.contextPath }/LoginController"; */
@@ -77,9 +76,15 @@
 				}
 			} else{
 				
+				var unSizeCheck = $("#selected").length ? false : true;
+				if(unSizeCheck){
+					alert('사이즈를 선택해주세요');
+					return;
+				}
+				
 				if(confirm('장바구니에 추가하시겠습니까?')){
 					
-					var size = $(".size-selected").text();
+					var size = $("#selected").text();
 					var quantity = $("#select-quantity").text();
 					var allData = {"productNum": productNum, "size": size, "quantity": quantity};
 			
@@ -89,17 +94,29 @@
 						url: "${pageContext.request.contextPath }/AddProductCartController",
 						data: allData,
 						success: function (result) {
-							if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
-								<%-- location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0"; --%>
-								location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+							var resultMessage = $.trim(result);
+    							if(resultMessage == "AddCart Success"){
+								if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
+									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+								}
+							}else if(resultMessage == "Already Existed"){
+								if(confirm('장바구니에 이미 해당 상품이 있습니다. 장바구니로 이동하시겠습니까?')){
+									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+								}
+							}else if(resultMessage == "Sold Out"){
+								alert('재고가 부족합니다');
+							}else{
+								alert('error');
 							}
-							
+
 						}
 					});
 					
 				}
 				
-			}
+			} 
 
 			
 		}
@@ -125,6 +142,8 @@
 	
 		
 		$(document).ready(function(){
+			
+			var DefaultPrice = ${product.price };
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath }/DetailImgListController",
@@ -152,9 +171,11 @@
 				$("html").animate({scrollTop:offset.top}, 400);
 			});
 			<!-- 사이즈 선택 -->
-			$("ul.size-list li").click(function () {
-				$("ul.size-list li").removeClass("size-selected");
-				$(this).addClass("size-selected");
+			$("ul.size-selected li").click(function () {
+				$("ul.size-selected li").attr("class", "btn btn-outline-secondary");
+				$("ul.size-selected li").attr("id", "un-selected")
+				$(this).attr("class", "btn btn-secondary");
+				$(this).attr("id", "selected");
 			});
 			
 			<!-- 상품 수량 빼기 -->
@@ -162,6 +183,7 @@
 				var quantity = Number($("#select-quantity").text());
 				if(quantity >= 2){
 					$("#select-quantity").html(quantity-1);	
+					$(".quantity-total-price").html('￦'+((quantity-1) * DefaultPrice));
 				}
 				if(quantity == 2){
 					$("#countDown").attr("src", "sample_img/ico_decQ_disabled.png");
@@ -173,6 +195,7 @@
 			$("#incQuantity").click(function countUp() {
 				var quantity = Number($("#select-quantity").text());
 				$("#select-quantity").html(quantity+1);
+				$(".quantity-total-price").html('￦'+((quantity+1) * DefaultPrice));
 				$("#countDown").attr("src", "sample_img/ico_decQ.png");
 			});
 			
@@ -200,35 +223,44 @@
 			
 			<div class="col-lg-4">
 				<img class="card-img-top img-fluid" id="viewImg" src="${product.img }">
-
-				
-				<!--
-				<div class="card mt-4">
-					<img class="card-img-top img-fluid" id="viewImg" src="${product.img }" alt="">
-					<div class="card-body">
-					
-						<h3 class="card-title">${product.name }</h3>
-						<h4>￦${product.price }</h4>
-						<p class="card-text">
-							${product.content }
-						</p>
-						<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
-				
-					</div>
-				</div>
-				-->
 			</div>
-			
 			<div class="col-lg-7" id="product-info">
-				<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 <a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
+			
+				<!-- 평점 총합 변수 선언 -->
+				<c:set var="totalReRating" value="0" />
+				
+				<!-- 해당 상품의 모든 리뷰 forEach -->
+				<c:forEach var="review" items="${reviews}" varStatus="status">
+					<!-- 평점 총합에 누적 -->
+					<c:set var="totalReRating" value="${totalReRating + review.rate}"/>
+					<!-- 마지막 리뷰일 경우 -->
+					<c:if test="${status.last }">
+						<!-- 평점 평균 반올림 -->
+						<c:set var="avgReRating" value="${totalReRating / status.count}" />
+						<c:set var="avgReRating" value="${avgReRating + (((avgReRating%1)>=0.5)?(1-(avgReRating%1)):-(avgReRating%1)) }" />
+					</c:if>
+				</c:forEach>
+			
+				<!-- 채워진 별 -->															
+				<c:forEach var="colorStar" begin="1" end="${avgReRating}">
+					<small class="text-warning">&#9733;</small>
+				</c:forEach>
+				
+				<!-- 빈 별 -->
+				<c:forEach var="emptyStar" begin="1" end="${5 - avgReRating}">
+					<small class="text-warning">&#9734;</small>
+				</c:forEach>
+				<small>${reviews.size() } </small><a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
+					
+					
 				<h3>${product.name }</h3><br>
-				<h4>￦${product.price }</h4><br>
+				<h4 class="quantity-total-price">￦${product.price }</h4><br>
 				<p>${product.content }</p>
 				<br>
-				<ul class="size-list">
-					<li value="XL">XL</li>
-					<li value="L">L</li>
-					<li value="M">M</li>
+				<ul class="size-selected">
+					<li class="btn btn-outline-secondary" id="un-selected" value="XL">XL</li>
+					<li class="btn btn-outline-secondary" id="un-selected" value="L">L</li>
+					<li class="btn btn-outline-secondary" id="un-selected" value="M">M</li>
 				</ul>
 				<br>
 				<div class="select-amount">
@@ -241,17 +273,13 @@
 					</a>
 				</div>
 				<br><br>
+				
 				<div style="text-align: center;">
 					<div id="btn_buy" >
-						<input class="btn btn-outline-dark" type="button" value="구매하기" onClick="directOrder('${product.num}');" >
-<!-- =======
-				<div class="buy-cart">
-					<div id="btn_buy">
-						<input class="btn btn-outline-dark" type="button" value="결제하기">
->>>>>>> c581696fac8162a4035ab84aeae888777d182010 -->
+						<input class="btn btn-outline-dark btn-lg btn-block" type="button" value="결제하기" onClick="directOrder('${product.num}');">
 					</div>
 					<div id="btn_cart">
-						<input class="btn btn-dark" type="button" value="장바구니" onClick="addCart('${product.num}');">
+						<input class="btn btn-dark btn-lg btn-block" type="button" value="장바구니" onClick="addCart('${product.num}');">
 					</div>
 				</div>
 			</div>
@@ -271,24 +299,26 @@
 				<c:forEach var="review" items="${reviews }">
 					<div class="reviewer-info">
 						<div>
-							<img src="sample_img/profile_img.png" width="50">
-							<small class="text-muted"><b>${review.m_id }</b></small>
-							별점: ${review.rate } ${review.r_date }
+							<img src="sample_img/user_basic.png" width="50" id="profile-img">
+							<p><small class="text-muted" id="review-id"><b>${review.m_id }</b></small></p>
+							<smal>${review.r_date }</smal>
+							<!-- 채워진 별 -->															
+							<c:forEach var="colorStar" begin="1" end="${review.rate}">
+								<small class="text-warning">&#9733;</small>
+							</c:forEach>
+							
+							<!-- 빈 별 -->
+							<c:forEach var="emptyStar" begin="1" end="${5 - review.rate}">
+								<small class="text-warning">&#9734;</small>
+							</c:forEach>
 						</div>
 						
-						<img width="50px" height="75" src="${review.img}">
-						<p>${review.content }</p>
+						<img width="50px" height="75" src="${review.img}" id="review-img">
+						${review.content }
 						<hr>
 					</div>
 				</c:forEach>
-				<%--	
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Omnis et enim aperiam inventore, similique necessitatibus neque
-					non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
-					Sequi mollitia, necessitatibus quae sint natus.</p>
-				<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-				<hr>
-				 --%>
+
 				<input type="button" class="btn btn-success" value="Leave a Review" onClick="addReview(<%=(String)session.getAttribute("id")%>);" > <!-- 미완성 -->
 			</div>
 		</div>
