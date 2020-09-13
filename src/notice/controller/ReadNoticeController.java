@@ -1,13 +1,18 @@
 package notice.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 import model.NoticeVO;
 import notice.service.Service;
@@ -49,7 +54,48 @@ public class ReadNoticeController extends HttpServlet {
 		// System.out.println(notice.toString());
 
 		request.setAttribute("notice", notice);
-		service.updateViewCount(notice);
+		
+		
+		
+		// 조회수 증가 중복 방지 시작
+		
+		Map mapCookie = new HashMap();
+        if(request.getCookies() != null)
+        {
+        	Cookie cookies[] = request.getCookies();
+        	for(int i = 0; i < cookies.length; i++) 
+        	{
+        		Cookie obj = cookies[i]; 
+        		mapCookie.put(obj.getName(), obj.getValue()); 
+        	}
+        }
+        
+        String cookieReadView = (String) mapCookie.get("readView"); 
+        if(cookieReadView == null) {
+        	cookieReadView = "";
+        }
+        
+        System.out.println("확인" + cookieReadView);
+        
+        String newCookieReadView = "|" + num + "|";
+        
+        
+        if(cookieReadView.indexOf(newCookieReadView) == -1) 
+        {
+        	
+        	Cookie cookie = new Cookie("readView", cookieReadView + newCookieReadView);
+        	response.addCookie(cookie);
+        	
+        	System.out.println("글 번호 " + num + "조회수 증가");
+        	
+
+        	service.updateViewCount(notice);
+        
+        }
+		
+        // 조회수 증가 중복 방지 끝
+        
+//        service.updateViewCount(notice);  태수 여기 주석처리
 		// 글정보 출력페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/notice/search.jsp");
 		if(dispatcher != null){

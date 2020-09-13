@@ -87,7 +87,7 @@ table{
 								<td>${o.prod_name } <span style="font-size:12px;">..포함 ${o.ctnrow} 개</span>
 								</td>
 								<td><img src="${o.prod_img }" width="100" height="100"> </td>
-								<td>${o.sum_total_price } </td>
+								<td>${o.priceView } </td>
 								
 								<td> 배송상태? </td>
 								<td> 결제정보연결 </td>

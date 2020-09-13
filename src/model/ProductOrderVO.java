@@ -2,6 +2,8 @@ package model;
 
 import java.sql.Date;
 
+import common.Common;
+
 public class ProductOrderVO {
 	private int num;
 	private int p_num;
@@ -23,6 +25,8 @@ public class ProductOrderVO {
 	private int max_p_num;
 	private int ctnrow; 	//한 주문번호 당 주문한 상품 개수
 	
+	private String priceView;
+	
 	public ProductOrderVO() {
 		
 	}
@@ -41,6 +45,8 @@ public class ProductOrderVO {
 		this.o_state = o_state;
 		this.d_state = d_state;
 		this.p_size = p_size;
+		
+		this.priceView = Common.priceView(total_price);
 	}
 
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
@@ -57,6 +63,8 @@ public class ProductOrderVO {
 		this.p_size = p_size;
 		this.r_state=r_state;
 		this.code_num=code_num;
+		
+		this.priceView = Common.priceView(total_price);
 	}
 
 	public ProductOrderVO(int code_num, Date max_o_date, int sum_total_price, int max_d_state, int max_p_num, int ctnrow) {
@@ -67,6 +75,8 @@ public class ProductOrderVO {
 		this.sum_total_price=sum_total_price;
 		this.max_p_num=max_p_num;
 		this.ctnrow=ctnrow;
+		
+		this.priceView = Common.priceView(sum_total_price);
 	}
 
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
@@ -83,6 +93,8 @@ public class ProductOrderVO {
 		this.p_size = p_size;
 		this.prod_name = prod_name;
 		this.prod_img = prod_img;
+		
+		this.priceView = Common.priceView(total_price);
 	}
 
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
@@ -100,6 +112,8 @@ public class ProductOrderVO {
 		this.p_size = p_size;
 		this.prod_name = prod_name;
 		this.prod_img = prod_img;
+		
+		this.priceView = Common.priceView(total_price);
 	}
 
 
@@ -199,13 +213,14 @@ public class ProductOrderVO {
 		this.r_state = r_state;
 	}
 
+	public String getPriceView() {
+		return priceView;
+	}
 
-	@Override
-	public String toString() {
-		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
-				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
-				+ d_state + ", r_state=" + r_state + ", p_size=" + p_size + ", code_num=" + code_num + ", prod_name="
-				+ prod_name + ", prod_img=" + prod_img + "]";
+
+
+	public void setPriceView(String priceView) {
+		this.priceView = priceView;
 	}
 
 
@@ -278,6 +293,18 @@ public class ProductOrderVO {
 
 	public void setCtnrow(int ctnrow) {
 		this.ctnrow = ctnrow;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ProductOrderVO [num=" + num + ", p_num=" + p_num + ", o_quantity=" + o_quantity + ", total_price="
+				+ total_price + ", m_id=" + m_id + ", o_date=" + o_date + ", o_state=" + o_state + ", d_state="
+				+ d_state + ", r_state=" + r_state + ", p_size=" + p_size + ", code_num=" + code_num + ", prod_name="
+				+ prod_name + ", prod_img=" + prod_img + ", sum_total_price=" + sum_total_price + ", max_o_date="
+				+ max_o_date + ", max_d_state=" + max_d_state + ", max_p_num=" + max_p_num + ", ctnrow=" + ctnrow
+				+ ", priceView=" + priceView + "]";
 	}
 	
 	

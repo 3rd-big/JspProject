@@ -113,7 +113,7 @@ table{
 									</td>
 								<td>${o.p_size} </td> 
 								<td>${o.o_quantity} </td> 
-								<td>${o.total_price } </td> 
+								<td>${o.priceView } </td> 
 								<td>${o.o_date }</td>
 								<c:if test="${o.r_state==0 }">
 									<td><button type="submit" class="btn btn-outline-secondary" onclick="reviewAddFormPopUp('${o.p_num }','${o.num }');">작성하기</button> </td>

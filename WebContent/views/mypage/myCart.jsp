@@ -90,7 +90,7 @@ table{
 										</td>
 									<td>${o.p_size } </td>
 									<td>${o.o_quantity}</td>
-									<td>${o.total_price }</td>
+									<td>${o.priceView }</td>
 									<td scope="row"><input type="checkbox"></td>
 	
 								</tr>
