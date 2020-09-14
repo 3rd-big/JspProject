@@ -71,6 +71,10 @@ public class LoginController extends HttpServlet {
 		String previousUri = previousUriTokens[previousUriTokens.length - 1];
 		System.out.println(request.getParameter("previousUriToken") + " Uri를 갖고 LoginController로 넘어옴");
 		
+		if(previousUri.equals("LogoutController")) {
+			previousUri = "/MainListController";
+		}
+		
 		// 메뉴 페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(previousUri);
 		if (dispatcher != null) {

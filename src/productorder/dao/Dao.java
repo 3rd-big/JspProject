@@ -27,4 +27,6 @@ public interface Dao {
 	
 	int selectProductInCartNum(String m_id, int p_num, String size);
 	int selectProductQuantity(int p_num, String psize);
+	
+	int selectCartListCountById(String m_id);
 }

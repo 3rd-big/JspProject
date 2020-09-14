@@ -5,27 +5,6 @@
 <html>
 <head>
 
-<%--
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Shop Item - Start Bootstrap Template</title>
-
-<!-- Bootstrap core CSS -->
-<link
-	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
-	rel="stylesheet">
-
-<meta charset="UTF-8">
- --%>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -59,7 +38,8 @@
 
 	<!-- Navigation -->
 	<nav id ="top">
-          <jsp:include page = "/views/common/header.jsp" /><br><br>
+          <%-- <jsp:include page = "/views/common/header.jsp" /><br><br> --%>
+          <jsp:include page = "/views/common/header2.jsp" /><br><br>
     </nav>
      
 	<div class="container">
@@ -117,7 +97,9 @@
 	</div>
 	<!-- /.container -->
 
-
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

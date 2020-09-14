@@ -211,18 +211,19 @@
 <body>
 
 	<!-- Navigation -->
-	<%@include file="/views/common/header.jsp"%>
+	<%-- <%@include file="/views/common/header.jsp"%> --%>
+	<%@include file="/views/common/header2.jsp"%>
 
 	<!-- Page Content -->
 	<div class="container" >
 		<article class="row">
 		
-			<div class="col-lg-1" id="detail-img">
+			<div class="col-lg-1 rounded" id="detail-img">
 				<!-- ajax로 해당 상품 디테일 이미지 생성 -->
 			</div>
 			
 			<div class="col-lg-4">
-				<img class="card-img-top img-fluid" id="viewImg" src="${product.img }">
+				<img class="card-img-top img-fluid rounded" id="viewImg" src="${product.img }">
 			</div>
 			<div class="col-lg-7" id="product-info">
 			
@@ -328,7 +329,7 @@
 	</div>
 	
 	<!-- /.container -->
-
+<%--
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
@@ -336,8 +337,9 @@
 		</div>
 		<!-- /.container -->
 	</footer>
-
-
+ --%>
+			<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 
 </body>
 

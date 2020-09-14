@@ -49,7 +49,8 @@ table{
 	
 	
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%-- <%@include file ="/views/common/header.jsp" %> --%>
+	<%@include file ="/views/common/header2.jsp" %>
 		<c:if test="${not empty sessionScope.id }">
 			<div class="container">
 				<h1 class="my-4">My Page</h1>
@@ -117,7 +118,7 @@ table{
 	</c:if>
 
 
-
+<%--
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
@@ -126,6 +127,10 @@ table{
 		</div>
 		<!-- /.container -->
 	</footer>
+ --%>
+ 
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>

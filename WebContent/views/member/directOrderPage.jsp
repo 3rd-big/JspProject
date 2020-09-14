@@ -18,22 +18,24 @@
 	<!-- Custom styles for this template -->
 	<link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 
+	<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/orderPageCss.css" rel="stylesheet">
+	
 	<!-- Bootstrap core JavaScript -->
 	<script src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%@include file ="/views/common/header2.jsp" %>
 
 	<!-- Page Content -->
-  <div class="container">
+  <div class="container" style="padding-top: 10px;">
 
     <div class="row">
     
     
      <!-- /.col-lg-9 -->
-			<div class="col-lg-9">
+			<div class="col-lg-8">
 			
 			<div class="enrollcomponent">
 		<form action="/JspProject/JoinController" name="f" method="post">
@@ -41,16 +43,26 @@
 			<div>
 				<legend>배송지 정보</legend>
 				</div>
-				<div class="form-group">
-					<label for="InputID">수취인이름</label> 
-					<input type="text" class="form-control" id="id" name="id" value=${member.name }>
-				</div>
-				
-				<div class="form-group">
-					<label for="InputPwd">휴대전화</label> <input type="text" class="form-control" id="phone" name="phone" value="멤버에 폰 번호 추가">
-				</div>
-				
-				<div class="form-group">
+							<div class="row clfix">
+								<div class="col_head">수취인 이름*</div>
+								<div class="col_body">
+									<div class="col_row clfix">
+										<div class="col clf">
+											<input type="text" name="RCIVR_NM" id="RCIVR_NM"
+												onkeyup="javascript:fn_checkSpclCh(this);" maxlength="20"
+												value="권혁민">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="InputPwd">휴대전화</label> <input type="text"
+									class="form-control" id="phone" name="phone"
+									value="멤버에 폰 번호 추가">
+							</div>
+
+							<div class="form-group">
 					<label for="InputName">이메일 주소</label> <input type="text" class="form-control" id="email" name="email" value=${member.email}>
 				</div>
 				
@@ -145,7 +157,7 @@
 			
 
 
-			<div class="col-lg-3">
+			<div class="col-lg-4">
 
 				<div class="prods_info" id="test_box" style="top: 58px;">
 					<div class="prodlist">
@@ -248,10 +260,8 @@
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
+    	<%@include file="/views/common/footer2.jsp"%>
+    
   </footer>
 
   <!-- Bootstrap core JavaScript -->

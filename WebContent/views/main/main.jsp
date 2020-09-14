@@ -19,7 +19,7 @@
 
 
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%@include file ="/views/common/header.jsp" %><br><br>
 
 	<div class="container">
 	

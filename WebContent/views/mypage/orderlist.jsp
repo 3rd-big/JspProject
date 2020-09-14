@@ -71,7 +71,8 @@ table{
 </head>
 <body>
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
+	<%-- <%@include file ="/views/common/header.jsp" %> --%>
+	<%@include file ="/views/common/header2.jsp" %>
 	
 	<div class="container">
 		<h1 class="my-4">My Page</h1>
@@ -130,5 +131,8 @@ table{
 			</div>
 		</div>
 		</div>
+		
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 </body>
 </html>

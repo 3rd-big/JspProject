@@ -35,7 +35,7 @@ public class MainListController extends HttpServlet {
 		request.setAttribute("bestProducts", bestProducts);
 		request.setAttribute("newProducts", newProducts);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main2.jsp");
 		dispatcher.forward(request, response);
 		
 		

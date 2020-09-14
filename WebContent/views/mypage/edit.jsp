@@ -72,9 +72,9 @@
 </head>
 <body>
 	<!-- Navigation -->
-	<%@include file ="/views/common/header.jsp" %>
 	
-	
+	<%-- <%@include file ="/views/common/header.jsp" %> --%>
+	<%@include file ="/views/common/header2.jsp" %>
 	<!-- Page Container -->
 	<div class="container">
 	    <h1 class="my-4">My Page</h1>
@@ -136,7 +136,7 @@
  	</div>
 
 
-
+<%--
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
@@ -145,7 +145,11 @@
 		</div>
 		<!-- /.container -->
 	</footer>
-
+ --%>
+ 
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
+	
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

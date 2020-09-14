@@ -21,7 +21,9 @@
 
 </head>
 <body>
-	<%@include file="/views/common/header.jsp"%>
+	<!-- Navigation -->
+	<%-- <%@include file ="/views/common/header.jsp" %> --%>
+	<%@include file ="/views/common/header2.jsp" %>
 	<br>
 	<h4 style="margin: 0 50px; padding: 0 100px">공지사항</h4>
 	<br>
@@ -75,7 +77,8 @@
 			</table>
 		</form>
 	</div>
-
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 </body>
 </html>
 

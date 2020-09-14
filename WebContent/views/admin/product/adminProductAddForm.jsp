@@ -91,8 +91,10 @@
 
 	<!-- Navigation -->
 	<nav id ="top">
-          <jsp:include page = "/views/common/header.jsp" /><br><br>
+          <%-- <jsp:include page = "/views/common/header.jsp" /><br><br> --%>
+          <%@include file="/views/common/header2.jsp"%><br><br>
     </nav>
+
     
 	<div class="container">
 
@@ -177,6 +179,9 @@
 		
 	</div>
 	<!-- /.container -->
+
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

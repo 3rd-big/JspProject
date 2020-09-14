@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            height: 2000px;
+        }
+        .page-header{
+            background-color:aquamarine;
+            height: 70px; width: 100%; min-width: 960px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+           
+        }
+        .page-header.sticky{
+            position:fixed; top:0;
+        }
+
+    </style>
+
+
+
+
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var wind = $(window),
+                header = $('.page-header'),
+                headerOffsetTop = header.offset().top;
+
+            console.log(headerOffsetTop);
+
+            wind.scroll(function(){
+                if($(this).scrollTop() >= headerOffsetTop){
+                    header.addClass('sticky');
+                }else{
+                    header.removeClass('sticky');
+                }
+            });
+        });
+        
+
+    </script>
+
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br>
+
+    <div class="page-header">
+        <div class="inner">
+            <h1>헤더</h1>
+            <nav>
+                헤더입니다.
+
+            </nav>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
