@@ -261,6 +261,7 @@ public class DaoImpl implements Dao{
 			e.printStackTrace();
 		} finally {
 			try {
+				rs.close();
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {

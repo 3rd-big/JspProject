@@ -1,6 +1,8 @@
 package member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -71,10 +73,14 @@ public class LoginController extends HttpServlet {
 		String previousUri = previousUriTokens[previousUriTokens.length - 1];
 		System.out.println(request.getParameter("previousUriToken") + " Uri를 갖고 LoginController로 넘어옴");
 		
-		if(previousUri.equals("LogoutController")) {
-			previousUri = "/MainListController";
+		ArrayList<String> filterList = new ArrayList(Arrays.asList("LogoutController", "signup.jsp"));
+
+		for (String list : filterList) {
+			if(previousUri.equals(list)) {
+				previousUri = "/MainListController";
+			}
 		}
-		
+
 		// 메뉴 페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(previousUri);
 		if (dispatcher != null) {
