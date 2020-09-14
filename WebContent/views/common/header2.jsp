@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -323,6 +324,258 @@ body {
 					marginTop : '-20px'
 				}, 400, function() {
 					$(this).detach().appendTo('ul#ticker').removeAttr('style');
+=======
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Bootstrap core CSS -->
+	<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+
+	<!-- Bootstrap core JavaScript -->
+	<%-- <script src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js"></script> --%>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<style type="text/css">
+
+		img{
+			max-width: 100%;
+		}
+	</style>
+	
+	<style type="text/css">
+		body {
+	        margin: 0px;
+	        padding: 0px;
+		}
+		#main-header{
+			position: relative;
+			height: 40px;
+			background-color: #f5f5f5;
+		}	
+		#main-gnb-notice{
+			position: absolute;
+			top: 50%;
+			left: 20%;
+			transform:translate(-50%, -50%);
+			font:bold 12px Dotum;
+		}
+		#main-gnb-login{
+			position: absolute;
+			top: 50%;
+			right: 5%;
+			transform:translate(-50%, -50%);
+			font:bold 12px Dotum;
+		}
+		#main-gnb-login > ul { overflow: hidden; }
+		#main-gnb-login > ul > li { 
+			float: left; 
+			display: inline;
+			font:bold;
+			padding-top: 16px;
+		}
+		#main-gnb-login > ul > li > a { 
+			display: block;
+			padding: 2px 10px;
+			color: black;		
+			text-decoration: none;
+		}
+		
+		
+		
+		#main-logo-header{
+			position: relative;
+			height: 120px;
+		}
+		.logo {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform:translate(-50%, -50%);
+		}
+		.toggle{
+			position: absolute;
+			top: 50%;
+			left: 20%;
+			transform:translate(-50%, -50%);
+		}
+		.toggle div{
+			margin: 3px;
+			transition: all 0.3s ease;
+			width: 23px;
+			height: 3px;
+			background: black;
+		}
+		.cart-img{
+			position: absolute;
+			top: 50%;
+			right: 25%;
+			transform:translate(-50%, -50%);	
+		}
+		.cart-img a{ color: #242424; }
+		#numProdInTheCart{
+			left: -10px;
+			z-index: 10001;
+		}
+		
+		.person-img{
+			position: absolute;
+			top: 50%;
+			right: 20%;
+			transform:translate(-50%, -50%);
+		}
+		.person-img a{ color: #242424; }
+		
+		.search-img{
+			position: absolute;
+			top: 50%;
+			left: 25%;
+			transform:translate(-50%, -50%);
+		}
+		.search-img a{ color: #242424; }
+		.searchView{
+			/* height: 100px; background-color: #bbdefb;
+			display: none; */
+			position: absolute;
+			top: 60px;
+			left: -50px;
+			width:400px;
+			height:450px;
+			background-color: #f8f8f8; 
+			border:1px solid #e6e6e6;
+			display: none;
+			z-index:10001;
+		}
+		.searchView-inner{
+			margin:70px 40px 70px 40px;
+			background-color: white;
+			height: 70px;
+			line-height: 70px;
+			z-index:10002;
+		}
+		#searchTxt{
+			border:none;
+			color: #a6a6a6;
+			width: 300px;
+			text-indent: 28px;
+		}
+		.searchView-inner2{
+			margin:40px 40px 40px 40px;
+			background-color: white;
+			height: 140px;
+			line-height: 70px;
+			z-index:10002;
+		}
+		
+		
+		input:focus {outline:none;}
+		
+		
+ 		.scrollTopBtn{
+  			position:fixed;
+			bottom:-100%;
+			right: 5%;
+			color: #808080;
+		}
+		
+		.scrollTopBtn.visible{
+
+			position:fixed;
+			bottom: 10%;
+			right: 5%;
+			z-index:10000;
+			color: #808080;
+		}
+		
+		
+		
+
+
+		.main-gnb-product{
+			position: relative;
+			height: 40px;
+			background-color: yellow;
+		}
+		.main-gnb-product > ul { 
+			position: absolute;
+			overflow: hidden; 
+			top: 50%;
+			left: 50%;
+			transform:translate(-50%, -50%);
+		}
+		.main-gnb-product > ul > li { 
+			float: left; 
+			display: inline;
+			font:bold 18px;
+		}
+		.main-gnb-product > ul > li > a { 
+			display: block;
+			padding: 2px 10px;
+			color: black;		
+			text-decoration: none;
+		}
+		
+		
+        .page-header{
+            background-color: white;
+            text-align: center;
+            height: 50px; width: 100%; min-width: 960px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+            padding: 10px 0px;
+        }
+        .category-header{
+        	text-align: center;
+        }
+        .category-header > a{
+        	color: black;		
+			text-decoration: none;
+        }
+        .category-header > a:nth-child(2){
+        	margin-left: 20px;
+        }
+        
+        
+        .page-header-clone{
+        	background-color: white;
+        	text-align: center;
+        	position:fixed; top:-100%;
+            height: 50px; width: 100%; min-width: 960px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+            padding: 10px 0px;
+        }
+        .page-header-clone.visible{
+        	position:fixed; top:0;
+            z-index:9999;
+        }
+        
+        
+	</style>
+
+	<script type="text/javascript">
+
+	    $(document).ready(function(){
+	
+		    	var sessionId = "${sessionScope.id}";
+		    	
+				$.ajax({
+					url : "${pageContext.request.contextPath }/AllCartListCountController",
+					type : "GET",
+					async : false, 
+					data : "m_id=" + sessionId,
+					success : function(result) {
+						
+						if(result != "0"){
+							var cartTopOffset = $('.cart-img').offset().top;
+							var cartLeftOffset = $('.cart-img').offset().left;
+							$('#numProdInTheCart').css('top', cartTopOffset);
+							$('#numProdInTheCart').css('left', cartLeftOffset);
+							$('#numProdInTheCart').html(result);
+						}
+						
+					}
 				});
 				ticker();
 			}, 4000);
@@ -378,10 +631,10 @@ body {
 
 		// 마우스를 올렸을 때 재생 정지하기
 		var tickerover = function(event) {
-			$('#ticker').mouseover(function() {
+			$('#ticker_notice').mouseover(function() {
 				clearTimeout(timer);
 			});
-			$('#ticker').mouseout(function() {
+			$('#ticker_notice').mouseout(function() {
 				ticker();
 			});
 		};
@@ -414,7 +667,7 @@ body {
 			<!--  공지사항  슬라이드   -->
 			<div id="main-gnb-notice" style="padding-top : 10px; margin: 5px 50px;">
 				<div class="ticker_wrap">
-					<ul id="ticker">
+					<ul id="ticker_notice">
 						<div>공지사항1</div>
 						<div>공지사항2</div>
 						<div>공지사항3</div>
@@ -527,6 +780,7 @@ body {
 
 
 			<div class="search-img">
+<<<<<<< HEAD
 				<a href="#" class="searchBtn"> <svg width="2em" height="2em"
 						viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
 						xmlns="http://www.w3.org/2000/svg">
@@ -534,11 +788,27 @@ body {
 							d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
 					<path fill-rule="evenodd"
 							d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+=======
+				<a class="searchBtn">
+				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+					<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+>>>>>>> 29217f8b5f939b9afdf5e496134a61512a4fd83a
 				</svg>
 				</a>
-				<div class="searchView"></div>
+				<div class="searchView">
+					<div class="searchView-inner">
+						<input type="text" id="searchTxt" value="검색어를 입력하세요">
+					</div>
+					<div class="searchView-inner2">
+						추천 검색어
+					</div>
+				</div>
 			</div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 29217f8b5f939b9afdf5e496134a61512a4fd83a
 		</div>
 
 

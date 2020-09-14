@@ -21,7 +21,8 @@
 <style type="text/css">
 
 body{
-	font:Apple SD Gothic Neo;
+	/* font:Apple SD Gothic Neo; */
+	font: NotoSansKR;
 }
 .membershowbox{
 	margin-left: 50px;

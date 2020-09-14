@@ -213,12 +213,14 @@ public class DaoImpl implements Dao {
 				}
 			}
 			
+			return members;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
 			try {
+				rs.close();
 				rs.close();
 				pstmt.close();
 				conn.close();
@@ -227,7 +229,7 @@ public class DaoImpl implements Dao {
 			}
 		}
 
-		return members;
+		return null;
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class MainListController extends HttpServlet {
 		
 		Service service = new ServiceImpl(); 
 		ArrayList<ProductVO> bestProducts = service.getBestProducts(4);
-		ArrayList<ProductVO> newProducts = service.getNewProducts(4);
+		ArrayList<ProductVO> newProducts = service.getNewProducts(3); //선정 수정 4->3
 		
 		request.setAttribute("bestProducts", bestProducts);
 		request.setAttribute("newProducts", newProducts);
