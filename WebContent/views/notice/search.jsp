@@ -10,7 +10,6 @@
 <link
 	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
 	rel="stylesheet">
@@ -23,16 +22,15 @@
 <body>
 	<!-- Navigation -->
 	<%-- <%@include file ="/views/common/header.jsp" %> --%>
-	<%@include file ="/views/common/header2.jsp" %>
+	<%@include file="/views/common/header2.jsp"%>
 	<br>
-	<h4 style="margin: 0 50px; padding: 0 100px">공지사항</h4>
-	<br>
-	<div>
+	<h3 class="text-center my-4" align="center">공지사항</h3>
+	<div align="center">
 		<form
 			action="${pageContext.request.contextPath }/EditNoticeController"
 			method="post">
 			<table class="table table-sm mt-3 mb-5" cellspacing="0"
-				style="width: 900px; height: 300px; margin: 0 150px; padding: 0 100px">
+				style="width: 900px; height: 300px;">
 
 				<tr>
 					<td>no.<input type="text" class="form-control"
@@ -55,25 +53,26 @@
 						style="background-color: white"></td>
 				</tr>
 				<tr>
-				<c:if test="${sessionScope.memberType != 1 }">
-						<td>content<textarea class="form-control" name="content" readonly
-								rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
+					<c:if test="${sessionScope.memberType != 1 }">
+						<td>content<textarea class="form-control" name="content"
+								readonly rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
 					</c:if>
 					<c:if test="${sessionScope.memberType == 1 }">
-						<td>content<textarea class="form-control" name="content"
-								rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
+						<tr>
+							<td>content<textarea class="form-control" name="content"
+									rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
+									
+						</tr>
 					</c:if>
-				</tr>
-
 				<c:if test="${sessionScope.memberType == 0 }">
-					<tr align="right">
-						<td colspan="2"><input class="form-control" type="submit"
-							value="edit" style="color: black;"> <input type="button"
-							class="form-control" value="delete" style="color: black;"
+					<br>
+						<td colspan="2"><br><br><br><br><br><input class="form-control" type="submit"
+							value="edit" style="background-color: #4CAF50; color: white;"> <input type="button"
+							class="form-control" value="delete" style="background-color: #4CAF50; color: white;"
 							onclick="location.href = '${pageContext.request.contextPath }/DeleteNoticeController?num='+${notice.num}">
 						</td>
-					</tr>
 				</c:if>
+				</tr>
 			</table>
 		</form>
 	</div>

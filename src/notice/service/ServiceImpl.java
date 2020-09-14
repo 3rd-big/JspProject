@@ -2,7 +2,6 @@ package notice.service;
 
 import java.util.ArrayList;
 
-import model.NoticePaging;
 import model.NoticeVO;
 import notice.dao.Dao;
 import notice.dao.DaoImpl;
@@ -21,7 +20,7 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public NoticeVO getNotice(int num) {
+	public NoticeVO  getNotice(int num) {
 		// TODO Auto-generated method stub
 		return dao.select(num);
 	}
@@ -58,8 +57,15 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public ArrayList<NoticeVO> getCount() {
-		return dao.getCount(null);
+	public int getcountMine() {
+		// TODO Auto-generated method stub
+		return dao.countallmine();
+	}
+
+	@Override
+	public ArrayList<NoticeVO> getNoticeByPageNum(int page) {
+		// TODO Auto-generated method stub
+		return dao.selectNoticeByPageNum(page);
 	}
 
 
