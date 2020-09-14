@@ -286,7 +286,7 @@
 			<c:if test="${empty sessionScope.id }">
 			<div id="main-gnb-login">
 				<ul>
-					<li><a href="${pageContext.request.contextPath }/ListNoticeController">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath }/ListNoticeController?page=1">공지사항</a></li>
 					<li><a href="<%=request.getContextPath()%>/views/member/login.jsp">주문조회</a></li>
 					<li><a href="<%=request.getContextPath()%>/views/member/signup.jsp">회원가입</a></li>
 					<li><a href="<%=request.getContextPath()%>/views/member/login.jsp">로그인</a></li>
@@ -299,7 +299,7 @@
 			<c:if test="${sessionScope.memberType == 1 }">
 			<div id="main-gnb-login">
 				<ul>
-					<li><a href="${pageContext.request.contextPath }/ListNoticeController">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath }/ListNoticeController?page=1">공지사항</a></li>
 					<li><a href="${pageContext.request.contextPath }/OrderlistController?o_state=1">주문조회</a></li>
 					<li><a href="${pageContext.request.contextPath }/MypageController?o_state=1">마이페이지</a></li>
 					<li><a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
@@ -312,7 +312,7 @@
 			<c:if test="${sessionScope.memberType == 0 }">
 			<div id="main-gnb-login">
 				<ul>
-					<li><a href="${pageContext.request.contextPath }/ListNoticeController">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath }/ListNoticeController?page=1">공지사항</a></li>
 					<li><a href="<%=request.getContextPath()%>/ProductAllListController">관리자페이지</a></li>
 					<li><a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
 				</ul>
