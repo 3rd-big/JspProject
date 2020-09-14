@@ -115,9 +115,41 @@
 		}
 		.search-img a{ color: #242424; }
 		.searchView{
-			height: 100px; background-color: #bbdefb;
+			/* height: 100px; background-color: #bbdefb;
+			display: none; */
+			position: absolute;
+			top: 60px;
+			left: -50px;
+			width:400px;
+			height:450px;
+			background-color: #f8f8f8; 
+			border:1px solid #e6e6e6;
 			display: none;
+			z-index:10001;
 		}
+		.searchView-inner{
+			margin:70px 40px 70px 40px;
+			background-color: white;
+			height: 70px;
+			line-height: 70px;
+			z-index:10002;
+		}
+		#searchTxt{
+			border:none;
+			color: #a6a6a6;
+			width: 300px;
+			text-indent: 28px;
+		}
+		.searchView-inner2{
+			margin:40px 40px 40px 40px;
+			background-color: white;
+			height: 140px;
+			line-height: 70px;
+			z-index:10002;
+		}
+		
+		
+		input:focus {outline:none;}
 		
 		
  		.scrollTopBtn{
@@ -369,15 +401,21 @@
 			
 			
 			<div class="search-img">
-				<a href="#" class="searchBtn">
+				<a class="searchBtn">
 				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
 					<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
 				</svg>
 				</a>
-				<div class="searchView"></div>
+				<div class="searchView">
+					<div class="searchView-inner">
+						<input type="text" id="searchTxt" value="검색어를 입력하세요">
+					</div>
+					<div class="searchView-inner2">
+						추천 검색어
+					</div>
+				</div>
 			</div>
-			
 		</div>
 
 		

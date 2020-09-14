@@ -17,6 +17,10 @@
 		img{
 			max-width: 100%;
 		}
+		.carousel slide{
+			position: absolute;
+			z-index: 100;
+		}
 	</style>
 
 </head>
