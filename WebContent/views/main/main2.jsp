@@ -19,7 +19,7 @@
 			max-width: 100%;
 		}
 		.carousel slide{
-			position: absolute;
+			position : absolute;
 			z-index: 100;
 		}
 		#content_div{

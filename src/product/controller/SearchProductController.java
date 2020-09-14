@@ -16,11 +16,11 @@ import model.ReviewVO;
 import product.service.Service;
 import product.service.ServiceImpl;
 
-@WebServlet("/CategoryController")
-public class CategoryController extends HttpServlet {
+@WebServlet("/SearchProductController")
+public class SearchProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public CategoryController() {
+    public SearchProductController() {
 
     }
 
@@ -29,33 +29,28 @@ public class CategoryController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String category = request.getParameter("category");
+		
+		String keyword = request.getParameter("keyword");
 		int page = Integer.parseInt(request.getParameter("page"));
 		
-		String orderBy = request.getParameter("orderBy");
-		if(request.getParameter("orderBy") == "") {
-			orderBy = null;
-		}
-				
 		Service service = new ServiceImpl();
 		review.service.Service review_service = new review.service.ServiceImpl();
 		
-		ArrayList<ProductVO> categoryProducts = service.getCategoryProducts(category);
-		ArrayList<ProductVO> products = new ArrayList<ProductVO>();
+		ArrayList<ProductVO> products = service.getProductAll();
+		ArrayList<ProductVO> keywordProducts = new ArrayList<ProductVO>();
 		
-		if(orderBy == null) {
-			products = service.getCategoryProductsByPageNum(category, page);	
-		}else{
-			products = service.getCategoryProductsSort(category, page, orderBy);
+		for (ProductVO productVO : products) {
+			if(productVO.getName().contains(keyword)) {
+				keywordProducts.add(productVO);
+			}
 		}
 		
-		for (ProductVO product : products) {
-			ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(product.getNum());
-			product.setReviews(reviews);
+		for (ProductVO keywordProduct : keywordProducts) {
+			ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(keywordProduct.getNum());
+			keywordProduct.setReviews(reviews);
 		}
 		
-		request.setAttribute("products", products);
-
+		request.setAttribute("keywordProducts", keywordProducts);
 		
 		PaginationVO pn = new PaginationVO();
 		
@@ -64,7 +59,7 @@ public class CategoryController extends HttpServlet {
 		pn.setCountList(8);					// 한 화면에 보여질 상품 수
 		pn.setCountPage(3);					// 하단 보여질 페이지 수 ex) << < 1 2 3 > >>
 		
-		pn.setTotalCount(categoryProducts.size());	// 전체 상품 수 ex) 35개
+		pn.setTotalCount(keywordProducts.size());	// 전체 상품 수 ex) 35개
 		
 		pn.setTotalPage(pn.getTotalCount() / pn.getCountList());
 		if(pn.getTotalCount() % pn.getCountList() > 0) {	// ex) 총 상품 35개, 한 페이지에 8개 표시 :: 4개의 페이지(8개 상품) + 1페이지(3개 상품)
@@ -91,9 +86,12 @@ public class CategoryController extends HttpServlet {
 		}
 		
 		request.setAttribute("pn", pn);
+
+
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product/categoryList.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product/searchProductList.jsp");
 		dispatcher.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
