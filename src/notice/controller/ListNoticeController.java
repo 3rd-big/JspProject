@@ -42,16 +42,20 @@ public class ListNoticeController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		Service service = new ServiceImpl();
-
+		
+		int page = Integer.parseInt(request.getParameter("page"));
+		
 		ArrayList<NoticeVO> notice = service.getNoticeAll();
+		
+		notice = service.getNoticeByPageNum(page);
 		
 		request.setAttribute("notices", notice);
 		
 		System.out.println("====ListNoticeController====");
 		System.out.println(notice.toString());
 		
-		int page = Integer.parseInt(request.getParameter("page"));
-		//
+		
+		////
 		PaginationVO pn = new PaginationVO();
 		
 		// 페이징 처리

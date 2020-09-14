@@ -33,7 +33,7 @@
 				style="width: 900px; height: 300px;">
 
 				<tr>
-					<td>no.<input type="text" class="form-control"
+					<td><input type="hidden" class="form-control"
 						value="${notice.num }" name="num" size="20" readonly
 						style="background-color: white"></td>
 
@@ -53,25 +53,22 @@
 						style="background-color: white"></td>
 				</tr>
 				<tr>
-					<c:if test="${sessionScope.memberType != 1 }">
+					<c:if test="${sessionScope.memberType != 0 }">
 						<td>content<textarea class="form-control" name="content"
 								readonly rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
 					</c:if>
-					<c:if test="${sessionScope.memberType == 1 }">
+					<c:if test="${sessionScope.memberType == 0 }">
 						<tr>
 							<td>content<textarea class="form-control" name="content"
 									rows="7" cols="100" style="background-color: white">${notice.content }</textarea></td>
-									
-						</tr>
-					</c:if>
-				<c:if test="${sessionScope.memberType == 0 }">
-					<br>
-						<td colspan="2"><br><br><br><br><br><input class="form-control" type="submit"
+									<td colspan="2"><br><br><br><br><br><input class="form-control" type="submit"
 							value="edit" style="background-color: #4CAF50; color: white;"> <input type="button"
 							class="form-control" value="delete" style="background-color: #4CAF50; color: white;"
 							onclick="location.href = '${pageContext.request.contextPath }/DeleteNoticeController?num='+${notice.num}">
 						</td>
-				</c:if>
+						</tr>
+					</c:if>
+		
 				</tr>
 			</table>
 		</form>

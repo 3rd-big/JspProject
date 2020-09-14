@@ -59,7 +59,7 @@ public class WriteNoticeController extends HttpServlet {
 		// 서비스의 글작성 기능 실행
 		service.add(notice);
 		// 글목록으로 이동
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListNoticeController");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListNoticeController?page=1");
 		if (dispatcher != null) {
 			dispatcher.forward(request, response);
 		}
