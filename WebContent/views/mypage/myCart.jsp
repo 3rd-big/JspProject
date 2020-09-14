@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Shop Homepage - My Cart</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

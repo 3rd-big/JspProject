@@ -37,7 +37,7 @@ public class DetailController extends HttpServlet {
 		
 		ProductVO product = service.getProduct(num);
 		ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(num);
-		ArrayList<MemberVO> members = member_service.getMemberByReviewId(reviews);
+//		ArrayList<MemberVO> members = member_service.getMemberByReviewId(reviews);
 		
 		product.setReviews(reviews);
 		

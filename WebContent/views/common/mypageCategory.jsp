@@ -19,7 +19,7 @@
 
 	<div class="col-lg-auto">
 
-		<div class="list-group">
+		<div class="list-group list-group-flush">
 	        	<a href="${pageContext.request.contextPath }/OrderlistController?o_state=1" class="list-group-item" style="text-decoration: none;">주문조회</a>
 	        	<a href="${pageContext.request.contextPath }/AllOrderListController?o_state=1&page=1" class="list-group-item" style="text-decoration: none;">주문조회2</a>
 	        	<a href="${pageContext.request.contextPath }/ListReviewController?page=1" class="list-group-item" style="text-decoration: none;">내가 쓴 리뷰 관리</a>
