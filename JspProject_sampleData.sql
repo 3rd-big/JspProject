@@ -555,7 +555,7 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 66, '/upload_img/te
 
 --bottom
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 터치 조거 팬츠', 59000, '/pants1_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 터치 조거 팬츠', 59000, '/upload_img/pants1_1.jpg', 
                             '매우 따뜻하고 부드러운 모달 소재의 조거 팬츠. 허리 부분은 끈으로 조절 가능하고 밴딩 처리된 밑단. 옆면 포켓.', 
                             sysdate, 250, 'bottom');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 67, '/upload_img/pants1_2.jpg');
@@ -565,7 +565,7 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 67, '/upload_img/pa
 
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '그레이 백그라운드 플라워 프린트 레깅스', 59000, '/pants2_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '그레이 백그라운드 플라워 프린트 레깅스', 59000, '/upload_img/pants2_1.jpg', 
                             '발목까지 내려오는 길이의 더블 레이어드 하이웨이스트 프린트 레깅스. UPF40+ 자외선 차단 기능이 있고 마찰에 강한 퀵 드라이 소재. 허리 뒷면의 내부 포켓.', 
                             sysdate, 250, 'bottom');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 68, '/upload_img/pants2_2.jpg');
@@ -575,7 +575,7 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 68, '/upload_img/pa
 
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '에코 레더 조거 팬츠', 49000, '/pants3_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '에코 레더 조거 팬츠', 49000, '/upload_img/pants3_1.jpg', 
                             '신축성 있는 허리 부분에서 끈으로 핏 조절이 가능한 하이웨이스트 팬츠. 앞면 포켓과 뒷면 페이크 파이핑 포켓. 앵클 밴디드 마감 밑단.', 
                             sysdate, 250, 'bottom');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 69, '/upload_img/pants3_2.jpg');
@@ -585,7 +585,7 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 69, '/upload_img/pa
 
 
 
-insert into product values (SEQ_SHOP_PRODUCT.nextval, '스튜디오 와이디 요가 팬츠', 86000, '/pants4_1.jpg', 
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '스튜디오 와이디 요가 팬츠', 86000, '/upload_img/pants4_1.jpg', 
                             'Indoor and outdoor yoga practice, and life off the mat', 
                             sysdate, 250, 'bottom');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 70, '/upload_img/pants4_2.jpg');

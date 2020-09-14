@@ -160,9 +160,8 @@ public class DaoImpl implements Dao {
 		
 		Connection conn = db.getConnection();
 		ArrayList<MemberVO> members = new ArrayList();
-		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
 		String sql = "select * from member";
 		
 		try {
@@ -196,8 +195,8 @@ public class DaoImpl implements Dao {
 	public ArrayList<MemberVO> selectMemberByReviewId(ArrayList<ReviewVO> r) {
 		Connection conn = db.getConnection();
 		ArrayList<MemberVO> members = new ArrayList();
-		ResultSet rs = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		String sql = "select * from member where id=?";
 		
@@ -220,6 +219,7 @@ public class DaoImpl implements Dao {
 
 		} finally {
 			try {
+				rs.close();
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {

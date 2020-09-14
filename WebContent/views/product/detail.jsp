@@ -130,6 +130,29 @@
 			}
 		}
 	
+ 		function priceView(price) {
+			var commaCount = 0;
+			var priceString = price.toString();
+
+			var priceView = "";
+			var count = 0;
+			
+			for(var i=1; i<=priceString.length; i++){
+				priceView += priceString.charAt(priceString.length-i);
+				++count;
+				if(count % 3 == 0){
+					priceView += ',';
+				} 
+			}
+			
+			priceView = priceView.split("").reverse().join("");
+			
+			if(priceView.charAt(0) == ','){
+				priceView = priceView.substr(1);
+			}
+			return priceView;
+		} 
+		
 		
 		$(document).ready(function(){
 
@@ -172,9 +195,7 @@
 				var quantity = Number($("#select-quantity").text());
 				if(quantity >= 2){
 					$("#select-quantity").html(quantity-1);	
-					$(".quantity-total-price").html('￦'+((quantity-1) * DefaultPrice));
-
-					
+					$(".quantity-total-price").html('￦'+ priceView((quantity-1) * DefaultPrice));				
 				}
 				if(quantity == 2){
 					$("#countDown").attr("src", "sample_img/ico_decQ_disabled.png");
@@ -186,8 +207,9 @@
 			$("#incQuantity").click(function countUp() {
 				var quantity = Number($("#select-quantity").text());
 				$("#select-quantity").html(quantity+1);
-				$(".quantity-total-price").html('￦'+((quantity+1) * DefaultPrice));
+				$(".quantity-total-price").html('￦'+ priceView((quantity+1) * DefaultPrice));
 				$("#countDown").attr("src", "sample_img/ico_decQ.png");
+
 			});
 			
 			

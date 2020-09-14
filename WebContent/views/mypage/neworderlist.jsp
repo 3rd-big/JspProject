@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문 내역 조회</title>
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -48,10 +48,7 @@ table{
 	<%@include file ="/views/common/header2.jsp" %>
 	
 	<div class="container">
-					<%
-					PaginationVO pn = (PaginationVO)request.getAttribute("pn");
-					int currentPage = Integer.parseInt(request.getParameter("page"));
-				%>
+					
 		<h1 class="my-4">My Page</h1>
 		 <div class="row">
 			
@@ -111,45 +108,37 @@ table{
 						</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?o_state=1&page=<%=currentPage-1 %>" aria-label="Previous">
+						<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?page=${param.page-1}&o_state=1" aria-label="Previous">
 							<span aria-hidden="true">&lsaquo;</span>
 						</a>
 					</li>
 				</c:if>
-				<%
-					for(int i = pn.getStartPage(); i <= pn.getEndPage(); i++){
-						if(i == currentPage){
-				%>
+
+				<c:forEach var="pageNum" begin="${pn.startPage }" end="${pn.endPage }" step="1">
+							
+					<c:choose>
+						<c:when test="${param.page eq pageNum}">
 							<li class="page-item active" aria-current="page">
-				<%
-						}else{
-				%>
+						</c:when>
+						<c:otherwise>
 							<li class="page-item">
-				<%
-						}
-				%>
-								<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?o_state=1&page=<%=i %>">
-				<%
-									out.print(i);
-						if(i == currentPage){
-				%>
+						</c:otherwise>
+					</c:choose>
+								<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?page=${pageNum }&o_state=1">${pageNum }</a>
+					<c:if test="${param.page eq pageNum}">
 									<span class="sr-only">(current)</span>
-				<%
-						}
-				%>
-								</a>
 							</li>
-				<%
-					}
-				%>
+					</c:if>
+				</c:forEach>
+
 				<c:if test="${pn.totalPage != pn.page }">
 					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?o_state=1&page=<%=currentPage+1 %>" aria-label="Next">
+						<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?page=${param.page+1}&o_state=1" aria-label="Next">
 							<span aria-hidden="true">&rsaquo;</span>
 						</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?o_state=1&page=<%=pn.getTotalPage() %>" aria-label="Next">
+						<a class="page-link" href="${pageContext.request.contextPath }/AllOrderListController?page=${pn.totalPage }&o_state=1" aria-label="Next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
