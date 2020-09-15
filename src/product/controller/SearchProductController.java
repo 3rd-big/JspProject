@@ -1,6 +1,8 @@
 package product.controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -29,8 +31,16 @@ public class SearchProductController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
+		//String keyword = request.getParameter("keyword");
+		String requestURI = request.getQueryString();
+		String arrTemp[] = requestURI.split("=");
+		String arrKeyword[] = arrTemp[1].split("&");
+		String keywordTemp = arrKeyword[0];
 		
-		String keyword = request.getParameter("keyword");
+		String keyword = URLDecoder.decode(keywordTemp, "UTF-8");
+		//System.out.println(decodeResult);
+
+		
 		int page = Integer.parseInt(request.getParameter("page"));
 		
 		String orderBy = request.getParameter("orderBy");

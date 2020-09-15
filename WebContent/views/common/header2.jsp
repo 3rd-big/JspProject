@@ -232,6 +232,11 @@
 		
 		function onKeyDown(field) {
 			if(window.event.keyCode == 13){
+	/* 			var enc = encodeURI(field.value);
+				alert('enc: ' + enc);
+				alert(field.value);
+				var test = "${pageContext.request.contextPath }/SearchProductController?keyword=" + enc + "&page=1";
+				alert(test); */
 				location.href = "${pageContext.request.contextPath }/SearchProductController?keyword=" + field.value + "&page=1";
 			}
 		}
