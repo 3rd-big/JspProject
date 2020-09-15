@@ -232,7 +232,6 @@
 		
 		function onKeyDown(field) {
 			if(window.event.keyCode == 13){
-				alert(field.value);
 				location.href = "${pageContext.request.contextPath }/SearchProductController?keyword=" + field.value + "&page=1";
 			}
 		}

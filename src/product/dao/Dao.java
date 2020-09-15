@@ -20,6 +20,10 @@ public interface Dao {
 	
 	ArrayList<ProductVO> selectCategoryProductsSort(String category, int page, String orderBy);
 	
+	ArrayList<ProductVO> selectKeywordProductsByPageNum(String keyword, int page);
+	
+	ArrayList<ProductVO> selectKeywordProductsSort(String keyword, int page, String orderBy);
+	
 	ArrayList<ProductImageVO> selectDetailImages(int p_num);
 	
 	int selectProductNum();

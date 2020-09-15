@@ -20,6 +20,10 @@ public interface Service {
 	
 	ArrayList<ProductVO> getCategoryProductsSort(String category, int page, String orderBy);
 	
+	ArrayList<ProductVO> getKeywordProductsByPageNum(String keyword, int page);
+	
+	ArrayList<ProductVO> getKeywordProductsSort(String keyword, int page, String orderBy);
+	
 	ArrayList<ProductImageVO> getDetailImgAll(int p_num);
 	
 	ProductVO getProduct(int num);
