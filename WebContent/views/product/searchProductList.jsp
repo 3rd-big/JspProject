@@ -39,8 +39,22 @@
 			border-left: none;				/* 메뉴 분류중 제일 왼쪽의 "|"는 삭제 */
 		}
 
-	</style>
 
+		.active-pink-4 input[type=text]:focus:not([readonly]) {
+			border: 1px solid #f48fb1;
+			box-shadow: 0 0 0 1px #f48fb1;
+		}
+	</style>
+	
+	<script type="text/javascript">
+	
+		function onKeyDown(field) {
+			if(window.event.keyCode == 13){
+				location.href = "${pageContext.request.contextPath }/SearchProductController?keyword=" + field.value + "&page=1";
+			}
+		}
+	
+	</script>
 
 </head>
 <body>
@@ -61,7 +75,10 @@
 			<br>
 			<h2>SEARCH</h2>
 			<br><br>
-	
+				<!-- Search form -->
+				<div class="active-pink-4 mb-4">
+					<input class="form-control" type="text" placeholder="검색어를 입력하세요" aria-label="Search" value="${param.keyword }" onkeydown="onKeyDown(this)">
+				</div>
 			<hr>
 			<div>
 				<strong style="float: left;">${keywordProducts.size() }</strong><span style="float: left;">&nbsp;개의 상품</span>

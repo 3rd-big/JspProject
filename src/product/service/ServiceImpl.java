@@ -22,6 +22,11 @@ public class ServiceImpl implements Service{
 	}
 	
 	@Override
+	public ArrayList<ProductVO> getProductManagementByPageNum(int page) {
+		return dao.selectAllByPageNum(page);
+	}
+	
+	@Override
 	public ArrayList<ProductVO> getBestProducts(int numberItems) {
 		return dao.selectBestProducts(numberItems);
 	}
