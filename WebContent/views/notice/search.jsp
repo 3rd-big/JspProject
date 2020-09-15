@@ -33,23 +33,19 @@
 				style="width: 900px; height: 300px;">
 
 				<tr>
-					<td><input type="hidden" class="form-control"
-						value="${notice.num }" name="num" size="20" readonly
-						style="background-color: white"></td>
-
-
-					<td>view_count <input type="text" class="form-control"
-						value="${notice.view_count }" name="num" size="20" readonly
-						style="background-color: white"></td>
-
-				</tr>
-				<tr>
-					<td>title<input type="text" class="form-control" name="title"
+				<td>title<input type="text" class="form-control" name="title"
 						value="${notice.title }" size="100" ${str }
 						style="background-color: white"></td>
-
+				<td><input type="hidden" class="form-control"
+						value="${notice.num }" name="num" size="20" readonly
+						style="background-color: white"></td>
+				</tr>
+				<tr>
 					<td>date<input type="text" class="form-control"
 						value="${notice.n_date }" size="20" readonly
+						style="background-color: white"></td>
+						<td><input type="hidden" class="form-control"
+						value="${notice.view_count }" name="num" size="20" readonly
 						style="background-color: white"></td>
 				</tr>
 				<tr>

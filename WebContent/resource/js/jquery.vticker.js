@@ -1,4 +1,3 @@
-
 /*
   Vertical News Ticker 1.21
 
