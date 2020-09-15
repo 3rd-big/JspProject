@@ -1,6 +1,8 @@
 package product.controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -29,22 +31,43 @@ public class SearchProductController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
+		//String keyword = request.getParameter("keyword");
+		String requestURI = request.getQueryString();
+		String arrTemp[] = requestURI.split("=");
+		String arrKeyword[] = arrTemp[1].split("&");
+		String keywordTemp = arrKeyword[0];
 		
-		String keyword = request.getParameter("keyword");
+		String keyword = URLDecoder.decode(keywordTemp, "UTF-8");
+		//System.out.println(decodeResult);
+
+		
 		int page = Integer.parseInt(request.getParameter("page"));
+		
+		String orderBy = request.getParameter("orderBy");
+		if(request.getParameter("orderBy") == "") {
+			orderBy = null;
+		}
 		
 		Service service = new ServiceImpl();
 		review.service.Service review_service = new review.service.ServiceImpl();
 		
 		ArrayList<ProductVO> products = service.getProductAll();
+		ArrayList<ProductVO> keywordAllProducts = new ArrayList<ProductVO>();
 		ArrayList<ProductVO> keywordProducts = new ArrayList<ProductVO>();
 		
 		for (ProductVO productVO : products) {
 			if(productVO.getName().contains(keyword)) {
-				keywordProducts.add(productVO);
+				keywordAllProducts.add(productVO);
 			}
 		}
 		
+		
+		if(orderBy == null) {
+			keywordProducts = service.getKeywordProductsByPageNum(keyword, page);	
+		}else{
+			keywordProducts = service.getKeywordProductsSort(keyword, page, orderBy);
+		}
+
 		for (ProductVO keywordProduct : keywordProducts) {
 			ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(keywordProduct.getNum());
 			keywordProduct.setReviews(reviews);
@@ -59,7 +82,7 @@ public class SearchProductController extends HttpServlet {
 		pn.setCountList(8);					// 한 화면에 보여질 상품 수
 		pn.setCountPage(3);					// 하단 보여질 페이지 수 ex) << < 1 2 3 > >>
 		
-		pn.setTotalCount(keywordProducts.size());	// 전체 상품 수 ex) 35개
+		pn.setTotalCount(keywordAllProducts.size());	// 전체 상품 수 ex) 35개
 		
 		pn.setTotalPage(pn.getTotalCount() / pn.getCountList());
 		if(pn.getTotalCount() % pn.getCountList() > 0) {	// ex) 총 상품 35개, 한 페이지에 8개 표시 :: 4개의 페이지(8개 상품) + 1페이지(3개 상품)

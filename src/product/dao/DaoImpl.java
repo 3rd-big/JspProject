@@ -48,6 +48,40 @@ private DBConnect db;
 
 		return products;
 	}
+	
+	@Override
+	public ArrayList<ProductVO> selectAllByPageNum(int page) {
+		ArrayList<ProductVO> products = new ArrayList<>();
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		int startRange = (page - 1) * 8 + 1;
+		int endRange = page * 8;
+		
+		String sql = "select * from (select * from (select * from product order by num) where num <= ?) where num >= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, endRange);
+			pstmt.setInt(2, startRange);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				products.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
+	}
 
 	@Override
 	public ArrayList<ProductVO> selectBestProducts(int numberItems) {
@@ -218,6 +252,81 @@ private DBConnect db;
 		}
 		return products;
 	}	
+	
+	@Override
+	public ArrayList<ProductVO> selectKeywordProductsByPageNum(String keyword, int page) {
+		ArrayList<ProductVO> products = new ArrayList<>();
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		int startRange = (page - 1) * 8 + 1;
+		int endRange = page * 8;
+		
+		String sql = "select * from (select rownum as rnum, a.* from (select * from product where name LIKE '%" + keyword + "%' order by record desc) A where rownum <= ?) X where x.rnum >= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, endRange);
+			pstmt.setInt(2, startRange);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				products.add(new ProductVO(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getDate(7), rs.getInt(8), rs.getString(9)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return products;
+	}
+	
+
+	@Override
+	public ArrayList<ProductVO> selectKeywordProductsSort(String keyword, int page, String orderBy) {
+		ArrayList<ProductVO> products = new ArrayList<>();
+		Connection conn = db.getConnection();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		int startRange = (page - 1) * 8 + 1;
+		int endRange = page * 8;
+		
+		String sql = "select * from (select rownum as rnum, a.* from (select * from product where name LIKE '%" + keyword + "%' order by record desc) A where rownum <= ?) X where x.rnum >= ?";
+		if(orderBy.equals("price")) {
+			sql = "select * from (select rownum as rnum, a.* from (select * from product where name LIKE '%" + keyword + "%' order by price) A where rownum <= ?) X where x.rnum >= ?";
+		}else if(orderBy.equals("rate")) {
+			sql = "select * from (select rownum as rnum, a.* from (select * from ratinginproduct where name LIKE '%" + keyword + "%' order by rate desc) a where rownum <= ?) X where rnum >= ?";
+		}
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, endRange);
+			pstmt.setInt(2, startRange);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				products.add(new ProductVO(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getDate(7), rs.getInt(8), rs.getString(9)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
+	}
 	
 	
 	@Override
@@ -559,9 +668,5 @@ private DBConnect db;
 		}
 		
 	}
-
-
-
-
 
 }

@@ -180,6 +180,7 @@ body {
 	text-indent: 15px;
 }
 
+
 input:focus {
 	outline: none;
 }
@@ -199,92 +200,81 @@ input:focus {
 	color: #808080;
 }
 
-.main-gnb-product {
-	position: relative;
-	height: 40px;
-	background-color: yellow;
-}
 
-.main-gnb-product>ul {
-	position: absolute;
-	overflow: hidden;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.main-gnb-product>ul>li {
-	float: left;
-	display: inline;
-	font: bold 18px;
-}
-
-.main-gnb-product>ul>li>a {
-	display: block;
-	padding: 2px 10px;
-	color: black;
-	text-decoration: none;
-}
-
-.page-header {
-	background-color: white;
-	text-align: center;
-	height: 50px;
-	width: 100%;
-	min-width: 960px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-	padding: 10px 0px;
-}
-
-.category-header {
-	text-align: center;
-}
-
-.category-header>a {
-	color: black;
-	text-decoration: none;
-}
-
-.category-header>a:nth-child(2) {
-	margin-left: 20px;
-}
-
-.page-header-clone {
-	background-color: white;
-	text-align: center;
-	position: fixed;
-	top: -100%;
-	height: 50px;
-	width: 100%;
-	min-width: 960px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-	padding: 10px 0px;
-}
-
-.page-header-clone.visible {
-	position: fixed;
-	top: 0;
-	z-index: 9999;
-}
-
-#ticker {
-	height: 20px;
-	text-decoration-line: underline;
-	line-height: 150%;
-	overflow: hidden;
-	align: center;
-	text-align: center;
-}
-</style>
-
-<script type="text/javascript">
-	function onKeyDown(field) {
-		if (window.event.keyCode == 13) {
-			alert(field.value);
-			location.href = "${pageContext.request.contextPath }/SearchProductController?keyword="
-					+ field.value + "&page=1";
+		.main-gnb-product{
+			position: relative;
+			height: 40px;
+			background-color: yellow;
 		}
-	}
+		.main-gnb-product > ul { 
+			position: absolute;
+			overflow: hidden; 
+			top: 50%;
+			left: 50%;
+			transform:translate(-50%, -50%);
+		}
+		.main-gnb-product > ul > li { 
+			float: left; 
+			display: inline;
+			font:bold 18px;
+		}
+		.main-gnb-product > ul > li > a { 
+			display: block;
+			padding: 2px 10px;
+			color: black;		
+			text-decoration: none;
+		}
+		
+		
+        .page-header{
+            background-color: white;
+            text-align: center;
+            height: 50px; width: 100%; min-width: 960px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+            padding: 10px 0px;
+        }
+        .category-header{
+        	text-align: center;
+        }
+        .category-header > a{
+        	color: black;		
+			text-decoration: none;
+        }
+        .category-header > a:nth-child(2){
+        	margin-left: 20px;
+        }
+        
+        
+        .page-header-clone{
+        	background-color: white;
+        	text-align: center;
+        	position:fixed; top:-100%;
+            height: 50px; width: 100%; min-width: 960px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+            padding: 10px 0px;
+        }
+        .page-header-clone.visible{
+        	position:fixed; top:0;
+            z-index:9999;
+        }
+        
+        
+	</style>
+
+	<script type="text/javascript">
+
+		
+		function onKeyDown(field) {
+			if(window.event.keyCode == 13){
+	/* 			var enc = encodeURI(field.value);
+				alert('enc: ' + enc);
+				alert(field.value);
+				var test = "${pageContext.request.contextPath }/SearchProductController?keyword=" + enc + "&page=1";
+				alert(test); */
+				location.href = "${pageContext.request.contextPath }/SearchProductController?keyword=" + field.value + "&page=1";
+			}
+		}
+		
 
 	function onClick() {
 	}
@@ -400,19 +390,19 @@ input:focus {
 			</div>
 
 			<!--  공지사항  슬라이드   -->
-		<c:forEach var="notices" items="{notice}"  delims=",">
+		
 			<div id="main-gnb-notice"
 				style="padding-top: 10px; margin: 5px 50px;">
 				<div class="ticker_wrap">
 					<ul id="ticker">
 
-						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=${notices.num}"style="color: black;">1</a></div>
-						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=${notices.num}" style="color: black;">2</a></div>
-						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=${notices.num}"style="color: black;">3</a></div>
+						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=1"style="color: black;">1</a></div>
+						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=2" style="color: black;">2</a></div>
+						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=3"style="color: black;">3</a></div>
  					</ul>
 				</div>
 			</div>
-</c:forEach>
+
 
 			<!-- 비로그인 상태 -->
 			<c:if test="${empty sessionScope.id }">
@@ -449,16 +439,15 @@ input:focus {
 
 			<!-- 관리자 로그인 상태 -->
 			<c:if test="${sessionScope.memberType == 0 }">
-				<div id="main-gnb-login">
-					<ul>
-						<li><a
-							href="${pageContext.request.contextPath }/ListNoticeController?page=1">공지사항</a></li>
-						<li><a
-							href="<%=request.getContextPath()%>/ProductAllListController">관리자페이지</a></li>
-						<li><a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
-					</ul>
-				</div>
 
+			<div id="main-gnb-login">
+				<ul>
+					<li><a href="${pageContext.request.contextPath }/ListNoticeController?page=1">공지사항</a></li>
+					<li><a href="<%=request.getContextPath()%>/ProductAllListController?page=1">관리자페이지</a></li>
+					<li><a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
+				</ul>
+			</div>
+			
 			</c:if>
 
 

@@ -39,8 +39,25 @@
 			border-left: none;				/* 메뉴 분류중 제일 왼쪽의 "|"는 삭제 */
 		}
 
-	</style>
 
+		.active-pink-4 input[type=text]:focus:not([readonly]) {
+			border: 1px solid #f48fb1;
+			box-shadow: 0 0 0 1px #f48fb1;
+		}
+		#noData{
+			text-align: center;
+		}
+	</style>
+	
+	<script type="text/javascript">
+	
+		function onKeyDown(field) {
+			if(window.event.keyCode == 13){
+				location.href = "${pageContext.request.contextPath }/SearchProductController?keyword=" + field.value + "&page=1";
+			}
+		}
+	
+	</script>
 
 </head>
 <body>
@@ -61,18 +78,34 @@
 			<br>
 			<h2>SEARCH</h2>
 			<br><br>
-	
+				<!-- Search form -->
+				<div class="active-pink-4 mb-4">
+					<input class="form-control" type="text" placeholder="검색어를 입력하세요" aria-label="Search" value="${param.keyword }" onkeydown="onKeyDown(this)">
+				</div>
 			<hr>
 			<div>
 				<strong style="float: left;">${keywordProducts.size() }</strong><span style="float: left;">&nbsp;개의 상품</span>
 				<ul class="orderby-menu">
-					<li><a href="${pageContext.request.contextPath }/CategoryController?category=${param.category}&page=1&orderBy=e_date">신상품</a></li>
-					<li><a href="${pageContext.request.contextPath }/CategoryController?category=${param.category}&page=1&orderBy=price">낮은가격</a></li>
-					<li><a href="${pageContext.request.contextPath }/CategoryController?category=${param.category}&page=1&orderBy=record">인기상품</a></li>
-					<li><a href="${pageContext.request.contextPath }/CategoryController?category=${param.category}&page=1&orderBy=rate">평점순</a></li>
+					<li><a href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=1&orderBy=e_date">신상품</a></li>
+					<li><a href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=1&orderBy=price">낮은가격</a></li>
+					<li><a href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=1&orderBy=record">인기상품</a></li>
+					<li><a href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=1&orderBy=rate">평점순</a></li>
 				</ul>
 			</div>
 			<br> <br> <br>
+
+				<c:if test="${0 == keywordProducts.size() }">
+					<div id="noData">
+						<strong>"${param.keyword }" 검색 결과가 없습니다.</strong>
+						<br>
+						<strong>정확한 검색어인지 확인하시고 다시 검색해 주세요.</strong>
+						<br><br>
+						
+						<p>검색어/제외검색어의 입력이 정확한지 확인해 보세요.</p>
+						<p>두 단어 이상의 검색어인 경우, 띄어쓰기를 확인해 보세요.</p>
+						<p>검색 옵션을 다시 확인해 보세요.</p>
+					</div>
+				</c:if>
 
 				<div class="row">
 					<c:forEach var="keywordProduct" items="${keywordProducts }">
@@ -133,18 +166,22 @@
 		</div>
 		<!-- /.row -->
 	
+			
+
+			
+		<c:if test="${0 != keywordProducts.size() }">
 		<!-- pagination -->
 		<br> <br>
 		<nav aria-label="...">
 			<ul class="pagination justify-content-center">
 			<c:if test="${1 != pn.page }">
 				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController=${param.keyword}&page=1&orderBy=${param.orderBy }" aria-label="Previous">
+					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=1&orderBy=${param.orderBy }" aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
 				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController=${param.keyword}&page=${param.page-1}&orderBy=${param.orderBy }" aria-label="Previous">
+					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=${param.page-1}&orderBy=${param.orderBy }" aria-label="Previous">
 						<span aria-hidden="true">&lsaquo;</span>
 					</a>
 				</li>
@@ -160,7 +197,7 @@
 						<li class="page-item">
 					</c:otherwise>
 				</c:choose>
-							<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController=${param.keyword}&page=${pageNum }&orderBy=${param.orderBy }">${pageNum }</a>
+							<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=${pageNum }&orderBy=${param.orderBy }">${pageNum }</a>
 				<c:if test="${param.page eq pageNum}">
 								<span class="sr-only">(current)</span>
 				</c:if>
@@ -168,12 +205,12 @@
 
 			<c:if test="${pn.totalPage != pn.page }">
 				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController=${param.keyword}&page=${param.page+1}&orderBy=${param.orderBy }" aria-label="Next">
+					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=${param.page+1}&orderBy=${param.orderBy }" aria-label="Next">
 						<span aria-hidden="true">&rsaquo;</span>
 					</a>
 				</li>
 				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController=${param.keyword}&page=${pn.totalPage }&orderBy=${param.orderBy }" aria-label="Next">
+					<a class="page-link" href="${pageContext.request.contextPath }/SearchProductController?keyword=${param.keyword}&page=${pn.totalPage }&orderBy=${param.orderBy }" aria-label="Next">
 						<span aria-hidden="true">&raquo;</span>
 					</a>
 				</li>
@@ -183,7 +220,7 @@
 		</nav>
 		<br>
 		<!-- /pagination -->
-	
+		</c:if>
 	
 	
 	

@@ -23,4 +23,5 @@ public interface Service {
 	int getSelectedP_num(int r_num);
 	ArrayList<ReviewVO> getMyReviewAll(String m_id, int page);
 	int getcountMine(String m_id);
+	int getcountByP_Num(int p_num);
 }

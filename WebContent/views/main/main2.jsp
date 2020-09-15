@@ -31,10 +31,7 @@
 			margin-top:2px;
 			margin-bottom:2px;
 		}
-		.feature_contents{
-			margin-left: 15%;
-
-		}
+		
 	</style>
 
 </head>
@@ -64,7 +61,8 @@
 							<h1 style="text-shadow:1px 1px 2px darkgray">Start with the gear that does it all</h1>
 							<p>Your new essentials are here. Go from warmup to chill out in our abrasion-resistant, breathable, and modern layers</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
+								<br>
+								<!-- <a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a> -->
 							</p>
 						</div>
 					</div>
@@ -76,7 +74,8 @@
 							<h1 style="text-shadow:1px 1px 2px darkgray">Happy Untact Home Training with Us!</h1>
 							<p>Enjoy the energetic and healthy <b>SWEAT LIFE</b> with us at your home</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
+								<br>
+								<!-- <a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a> -->
 							</p>
 						</div>
 					</div>
@@ -88,7 +87,8 @@
 							<h1>2020 Autumn Collection</h1>
 							<p>F/W 신상품 출시</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a>
+								<br>
+								<!-- <a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a> -->
 							</p>
 						</div>
 					</div>
@@ -154,10 +154,11 @@
 	
 			<div class="row featurette">
 				<div class="col-md-7">
-					<h2 class="featurette-heading">
-						First featurette heading. <span class="text-muted">It'll blow your mind.</span>
+					<br><br><br><br><br><br><br><br><br>
+					<h2 class="featurette-heading" style="text-align:center;">
+						PRO ATHLETE <!-- <span class="text-muted"> Development of the Performance</span> -->
 					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+					<p class="lead" style="text-align:center;"> For the hardest workers in the room.</p>
 				</div>
 				<div class="col-md-5">
 					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="sample_img/main_collection7-1.jpg" data-holder-rendered="true">
@@ -168,10 +169,11 @@
 	
 			<div class="row featurette">
 				<div class="col-md-7 order-md-2">
-					<h2 class="featurette-heading">
-						Your day is a Workout. <span class="text-muted">As original as you.</span>
+					<br><br><br><br><br><br><br><br><br>
+					<h2 class="featurette-heading" style="text-align:center;">
+						Your day is a Workout. <span class="text-muted">As original as you</span>
 					</h2>
-					<p class="lead">일상 속 모든 움직임을 위한 옷. 개성있지만 편하게</p>
+					<p class="lead" style="text-align:center;">일상 속 모든 움직임을 위한 옷</p>
 				</div>
 				<div class="col-md-5 order-md-1">
 					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="sample_img/main_collection8-1.jpg" data-holder-rendered="true" style="width: 500px; height: 500px;">
@@ -183,13 +185,13 @@
 			<div class="row featurette">
 				<div class="col-md-7">
 					<br><br><br><br><br><br><br><br><br>
-					<div class="feature_contents">
-						<h2 class="featurette-heading">
+					
+						<h2 class="featurette-heading" style="text-align:center;">
 							Online Exclusive Gear is  <span class="text-muted">HERE</span>
 						</h2>
-						<p class="lead">Free Shipping. Free Returns.</p>
+						<p class="lead" style="text-align:center;">Free Shipping. Free Returns.</p>
 					</div>
-				</div>
+				
 				<div class="col-md-5">
 					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="sample_img/main_collection2.jpg" data-holder-rendered="true" style="width: 500px; height: 500px;">
 				</div>

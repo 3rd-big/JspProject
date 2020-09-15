@@ -73,6 +73,12 @@ public class ServiceImpl implements Service{
 		return dao.countallmine(m_id);
 	}
 
+	@Override
+	public int getcountByP_Num(int p_num) {
+		// TODO Auto-generated method stub
+		return dao.countreviewByP_Num(p_num);
+	}
+
 
 
 }
