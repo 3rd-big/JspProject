@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="common.Common" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
@@ -94,18 +94,18 @@
 						url: "${pageContext.request.contextPath }/AddProductCartController",
 						data: allData,
 						success: function (result) {
-							var resultMessage = $.trim(result);
-    							if(resultMessage == "AddCart Success"){
+							/* var resultMessage = $.trim(result); */
+    							if(result == "AddCart Success"){
 								if(confirm('장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?')){
-									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+									<%-- location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0"; --%>
 									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
 								}
-							}else if(resultMessage == "Already Existed"){
+							}else if(result == "Already Existed"){
 								if(confirm('장바구니에 이미 해당 상품이 있습니다. 장바구니로 이동하시겠습니까?')){
-									location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0";
+									<%-- location.herf = "<%=request.getContextPath()%>/OrderlistController?o_state=0"; --%>
 									location.href= "${pageContext.request.contextPath }/OrderlistController?o_state=0";
 								}
-							}else if(resultMessage == "Sold Out"){
+							}else if(result == "Sold Out"){
 								alert('재고가 부족합니다');
 							}else{
 								alert('error');
@@ -122,7 +122,7 @@
 		}
 		
 		function directOrder(productNum) {
-			var size = $(".size-selected").text();
+			var size = $("#selected").text();
 			var quantity = $("#select-quantity").text();
 			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
 	
@@ -142,7 +142,7 @@
 	
 		
 		$(document).ready(function(){
-			
+
 			var DefaultPrice = ${product.price };
 			
 			$.ajax({
@@ -184,6 +184,8 @@
 				if(quantity >= 2){
 					$("#select-quantity").html(quantity-1);	
 					$(".quantity-total-price").html('￦'+((quantity-1) * DefaultPrice));
+
+					
 				}
 				if(quantity == 2){
 					$("#countDown").attr("src", "sample_img/ico_decQ_disabled.png");
@@ -252,10 +254,9 @@
 					<small class="text-warning">&#9734;</small>
 				</c:forEach>
 				<small>${reviews.size() } </small><a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
-					
-					
+				
 				<h3>${product.name }</h3><br>
-				<h4 class="quantity-total-price">￦${product.price }</h4><br>
+				<h4 class="quantity-total-price">￦${product.priceView }</h4><br>
 				<p>${product.content }</p>
 				<br>
 				<ul class="size-selected">

@@ -29,7 +29,7 @@ public class AddReviewController2 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text'html; charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
@@ -49,6 +49,8 @@ public class AddReviewController2 extends HttpServlet {
 		
 		
 		String uploadPath = "C:\\Users\\KITRI\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
+		//TODO 여기 
+//		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
 			// 객체 생성하는 부분이 실제 톰캣서버에 업로드하는 과정이였음..

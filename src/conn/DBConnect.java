@@ -10,8 +10,8 @@ public class DBConnect {
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
 
 
-	//String jdbc_url = "jdbc:oracle:thin:@192.168.0.6:1521:XE";
-	String jdbc_url = "jdbc:oracle:thin:@192.168.0.6:1521:XE";
+	//String jdbc_url = "jdbc:oracle:thin:@192.168.0.4:1521:XE";
+	String jdbc_url = "jdbc:oracle:thin:@localhost:1521:XE";
 
 
 

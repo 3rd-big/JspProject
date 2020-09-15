@@ -214,12 +214,14 @@ public class DaoImpl implements Dao {
 				}
 			}
 			
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
 			try {
+				rs.close();
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {

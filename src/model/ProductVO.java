@@ -4,6 +4,8 @@ package model;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import common.Common;
+
 public class ProductVO {
 	private int num;
 	private String name;
@@ -14,6 +16,8 @@ public class ProductVO {
 	private int record;
 	private String category;
 	private ArrayList<ReviewVO> reviews;
+	
+	private String priceView;
 	
 	public ProductVO() {}
 
@@ -27,6 +31,9 @@ public class ProductVO {
 		this.e_date = e_date;
 		this.record = record;
 		this.category = category;
+		
+		this.priceView = Common.priceView(price);
+
 	}
 
 	public int getNum() {
@@ -101,10 +108,19 @@ public class ProductVO {
 		this.reviews = reviews;
 	}
 
+	public String getPriceView() {
+		return priceView;
+	}
+
+	public void setPriceView(String priceView) {
+		this.priceView = priceView;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [num=" + num + ", name=" + name + ", price=" + price + ", img=" + img + ", content=" + content
-				+ ", e_date=" + e_date + ", record=" + record + ", category=" + category + "]";
+				+ ", e_date=" + e_date + ", record=" + record + ", category=" + category + ", reviews=" + reviews
+				+ ", priceView=" + priceView + "]";
 	}
 	
 }

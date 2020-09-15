@@ -44,7 +44,7 @@
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td>${product.price}</td>
+					<td>${product.priceView}</td>
 				</tr>
 				<tr>
 					<th>사이즈</th>

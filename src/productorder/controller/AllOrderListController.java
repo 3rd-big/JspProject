@@ -93,6 +93,7 @@ public class AllOrderListController extends HttpServlet {
 		//
 		request.setAttribute("list", list);
 		request.setAttribute("o_state", o_state);
+	
 		RequestDispatcher rd = request.getRequestDispatcher("/views/mypage/neworderlist.jsp");
 		rd.forward(request, response);
 	}

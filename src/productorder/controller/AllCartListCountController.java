@@ -22,18 +22,15 @@ public class AllCartListCountController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text'html; charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 
 		String m_id = request.getParameter("m_id");
 		
 		Service service = new ServiceImpl();
 		int numProdInTheCart = service.getCartListCountById(m_id);
-
-		request.setAttribute("numProdInTheCart", numProdInTheCart);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/json/CartListCountResult_JSON.jsp");
-		dispatcher.forward(request, response);
+	
+		response.getWriter().print(numProdInTheCart);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

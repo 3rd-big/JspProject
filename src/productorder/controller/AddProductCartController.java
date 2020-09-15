@@ -28,7 +28,7 @@ public class AddProductCartController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text'html; charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession(false);
@@ -48,7 +48,7 @@ public class AddProductCartController extends HttpServlet {
 		int findProductQuantity = service.findProductQuantity(p_num, size) ;
 
         int findCartNum = service.findProductInCartNum(id, p_num, size);
-
+        
         if(findProductQuantity >= quantity) {	// 재고 >= 주문수량 :: 주문 가능
         	
         	if(-1 == findCartNum) {		// 장바구니에 해당삼품이 존재하지 않음 :: 장바구니 추가
@@ -68,25 +68,18 @@ public class AddProductCartController extends HttpServlet {
         		
             	service.add(po);
             	
-            	request.setAttribute("resultMessage", "AddCart Success");
             	
+        		response.getWriter().print("AddCart Success");
+         	
             }else {						// 장바구니에 해당상품 존재
             	
-            	request.setAttribute("resultMessage", "Already Existed");
-            	
+            	response.getWriter().print("Already Existed");
+           	
             }
         	
         }else {									// 재고 < 주문수량 :: 주문 불가
-        	
-        	request.setAttribute("resultMessage", "Sold Out");
-        	
+        	response.getWriter().print("Sold Out");    	
         }
-        
-
-		 RequestDispatcher dispatcher = request.getRequestDispatcher("/views/json/AddCartResult_JSON.jsp");
-		 dispatcher.forward(request, response);
-
-
 	}
 	
 

@@ -4,268 +4,284 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	
-	<title>Shop Homepage - Start Bootstrap Template</title>
-	
-	  <!-- Bootstrap core CSS -->
-	<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	
-	<!-- Custom styles for this template -->
-	<link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-	<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/orderPageCss.css" rel="stylesheet">
-	
-	<!-- Bootstrap core JavaScript -->
-	<script src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<title>Shop Homepage - Start Bootstrap Template</title>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
+<!-- Bootstrap core CSS -->
+<link
+	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
+	rel="stylesheet">
+
+<link
+	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/orderPageCss.css"
+	rel="stylesheet">
+
+<!-- Bootstrap core JavaScript -->
+<script
+	src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+<script language="javascript">
+	function goPopup() {
+		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+		var pop = window
+				.open(
+						"${pageContext.request.contextPath }/views/common/jusoPopup.jsp",
+						"pop",
+						"width=570,height=420, scrollbars=yes, resizable=yes");
+
+		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+		//var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+	}
+	/** API 서비스 제공항목 확대 (2017.02) **/
+	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
+			roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,
+			detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
+			buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.form.roadAddrPart1.value = roadAddrPart1;
+		document.form.roadAddrPart2.value = roadAddrPart2;
+		document.form.addrDetail.value = addrDetail;
+		document.form.zipNo.value = zipNo;
+	}
+</script>
 </head>
 <body>
-	<!-- Navigation -->
-	<%@include file ="/views/common/header2.jsp" %>
+	<!-- header -->
+	<%@include file="/views/common/header2.jsp"%>
+
 
 	<!-- Page Content -->
-  <div class="container" style="padding-top: 10px;">
+	<div class="container" style="padding-top: 10px;">
+		<form action="${pageContext.request.contextPath }/directOrderController" name="form" id="form" method="post">
+			<div class="row">
 
-    <div class="row">
-    
-    
-     <!-- /.col-lg-9 -->
-			<div class="col-lg-8">
-			
-			<div class="enrollcomponent">
-		<form action="/JspProject/JoinController" name="f" method="post">
-			<fieldset>
-			<div>
-				<legend>배송지 정보</legend>
+
+				<!-- /.col-lg-9 -->
+				<div class="col-lg-8">
+
+					<div class="enrollcomponent">
+
+						<fieldset>
+							<div>
+								<legend>배송지 정보</legend>
+							</div>
+							<div class="form-group">
+								<label for="InputPwd">수취인 이름</label> <input type="text"
+									class="form-control" id="add_name" name="add_name"
+									value=${member.name }>
+							</div>
+
+							<div class="form-group">
+								<label for="InputPwd">휴대전화1</label> <input type="text"
+									class="form-control" id="add_phone1" name="add_phone1"
+									value="01012345678">
+							</div>
+							<div class="form-group">
+								<label for="InputPwd">휴대전화2</label> <input type="text"
+									class="form-control" id="add_phone2" name="add_phone2"
+									value="01098765432">
+							</div>
+
+							<div class="form-group">
+								<label for="InputName">이메일 주소</label> <input type="text"
+									class="form-control" id="email" name="email"
+									value=${member.email}>
+							</div>
+
+							<div>
+
+								<!-- 배송지 주소 API -->
+								<table>
+									<colgroup>
+										<col style="width: 20%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>우편번호</th>
+											<td><input type="hidden" id="confmKey" name="confmKey"
+												value=""> <input type="text" id="zipNo" name="zipNo"
+												readonly style="width: 100px"> <input type="button"
+												value="주소검색" onclick="goPopup();"></td>
+										</tr>
+										<tr>
+											<th>도로명주소</th>
+											<td><input type="text" id="roadAddrPart1"
+												name="roadAddrPart1" style="width: 85%"></td>
+										</tr>
+										<tr>
+											<th>상세주소</th>
+											<td><input type="text" id="addrDetail" name="addrDetail"
+												style="width: 40%" value=""> <input type="text"
+												id="roadAddrPart2" name="roadAddrPart2" style="width: 40%"
+												value=""></td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+
+							<div>
+								<label>배송 방법</label>
+								<ul class="size-selected" id="oi_howDeli" name="oi_howDeli">
+									<li class="btn btn-outline-secondary" id="un-selected" value="come">방문수령</li>
+									<li class="btn btn-outline-secondary" id="un-selected" value="tackbae">택배</li>
+									<li class="btn btn-outline-secondary" id="un-selected" value="quick">퀵</li>
+								</ul>
+							</div>
+
+
+							<div>
+								<label>배송 요청 사항</label> <input type="text" class="form-control"
+									id="oi_deliMessage" name="oi_deliMessage"
+									value="배송 또는 주문시 요청 사항을 입력해주세요.">
+							</div>
+
+
+
+							<div>
+								<label for="InputAddress">결제방법</label><br> <input
+									type="radio" id="howPay" name="howPay" value="카드결제"><span>카드결제</span>
+								<input type="radio" id="howPay" name="howPay" value="무통장입금"><span>무통장입금</span>
+								<input type="radio" id="howPay" name="howPay" value="휴대폰결제"><span>휴대폰결제</span>
+								<input type="radio" id="howPay" name="howPay" value="실시간이체"><span>실시간이체</span>
+							</div>
+
+
+							<br>
+							<div style="text-align: center;">
+								<button type="submit" class="btn btn-primary" onClick="hello();">결제하기</button>
+							</div>
+						</fieldset>
+
+					</div>
+
+
 				</div>
-							<div class="row clfix">
-								<div class="col_head">수취인 이름*</div>
-								<div class="col_body">
-									<div class="col_row clfix">
-										<div class="col clf">
-											<input type="text" name="RCIVR_NM" id="RCIVR_NM"
-												onkeyup="javascript:fn_checkSpclCh(this);" maxlength="20"
-												value="권혁민">
-										</div>
+
+				<div class="col-lg-4">
+
+					<div class="prods_info" id="test_box" style="top: 58px;">
+						<div class="prodlist">
+							<div class="box last container" style="border: outset;">
+								<a
+									href="<%=request.getContextPath()%>/DetailController?num=${productInfo.p_num}"
+									target="_blank">
+									<div class="img">
+										<img src="${productInfo.prod_img }" class="prd" width="60"
+											height="60">
+									</div>
+								</a>
+								<!-- 부가상품 -->
+								<div class="info">
+									<div class="tit">
+										<a
+											href="<%=request.getContextPath()%>/DetailController?num=${productInfo.p_num}"
+											target="_blank" class="">${productInfo.prod_name }</a>
+									</div>
+
+									<div class="details">사이즈: ${productInfo.p_size } / 수량 :
+										${productInfo.o_quantity }</div>
+									<div class="price-container">
+										<span class="prc">${productInfo.total_price }<span
+											class="won">원</span></span>
 									</div>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<label for="InputPwd">휴대전화</label> <input type="text"
-									class="form-control" id="phone" name="phone"
-									value="멤버에 폰 번호 추가">
-							</div>
-
-							<div class="form-group">
-					<label for="InputName">이메일 주소</label> <input type="text" class="form-control" id="email" name="email" value=${member.email}>
-				</div>
-				
-				<!-- 주소api 추후 추가 -->
-				<div class="form-group">
-					<label for="InputAddress">Address</label> <input type="text" class="form-control" id="addr" name="addr" value=${member.addr}>
-				</div>
-				
-				<!-- <div class="form-group">
-					<label for="exampleSelect1">Example select</label> <select
-						class="form-control" id="exampleSelect1">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="exampleSelect2">Example multiple select</label> <select
-						multiple="" class="form-control" id="exampleSelect2">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="exampleTextarea">Example textarea</label>
-					<textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputFile">File input</label> <input type="file"
-						class="form-control-file" id="exampleInputFile"
-						aria-describedby="fileHelp"> <small id="fileHelp"
-						class="form-text text-muted">This is some placeholder
-						block-level help text for the above input. It's a bit lighter and
-						easily wraps to a new line.</small>
-				</div>
-				<fieldset class="form-group">
-					<legend>Radio buttons</legend>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="optionsRadios" id="optionsRadios1"
-							value="option1" checked=""> Option one is this and
-							that—be sure to include why it's great
-						</label>
-					</div>
-					<div class="form-check">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="optionsRadios" id="optionsRadios2"
-							value="option2"> Option two can be something else and
-							selecting it will deselect option one
-						</label>
-					</div>
-					<div class="form-check disabled">
-						<label class="form-check-label"> <input type="radio"
-							class="form-check-input" name="optionsRadios" id="optionsRadios3"
-							value="option3" disabled=""> Option three is disabled
-						</label>
-					</div>
-				</fieldset>
-				<fieldset class="form-group">
-					<legend>Checkboxes</legend>
-					<div class="form-check">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" value="" checked="">
-							Option one is this and that—be sure to include why it's great
-						</label>
-					</div>
-					<div class="form-check disabled">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" value="" disabled="">
-							Option two is disabled
-						</label>
-					</div>
-				</fieldset>
-				<fieldset class="form-group">
-					<legend>Sliders</legend>
-					<label for="customRange1">Example range</label> <input type="range"
-						class="custom-range" id="customRange1">
-				</fieldset> -->
-				<button type="submit" class="btn btn-primary">가입하기</button>
-			</fieldset>
-		</form>
-	</div>
-			
-			
-			</div>
-			
-			
-
-
-			<div class="col-lg-4">
-
-				<div class="prods_info" id="test_box" style="top: 58px;">
-					<div class="prodlist">
-						<div class="box last container" style="border: outset;">
-							<a
-								href="<%=request.getContextPath()%>/DetailController?num=${productInfo.p_num}"
-								target="_blank">
-								<div class="img">
-									<img src="${productInfo.prod_img }" class="prd" width="60"
-										height="60">
-								</div>
-							</a>
-							<!-- 부가상품 -->
-							<div class="info">
-								<div class="tit">
-									<a
-										href="<%=request.getContextPath()%>/DetailController?num=${productInfo.p_num}"
-										target="_blank" class="">${productInfo.prod_name }</a>
-								</div>
-
-								<div class="details">사이즈: ${productInfo.p_size } / 수량 :
-									${productInfo.o_quantity }</div>
+						</div>
+						<!-- //prodlist -->
+						<div class="total_amount">총 주문 상품 : 1개</div>
+						<div class="price_box">
+							<div class="box clfix">
+								<strong>총 주문 가격</strong>
 								<div class="price-container">
 									<span class="prc">${productInfo.total_price }<span
 										class="won">원</span></span>
 								</div>
 							</div>
-						</div>
-					</div>
-					<!-- //prodlist -->
-					<div class="total_amount">총 주문 상품 : 1개</div>
-					<div class="price_box">
-						<div class="box clfix">
-							<strong>총 주문 가격</strong>
-							<div class="price-container">
-								<span class="prc">${productInfo.total_price }<span
-									class="won">원</span></span>
+							<div class="box clfix">
+								<strong>적립금 사용</strong>
+								<div class="price-container">
+									<span class="prc sale">point</span>
+								</div>
 							</div>
-						</div>
-						<div class="box clfix">
-							<strong>적립금 사용</strong>
-							<div class="price-container">
-								<span class="prc sale">'ajax로 적립금 구현'<span class="won">원</span></span>
+							<div class="box clfix" style="border-bottom-width: 0;">
+								<strong>보유한 총 Point ${member.point} / Point 사용하기</strong>
 							</div>
-						</div>
-						<div class="box clfix" style="border-bottom-width: 0;">
-							<strong>할인 후 금액</strong>
-							<div class="price-container">
-								<span class="prc sale"><span
-									id="TOTAL_DISCOUNT_AMT_TEMP_VIEW">0</span><span class="won">원</span></span>
-							</div>
-						</div>
 
 
 
-						<div class="box deliv clfix">
-							<strong>배송비 <span class="deliv_tooltip"> <span
-									class="spt_bg"></span> <span class="tooltip-layer">
-										<div class="arrow spt_bg"></div> <span id="chgContents">
-											<div class="tooltip-contents"
-												style="width: 230px; line-height: 19px;">5만원 이상 구매시
-												무료배송 (도서 산간 지역은 추가 배송비 발생) " ajax로 구현 "</div>
+							<div class="box deliv clfix">
+								<strong>배송비 <span class="deliv_tooltip"> <span
+										class="spt_bg"></span> <span class="tooltip-layer">
+											<div class="arrow spt_bg"></div> <span id="chgContents">
+												<div class="tooltip-contents"
+													style="width: 230px; line-height: 19px;">5만원 이상 구매시
+													무료배송 (도서 산간 지역은 추가 배송비 발생) " ajax로 구현 "</div>
+										</span>
 									</span>
 								</span>
-							</span>
-							</strong>
-							<div class="price-container">
-								<span class="prc" id="viewDlvFee"> <span class="won">원</span></span>
+								</strong>
+								<div class="price-container">
+									<span class="prc" id="viewDlvFee"> <span class="won">원</span></span>
+								</div>
+							</div>
+
+							<!-- 무료배송비 -->
+							<div class="box total_p clfix">
+								<strong>총 결제금액</strong>
+								<div class="price-container">
+									<span class="prc" id="TOTAL_PAY_AMT_STR">${productInfo.total_price }<span
+										class="won">원 ajax 로 구현</span></span>
+
+
+									<p class="point">
+										예상 적립 포인트 <strong><span id="preSaveRate">${preSave_point }</span>point
+											(5%)</strong>
+									</p>
+								</div>
 							</div>
 						</div>
-
-						<!-- 무료배송비 -->
-						<div class="box total_p clfix">
-							<strong>총 결제금액</strong>
-							<div class="price-container">
-								<span class="prc" id="TOTAL_PAY_AMT_STR">${productInfo.total_price }<span
-									class="won">원</span></span>
-
-
-								<p class="point">
-									예상 적립 포인트 <strong><span id="preSaveRate">${preSave_point }</span>point
-										(5%)</strong>
-								</p>
-							</div>
-						</div>
+						<!-- //price_box -->
 					</div>
-					<!-- //price_box -->
+
 				</div>
 
+
+				<!-- /.col-lg-9 -->
+
 			</div>
+			<!-- /.row -->
+		</form>
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
 
 
-			<!-- /.col-lg-9 -->
 
-    </div>
-    <!-- /.row -->
+	<footer class="py-5 bg-dark">
+		<%@include file="/views/common/footer2.jsp"%>
 
-  </div>
-  <!-- /.container -->
+	</footer>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    	<%@include file="/views/common/footer2.jsp"%>
-    
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

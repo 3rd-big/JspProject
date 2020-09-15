@@ -114,6 +114,11 @@
 			transform:translate(-50%, -50%);
 		}
 		.search-img a{ color: #242424; }
+		.searchView{
+			height: 100px; background-color: #bbdefb;
+			display: none;
+		}
+		
 		
  		.scrollTopBtn{
   			position:fixed;
@@ -196,11 +201,9 @@
 	</style>
 
 	<script type="text/javascript">
+
 	    $(document).ready(function(){
-	    	var uri = $(location).attr('href');
-	    	var uriTokens = uri.split('/');
-	    	
-	    	if(uriTokens[uriTokens.length-1] != "MainListController"){
+	
 		    	var sessionId = "${sessionScope.id}";
 		    	
 				$.ajax({
@@ -210,15 +213,16 @@
 					data : "m_id=" + sessionId,
 					success : function(result) {
 						
-						var data = $.parseJSON(result);
-						var cartTopOffset = $('.cart-img').offset().top;
-						var cartLeftOffset = $('.cart-img').offset().left;
-						$('#numProdInTheCart').css('top', cartTopOffset);
-						$('#numProdInTheCart').css('left', cartLeftOffset);
-						$('#numProdInTheCart').html($.trim(data.numProdInTheCart));
+						if(result != "0"){
+							var cartTopOffset = $('.cart-img').offset().top;
+							var cartLeftOffset = $('.cart-img').offset().left;
+							$('#numProdInTheCart').css('top', cartTopOffset);
+							$('#numProdInTheCart').css('left', cartLeftOffset);
+							$('#numProdInTheCart').html(result);
+						}
+						
 					}
 				});
-	    	}
 	
  	    	var wind = $(window),
 	    		$header = $('.page-header'),
@@ -245,12 +249,16 @@
 				}
 			}); 
     		
-    		
-    		
-    		wind.click(function scroll_move() {
-				var offset = $('.main-logo-header').offset();
-				$(this).animate({scrollTop:offset.top}, 3000);
+
+    		$('a.searchBtn').click(function () {
+				$('.searchView').slideToggle();
 			});
+
+
+     		$('#scrollTopBtn').click(function scroll_move () {
+				var offset = $('#main-gnb-notice').offset();
+				$('html').animate({scrollTop:offset.top}, 300);
+			});  
 
 	    });
 	
@@ -361,10 +369,13 @@
 			
 			
 			<div class="search-img">
+				<a href="#" class="searchBtn">
 				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
 					<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
 				</svg>
+				</a>
+				<div class="searchView"></div>
 			</div>
 			
 		</div>
@@ -379,9 +390,8 @@
 			</div>
 		</div>
 			
-			
 		
-		<a href="#" class="scrollTopBtn" onclick="scrollTop()">
+		<a href="#" class="scrollTopBtn" id="scrollTopBtn" onclick="scroll_move()">
 			<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-caret-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	  			<path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 9a.5.5 0 0 1-.374-.832l4-4.5a.5.5 0 0 1 .748 0l4 4.5A.5.5 0 0 1 12 11H4z"/>
 			</svg>

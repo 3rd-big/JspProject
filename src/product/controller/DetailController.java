@@ -26,7 +26,7 @@ public class DetailController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text'html; charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
 		Service service = new ServiceImpl();
@@ -37,7 +37,7 @@ public class DetailController extends HttpServlet {
 		
 		ProductVO product = service.getProduct(num);
 		ArrayList<ReviewVO> reviews = review_service.getReviewByProductNum(num);
-		ArrayList<MemberVO> members = member_service.getMemberByReviewId(reviews);
+//		ArrayList<MemberVO> members = member_service.getMemberByReviewId(reviews);
 		
 		product.setReviews(reviews);
 		
