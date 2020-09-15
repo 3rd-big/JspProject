@@ -175,6 +175,8 @@ public class DaoImpl implements Dao {
 		PreparedStatement pstmt = null;
 
 		String sql = "select * from notice order by num desc";
+		//String sql = "select * from notice where num=82";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

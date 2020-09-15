@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.NoticeVO;
 import model.ProductVO;
 import product.service.Service;
 import product.service.ServiceImpl;
@@ -34,6 +35,16 @@ public class MainListController extends HttpServlet {
 		
 		request.setAttribute("bestProducts", bestProducts);
 		request.setAttribute("newProducts", newProducts);
+		
+		
+//		notice.service.Service notice_service = new notice.service.ServiceImpl();
+//		ArrayList<NoticeVO> notice = new ArrayList<NoticeVO>();
+//				
+//		notice = notice_service.getNoticeAll();
+//		
+//		//System.out.println(notice.toString());
+//		request.setAttribute("notice", notice);
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main2.jsp");
 		dispatcher.forward(request, response);
