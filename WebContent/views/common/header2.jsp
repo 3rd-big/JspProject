@@ -412,22 +412,14 @@ input:focus {
 					<ul id="ticker">
 						<%
 							notice.service.Service notice_service = new notice.service.ServiceImpl();
-						ArrayList<NoticeVO> notice = new ArrayList<NoticeVO>();
-
-						notice = notice_service.getNoticeAll();
-
-						//System.out.println(notice.toString());
-						request.setAttribute("notice", notice);
+						ArrayList<NoticeVO> notices = notice_service.getNoticeAll();
+						request.setAttribute("notices", notices);
 						%>
-						<c:forEach var="a" items="${notice }">
+						<c:forEach var="notice" items="${notices }">
 							<li><a
-								href="${pageContext.request.contextPath }/ReadNoticeController?num=${a.num}"
-								style="color: black;"><c:out value="${a.title}" /></a></li>
+								href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}"
+								style="color: black;">${notice.title}</a></li>
 						</c:forEach>
-
-						<%-- <div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=1"style="color: black;">1</a></div>
-						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=2" style="color: black;">2</a></div>
-						<div><a href="${pageContext.request.contextPath }/ReadNoticeController?num=3"style="color: black;">3</a></div> --%>
 					</ul>
 				</div>
 			</div>

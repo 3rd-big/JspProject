@@ -38,12 +38,8 @@ public class MainListController extends HttpServlet {
 		
 		
 //		notice.service.Service notice_service = new notice.service.ServiceImpl();
-//		ArrayList<NoticeVO> notice = new ArrayList<NoticeVO>();
-//				
-//		notice = notice_service.getNoticeAll();
-//		
-//		//System.out.println(notice.toString());
-//		request.setAttribute("notice", notice);
+//		ArrayList<NoticeVO> notices = notice_service.getNoticeAll();
+//		request.setAttribute("notices", notices);
 		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main2.jsp");
