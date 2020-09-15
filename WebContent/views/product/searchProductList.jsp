@@ -44,6 +44,9 @@
 			border: 1px solid #f48fb1;
 			box-shadow: 0 0 0 1px #f48fb1;
 		}
+		#noData{
+			text-align: center;
+		}
 	</style>
 	
 	<script type="text/javascript">
@@ -90,6 +93,19 @@
 				</ul>
 			</div>
 			<br> <br> <br>
+
+				<c:if test="${0 == keywordProducts.size() }">
+					<div id="noData">
+						<strong>"${param.keyword }" 검색 결과가 없습니다.</strong>
+						<br>
+						<strong>정확한 검색어인지 확인하시고 다시 검색해 주세요.</strong>
+						<br><br>
+						
+						<p>검색어/제외검색어의 입력이 정확한지 확인해 보세요.</p>
+						<p>두 단어 이상의 검색어인 경우, 띄어쓰기를 확인해 보세요.</p>
+						<p>검색 옵션을 다시 확인해 보세요.</p>
+					</div>
+				</c:if>
 
 				<div class="row">
 					<c:forEach var="keywordProduct" items="${keywordProducts }">
@@ -150,6 +166,10 @@
 		</div>
 		<!-- /.row -->
 	
+			
+
+			
+		<c:if test="${0 != keywordProducts.size() }">
 		<!-- pagination -->
 		<br> <br>
 		<nav aria-label="...">
@@ -200,7 +220,7 @@
 		</nav>
 		<br>
 		<!-- /pagination -->
-	
+		</c:if>
 	
 	
 	
