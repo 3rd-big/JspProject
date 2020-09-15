@@ -63,7 +63,7 @@
 								<th scope="col">No.</th>
 								<th scope="col">Image</th>
 								<th scope="col">Name</th>
-								<th scope="col">Content</th>
+								<th scope="col">quantity</th>
 								<th scope="col">Price</th>
 								<th scope="col">Reg.Date</th>
 								<th scope="col">Record</th>
@@ -78,7 +78,14 @@
 								<td>${p.num }</td>
 								<td><img src="${p.img}" width="50" height="75"></td>
 								<td>${p.name }</td>
-								<td>${p.content }</td>
+								<td>
+									<c:if test="${empty p.sizes }">
+										<strong><li style="color: red; list-style: none;">out of stock</li></strong>
+									</c:if>
+									<c:forEach var="s" items="${p.sizes }">
+										${s.psize } : ${s.quantity }<br>
+									</c:forEach>
+								</td>
 								<td>${p.priceView }</td>
 								<td>${p.e_date }</td>
 								<td>${p.record }</td>
@@ -108,7 +115,7 @@
 						</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ProductAllListController?page=${param.page-1} aria-label="Previous">
+						<a class="page-link" href="${pageContext.request.contextPath }/ProductAllListController?page=${param.page-1}" aria-label="Previous">
 							<span aria-hidden="true">&lsaquo;</span>
 						</a>
 					</li>

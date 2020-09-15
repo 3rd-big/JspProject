@@ -58,53 +58,70 @@ body{
 </head>
 <body>
 
-	<!-- Navigation -->
-	<%-- <%@include file="/views/common/header.jsp"%> --%>
-	<%@include file="/views/common/header2.jsp"%>
-	<!-- Page Container -->
+	<nav id ="top">
+          <%-- <jsp:include page = "/views/common/header.jsp" /><br><br> --%>
+          <%@include file="/views/common/header2.jsp"%><br><br>
+    </nav>
+    
+    
 	<div class="container">
 		
-		<h3 class="text-center my-4">회원관리</h3>
-		<div class = "managememberbox">			
-				<form id="memberList" name="memberList" method="post">
-				<table class="table table-hover table-sm mt-3 mb-5">
-					<thead class="thead-light">
-						<tr class="d-flex">
-							<th class="text-center col-1"><input type="checkbox"></th>
-							<th class="text-center col-1">ID</th>
-							<th class="text-center col-1">PWD</th>
-							<th class="text-center col-1">NAME</th>
-							<th class="text-center col-2">EMAIL</th>
-							<th class="text-center col-3">ADDRESS</th>
-							<th class="text-center col-1">TYPE</th>
-							<th class="text-center col-1">POINT</th>
-							<th class="text-center col-1">수정/삭제</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="list" items="${members }" varStatus="status">
-						<tr class="text-center d-flex">
-							<td class="text-center  col-1"><input type="checkbox"></td>
-							<td class="text-center  col-1">${list.id }</td>
-							<td class="text-center  col-1">${list.pwd }</td>
-							<td class="text-center  col-1">${list.name }</td>
-							<td class="text-center  col-2">${list.email }</td>
-							<td class="text-center  col-3">${list.addr }</td>
-							<td class="text-center  col-1">${list.type }</td>
-							<td class="text-center  col-1">${list.point }</td>
-							<td><input type="submit" class="btn btn-secondary" value="수정" onClick="showPopup('${list.id}')"></td>
-							
-						</tr>
-						</c:forEach>
-					</tbody>
-					</table>
+		<div class="row">
+		
+			<!-- leftNavigation -->
+			<jsp:include page = "/views/common/leftNav.jsp" />
+			<!-- /leftNavigation -->
+		
+			<div class="col-lg-10">
+		
+				<div class = "managememberbox">			
+						<form id="memberList" name="memberList" method="post">
+						<table class="table table-bordered">
+							<thead class="thead-dark">
+								<tr style="text-align: center;">
+									<th scope="col"><input type="checkbox"></th>
+									<th scope="col">ID</th>
+									<th scope="col">PWD</th>
+									<th scope="col">NAME</th>
+									<th scope="col">EMAIL</th>
+									<th scope="col">ADDRESS</th>
+									<th scope="col">TYPE</th>
+									<th scope="col">POINT</th>
+									<th scope="col">Edit / Del</th>
+								</tr>
+							</thead>
+							<c:forEach var="list" items="${members }" varStatus="status">
+							<tbody>
+								<tr>
+									<td scope="row"><input type="checkbox"></td>
+									<td>${list.id }</td>
+									<td>${list.pwd }</td>
+									<td>${list.name }</td>
+									<td>${list.email }</td>
+									<td>${list.addr }</td>
+									<td>${list.type }</td>
+									<td>${list.point }</td>
+									<td><input type="submit" class="btn btn-secondary" value="Edit" onClick="showPopup('${list.id}')"></td>
+								</tr>
+							</tbody>
+							</c:forEach>
+							</table>
+						
+						</form>
+				</div>
+				<!-- /.managememberbox -->
 				
-				</form>
+			</div>
+			<!-- /.col-lg-10 -->
+			
 		</div>
-		</div>
+		<!-- /.row -->
+		
+	</div>
+	<!-- /.container -->
 	
-		<!-- footer -->
-		<%@include file="/views/common/footer2.jsp"%>
+	<!-- footer -->
+	<%@include file="/views/common/footer2.jsp"%>
 
 </body>
 </html>

@@ -16,7 +16,16 @@ public class ProductVO {
 	private int record;
 	private String category;
 	private ArrayList<ReviewVO> reviews;
+	private ArrayList<ProductSizeVO> sizes;
 	
+	public ArrayList<ProductSizeVO> getSizes() {
+		return sizes;
+	}
+
+	public void setSizes(ArrayList<ProductSizeVO> sizes) {
+		this.sizes = sizes;
+	}
+
 	private String priceView;
 	
 	public ProductVO() {}
@@ -120,7 +129,8 @@ public class ProductVO {
 	public String toString() {
 		return "ProductVO [num=" + num + ", name=" + name + ", price=" + price + ", img=" + img + ", content=" + content
 				+ ", e_date=" + e_date + ", record=" + record + ", category=" + category + ", reviews=" + reviews
-				+ ", priceView=" + priceView + "]";
+				+ ", sizes=" + sizes + ", priceView=" + priceView + "]";
 	}
+
 	
 }

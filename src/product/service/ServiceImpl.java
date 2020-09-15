@@ -20,6 +20,11 @@ public class ServiceImpl implements Service{
 	public ArrayList<ProductVO> getProductAll() {
 		return dao.selectAll();
 	}
+
+	@Override
+	public ArrayList<ProductSizeVO> getProductsSizeAll(int p_num) {
+		return dao.selectSizeAll(p_num);
+	}
 	
 	@Override
 	public ArrayList<ProductVO> getProductManagementByPageNum(int page) {

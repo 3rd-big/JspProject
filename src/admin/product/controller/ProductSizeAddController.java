@@ -30,10 +30,6 @@ public class ProductSizeAddController extends HttpServlet {
 		String size = request.getParameter("size");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		
-		System.out.println("size: " + size);
-		System.out.println("quantity: " + quantity);
-		System.out.println("productNum: " + productNum);
-		
 		Service service = new ServiceImpl();
 		ProductSizeVO ps = new ProductSizeVO();
 		
@@ -53,7 +49,7 @@ public class ProductSizeAddController extends HttpServlet {
 			service.addQuantity(ps);
 		}
 
-		response.sendRedirect(request.getContextPath()+"/ProductAllListController"); 
+		response.sendRedirect(request.getContextPath()+"/ProductAllListController?page=1"); 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

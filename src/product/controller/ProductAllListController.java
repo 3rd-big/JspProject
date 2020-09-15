@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.PaginationVO;
+import model.ProductSizeVO;
 import model.ProductVO;
 import product.service.Service;
 import product.service.ServiceImpl;
@@ -34,12 +35,13 @@ public class ProductAllListController extends HttpServlet {
 		ArrayList<ProductVO> allProducts = service.getProductAll();
 		ArrayList<ProductVO> products = service.getProductManagementByPageNum(page);
 		
-		request.setAttribute("products", products);
-		System.out.println("ProductAllListController");
-		for (ProductVO productVO : products) {
-			System.out.println(productVO.toString());
+		
+		for (ProductVO product : products) {
+			ArrayList<ProductSizeVO> productsSize = service.getProductsSizeAll(product.getNum());
+			product.setSizes(productsSize);
 		}
 		
+		request.setAttribute("products", products);		
 		
 		PaginationVO pn = new PaginationVO();
 		

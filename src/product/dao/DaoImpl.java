@@ -48,6 +48,37 @@ private DBConnect db;
 
 		return products;
 	}
+
+	@Override
+	public ArrayList<ProductSizeVO> selectSizeAll(int p_num) {
+		ArrayList<ProductSizeVO> productSize = new ArrayList<>();
+		ResultSet rs = null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "select * from (select p.num, s.psize, s.quantity from product p, product_size s where p.num = s.p_num) where num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, p_num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				productSize.add(new ProductSizeVO(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return productSize;
+	}
 	
 	@Override
 	public ArrayList<ProductVO> selectAllByPageNum(int page) {

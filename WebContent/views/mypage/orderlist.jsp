@@ -11,7 +11,7 @@
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
+ <%--  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet"> --%>
 
 	<!-- popup -->
 <script type="text/javascript">
@@ -46,6 +46,14 @@
 		
 </script>
 <style type="text/css">
+.container{
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 70px;
+}
+.orderlistbox{
+	height: auto;
+}
 .btn btn-link{
 	position: absolute;
     top: 50%;

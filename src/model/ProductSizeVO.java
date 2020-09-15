@@ -15,6 +15,13 @@ public class ProductSizeVO {
 		this.psize = psize;
 		this.quantity = quantity;
 	}
+	
+	public ProductSizeVO(int p_num, String psize, int quantity) {
+		super();
+		this.p_num = p_num;
+		this.psize = psize;
+		this.quantity = quantity;
+	} 
 
 	public int getNum() {
 		return num;
