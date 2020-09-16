@@ -137,13 +137,36 @@
 		}
 		
 		function directOrder(productNum) {
-			var size = $("#selected").text();
-			var quantity = $("#select-quantity").text();
-			var allData = {"productNum": productNum, "size": size, "quantity": quantity};
-	
-			location.href ="<%=request.getContextPath()%>/DirectOrderPageController?productNum=" +productNum +"&size=" +size+"&quantity=" + quantity;
+
+			
+			if(${sessionScope.id == null }){
+				if(confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?')){
+					location.href = "<%=request.getContextPath()%>/views/member/login.jsp";
+					/* location.href= "${pageContext.request.contextPath }/LoginController"; */
+					return;
+				}else{
+					return;	
+				}
+			} else {
+				
+				var unSizeCheck = $("#selected").length ? false : true;
+				if(unSizeCheck){
+					alert('사이즈를 선택해주세요');
+					return;
+				}
+				var size = $("#selected").text();
+				var quantity = $("#select-quantity").text();
+				var allData = {"productNum": productNum, "size": size, "quantity": quantity};
+		
+				location.href ="<%=request.getContextPath()%>/DirectOrderPageController?productNum=" +productNum +"&size=" +size+"&quantity=" + quantity;
+				
+				
+			} 
+
 			
 		}
+			
+			
 		
 		
 		function addReview(id) {

@@ -102,18 +102,18 @@
 
 							<div class="form-group">
 								<label for="InputPwd">휴대전화1</label> <input type="text"
-									class="form-control" id="add_phone1" name="add_phone1"
-									value="01012345678">
+									class="form-control" id="add_phone1" name="add_phone1" placeholder="예>01012345678"
+									value="">
 							</div>
 							<div class="form-group">
 								<label for="InputPwd">휴대전화2</label> <input type="text"
-									class="form-control" id="add_phone2" name="add_phone2"
-									value="01098765432">
+									class="form-control" id="add_phone2" name="add_phone2" placeholder="비상시 전화번호를 입력해주세요."
+									value="">
 							</div>
 
 							<div class="form-group">
-								<label for="InputName">이메일 주소</label> <input type="text"
-									class="form-control" id="add_email" name="add_email"
+								<label for="InputName">이메일 주소</label> <input type="email"
+									class="form-control" id="add_email" name="add_email" placeholder="Enter email"
 									value=${member.email}>
 							</div>
 
@@ -130,21 +130,21 @@
 											<th>우편번호</th>
 											<td><input type="hidden" id="confmKey" name="confmKey"
 												value=""> <input type="text" id="zipNo" name="zipNo"
-												readonly style="width: 100px"> <input type="button"
+												readonly style="width: 100px"> <input type="button" id="serachAddr"
 												value="주소검색" onclick="goPopup();"></td>
 										</tr>
 										<tr>
 											<th>도로명주소</th>
 											<td><input type="text" id="roadAddrPart1"
-												name="roadAddrPart1" style="width: 85%">
-												<input type="hidden" name="add_addr_full" id="add_addr_full" value="">
+												name="roadAddrPart1" readonly style="width: 85%">
+												<input type="hidden" name="add_addr_full"  id="add_addr_full" value="">
 												</td>
 										</tr>
 										<tr>
 											<th>상세주소</th>
-											<td><input type="text" id="addrDetail" name="addrDetail"
+											<td><input type="text" id="addrDetail" name="addrDetail" readonly
 												style="width: 40%" value=""> <input type="text"
-												id="roadAddrPart2" name="roadAddrPart2" style="width: 40%"
+												id="roadAddrPart2" name="roadAddrPart2" readonly style="width: 40%"
 												value=""></td>
 												
 										</tr>
@@ -153,17 +153,7 @@
 
 							</div>
 
-							<div>
-								<label>배송 방법</label>
-								<ul class="size-selected" id="oi_howDeli" name="oi_howDeli">
-									<li class="btn btn-outline-secondary" id="un-selected"
-										value="come">방문수령</li>
-									<li class="btn btn-outline-secondary" id="un-selected"
-										value="tackbae">택배</li>
-									<li class="btn btn-outline-secondary" id="un-selected"
-										value="quick">퀵</li>
-								</ul>
-							</div>
+							
 
 
 							<div>
@@ -324,6 +314,9 @@
 
 	<script>
 		$("#check_module").click(function() {
+			
+			
+			
 			var IMP = window.IMP; // 생략가능
 			
 						
@@ -361,10 +354,58 @@
 			var vadd_addr_addrDetail = document.getElementById("addrDetail").value;
 			
 			
+			//입력값 유효성 확인
+	        if (vadd_name == ""){
+	            alert("아이디를 입력하지 않았습니다.");
+	            document.getElementById("add_name").focus();
+	            return false;
+	        }
 			
-			
-			
-
+	        if (vadd_phone1 == ""){
+	            alert("휴대전화1를 입력하지 않았습니다.");
+	            document.getElementById("add_phone1").focus();
+	            return false;
+	        }
+	        
+	        if (vadd_phone2 == ""){
+	            alert("휴대전화2를 입력하지 않았습니다.");
+	            document.getElementById("add_phone2").focus();
+	            return false;
+	        }
+	        
+	        if (vadd_email=="") {
+	            alert("이메일을 입력해 주세요");
+	            document.getElementById("add_email").focus();
+	            return false;
+	        }
+	        
+	        if (vadd_addr_zipNo =="") {
+	        	alert("주소를 입력해 주세요");
+	        	document.getElementById("serachAddr");
+	        	return false;
+	        }
+	        
+	        
+	        if (vadd_addr_roadAddrPart1 =="") {
+	        	alert("주소를 입력해 주세요");
+	        	document.getElementById("serachAddr");
+	        	return false;
+	        }
+	        
+	        if (vadd_addr_roadAddrPart2 =="") {
+	        	alert("주소를 입력해 주세요");
+	        	document.getElementById("serachAddr");
+	        	return false;
+	        }
+	        
+	        if (vadd_addr_addrDetail =="") {
+	        	alert("주소를 입력해 주세요");
+	        	document.getElementById("serachAddr");
+	        	return false;
+	        }
+	        
+	        
+	        
 			IMP.init('imp51699412');
 			// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
@@ -456,9 +497,9 @@
 			                alert("실패실패" + error);
 			            },
 			            success : function(json){
-			                alert("성공성공" + json)
+			                alert("결제가 성공적으로 완료되었습니다. 감사합니다.")
 			                
-			              /*   location.href = "${pageContext.request.contextPath }/OrderlistController?o_state=0"; */
+			                location.href = "${pageContext.request.contextPath }/OrderlistController?o_state=1"; 
 			            }
 			        });
 

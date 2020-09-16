@@ -48,6 +48,27 @@ table{
 </style>
 
 
+<script type="text/javascript">
+ function showPopup(currentNum) {
+	 
+	 var num = currentNum;
+	 if(confirm('장바구니에서 삭제하시겠습니까?')) {
+		 location.href = "<%=request.getContextPath()%>/DeleteProductOrderController?num=" + num;
+		 return;
+	 } else {
+		 return;
+	 }
+	 
+	 
+	 
+ }
+
+
+</script>
+
+
+
+
 </head>
 <body>
 
@@ -83,6 +104,7 @@ table{
 								<th scope="col">수량</th>
 								<th scope="col">결제금액</th>
 								<th scope="col">주문하기</th>
+								<th scope="col">삭제</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -97,6 +119,7 @@ table{
 									<td>${o.o_quantity}</td>
 									<td>${o.priceView }</td>
 									<td scope="row"><input type="checkbox" name=sel value=${o.num }></td>
+									<td scope="row"><input type="button" class="btn btn-outline-secondary" value="삭제" onClick="showPopup('${o.num }')"></td>
 	
 								</tr>
 							</c:forEach>

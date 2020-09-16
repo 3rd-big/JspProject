@@ -41,50 +41,83 @@ public class DirectOrderPageController extends HttpServlet {
 		response.setContentType("text'html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		HttpSession session = request.getSession(false);
-        String id = (String) session.getAttribute("id");
-		
-        int productNum = Integer.parseInt(request.getParameter("productNum"));
-		String size = request.getParameter("size");
-		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		
 		Service service = new ServiceImpl();
-		
 		product.service.Service service_prod = new product.service.ServiceImpl();
 		member.service.Service member_service = new member.service.ServiceImpl();
+		HttpSession session = request.getSession(false);
+		String m_id = (String) session.getAttribute("id");
+		MemberVO member = member_service.getMember(m_id);
 		
-		ProductOrderVO po = new ProductOrderVO();
-		
-		ProductVO p = service_prod.getProduct(productNum);
-		MemberVO member = member_service.getMember(id);
-		
-		po.setNum(service.makeProductOrderNum());
-		po.setP_num(productNum);
-		po.setO_quantity(quantity);
-		po.setTotal_price(p.getPrice()*quantity);
-		po.setM_id(id);
-		po.setO_state(1);	// o_state 값: 0 == 장바구니, 1 == 결제완료
-		po.setD_state(0);	// d_state 값: 0 == 배송 전, 1 == 배송 완료
-		po.setP_size(size);
-		po.setProd_name(p.getName());
-		po.setProd_img(p.getImg());
-		po.setR_state(0);	// r_state 값: 0 == 리뷰작성 전, 1 == 리뷰 작성 완료
-        System.out.println(po.toString());
-        System.out.println(member.toString());
-        int save_point = (int) (po.getTotal_price()*0.05); // 총 결제 금액의 예상 적립 포인트
         
-        request.setAttribute("productInfo", po);
-        request.setAttribute("member", member);
-		request.setAttribute("preSave_point", save_point );
-        System.out.println("DirectOrderPageController 도착");
+        ArrayList<ProductOrderVO> list = new ArrayList<ProductOrderVO>();
 		
+        String [] selection = request.getParameterValues("productNum");
+        String orderName = "주문번호 : ";
+        int order_totalQuantity = 0;
+		int order_totalPrice = 0;
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		String size = request.getParameter("size");
 		
+		System.out.println(quantity + size);
 		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/views/member/directOrderPage.jsp");
-		if ( rd!=null) {
-			rd.forward(request, response);
+		for (String sel:selection) {
+			int o_num = Integer.parseInt(sel);
+			System.out.println("전달받은 num : " + o_num);
+			orderName += "," + sel;
+			ProductOrderVO po = new ProductOrderVO();
+			ProductVO p = service_prod.getProduct(o_num);
+			
+			
+			System.out.println(po.toString());
+			System.out.println(p.toString());
+			
+			
+			po.setNum(service.makeProductOrderNum());
+			po.setP_num(o_num);
+			po.setO_quantity(quantity);
+			po.setTotal_price(p.getPrice()*quantity);
+			po.setM_id(m_id);
+			
+			po.setO_state(2);	// o_state 값: 0 == 장바구니, 1 == 결제완료, 2 == 구매하기취소
+			po.setD_state(0);	// d_state 값: 0 == 배송 전, 1 == 배송 완료
+			po.setP_size(size);
+			po.setProd_name(p.getName());
+			po.setProd_img(p.getImg());
+			po.setR_state(0);	// r_state 값: 0 == 리뷰작성 전, 1 == 리뷰 작성 완료
+			
+			System.out.println(po.toString());
+
+			
+			order_totalPrice += po.getTotal_price();
+			order_totalQuantity += po.getO_quantity();
+			System.out.println("order_totalQuantity : " + order_totalQuantity);
+			System.out.println("order_totalPrice : " + order_totalPrice);
+			
+			service.add(po);
+			
+			list.add(po);
 		}
+		
+		
+		
+		
+		
+		
+		
+		request.setAttribute("orderName", orderName);
+		request.setAttribute("list", list);
+		request.setAttribute("order_totalPrice", order_totalPrice);
+		request.setAttribute("order_totalQuantity", order_totalQuantity);
+		request.setAttribute("member", member);
+		
+		
+		String path = "/views/mypage/cartOrderPage.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(path);
+		rd.forward(request, response);
+		
+		
+		
 		
 		
 		

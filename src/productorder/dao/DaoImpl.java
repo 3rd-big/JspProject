@@ -135,9 +135,34 @@ public class DaoImpl implements Dao {
 
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
+		
+		Connection conn = null;
+		String sql = "delete Product_order where num=?";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
+				
+				
 
 	@Override
 	public void update(String type, int num) {

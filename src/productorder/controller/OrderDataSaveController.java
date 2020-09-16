@@ -87,7 +87,7 @@ public class OrderDataSaveController extends HttpServlet {
 			System.out.println("전달받은 num : " + num);
 			ProductOrderVO po = service.getOrder(num);
 			
-			System.out.println(po.toString());
+			//System.out.println(po.toString());
 			po.setCode_num(code_num);
 			po.setO_state(1);
 			service.updateCode_num(po);

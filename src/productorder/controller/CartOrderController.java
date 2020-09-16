@@ -77,6 +77,7 @@ public class CartOrderController extends HttpServlet {
 			
 		}
 		
+		session.setAttribute("id", m_id);
 		request.setAttribute("orderName", orderName);
 		request.setAttribute("list", list);
 		request.setAttribute("order_totalPrice", order_totalPrice);
