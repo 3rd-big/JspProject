@@ -14,6 +14,7 @@ public interface Dao {
 	ReviewVO select(int num);
 	
 	ArrayList<ReviewVO> selectByP_Num(int p_num);
+	ArrayList<ReviewVO> selectReviewInProductByPageNum(int p_num, int page);
 
 	void update(ReviewVO notice);
 

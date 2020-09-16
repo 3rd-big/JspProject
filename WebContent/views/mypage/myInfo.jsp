@@ -24,6 +24,11 @@ body{
 	/* font:Apple SD Gothic Neo; */
 	font: NotoSansKR;
 }
+.container{
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 70px;
+}
 .membershowbox{
 	margin-left: 50px;
 	width:850px; 

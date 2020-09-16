@@ -12,6 +12,7 @@ public interface Service {
 	ReviewVO getReview(int num);
 	
 	ArrayList<ReviewVO> getReviewByProductNum(int p_num);
+	ArrayList<ReviewVO> getReviewInProductByPageNum(int p_num, int page);
 
 	void editReview(ReviewVO notice);
 

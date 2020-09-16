@@ -45,6 +45,11 @@
 
 
 <style type="text/css">
+.container{
+	height: auto;
+	min-height: 75%;
+	padding-bottom: 70px;
+}
 .btn btn-link{
 	position: absolute;
     top: 50%;
@@ -120,7 +125,7 @@ table{
 		</div>
 	</div>
 						<!-- pagination -->
-			<br> <br>
+			
 			<nav aria-label="...">
 				<ul class="pagination justify-content-center">
 				<c:if test="${1 != pn.page }">

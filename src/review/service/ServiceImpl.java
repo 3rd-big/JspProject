@@ -30,6 +30,11 @@ public class ServiceImpl implements Service{
 	public ArrayList<ReviewVO> getReviewByProductNum(int p_num) {
 		return dao.selectByP_Num(p_num);
 	}
+	
+	@Override
+	public ArrayList<ReviewVO> getReviewInProductByPageNum(int p_num, int page) {
+		return dao.selectReviewInProductByPageNum(p_num, page);
+	}
 
 	@Override
 	public void editReview(ReviewVO review) {
@@ -78,6 +83,8 @@ public class ServiceImpl implements Service{
 		// TODO Auto-generated method stub
 		return dao.countreviewByP_Num(p_num);
 	}
+
+
 
 
 

@@ -19,11 +19,15 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
-
+.container{
+	height: auto;
+	min-height: 77.5%;
+	padding-bottom: 70px;
+}
 .logincomponent{
 	padding: 2em;
     width: 400px;
-    margin-left: 30%;
+    margin-left: 32%;
     padding-top: 100px;
     padding-bottom: 200px;
     height:600px;
@@ -35,8 +39,8 @@ body{
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .btns{
-	width: 100%;
-	margin-left: 30%;
+	
+	margin-left: 25%;
 }
 .btn_login,
 .btn_signup{
@@ -59,7 +63,7 @@ body{
 	<div class = "logincomponent">
 		<form action="${pageContext.request.contextPath }/LoginController" name="f" method="post">
 			<fieldset>
-				<legend style="text-align:center;">LOG IN</legend>
+				<legend style="text-align:center;">로그인</legend>
 					<br>
 				<div class="form-group1">
 					<!-- <label for="InputID">ID</label>  -->
@@ -74,17 +78,17 @@ body{
 					<br>
 				<div class="btns">
 					<div class="btn_login">
-						<button type="submit" class="btn btn-primary">SignIn</button>
+						<button type="submit" class="btn btn-primary">로그인</button>
 					</div>
 					<div class="btn_signup">
-						<input type="button" class="btn btn-outline-primary" value="SignUp"
+						<input type="button" class="btn btn-outline-primary" value="회원가입"
 							onclick="location.href='signup.jsp'">
 					</div>
 				</div>
 					<br>
 					<br>
 				<div class="searchUser" style="text-align:center;">
-					<a href="${pageContext.request.contextPath }/views/member/searchId.jsp">아이디 찾기/</a>
+					<a href="${pageContext.request.contextPath }/views/member/searchId.jsp">아이디 찾기 /</a>
 					<a href="${pageContext.request.contextPath }/views/member/searchPwd.jsp">비밀번호 찾기</a>
 				</div>
 			</fieldset>

@@ -19,12 +19,17 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
+.container{
+	height: auto;
+	min-height: 77.5%;
+	padding-bottom: 70px;
+}
 .enrollcomponent{
-	padding: 2em;
+	/* padding: 2em; */
     width: 500px;
     margin-left: 30%;
     padding-top: 50px;
-    padding-bottom: 150px;
+   /*  padding-bottom: 150px; */
 }
 
 
