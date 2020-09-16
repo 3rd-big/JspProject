@@ -79,5 +79,39 @@ create SEQUENCE seq_shop_product;
 create SEQUENCE seq_notice;
 create SEQUENCE seq_product_order;
 
+----------------------------orderinfo sequence -----------------
+create sequence seq_orderInfo;
+-----------------------------------------------------------------
+
 alter table product_order add code_num number;
 
+-----------------------------orderInfo table 추가 --------------------------------------------------------
+create table orderInfo (
+num number primary key,
+oi_id varchar2(50),
+oi_name varchar2(30), 
+oi_phone varchar2(50),
+oi_email varchar2(30),
+oi_addr_full varchar2(500),
+oi_addr_zipNo varchar2(15),
+oi_addr_roadAddrPart1 varchar2(500),
+oi_addr_roadAddrPart2 varchar2(500),
+oi_addr_addrDetail varchar2(500),
+oi_deliMessage varchar2(300),
+oi_howPay varchar2(200),
+oi_usePoint number(10),
+oi_originTotalPrice number(20),
+oi_totalPrice number(20),
+oi_orderDate date,	
+oi_code_num varchar2(300),
+add_name varchar2(30),
+add_phone1 varchar2(50),
+add_phone2 varchar2(50),
+add_email varchar2(200),
+add_addr_full varchar2(500),
+add_addr_zipNo varchar2(15),
+add_addr_roadAddrPart1 varchar2(500),
+add_addr_roadAddrPart2 varchar2(500),
+add_addr_addrDetail varchar2(500)
+);
+-------------------------------------------------------------------------------------------

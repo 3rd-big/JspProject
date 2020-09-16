@@ -99,11 +99,16 @@ public class OrderDataSaveController extends HttpServlet {
 			ps.setPsize(po.getP_size());
 			ps.setQuantity(remainingQuantity - po.getO_quantity());
 			product_service.addQuantity(ps);
+			
+			//Record 카운트 up
+			ProductVO productvo = product_service.getProduct(po.getP_num());
+			int currentRecord = productvo.getRecord();
+			productvo.setRecord(currentRecord + po.getO_quantity());
+			product_service.recordup(productvo);
 		}
 		
 		
 		//OrderInfo 테이블에 데이터 추가
-		
 		OrderInfoVO oivo = new OrderInfoVO();
 		
 		oivo.setNum(service.makeOrderInfoNum());
@@ -134,16 +139,7 @@ public class OrderDataSaveController extends HttpServlet {
 		System.out.println(oivo.toString());
 		
 		
-		
-		
 		service.addOrderInfo(oivo);
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
