@@ -2,6 +2,7 @@ package productorder.service;
 
 import java.util.ArrayList;
 
+import model.OrderInfoVO;
 import model.ProductOrderVO;
 import model.ProductVO;
 
@@ -29,4 +30,12 @@ public interface Service {
 	int findProductQuantity(int p_num, String psize);
 	
 	int getCartListCountById(String m_id);
+	
+	
+	
+	void addOrderInfo(OrderInfoVO oivo);
+	
+	int makeOrderInfoNum();
+	
+	void updateCode_num(ProductOrderVO po);
 }

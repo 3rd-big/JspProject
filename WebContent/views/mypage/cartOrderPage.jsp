@@ -210,12 +210,25 @@
 											<img src="${o.prod_img }" class="prd" width="60" height="60">
 										</div>
 									</a>
+									
+									
+								<%-- 	<a
+										href="<%=request.getContextPath()%>/DetailController?num=${o.p_num}&page=1"
+										target="_blank">
+										<div class="img">
+											<img src="${o.prod_img }" class="prd" width="60" height="60">
+										</div>
+									</a> --%>
+									
+									
+									
 									<!-- 부가상품 -->
 									<div class="info">
 										<div class="tit">
 											<a
 												href="<%=request.getContextPath()%>/DetailController?num=${o.p_num}"
 												target="_blank" class="">${o.prod_name }</a>
+												<input type="hidden" name="productOrderNum" value="${o.num }">
 										</div>
 
 										<div class="details">사이즈: ${o.p_size } / 수량 :
@@ -313,17 +326,29 @@
 		$("#check_module").click(function() {
 			var IMP = window.IMP; // 생략가능
 			
+						
+					var grpl = $("input[name=productOrderNum]").length;
+					//배열 생성
+					var grparr = new Array(grpl);
+					//배열에 값 주입
+					for(var i=0; i<grpl; i++){                          
+						grparr[i] = $("input[name=productOrderNum]").eq(i).val();
+				    }
 			
 			// 전송할 데이터
 			
 			//주문자 관련 정보
 			
 			
-			
+			var productOrderNum = document.getElementsByName("productOrderNum").value;
+			console.log("배열로보낸것:" +productOrderNum);
+			console.log("배열배열 : " + grparr);
 			var voi_deliMessage = document.getElementById("oi_deliMessage").value;
 			var voi_originTotalPrice = document.getElementById("oi_originTotalPrice").value;
 			var voi_usePoint = document.getElementById("oi_usePoint").value;
-			
+			var voi_addr_roadAddrPart1 = document.getElementById("roadAddrPart1").value;
+			var voi_addr_roadAddrPart2 = document.getElementById("roadAddrPart2").value;
+			var voi_addr_addrDetail = document.getElementById("addrDetail").value;
 			//배송지 관련 정보 
 			var vadd_name = document.getElementById("add_name").value;
 			var vadd_phone1 = document.getElementById("add_phone1").value;
@@ -376,11 +401,11 @@
 				name : '${orderName}',
 				//결제창에서 보여질 이름
 //				amount : '${order_totalPrice }',
-				amount : '1000',
+				amount : '10',
 				//가격
 				buyer_email : '${member.email}',
 				buyer_name : '${member.name}',
-				buyer_tel : '010-1234-5678',
+				buyer_tel : '01012345678',
 				buyer_addr : '${member.addr}',
 				buyer_postcode : '123-456',
 				m_redirect_url : 'https://www.yourdomain.com/payments/complete'
@@ -408,6 +433,9 @@
 			                oi_phone : rsp.buyer_tel,
 			                oi_addr_full : rsp.buyer_addr,
 			                oi_addr_zipNo : rsp.buyer_postcode,
+			                oi_addr_roadAddrPart1 : voi_addr_roadAddrPart1,
+			                oi_addr_roadAddrPart2 : voi_addr_roadAddrPart2,
+			                oi_addr_addrDetail : voi_addr_addrDetail,
 			                oi_orderDate : rsp.paid_at,
 			                oi_deliMessage : voi_deliMessage,
 			                oi_originTotalPrice : voi_originTotalPrice,
@@ -420,7 +448,8 @@
 			                add_addr_zipNo : vadd_addr_zipNo,
 			                add_addr_roadAddrPart1 : vadd_addr_roadAddrPart1,
 			                add_addr_roadAddrPart2 : vadd_addr_roadAddrPart2,
-			                add_addr_addrDetail : vadd_addr_addrDetail
+			                add_addr_addrDetail : vadd_addr_addrDetail,
+			                oi_productOrderNum : grparr
 			                	
 			            },
 			            error: function(xhr, status, error){
@@ -429,7 +458,7 @@
 			            success : function(json){
 			                alert("성공성공" + json)
 			                
-			                location.href = "${pageContext.request.contextPath }/OrderlistController?o_state=0";
+			              /*   location.href = "${pageContext.request.contextPath }/OrderlistController?o_state=0"; */
 			            }
 			        });
 

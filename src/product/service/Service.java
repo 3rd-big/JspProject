@@ -49,4 +49,6 @@ public interface Service {
 	void addQuantity(ProductSizeVO ps);
 	
 	void delProduct(int num);
+	
+	void recordup(ProductVO productvo);
 }

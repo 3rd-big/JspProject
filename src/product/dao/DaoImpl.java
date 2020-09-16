@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import conn.DBConnect;
 import model.ProductImageVO;
+import model.ProductOrderVO;
 import model.ProductSizeVO;
 import model.ProductVO;
 
@@ -697,6 +698,36 @@ private DBConnect db;
 				e.printStackTrace();
 			}
 		}
+		
+	}
+
+	@Override
+	public void recordCount(ProductVO productvo) {
+		Connection conn = db.getConnection();
+		
+		String sql = "update product set record=? where num=?";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, productvo.getRecord());
+			pstmt.setInt(2, productvo.getNum());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 자원 반환
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 

@@ -2,6 +2,7 @@ package productorder.dao;
 
 import java.util.ArrayList;
 
+import model.OrderInfoVO;
 import model.ProductOrderVO;
 import model.ProductVO;
 
@@ -29,4 +30,13 @@ public interface Dao {
 	int selectProductQuantity(int p_num, String psize);
 	
 	int selectCartListCountById(String m_id);
+	
+	
+	int selectOrderInfoNum();
+	
+	
+	void insert(OrderInfoVO oivo);
+	void updateCode_num(ProductOrderVO po);
+	
+	
 }

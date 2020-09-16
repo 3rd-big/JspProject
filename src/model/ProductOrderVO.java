@@ -15,7 +15,7 @@ public class ProductOrderVO {
 	private int d_state;
 	private int r_state;
 	private String p_size;
-	private int code_num;
+	private String code_num;
 	private String prod_name;
 	private String prod_img;
 	
@@ -50,7 +50,7 @@ public class ProductOrderVO {
 	}
 
 	public ProductOrderVO(int num, int p_num, int o_quantity, int total_price, String m_id, Date o_date, int o_state,
-			int d_state, String p_size, int r_state, int code_num) {
+			int d_state, String p_size, int r_state, String code_num) {
 		super();
 		this.num = num;
 		this.p_num = p_num;
@@ -67,7 +67,7 @@ public class ProductOrderVO {
 		this.priceView = Common.priceView(total_price);
 	}
 
-	public ProductOrderVO(int code_num, Date max_o_date, int sum_total_price, int max_d_state, int max_p_num, int ctnrow) {
+	public ProductOrderVO(String code_num, Date max_o_date, int sum_total_price, int max_d_state, int max_p_num, int ctnrow) {
 		super();
 		this.code_num=code_num;
 		this.max_o_date=max_o_date;
@@ -225,13 +225,13 @@ public class ProductOrderVO {
 
 
 
-	public int getCode_num() {
+	public String getCode_num() {
 		return code_num;
 	}
 
 
 
-	public void setCode_num(int code_num) {
+	public void setCode_num(String code_num) {
 		this.code_num = code_num;
 	}
 

@@ -121,4 +121,10 @@ public class ServiceImpl implements Service{
 		dao.delete(num);
 	}
 
+	@Override
+	public void recordup(ProductVO productvo) {
+		dao.recordCount(productvo);
+		
+	}
+
 }

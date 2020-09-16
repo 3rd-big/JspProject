@@ -3,6 +3,7 @@ package product.dao;
 import java.util.ArrayList;
 
 import model.ProductImageVO;
+import model.ProductOrderVO;
 import model.ProductSizeVO;
 import model.ProductVO;
 
@@ -49,4 +50,8 @@ public interface Dao {
 	int selectQuantity(int productNum, String size);
 	
 	void delete(int num);
+	
+	void recordCount(ProductVO productvo);
+	
+	
 }
