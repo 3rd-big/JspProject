@@ -31,6 +31,7 @@ public class DBConnect {
 
 			//conn = DriverManager.getConnection(jdbc_url, "c##ora_user", "kim");
 			conn = DriverManager.getConnection(jdbc_url, "c##ora_user", "kim");
+			//conn = DriverManager.getConnection(jdbc_url, "c##ora_jsp", "123");
 
 			
 			

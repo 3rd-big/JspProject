@@ -20,21 +20,21 @@
 <body>
 	<!-- Navigation -->
 	<%-- <%@include file ="/views/common/header.jsp" %> --%>
-	<%@include file ="/views/common/header2.jsp" %>
-<h4 style="margin : 0 50px; padding: 0 100px"> 공지사항 작성</h4><br>
-	<div class="container">
+	<%@include file ="/views/common/header2.jsp" %><br>
+<h3 class="text-center my-4"align ="center"> 공지사항 작성</h3><br>
+	<div class="container" align ="center">
 		<form name="noticeadd"
 			action="${pageContext.request.contextPath }/WriteNoticeController"
-			method="post">
-			<div class="form-group">
-				<label>title</label>
-				<textarea rows="1" cols="80" placeholder="title" name="title"></textarea>
-				<br>
-			</div>
-			<div class="form-group">
-				<label>content</label>
-				<textarea rows="10" cols="80" placeholder="content" name="content"></textarea>
-				<br>
+			method="post" class="table table-sm mt-3 mb-5">
+			<div >
+			<table class="form-group " >
+				<tr><td>title</td>
+				<td><textarea rows="1" cols="100" placeholder="title" name="title" class="form-control"></textarea></td>			
+				</tr>
+				<tr><td>content</td>
+				<td><textarea rows="7" cols="100" placeholder="content" name="content" class="form-control"></textarea></td>
+				</tr>
+			</table>
 			</div>
 			<button type="submit" class="btn btn-hover" align="right" style="width:100px; background-color:#4CAF50;color:white;">Submit</button>
 		</form>

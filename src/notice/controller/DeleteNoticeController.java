@@ -45,7 +45,7 @@ public class DeleteNoticeController extends HttpServlet {
 
 		System.out.println(num);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher( "/ListNoticeController");
+		RequestDispatcher dispatcher = request.getRequestDispatcher( "/ListNoticeController?page=1");
 		dispatcher.forward(request, response);
 		
 	}

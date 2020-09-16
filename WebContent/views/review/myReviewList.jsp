@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내가 쓴 리뷰 내역</title>
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -75,10 +75,7 @@ table{
 	<!-- Page Container -->
 
 		<div class="container">
-				<%
-					PaginationVO pn = (PaginationVO)request.getAttribute("pn");
-					int currentPage = Integer.parseInt(request.getParameter("page"));
-				%>
+				
 	        <h1 class="my-4">My Page</h1>
 	        <div class="row">
 		       <!-- leftNavigation -->
@@ -113,7 +110,7 @@ table{
 							<td>${r.r_date } </td>
 							<%-- <td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">수정하기</a> </td>
 							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup('${r.num }');">팝업 수정</button> </td> --%>
-							<td><button type="submit" class="btn btn-link" onclick="reviewUpdatePopup('${r.num }');">수정하기</button> </td>
+							<td><button type="submit" class="btn btn-outline-secondary" onclick="reviewUpdatePopup('${r.num }');">수정하기</button> </td>
 		
 						</tr>
 					</c:forEach>
@@ -133,45 +130,37 @@ table{
 						</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=currentPage-1 %>" aria-label="Previous">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${param.page-1}" aria-label="Previous">
 							<span aria-hidden="true">&lsaquo;</span>
 						</a>
 					</li>
 				</c:if>
-				<%
-					for(int i = pn.getStartPage(); i <= pn.getEndPage(); i++){
-						if(i == currentPage){
-				%>
+
+				<c:forEach var="pageNum" begin="${pn.startPage }" end="${pn.endPage }" step="1">
+							
+					<c:choose>
+						<c:when test="${param.page eq pageNum}">
 							<li class="page-item active" aria-current="page">
-				<%
-						}else{
-				%>
+						</c:when>
+						<c:otherwise>
 							<li class="page-item">
-				<%
-						}
-				%>
-								<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=i %>">
-				<%
-									out.print(i);
-						if(i == currentPage){
-				%>
+						</c:otherwise>
+					</c:choose>
+								<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${pageNum }">${pageNum }</a>
+					<c:if test="${param.page eq pageNum}">
 									<span class="sr-only">(current)</span>
-				<%
-						}
-				%>
-								</a>
 							</li>
-				<%
-					}
-				%>
+					</c:if>
+				</c:forEach>
+
 				<c:if test="${pn.totalPage != pn.page }">
 					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=currentPage+1 %>" aria-label="Next">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${param.page+1}" aria-label="Next">
 							<span aria-hidden="true">&rsaquo;</span>
 						</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=<%=pn.getTotalPage() %>" aria-label="Next">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${pn.totalPage }" aria-label="Next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>

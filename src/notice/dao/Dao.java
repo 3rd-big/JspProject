@@ -1,10 +1,9 @@
 package notice.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import model.NoticePaging;
 import model.NoticeVO;
+import model.ProductVO;
 
 public interface Dao {
 	int selectNum();
@@ -20,7 +19,9 @@ public interface Dao {
 	ArrayList<NoticeVO> selectAll();
 	
 	void updateViewCount(NoticeVO notice);
-	
-	ArrayList<NoticeVO> getCount(NoticePaging paging);
+
+	int countallmine();
+
+	ArrayList<NoticeVO> selectNoticeByPageNum(int page);
 
 }

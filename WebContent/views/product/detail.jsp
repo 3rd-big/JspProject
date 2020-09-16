@@ -50,17 +50,32 @@
 			float: right;
 		}
 		#review-img{
-			
+			margin:5px;
 		}
 		#review-id{
-			float: right;
+			display:inline;
 		}
+		#review-date{
+			float:right;
+		}
+		<!-- 더보기 -->
+		 .showstep1{
+        max-height: 50;
+        overflow: hidden;
+	    }
+	    .showstep2{
+	        max-height: 150;
+	        overflow: hidden;
+	    }
+	    
+	    .hide{
+	        display: none;
+	    }
 	</style>	
 
 
 
 	<script type="text/javascript">
-	
 		
 	
 		<!-- 장바구니 클릭 상품 번호 전달 -->
@@ -140,9 +155,32 @@
 			}
 		}
 	
+ 		function priceView(price) {
+			var commaCount = 0;
+			var priceString = price.toString();
+
+			var priceView = "";
+			var count = 0;
+			
+			for(var i=1; i<=priceString.length; i++){
+				priceView += priceString.charAt(priceString.length-i);
+				++count;
+				if(count % 3 == 0){
+					priceView += ',';
+				} 
+			}
+			
+			priceView = priceView.split("").reverse().join("");
+			
+			if(priceView.charAt(0) == ','){
+				priceView = priceView.substr(1);
+			}
+			return priceView;
+		} 
+		
 		
 		$(document).ready(function(){
-
+ 
 			var DefaultPrice = ${product.price };
 			
 			$.ajax({
@@ -183,9 +221,7 @@
 				var quantity = Number($("#select-quantity").text());
 				if(quantity >= 2){
 					$("#select-quantity").html(quantity-1);	
-					$(".quantity-total-price").html('￦'+((quantity-1) * DefaultPrice));
-
-					
+					$(".quantity-total-price").html('￦'+ priceView((quantity-1) * DefaultPrice));				
 				}
 				if(quantity == 2){
 					$("#countDown").attr("src", "sample_img/ico_decQ_disabled.png");
@@ -197,14 +233,59 @@
 			$("#incQuantity").click(function countUp() {
 				var quantity = Number($("#select-quantity").text());
 				$("#select-quantity").html(quantity+1);
-				$(".quantity-total-price").html('￦'+((quantity+1) * DefaultPrice));
+				$(".quantity-total-price").html('￦'+ priceView((quantity+1) * DefaultPrice));
 				$("#countDown").attr("src", "sample_img/ico_decQ.png");
+
 			});
 			
 			
 		});
 		
+		<!-- 더보기 리스너-->
+		document.addEventListener('DOMContentLoaded', function(){ //DOM 생성 후 이벤트 리스너 등록
+		    //더보기 버튼 이벤트 리스너
+		    document.querySelector('.btn_open').addEventListener('click', function(e){
+		        
+		        let classList = document.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+		        let contentHeight = document.querySelector('.detailinfo > .content').offsetHeight; //컨텐츠 높이 얻기
+
+		        // 2단계이면 전체보기로
+		        if(classList.contains('showstep2')){
+		            classList.remove('showstep2');
+		        }
+		        // 1단계이면 2단계로
+		        if(classList.contains('showstep1')){
+		            classList.remove('showstep1');
+		            if(contentHeight > 600){
+		                classList.add('showstep2');
+		            }else{
+		                document.querySelector('.btn_open').classList.add('hide');
+		            }
+		        }
+		        //전체보기시 더보기 버튼 감추기 & 감추기 버튼 표시
+		        if(!classList.contains('showstep1') && !classList.contains('showstep2')){
+		            e.target.classList.add('hide');
+		            document.querySelector('.btn_close').classList.remove('hide');
+		            
+		        }
+		        
+		    });
+		});
 		
+		// 감추기 버튼 이벤트 리스너
+		document.querySelector('.btn_close').addEventListener('click', function(e){
+		    e.target.classList.add('hide');
+		    document.querySelector('.btn_open').classList.remove('hide'); // 더보기 버튼 감춤
+		    document.querySelector('.detailinfo').classList.add('showstep1'); // 초기 감춤 상태로 복귀
+		});
+		//컨텐츠 로딩 완료 후 높이 기준으로 클래스 재처리
+		window.addEventListener('load', function(){
+		    let contentHeight = document.querySelector('.detailinfo > .content').offsetHeight; //컨텐츠 높이 얻기
+		    if(contentHeight <= 300){
+		        document.querySelector('.detailinfo').classList.remove('showstep1'); // 초기값보다 작으면 전체 컨텐츠 표시
+		        document.querySelector('.btn_open').classList.add('hide'); // 버튼 감춤
+		    }
+		});
 	</script>
 
 
@@ -288,44 +369,133 @@
 			
 
 		</article>
-		
+		<br> <br>
 		<!-- /.card -->
 		<div class="card card-outline-secondary my-4">
-			<div class="card-header" id="product-reviews">Product reviews</div>
+			<div class="card-header" id="product-reviews">
+				<h6>Product Reviews</h6>
+			</div>
 			<div class="card-body">
-			
 				<c:if test="${0 == reviews.size() }">
 					<p>리뷰가 없습니다.</p>
 				</c:if>
 				
 				<c:forEach var="review" items="${reviews }">
 					<div class="reviewer-info">
-						<div>
-							<img src="sample_img/user_basic.png" width="50" id="profile-img">
-							<p><small class="text-muted" id="review-id"><b>${review.m_id }</b></small></p>
-							<smal>${review.r_date }</smal>
+						<div class="stars-part">
 							<!-- 채워진 별 -->															
 							<c:forEach var="colorStar" begin="1" end="${review.rate}">
-								<small class="text-warning">&#9733;</small>
+								<span class="text-warning">&#9733;</span>
 							</c:forEach>
 							
 							<!-- 빈 별 -->
 							<c:forEach var="emptyStar" begin="1" end="${5 - review.rate}">
-								<small class="text-warning">&#9734;</small>
+								<span class="text-warning">&#9734;</span>
 							</c:forEach>
+							&nbsp;&nbsp;&nbsp;
+							<c:if test="${review.rate>=4 }">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-emoji-laughing" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+								  <path fill-rule="evenodd" d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5z"/>
+								  <path d="M7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+								</svg>
+							</c:if>
+							
+							<c:if test="${review.rate==3 }">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-emoji-smile" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+								  <path fill-rule="evenodd" d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683z"/>
+								  <path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+								</svg>
+							</c:if>
+							
+							<c:if test="${review.rate<3 }">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-emoji-frown" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+								  <path fill-rule="evenodd" d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683z"/>
+								  <path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+								</svg>
+							</c:if>
+						</div>
+						<div class="writer-date">
+							<!-- <img src="sample_img/user_basic.png" width="50" id="profile-img"> -->
+							<p class="text-muted" id="review-id">작성자 &nbsp;&nbsp;<b>${review.m_id }</b></p>
+							<p class="text-muted" id="review-date">작성일 &nbsp;&nbsp;${review.r_date }</p>
+						</div>
+						<br>
+						<!--  -->
+						<div class="image-content" style="box-sizing: border-box; overflow:hidden;">
+							<div id="image" style="width:75px;  float:left;">
+								<img width="50px" height="75" src="${review.img}" id="review-img">
+							</div>
+							<div class="content" id="content" style="width:100%; height:50">${review.content }</div>	
+							<!-- <a href="#" class="btn_open">더보기</a>
+							<a href="#" class="btn_close hide">감추기</a> -->
 						</div>
 						
-						<img width="50px" height="75" src="${review.img}" id="review-img">
-						${review.content }
+						
 						<hr>
+						
 					</div>
 				</c:forEach>
+					<!-- pagination -->
+			<br> <br>
+			<nav aria-label="...">
+				<ul class="pagination justify-content-center">
+				<c:if test="${1 != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=1" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${param.page-1}" aria-label="Previous">
+							<span aria-hidden="true">&lsaquo;</span>
+						</a>
+					</li>
+				</c:if>
 
-				<input type="button" class="btn btn-success" value="Leave a Review" onClick="addReview(<%=(String)session.getAttribute("id")%>);" > <!-- 미완성 -->
+				<c:forEach var="pageNum" begin="${pn.startPage }" end="${pn.endPage }" step="1">
+							
+					<c:choose>
+						<c:when test="${param.page eq pageNum}">
+							<li class="page-item active" aria-current="page">
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+						</c:otherwise>
+					</c:choose>
+								<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${pageNum }">${pageNum }</a>
+					<c:if test="${param.page eq pageNum}">
+									<span class="sr-only">(current)</span>
+							</li>
+					</c:if>
+				</c:forEach>
+
+				<c:if test="${pn.totalPage != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${param.page+1}" aria-label="Next">
+							<span aria-hidden="true">&rsaquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${pn.totalPage }" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+					
+				</ul>
+			</nav>
+			<br>
+		<!-- /pagination -->
+
+				<%-- <input type="button" class="btn btn-success" value="Leave a Review" onClick="addReview(<%=(String)session.getAttribute("id")%>);" > --%> <!-- 미완성 -->
 			</div>
 		</div>
 		<!-- /.card -->
-	
+		<br>
+		<br>
 	
 	</div>
 	

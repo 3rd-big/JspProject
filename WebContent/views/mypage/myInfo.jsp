@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Shop Homepage - My Page</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +21,8 @@
 <style type="text/css">
 
 body{
-	font:Apple SD Gothic Neo;
+	/* font:Apple SD Gothic Neo; */
+	font: NotoSansKR;
 }
 .membershowbox{
 	margin-left: 50px;

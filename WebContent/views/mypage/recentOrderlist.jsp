@@ -42,6 +42,9 @@
 .listtitle{
 	padding: 0.8em;
 }
+table{
+	table-layout:fixed;
+}
 </style>
 
 </head>
@@ -75,7 +78,7 @@
 								 <a id="code_num_link" style="text-decoration: none;" href="${pageContext.request.contextPath }/OrderlistController2?code_num=${o.code_num }">${o.code_num }</a>
 								</td>
 								<td>${o.max_o_date }</td>
-								<td>${o.prod_name } <span style="font-size:12px;">..포함 ${o.ctnrow} 개</span>
+								<td>${o.prod_name } <span style="font-size:12px; word-break:break-all;">..포함 ${o.ctnrow} 개</span>
 								</td>
 								<td><img src="${o.prod_img }" width="100" height="100"> </td>
 								<td>${o.priceView } </td>

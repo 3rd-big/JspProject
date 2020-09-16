@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import conn.DBConnect;
-import model.NoticePaging;
 import model.NoticeVO;
+import model.ProductVO;
 
 public class DaoImpl implements Dao {
 	private DBConnect db;
@@ -83,7 +83,7 @@ public class DaoImpl implements Dao {
 	public NoticeVO select(int num) {
 		// TODO Auto-generated method stub
 		ResultSet rs = null;
-		NoticeVO notice = null;
+		NoticeVO notice = new NoticeVO();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		String sql1 = "select * from notice where num=? order by num";
@@ -175,6 +175,8 @@ public class DaoImpl implements Dao {
 		PreparedStatement pstmt = null;
 
 		String sql = "select * from notice order by num desc";
+		//String sql = "select * from notice where num=82";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -226,34 +228,65 @@ public class DaoImpl implements Dao {
 			}
 		}
 	}
-
-
-
 	@Override
-	public ArrayList<NoticeVO> getCount(NoticePaging paging) {
-		// TODO Auto-generated method stub
+	public ArrayList<NoticeVO> selectNoticeByPageNum(int page) {
+		ArrayList<NoticeVO> notice = new ArrayList<>();
 		Connection conn = db.getConnection();
+		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		NoticeVO notice = null;
-		String sql = "select count(*) from notice";
+		
+		int startRange = (page - 1) * 8 + 1;
+		int endRange = page * 8;
+		
+		String sql = "select * from (select rownum as rnum, a.* from (select * from notice order by num desc) A where rownum <= ?) X where x.rnum >= ?";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, notice.getNum());
-			pstmt.executeUpdate();
-
+			pstmt.setInt(1, endRange);
+			pstmt.setInt(2, startRange);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				notice.add(new NoticeVO(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getInt(6)));
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
+				rs.close();
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return notice;
+	}
 
+	@Override
+	public int countallmine() {
+		Connection conn = db.getConnection();
+
+		String sql = "select count(*) from notice";
+		Statement stmt = null;
+		ResultSet rs = null;
+		int num = 0;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				num =rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
 	}
 }

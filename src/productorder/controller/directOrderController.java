@@ -38,15 +38,8 @@ public class directOrderController extends HttpServlet {
 		HttpSession session = request.getSession(false);
         String id = (String) session.getAttribute("id");
 		
-        Enumeration<String> member = request.getAttributeNames();
         
-        while(member.hasMoreElements()){
-            String attrName = member.nextElement();
-            Object attrValue = request.getAttribute(attrName);
-            System.out.println(attrName + " : " + attrValue);
-
-        }
-		System.out.println("directOrderController.java에서 불러오는것 : " + member);
+//		System.out.println("directOrderController.java에서 불러오는것 : " + member);
 		
 	
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,20 @@
 		img{
 			max-width: 100%;
 		}
+		.carousel slide{
+			position : absolute;
+			z-index: 100;
+		}
+		#content_div{
+			width: 80%;
+			height: 30%;
+			margin-left: 10%;
+		}
+		#product_name{
+			margin-top:2px;
+			margin-bottom:2px;
+		}
+		
 	</style>
 
 </head>
@@ -43,10 +58,11 @@
 					<img src="sample_img/main_wide_pic.jpg" class="first-slide"  alt="First slide">
 					<div class="container">
 						<div class="carousel-caption text-left">
-							<h1>Example headline.</h1>
-							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+							<h1 style="text-shadow:1px 1px 2px darkgray">Start with the gear that does it all</h1>
+							<p>Your new essentials are here. Go from warmup to chill out in our abrasion-resistant, breathable, and modern layers</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
+								<br>
+								<!-- <a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a> -->
 							</p>
 						</div>
 					</div>
@@ -55,10 +71,11 @@
 					<img src="sample_img/main_wide_pic2.jpg" class="second-slide" alt="Second slide">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1>Another example headline.</h1>
-							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+							<h1 style="text-shadow:1px 1px 2px darkgray">Happy Untact Home Training with Us!</h1>
+							<p>Enjoy the energetic and healthy <b>SWEAT LIFE</b> with us at your home</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
+								<br>
+								<!-- <a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a> -->
 							</p>
 						</div>
 					</div>
@@ -67,10 +84,11 @@
 					<img src="sample_img/main_wide_pic3.jpg" class="third-slide" alt="Third slide">
 					<div class="container">
 						<div class="carousel-caption text-right">
-							<h1>One more for good measure.</h1>
-							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+							<h1>2020 Autumn Collection</h1>
+							<p>F/W 신상품 출시</p>
 							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a>
+								<br>
+								<!-- <a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a> -->
 							</p>
 						</div>
 					</div>
@@ -87,35 +105,44 @@
 		<br><br>
 	
 		<div class="container marketing">
-	
+			<h2>What's New</h2> 
+			<br>
 			<!-- Three columns of text below the carousel -->
 			<div class="row" style="text-align: center;">
+			<c:forEach var="newProduct" items="${newProducts }">
 				<div class="col-lg-4">
-					<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-					<h2>Heading</h2>
-					<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-					<p>
-						<a class="btn btn-secondary" href="#" role="button">View details »</a>
-					</p>
+					
+						<img class="rounded-circle" src="${newProduct.img}" alt="Generic placeholder image" width="140" height="140">
+							<br><br>
+						<h4 id="product_name">${newProduct.name}</h4> <br>
+						<div id="content_div">
+							<p style="text-break:break-all;">${newProduct.content}
+							</p>
+						</div>
+						<p>
+							<a class="btn btn-secondary" href="${pageContext.request.contextPath }/DetailController?num=${newProduct.num }" role="button">View details »</a>
+						</p>
+						<br>
 				</div>
+			</c:forEach>
 				<!-- /.col-lg-4 -->
-				<div class="col-lg-4">
+				<!-- <div class="col-lg-4">
 					<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
 					<h2>Heading</h2>
 					<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View details »</a>
 					</p>
-				</div>
+				</div> -->
 				<!-- /.col-lg-4 -->
-				<div class="col-lg-4">
+				<!-- <div class="col-lg-4">
 					<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
 					<h2>Heading</h2>
 					<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View details »</a>
 					</p>
-				</div>
+				</div> -->
 				<!-- /.col-lg-4 -->
 			</div>
 			<!-- /.row -->
@@ -127,13 +154,14 @@
 	
 			<div class="row featurette">
 				<div class="col-md-7">
-					<h2 class="featurette-heading">
-						First featurette heading. <span class="text-muted">It'll blow your mind.</span>
+					<br><br><br><br><br><br><br><br><br>
+					<h2 class="featurette-heading" style="text-align:center;">
+						PRO ATHLETE <!-- <span class="text-muted"> Development of the Performance</span> -->
 					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+					<p class="lead" style="text-align:center;"> For the hardest workers in the room.</p>
 				</div>
 				<div class="col-md-5">
-					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1747275bb28%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1747275bb28%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="sample_img/main_collection7-1.jpg" data-holder-rendered="true">
 				</div>
 			</div>
 	
@@ -141,13 +169,14 @@
 	
 			<div class="row featurette">
 				<div class="col-md-7 order-md-2">
-					<h2 class="featurette-heading">
-						Oh yeah, it's that good. <span class="text-muted">See for yourself.</span>
+					<br><br><br><br><br><br><br><br><br>
+					<h2 class="featurette-heading" style="text-align:center;">
+						Your day is a Workout. <span class="text-muted">As original as you</span>
 					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+					<p class="lead" style="text-align:center;">일상 속 모든 움직임을 위한 옷</p>
 				</div>
 				<div class="col-md-5 order-md-1">
-					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1747275bb2b%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1747275bb2b%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 500px; height: 500px;">
+					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="sample_img/main_collection8-1.jpg" data-holder-rendered="true" style="width: 500px; height: 500px;">
 				</div>
 			</div>
 	
@@ -155,13 +184,16 @@
 	
 			<div class="row featurette">
 				<div class="col-md-7">
-					<h2 class="featurette-heading">
-						And lastly, this one. <span class="text-muted">Checkmate.</span>
-					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-				</div>
+					<br><br><br><br><br><br><br><br><br>
+					
+						<h2 class="featurette-heading" style="text-align:center;">
+							Online Exclusive Gear is  <span class="text-muted">HERE</span>
+						</h2>
+						<p class="lead" style="text-align:center;">Free Shipping. Free Returns.</p>
+					</div>
+				
 				<div class="col-md-5">
-					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1747275bb2c%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1747275bb2c%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 500px; height: 500px;">
+					<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="sample_img/main_collection2.jpg" data-holder-rendered="true" style="width: 500px; height: 500px;">
 				</div>
 			</div>
 	

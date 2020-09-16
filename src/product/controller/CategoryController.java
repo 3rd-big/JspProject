@@ -40,7 +40,6 @@ public class CategoryController extends HttpServlet {
 		Service service = new ServiceImpl();
 		review.service.Service review_service = new review.service.ServiceImpl();
 		
-		System.out.println("여기" + category);
 		ArrayList<ProductVO> categoryProducts = service.getCategoryProducts(category);
 		ArrayList<ProductVO> products = new ArrayList<ProductVO>();
 		

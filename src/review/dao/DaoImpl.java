@@ -332,6 +332,12 @@ public class DaoImpl implements Dao{
 		return num;
 	}
 
+	@Override
+	public int countreviewByP_Num(int p_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 	
 	

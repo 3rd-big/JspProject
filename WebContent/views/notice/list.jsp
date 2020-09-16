@@ -1,7 +1,6 @@
-<%@ page language="java" pageEncoding="UTf-8" import="model.NoticeVO"%>
+<%@ page language="java" pageEncoding="UTf-8" import="model.NoticeVO, model.PaginationVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
@@ -34,20 +33,6 @@
 
  <script src="<%=request.getContextPath()/resource/js/jquery.twbsPagination.js" type="text/javascript"></script> 
 --%>
-<!-- pagination 
-<script type="text/javascript">
-    $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: 10,
-            visiblePages: 5,
-            onPageClick: function (event, page) {
-            	 $('#page-content').text('Page ' + page);
-            	   paging(page);
-            }
-        });
-    });
-   
-</script> -->
 
 
 </head>
@@ -57,8 +42,8 @@
 
 	<div class="container">
 		<br>
-		<h3 class="text-center my-4">공지사항</h3>
-		<div class="button" align=" right">
+		<h3 class="text-center my-4"align ="center">공지사항</h3>
+		<div class="button" align="right">
 			<c:if test="${sessionScope.memberType == 0 }">
 				<button id="addbtn" type="button" class="btn btn-primary active"
 					style="margin: 0 auto; width: 100px; height: 35px; background-color: #4CAF50; color: white;"
@@ -66,9 +51,8 @@
 			</c:if>
 		</div>
 		<br>
-		<div class="table">
-			<table class="table table-hover  table-sm mt-3 mb-5"
-				style="margin: 0 auto;" id="twbsPagination">
+		<div class="table" align="center">
+			<table class="table table-hover  table-sm mt-3 mb-5" >
 				<thead class="thead-light ">
 					<tr class="d-flex ">
 						<th class="text-center col-1">no.</th>
@@ -90,37 +74,60 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<!-- 현재 페이지 -->
-			<fmt:parseNumber value="${notice/10 +1}" type="number"
-				integerOnly="true" />
-			<!-- 이전 페이지 -->
-			<c:if test="${notice > 0 }">
-				<a href=" list.do?page=${notice-10 }">이전 페이지</a>
-			</c:if>
-			<c:if test="${notice == 0 }">
-				<a href="#">이전페이지</a>
-			</c:if>
-			<!-- 다음 페이지 -->
-			<c:if test="${fn:length(notice.num)<10 }">
-				<a href="#">다음 페이지</a>
-
-			</c:if>
-			<c:if test="${fn:length(notice.num)==10 }">
-				<a href=" list.do?page=${notice-10 }">이전 페이지</a>
-			</c:if> 
-
 		</div>
+		<!-- pagination -->
+			<br> <br>
+			<nav aria-label="...">
+				<ul class="pagination justify-content-center">
+				<c:if test="${1 != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListNoticeController?page=1" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListNoticeController?page=${param.page-1}" aria-label="Previous">
+							<span aria-hidden="true">&lsaquo;</span>
+						</a>
+					</li>
+				</c:if>
+
+				<c:forEach var="pageNum" begin="${pn.startPage }" end="${pn.endPage }" step="1">
+							
+					<c:choose>
+						<c:when test="${param.page eq pageNum}">
+							<li class="page-item active" aria-current="page">
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+						</c:otherwise>
+					</c:choose>
+								<a class="page-link" href="${pageContext.request.contextPath }/ListNoticeController?page=${pageNum }">${pageNum }</a>
+					<c:if test="${param.page eq pageNum}">
+									<span class="sr-only">(current)</span>
+							</li>
+					</c:if>
+				</c:forEach>
+
+				<c:if test="${pn.totalPage != pn.page }">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListNoticeController?page=${param.page+1}" aria-label="Next">
+							<span aria-hidden="true">&rsaquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath }/ListNoticeController?page=${pn.totalPage }" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+					
+				</ul>
+			</nav>
+			<br>
+		<!-- /pagination -->
 	</div>
-
-
-	<!--pagination -->
-	<!-- <div class="container">
-		<nav aria-label="Page navigation">
-			<ul class="pagination" id="pagination"></ul>
-		</nav>
-	</div> -->
-
-		<!-- footer -->
+	<!-- footer -->
 	<%@include file="/views/common/footer2.jsp"%>
 
 </body>

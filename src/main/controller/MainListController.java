@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.NoticeVO;
 import model.ProductVO;
 import product.service.Service;
 import product.service.ServiceImpl;
@@ -30,10 +31,16 @@ public class MainListController extends HttpServlet {
 		
 		Service service = new ServiceImpl(); 
 		ArrayList<ProductVO> bestProducts = service.getBestProducts(4);
-		ArrayList<ProductVO> newProducts = service.getNewProducts(4);
+		ArrayList<ProductVO> newProducts = service.getNewProducts(3); //선정 수정 4->3
 		
 		request.setAttribute("bestProducts", bestProducts);
 		request.setAttribute("newProducts", newProducts);
+		
+		
+//		notice.service.Service notice_service = new notice.service.ServiceImpl();
+//		ArrayList<NoticeVO> notices = notice_service.getNoticeAll();
+//		request.setAttribute("notices", notices);
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main2.jsp");
 		dispatcher.forward(request, response);

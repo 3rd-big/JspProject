@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Shop Homepage - 로그인</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,8 @@
 
 
 body{
-	font:Apple SD Gothic Neo;
+	/* font:Apple SD Gothic Neo; */
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .btns{
 	width: 100%;
@@ -73,7 +74,7 @@ body{
 					<br>
 				<div class="btns">
 					<div class="btn_login">
-						<button type="submit" class="btn btn-primary">Log In</button>
+						<button type="submit" class="btn btn-primary">SignIn</button>
 					</div>
 					<div class="btn_signup">
 						<input type="button" class="btn btn-outline-primary" value="SignUp"

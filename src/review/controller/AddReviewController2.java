@@ -49,7 +49,6 @@ public class AddReviewController2 extends HttpServlet {
 		
 		
 		String uploadPath = "C:\\Users\\KITRI\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
-		//TODO 여기 
 //		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		try {
@@ -75,7 +74,8 @@ public class AddReviewController2 extends HttpServlet {
 
 				// 그에 해당하는 실제 파일 이름을 가져옴
 				reviewImgName = multi.getOriginalFileName(inputTagName);
-				review.setImg("/upload_img/" + reviewImgName);
+//				review.setImg("/upload_img/" + reviewImgName);
+				review.setImg("/review_img/" + reviewImgName);
 			
 				//파일 업로드... 이건 파일 업로드가 아니였음
 				File file1 = multi.getFile(inputTagName);

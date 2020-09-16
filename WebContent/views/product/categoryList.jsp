@@ -179,7 +179,6 @@
 								<a class="page-link" href="${pageContext.request.contextPath }/CategoryController?category=${param.category}&page=${pageNum }&orderBy=${param.orderBy }">${pageNum }</a>
 					<c:if test="${param.page eq pageNum}">
 									<span class="sr-only">(current)</span>
-							</li>
 					</c:if>
 				</c:forEach>
 

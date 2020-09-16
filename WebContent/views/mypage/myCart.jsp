@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Shop Homepage - My Cart</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@ table{
 	<%-- <%@include file ="/views/common/header.jsp" %> --%>
 	<%@include file ="/views/common/header2.jsp" %>
 		<c:if test="${not empty sessionScope.id }">
-			<div class="container">
+			<div class="container" style="padding-bottom: 150px;">
 				<h1 class="my-4">My Page</h1>
 			 	<div class="row">
 			
@@ -67,7 +67,7 @@ table{
 						<h3>장바구니 목록</h3>
 					</c:if>
 	
-				<form action="${pageContext.request.contextPath }/User_EditController" name="f" method="post">
+				<form action="${pageContext.request.contextPath }/CartOrderController" name="f" method="post">
 					<table class="table table-hover table-sm mt-3 mb-5">
 						<thead class="thead-light1" style="background-color: white;">
 							<tr class="text-center">
@@ -91,7 +91,7 @@ table{
 									<td>${o.p_size } </td>
 									<td>${o.o_quantity}</td>
 									<td>${o.priceView }</td>
-									<td scope="row"><input type="checkbox"></td>
+									<td scope="row"><input type="checkbox" name=sel value=${o.num }></td>
 	
 								</tr>
 							</c:forEach>

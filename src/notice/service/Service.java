@@ -2,13 +2,13 @@ package notice.service;
 
 import java.util.ArrayList;
 
-import model.NoticePaging;
 import model.NoticeVO;
+import model.ProductVO;
 
 public interface Service {
 	void add(NoticeVO notice);
 
-	NoticeVO getNotice(int num);
+	NoticeVO  getNotice(int num);
 
 	void editNotice(NoticeVO notice);
 
@@ -19,6 +19,8 @@ public interface Service {
 	// int makeNum();
 
 	void updateViewCount(NoticeVO notice);
-	ArrayList<NoticeVO> getCount();
+
+	int getcountMine();
+	ArrayList<NoticeVO> getNoticeByPageNum(int page);
 
 }

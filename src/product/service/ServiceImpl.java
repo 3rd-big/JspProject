@@ -22,6 +22,11 @@ public class ServiceImpl implements Service{
 	}
 	
 	@Override
+	public ArrayList<ProductVO> getProductManagementByPageNum(int page) {
+		return dao.selectAllByPageNum(page);
+	}
+	
+	@Override
 	public ArrayList<ProductVO> getBestProducts(int numberItems) {
 		return dao.selectBestProducts(numberItems);
 	}
@@ -46,6 +51,16 @@ public class ServiceImpl implements Service{
 		return dao.selectCategoryProductsSort(category, page, orderBy);
 	}
 
+	@Override
+	public ArrayList<ProductVO> getKeywordProductsByPageNum(String keyword, int page) {
+		return dao.selectKeywordProductsByPageNum(keyword, page);
+	}
+
+	@Override
+	public ArrayList<ProductVO> getKeywordProductsSort(String keyword, int page, String orderBy) {
+		return dao.selectKeywordProductsSort(keyword, page, orderBy);
+	}
+	
 	@Override
 	public ArrayList<ProductImageVO> getDetailImgAll(int p_num) {
 		return dao.selectDetailImages(p_num);
@@ -100,9 +115,5 @@ public class ServiceImpl implements Service{
 	public void delProduct(int num) {
 		dao.delete(num);
 	}
-
-
-
-
 
 }

@@ -121,8 +121,8 @@ public class AddReviewController extends HttpServlet {
 			
 			
 //		TODO 나중에 경로 이걸로 바꾸셈
-//		review.setImg("/review_img/" + review_img);			// 태수
-		review.setImg("/upload_img/" + review_img);			// 태수
+		review.setImg("/review_img/" + review_img);			// 태수
+//		review.setImg("/upload_img/" + review_img);			// 태수
 
 		service.add(review);	
 
