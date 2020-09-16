@@ -22,7 +22,11 @@
 	min-height: 77.5%;
 	padding-bottom: 70px;
 }
+<script>
 
+
+
+</script>
 </style>
 <body>
 	<!-- Navigation -->
@@ -38,14 +42,14 @@
 			<div >
 			<table class="form-group " >
 				<tr><td>title</td>
-				<td><textarea rows="1" cols="100" placeholder="title" name="title" class="form-control"></textarea></td>			
+				<td><textarea rows="1" cols="100" placeholder="title" name="title" id="title" class="form-control"></textarea></td>			
 				</tr>
 				<tr><td>content</td>
 				<td><textarea rows="7" cols="100" placeholder="content" name="content" class="form-control"></textarea></td>
 				</tr>
 			</table>
 			</div>
-			<button type="submit" class="btn btn-hover" align="right" style="width:100px; background-color:#4CAF50;color:white;">Submit</button>
+			<button type="submit" class="btn btn-dark  btn-block" align="right" style="width:100px; ">Submit</button>
 		</form>
 	</div> 
 	</div>

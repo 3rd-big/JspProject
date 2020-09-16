@@ -40,7 +40,7 @@ p {
 		<h3 class="text-center my-4" align="center">공지사항</h3>
 		<div align="center">
 			<form
-				action="${pageContext.request.contextPath }/EditNoticeController"
+				action="${pageContext.request.contextPath }/EditNoticeController?num=${notice.num}"
 				method="post">
 				<%-- <table class="table table-sm mt-3 mb-5" cellspacing="0"
 					style="width: 900px; height: 300px; border: none;">
@@ -125,14 +125,14 @@ p {
 
 					<tr>
 						<c:if test="${sessionScope.memberType != 0 }">
-							<td><input type="text" name="content" readonly size="100"
+							<td><input type="text" name="content" readonly size="100" align="center"
 								style="width: 900px; height: 400px; background-color: white; border: none;"
 								value="${notice.content }"></td>
 						</c:if>
 						<c:if test="${sessionScope.memberType == 0 }">
-							<td><textarea class="form-control" name="content" size="100"
+							<td><textarea class="form-control" name="content" size="100"  align="center"
 									style="width: 900px; height: 400px; background-color: white; border: none;"
-									value="${notice.content }"></textarea></td>
+									>${notice.content }</textarea></td>
 						</c:if>
 					</tr>
 				</table>

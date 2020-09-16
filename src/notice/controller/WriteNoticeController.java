@@ -1,10 +1,13 @@
 package notice.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,12 +55,15 @@ public class WriteNoticeController extends HttpServlet {
 
 		//dao에 makenum 함수를 안쓰려고 사용
 		//notice.setNum(service.makeNum());
+
 		notice.setTitle(request.getParameter("title"));
 		notice.setContent(request.getParameter("content"));
 		
 		//System.out.println(notice.toString());
 		// 서비스의 글작성 기능 실행
+		
 		service.add(notice);
+
 		// 글목록으로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ListNoticeController?page=1");
 		if (dispatcher != null) {

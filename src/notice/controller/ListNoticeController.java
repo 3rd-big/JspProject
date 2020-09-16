@@ -61,7 +61,7 @@ public class ListNoticeController extends HttpServlet {
 		// 페이징 처리
 		pn.setPage(page);					// 현재 페이지
 		pn.setCountList(8);					// 한 화면에 보여질 상품 수
-		pn.setCountPage(3);					// 하단 보여질 페이지 수 ex) << < 1 2 3 > >>
+		pn.setCountPage(5);					// 하단 보여질 페이지 수 ex) << < 1 2 3 > >>
 		
 		pn.setTotalCount(service.getcountMine());	// 전체 상품 수 ex) 35개
 		
