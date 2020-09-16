@@ -24,8 +24,8 @@
 		function reviewUpdatePopup(num) {
 
  			var pop_title = "리뷰 수정";
-
-			window.open("", pop_title, "width=800, height=700, left=200, top=200");
+			
+			window.open("", pop_title, "width=800, height=650, left=400, top=100");
 			
 			var frmData = document.myreviewList;
 			frmData.target = pop_title;
@@ -108,14 +108,14 @@ table{
 				<tbody >
 					<c:forEach var="r" items="${list }">
 						<tr class="text-center">
-							<td name="num">${r.num } </td>
-							<td> ${r.rate } </td>
-							<td> ${r.content } </td>
-							<td> <img src="${r.img }" width="100" height="100"> </td>
-							<td>${r.r_date } </td>
+							<td name="num" style="vertical-align: middle;">${r.num } </td>
+							<td style="vertical-align: middle;"> ${r.rate } </td>
+							<td style="vertical-align: middle;"> ${r.content } </td>
+							<td style="vertical-align: middle;"> <img src="${r.img }" width="100" height="100"> </td>
+							<td style="vertical-align: middle;">${r.r_date } </td>
 							<%-- <td><a href="${pageContext.request.contextPath }/EachReviewController?r_num=${r.num }">수정하기</a> </td>
 							<td><button type="button" class="btn btn-link" onclick="showUpdatePopup('${r.num }');">팝업 수정</button> </td> --%>
-							<td><button type="submit" class="btn btn-outline-secondary" onclick="reviewUpdatePopup('${r.num }');">수정하기</button> </td>
+							<td style="vertical-align: middle;"><button type="submit" class="btn btn-outline-secondary" onclick="reviewUpdatePopup('${r.num }');">수정하기</button> </td>
 		
 						</tr>
 					</c:forEach>

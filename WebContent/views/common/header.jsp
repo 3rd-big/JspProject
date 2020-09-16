@@ -34,6 +34,8 @@
 				width="100px" , height="50px">
 			</a>
 		</div>
+		
+		
 
 		<!-- top-navbar -->
 		<div class="container" style="flex-flow: column; max-width: none;">
@@ -200,8 +202,6 @@
 												<a href="#"
 												onclick="fn_search_top();"
 												onmousedown="javascript:fn_trkClickTrace('^최상단^검색');"
-												class="spt_bg btn" style="
-    background-color: white;
 ">검색</a>
 										</form>
 									</div>

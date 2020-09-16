@@ -12,7 +12,6 @@
 <meta name="author" content="">
 
 <title>Shop Homepage - My Page</title>
-
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -91,13 +90,13 @@ body{
 
 					<div class="pointbox" >
 						<h6> POINTS : &nbsp; ${m.point} 점 </h6>
-						 <a href="#" id="mypointmore" > more>> </a>		
+						<!--  <a href="#" id="mypointmore" > more>> </a> -->		
 					</div>
 					<br> 
 				<div class="orderedlist">
 					<%@include file ="/views/mypage/recentOrderlist.jsp" %>
 				</div> 
-
+				
 			</div>	
 		</div>
 	</c:if>

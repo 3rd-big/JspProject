@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="model.ProductOrderVO, model.ProductSizeVO"%>
+<%@page import="model.ProductOrderVO, model.ProductSizeVO, model.OrderInfoVO"%>
 <%@page import="model.MemberVO, model.ProductVO, model.ReviewVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -72,33 +72,33 @@
 								<tbody>
 									<tr>
 										<th>주문번호</th>
-										<td><strong>200802165657141</strong></td>
+										<td><strong>${orderinfo.oi_code_num }</strong></td>
 										<th>휴대폰번호</th>
-										<td>010-7372-8035</td>
+										<td>${orderinfo.oi_phone }</td>
 									</tr>
 									<tr>
 										<th>주문자</th>
-										<td>장선정</td>
+										<td>${orderinfo.oi_name }</td>
 										<th>주문날짜</th>
-										<td>2020-08-02</td>
+										<td>${orderinfo.orderDate }</td>
 									</tr>
 									<tr>
 										<th>배송지 주소</th>
-										<td colspan="3">..서북구~</td>
+										<td colspan="3">${orderinfo.add_addr_full }  ${orderinfo.add_addr_zipNo }</td>
 									</tr>	
 									<tr>
 										<th>배송메모</th>
-										<td colspan="3">..</td>
+										<td colspan="3">${orderinfo.deliMessage }</td>
 									</tr>	
 									<tr>
 										<th>결제방법</th>
-										<td colspan="3">card</td>
+										<td colspan="3">${orderinfo.howPay }</td>
 									</tr>
 									<tr>
 										<th>상품금액</th>
-										<td>총$</td>
+										<td>${orderinfo.oi_originTotalPrice } 원</td>
 										<th>주문금액</th>
-										<td>할인되고 금액</td>
+										<td>${orderinfo.oi_totalPrice } 원</td>
 									</tr>
 								</tbody>
 								

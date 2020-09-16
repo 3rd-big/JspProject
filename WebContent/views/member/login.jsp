@@ -46,9 +46,7 @@ body{
 .btn_signup{
 	display: inline-block;
 }
-#btn_login{
-	background-color:#fbe7e8;
-}
+
 
 </style>
 

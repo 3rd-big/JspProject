@@ -36,8 +36,7 @@ body{
 	font:Apple SD Gothic Neo;
 }
 .btns{
-	width: 100%;
-	margin-left:10%;
+	margin-left: 20%;
 }
 .btn_login,
 .btn_findpwd{
@@ -57,25 +56,25 @@ body{
 		
 		
 			<fieldset>
-				<legend style="text-align:center;">아이디 찾기</legend>
+				<legend style="text-align:center;">Search ID</legend>
 					<br>
 				
 				<div class="form-group1">
 					<c:if test="${m.id ==null}">
-						<p class="spantext"> 잘못된 이메일 혹은 아이디를 찾을 수 없습니다.</p>
+						<p class="spantext"> Can't find id or a wrong email address.</p>
 					</c:if>
 					<c:if test="${m.id !=null}">
-						<p class="spantext" >${m.name }님의 아이디는  ' ${m.id } '입니다.</p>
+						<p class="spantext" >${m.name }'s id is  ' ${m.id } '.</p>
 					</c:if>
 				</div>
 					<br>
 					
 				<div class="btns">
 					<div class="btn_login">
-						<input type="button" class="btn btn-primary" value="로그인하러가기" onclick="location.href='views/member/login.jsp'"/>
+						<input type="button" class="btn btn-dark" value="Go to Signin" onclick="location.href='views/member/login.jsp'"/>
 					</div>
 					<div class="btn_findpwd">
-						<input type="button" class="btn btn-outline-primary" value="패스워드찾기" onclick="location.href='views/member/searchPwd.jsp'"/>
+						<input type="button" class="btn btn-outline-dark" value="Search PW" onclick="location.href='views/member/searchPwd.jsp'"/>
 					</div>
 
 				</div>
