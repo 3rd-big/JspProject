@@ -94,7 +94,7 @@
 					
 						<div class="col-lg-3 col-md-6 mb-4">
 							<div class="card h-100">
-								<a href="${pageContext.request.contextPath }/DetailController?num=${product.num }">
+								<a href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=1">
 									<img class="card-img-top" src="${product.img }" alt="">
 								</a>
 								<div class="card-body">

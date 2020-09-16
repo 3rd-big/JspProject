@@ -91,7 +91,7 @@ private DBConnect db;
 		int startRange = (page - 1) * 8 + 1;
 		int endRange = page * 8;
 		
-		String sql = "select * from (select * from (select * from product order by num) where num <= ?) where num >= ?";
+		String sql = "select * from (select rownum as rnum, a.* from (select * from product order by num) A where rownum <= ?) X where x.rnum >= ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -99,7 +99,7 @@ private DBConnect db;
 			pstmt.setInt(2, startRange);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				products.add(new ProductVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8)));
+				products.add(new ProductVO(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getDate(7), rs.getInt(8), rs.getString(9)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -219,7 +219,7 @@ private DBConnect db;
 		int startRange = (page - 1) * 8 + 1;
 		int endRange = page * 8;
 		
-		String sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by record desc) A where rownum <= ?) X where x.rnum >= ?";
+		String sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by record desc, num) A where rownum <= ?) X where x.rnum >= ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -255,11 +255,11 @@ private DBConnect db;
 		int startRange = (page - 1) * 8 + 1;
 		int endRange = page * 8;
 		
-		String sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by " +orderBy + " desc) A where rownum <= ?) X where x.rnum >= ?";
+		String sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by " +orderBy + " desc, num) A where rownum <= ?) X where x.rnum >= ?";
 		if(orderBy.equals("price")) {
-			sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by price) A where rownum <= ?) X where x.rnum >= ?";
+			sql = "select * from (select rownum as rnum, a.* from (select * from product where category=? order by price, num) A where rownum <= ?) X where x.rnum >= ?";
 		}else if(orderBy.equals("rate")) {
-			sql = "select * from (select rownum as rnum, a.* from (select * from ratinginproduct where category=? order by rate desc) a where rownum <= ?) X where rnum >= ?";
+			sql = "select * from (select rownum as rnum, a.* from (select * from ratinginproduct where category=? order by rate desc, num) a where rownum <= ?) X where rnum >= ?";
 		}
 
 		try {
@@ -295,7 +295,7 @@ private DBConnect db;
 		int startRange = (page - 1) * 8 + 1;
 		int endRange = page * 8;
 		
-		String sql = "select * from (select rownum as rnum, a.* from (select * from product where name LIKE '%" + keyword + "%' order by record desc) A where rownum <= ?) X where x.rnum >= ?";
+		String sql = "select * from (select rownum as rnum, a.* from (select * from product where name LIKE '%" + keyword + "%' order by record desc, num) A where rownum <= ?) X where x.rnum >= ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
