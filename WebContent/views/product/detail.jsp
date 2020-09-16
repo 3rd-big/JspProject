@@ -375,7 +375,8 @@
 			<div class="card-header" id="product-reviews">
 				<h6>Product Reviews</h6>
 			</div>
-			<div class="card-body">
+			<div class="card-body" style="padding-bottom:0">
+			
 				<c:if test="${0 == reviews.size() }">
 					<p>리뷰가 없습니다.</p>
 				</c:if>
@@ -438,62 +439,74 @@
 						
 					</div>
 				</c:forEach>
-					<!-- pagination -->
-			<br> <br>
-			<nav aria-label="...">
-				<ul class="pagination justify-content-center">
-				<c:if test="${1 != pn.page }">
-					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=1" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${param.page-1}" aria-label="Previous">
-							<span aria-hidden="true">&lsaquo;</span>
-						</a>
-					</li>
-				</c:if>
-
-				<c:forEach var="pageNum" begin="${pn.startPage }" end="${pn.endPage }" step="1">
-							
-					<c:choose>
-						<c:when test="${param.page eq pageNum}">
-							<li class="page-item active" aria-current="page">
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-						</c:otherwise>
-					</c:choose>
-								<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${pageNum }">${pageNum }</a>
-					<c:if test="${param.page eq pageNum}">
-									<span class="sr-only">(current)</span>
-							</li>
-					</c:if>
-				</c:forEach>
-
-				<c:if test="${pn.totalPage != pn.page }">
-					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${param.page+1}" aria-label="Next">
-							<span aria-hidden="true">&rsaquo;</span>
-						</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath }/ListReviewController?page=${pn.totalPage }" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</c:if>
 					
-				</ul>
-			</nav>
-			<br>
-		<!-- /pagination -->
-
+					
+	
 				<%-- <input type="button" class="btn btn-success" value="Leave a Review" onClick="addReview(<%=(String)session.getAttribute("id")%>);" > --%> <!-- 미완성 -->
 			</div>
+			
+			<c:if test="${0 != reviews.size() }">
+				<div class="page" id="page" style="margin-bottom:0;">
+				<!-- pagination -->
+			
+					<nav aria-label="...">
+						<ul class="pagination justify-content-center">
+						<c:if test="${1 != pn.page }">
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=1" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=${param.page-1}" aria-label="Previous">
+									<span aria-hidden="true">&lsaquo;</span>
+								</a>
+							</li>
+						</c:if>
+		
+						<c:forEach var="pageNum" begin="${pn.startPage }" end="${pn.endPage }" step="1">
+									
+							<c:choose>
+								<c:when test="${param.page eq pageNum}">
+									<li class="page-item active" aria-current="page">
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+								</c:otherwise>
+							</c:choose>
+										<a class="page-link" href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=${pageNum }">${pageNum }</a>
+							<c:if test="${param.page eq pageNum}">
+											<span class="sr-only">(current)</span>
+									</li>
+							</c:if>
+						</c:forEach>
+		
+						<c:if test="${pn.totalPage != pn.page }">
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=${param.page+1}" aria-label="Next">
+									<span aria-hidden="true">&rsaquo;</span>
+								</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=${pn.totalPage }" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</c:if>
+							
+						</ul>
+					</nav>
+			
+			<!-- /pagination -->
+			</div>
+			</c:if>
+			
+			
 		</div>
 		<!-- /.card -->
+		
+		
+		
 		<br>
 		<br>
 	

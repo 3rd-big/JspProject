@@ -115,7 +115,7 @@
 							</p>
 						</div>
 						<p>
-							<a class="btn btn-secondary" href="${pageContext.request.contextPath }/DetailController?num=${newProduct.num }" role="button">View details »</a>
+							<a class="btn btn-secondary" href="${pageContext.request.contextPath }/DetailController?num=${newProduct.num }&page=1" role="button">View details »</a>
 						</p>
 						<br>
 				</div>

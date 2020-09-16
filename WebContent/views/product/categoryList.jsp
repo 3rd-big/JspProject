@@ -99,7 +99,7 @@
 								</a>
 								<div class="card-body">
 									<h6 class="card-title">
-										<a href="${pageContext.request.contextPath }/DetailController?num=${product.num }"><b>${product.name }</b></a>
+										<a href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=1"><b>${product.name }</b></a>
 									</h6>
 									<h7>￦ ${product.priceView }</h7>
 									

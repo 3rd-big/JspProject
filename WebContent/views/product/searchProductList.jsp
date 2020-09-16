@@ -112,12 +112,12 @@
 					
 						<div class="col-lg-3 col-md-6 mb-4">
 							<div class="card h-100">
-								<a href="${pageContext.request.contextPath }/DetailController?num=${keywordProduct.num }">
+								<a href="${pageContext.request.contextPath }/DetailController?num=${keywordProduct.num }&page=1">
 									<img class="card-img-top" src="${keywordProduct.img }" alt="">
 								</a>
 								<div class="card-body">
 									<h6 class="card-title">
-										<a href="${pageContext.request.contextPath }/DetailController?num=${keywordProduct.num }"><b>${keywordProduct.name }</b></a>
+										<a href="${pageContext.request.contextPath }/DetailController?num=${keywordProduct.num }&page=1"><b>${keywordProduct.name }</b></a>
 									</h6>
 									<h7>￦ ${keywordProduct.priceView }</h7>
 									

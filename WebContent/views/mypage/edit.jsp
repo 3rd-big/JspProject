@@ -18,7 +18,11 @@
 
   
 <style type="text/css">
-
+.container{
+	height: auto;
+	min-height: 75%;
+	padding-bottom: 70px;
+}
 .edituserbox{
 	width:700px;
 	margin-left: 50px;

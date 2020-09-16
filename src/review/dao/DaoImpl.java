@@ -146,6 +146,49 @@ public class DaoImpl implements Dao{
 	
 
 	@Override
+	public ArrayList<ReviewVO> selectReviewInProductByPageNum(int p_num, int page) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int startRange = (page - 1) * 3 + 1;
+		int endRange = page * 3;
+		
+		ArrayList<ReviewVO> reviews = new ArrayList<ReviewVO>();
+		
+		String sql = "select * from (select rownum as rnum, a.* from (select * from review where p_num=? order by r_date desc) A where ROWNUM <= ?) X where x.rnum >= ?";
+		
+		try {
+			conn = db.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, p_num);
+			pstmt.setInt(2, endRange);
+			pstmt.setInt(3, startRange);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				reviews.add(new ReviewVO(rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getDate(8)));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return reviews;
+	}
+	
+
+	@Override
 	public void update(ReviewVO review) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -337,6 +380,7 @@ public class DaoImpl implements Dao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 
 	

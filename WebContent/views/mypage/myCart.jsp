@@ -22,7 +22,7 @@
 <style type="text/css">
 .container{
 	height: auto;
-	min-height: 100%;
+	min-height: 75%;
 	padding-bottom: 70px;
 }
 .cartlistbox{
@@ -57,7 +57,7 @@ table{
 	<%-- <%@include file ="/views/common/header.jsp" %> --%>
 	<%@include file ="/views/common/header2.jsp" %>
 		<c:if test="${not empty sessionScope.id }">
-			<div class="container" style="padding-bottom: 150px;">
+			<div class="container">
 				<h1 class="my-4">My Page</h1>
 			 	<div class="row">
 			
