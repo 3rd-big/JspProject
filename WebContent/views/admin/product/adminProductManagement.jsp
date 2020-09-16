@@ -14,6 +14,12 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<style type="text/css">
+		#tbody_tr > td{
+			vertical-align:middle;
+		}
+	</style>
 	
 	<script type="text/javascript">
 	
@@ -62,7 +68,7 @@
 								<th scope="col"><input type="checkbox"></th>
 								<th scope="col">No.</th>
 								<th scope="col">Image</th>
-								<th scope="col">Name</th>
+								<th scope="col" width="193px">Name</th>
 								<th scope="col">quantity</th>
 								<th scope="col">Price</th>
 								<th scope="col">Reg.Date</th>
@@ -73,11 +79,11 @@
 						</thead>
 						<c:forEach var="p" items="${products }">
 						<tbody>
-							<tr>
+							<tr id="tbody_tr" style="text-align: center;">
 								<td scope="row"><input type="checkbox"></td>
 								<td>${p.num }</td>
 								<td><img src="${p.img}" width="50" height="75"></td>
-								<td>${p.name }</td>
+								<td  style="text-align:justify;">${p.name }</td>
 								<td>
 									<c:if test="${empty p.sizes }">
 										<strong><li style="color: red; list-style: none;">out of stock</li></strong>

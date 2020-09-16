@@ -71,6 +71,9 @@
 	    .hide{
 	        display: none;
 	    }
+	    #rate{
+			text-decoration:none; 
+	    }
 	</style>	
 
 

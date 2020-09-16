@@ -92,7 +92,7 @@ body{
 							</thead>
 							<c:forEach var="list" items="${members }" varStatus="status">
 							<tbody>
-								<tr>
+								<tr style="text-align: center;">
 									<td scope="row"><input type="checkbox"></td>
 									<td>${list.id }</td>
 									<td>${list.pwd }</td>
