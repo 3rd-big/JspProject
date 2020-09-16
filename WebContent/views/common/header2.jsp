@@ -262,7 +262,6 @@
 		
 		#ticker {
 			height: 20px;
-			text-decoration-line: underline;
 			line-height: 150%;
 			overflow: hidden;
 			align: center;

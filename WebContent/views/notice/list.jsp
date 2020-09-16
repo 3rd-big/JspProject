@@ -34,11 +34,16 @@
  <script src="<%=request.getContextPath()/resource/js/jquery.twbsPagination.js" type="text/javascript"></script> 
 --%>
 <style type="text/css">
-
+.container{
+	height: auto;
+	min-height: 77.5%;
+	padding-bottom: 70px;
+}
 
 </style>
 
 </head>
+<body>
 <!-- Navigation -->
 	<%-- <%@include file ="/views/common/header.jsp" %> --%>
 	<%@include file ="/views/common/header2.jsp" %>
@@ -48,8 +53,7 @@
 		<h3 class="text-center my-4"align ="center">공지사항</h3>
 		<div class="button" align="right">
 			<c:if test="${sessionScope.memberType == 0 }">
-				<button id="addbtn" type="button" class="btn btn-primary active"
-					style="margin: 0 auto; width: 100px; height: 35px; background-color: #4CAF50; color: white;"
+				<button id="addbtn" type="button" class="btn btn-dark " style="width:100px;"
 					onclick="location.href='${pageContext.request.contextPath }/views/notice/addForm.jsp'">write</button>
 			</c:if>
 		</div>
@@ -79,7 +83,6 @@
 			</table>
 		</div>
 		<!-- pagination -->
-			<br> <br>
 			<nav aria-label="...">
 				<ul class="pagination justify-content-center">
 				<c:if test="${1 != pn.page }">
@@ -127,10 +130,12 @@
 					
 				</ul>
 			</nav>
-			<br>
 		<!-- /pagination -->
 	</div>
 	<!-- footer -->
 	<%@include file="/views/common/footer2.jsp"%>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

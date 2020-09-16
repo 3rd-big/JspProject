@@ -289,4 +289,39 @@ public class DaoImpl implements Dao {
 		}
 		return num;
 	}
+	@Override
+	public ArrayList<NoticeVO> selectNoticeheader() {
+		// TODO Auto-generated method stub
+		ArrayList<NoticeVO> notice = new ArrayList<>();
+		ResultSet rs = null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "select * from (select * from notice order by n_date desc) where rownum <= 3";
+		//String sql = "select * from notice where num=82";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				notice.add(new NoticeVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5)));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return notice;
+	}
 }
