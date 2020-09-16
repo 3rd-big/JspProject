@@ -42,7 +42,7 @@ public class MainListController extends HttpServlet {
 		
 		
 		notice.service.Service notice_service = new notice.service.ServiceImpl();
-		ArrayList<NoticeVO> notices = notice_service.getNoticeAll();
+		ArrayList<NoticeVO> notices = notice_service.getNoticeheader();
 		
 		
 		// 메인페이지쪽만 보임

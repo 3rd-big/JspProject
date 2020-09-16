@@ -39,7 +39,8 @@ public class OrderlistController2 extends HttpServlet {
 		product.service.Service service_prod = new product.service.ServiceImpl();
 		
 
-		int code_num = Integer.parseInt(request.getParameter("code_num"));
+//		int code_num = Integer.parseInt(request.getParameter("code_num"));
+		String code_num = request.getParameter("code_num");
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("id");
 		ArrayList<ProductOrderVO> list = service.orderListByCNum(m_id, code_num);

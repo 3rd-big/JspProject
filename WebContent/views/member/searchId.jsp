@@ -19,27 +19,30 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
-
+.container{
+	height: auto;
+	min-height: 77.5%;
+	padding-bottom: 70px;
+}
 .searchIDcomponent{
-	padding: 2em;
+	/* padding: 2em; */
     width: 400px;
-    margin-left: 30%;
+    margin-left: 32%;
     padding-top: 100px;
-    padding-bottom: 200px;
-    height:600px;
+  /*   padding-bottom: 200px; */
+   /*  height:600px; */
 }
 
 
 body{
 	font:Apple SD Gothic Neo;
 }
-.btns{
-	width: 100%;
-	margin-left: 30%;
-}
 
-btn_find{
-	display: inline-block;
+#btn_findid{
+	align:center;
+	margin-left: 35%;
+	text-align:center;
+	
 }
 </style>
 
@@ -55,27 +58,27 @@ btn_find{
 		
 		<form action="${pageContext.request.contextPath }/SearchIdController" name="f" method="post">
 			<fieldset>
-				<legend style="text-align:center;">아이디 찾기</legend>
+				<legend style="text-align:center;">Search ID</legend>
 					<br>
 				<div class="form-group1">
 					<!-- <label for="InputID">ID</label>  -->
-					<input type="text" class="form-control" id="name" name="name" placeholder="name">
+					<input type="text" class="form-control" id="name" name="name" placeholder="Name">
 				</div>
 					<br>
 				<div class="form-group1">
 					<input type="email" class="form-control" id="email" name="email"
-						placeholder="email">
+						placeholder="Email">
 						<small 
-						id="searchIdHelp" class="form-text text-muted">가입 시 입력했던 이메일 주소</small>
+						id="searchIdHelp" class="form-text text-muted">Enter your email address registered on your account.</small>
 				</div>
 					<br>
 					
-				<div class="btns">
-					<div class="btn_find">
-						<button type="submit" class="btn btn-outline-success">아이디 찾기</button>
-					</div>
-					
+				
+				<div class="form-group1">
+					<button type="submit" id="btn_findid"class="btn btn-outline-dark">Search Id</button>
 				</div>
+					
+				
 					
 				
 			</fieldset>

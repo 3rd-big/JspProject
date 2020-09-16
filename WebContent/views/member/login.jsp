@@ -25,12 +25,12 @@
 	padding-bottom: 70px;
 }
 .logincomponent{
-	padding: 2em;
+	/* padding: 2em; */
     width: 400px;
     margin-left: 32%;
     padding-top: 100px;
-    padding-bottom: 200px;
-    height:600px;
+    /* padding-bottom: 200px;
+    height:600px; */
 }
 
 
@@ -40,12 +40,14 @@ body{
 }
 .btns{
 	
-	margin-left: 25%;
+	margin-left: 30%;
 }
 .btn_login,
 .btn_signup{
 	display: inline-block;
 }
+
+
 </style>
 
 
@@ -63,7 +65,7 @@ body{
 	<div class = "logincomponent">
 		<form action="${pageContext.request.contextPath }/LoginController" name="f" method="post">
 			<fieldset>
-				<legend style="text-align:center;">로그인</legend>
+				<legend style="text-align:center;">LOG IN</legend>
 					<br>
 				<div class="form-group1">
 					<!-- <label for="InputID">ID</label>  -->
@@ -77,19 +79,19 @@ body{
 				</div>
 					<br>
 				<div class="btns">
-					<div class="btn_login">
-						<button type="submit" class="btn btn-primary">로그인</button>
+					<div class="btn_login" id="btn_login">
+						<button type="submit" class="btn btn-dark btn-block">Sign In</button>
 					</div>
-					<div class="btn_signup">
-						<input type="button" class="btn btn-outline-primary" value="회원가입"
+					<div class="btn_signup" id="btn_signup">
+						<input type="button" class="btn btn-outline-dark btn-block" value="Sign Up"
 							onclick="location.href='signup.jsp'">
 					</div>
 				</div>
 					<br>
 					<br>
 				<div class="searchUser" style="text-align:center;">
-					<a href="${pageContext.request.contextPath }/views/member/searchId.jsp">아이디 찾기 /</a>
-					<a href="${pageContext.request.contextPath }/views/member/searchPwd.jsp">비밀번호 찾기</a>
+					<a style="color: black;text-decoration: none;" href="${pageContext.request.contextPath }/views/member/searchId.jsp">Search ID /</a>
+					<a style="color: black;text-decoration: none;" href="${pageContext.request.contextPath }/views/member/searchPwd.jsp">Search PW</a>
 				</div>
 			</fieldset>
 			<input type="hidden" name="previousUriToken" value="<%=request.getHeader("Referer") %>" />

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>주문 조회</title>
-<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
  <%--  <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet"> --%>
@@ -37,7 +37,7 @@
 
  			var pop_title = "리뷰 작성";
 
-			window.open("", pop_title, "width=800, height=700, left=200, top=200");
+			window.open("", pop_title, "width=800, height=650, left=400, top=100");
 			
 			var frmData = document.orderList;
 			frmData.target = pop_title;
@@ -95,10 +95,10 @@ table{
 				<!-- <hr style="border: 0; height: 3px; background: #ccc;"> -->
 			
 				<form id="orderList" name="orderList" method="post">
-					<table class="table table-hover table-sm mt-3 mb-5" >
+					<table class="table table-hover table-sm mt-3 mb-5" id="ordertable" style="vertical-align:middle;">
 					<thead class="thead-light1" style="background-color: white;" >
 						<tr class="text-center">
-							<th scope="col">No. </th> 
+							<th scope="col" id="ordernumber">No. </th> 
 							<th scope="col">제품명 </th> 
 							<th scope="col">사진 </th>
 							<th scope="col">사이즈 </th> 
@@ -114,20 +114,20 @@ table{
 						<c:forEach var="o" items="${list }">
 							<tr class="text-center">
 								<input type="hidden" id="code_num" name="code_num" value="${o.code_num }">
-								<td name="o_num">${o.num } </td>
-								<td id="product_name" name="order_product_name"> ${o.prod_name } </td>
+								<td name="o_num" style="vertical-align: middle;" id="ordernumber1" >${o.num } </td>
+								<td id="product_name" name="order_product_name" style="vertical-align: middle;"> ${o.prod_name } </td>
 								<td> <a href="${pageContext.request.contextPath }/DetailController?num=${o.p_num }">
 									<img src="${o.prod_img }" width="100" height="100"> </a>
 									</td>
-								<td>${o.p_size} </td> 
-								<td>${o.o_quantity} </td> 
-								<td>${o.priceView } </td> 
-								<td>${o.o_date }</td>
+								<td style="vertical-align: middle;">${o.p_size} </td> 
+								<td style="vertical-align: middle;">${o.o_quantity} </td> 
+								<td style="vertical-align: middle;">${o.priceView } </td> 
+								<td style="vertical-align: middle;">${o.o_date }</td>
 								<c:if test="${o.r_state==0 }">
-									<td><button type="submit" class="btn btn-outline-secondary" onclick="reviewAddFormPopUp('${o.p_num }','${o.num }');">작성하기</button> </td>
+									<td style="vertical-align: middle;"> <button type="submit" class="btn btn-outline-secondary" onclick="reviewAddFormPopUp('${o.p_num }','${o.num }');">작성하기</button>   </td>
 								</c:if>
 								<c:if test="${o.r_state==1 }">
-									<td>작성완료</td>
+									<td style="vertical-align: middle;">작성완료</td>
 								</c:if>
 								
 								

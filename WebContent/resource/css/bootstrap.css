@@ -1699,7 +1699,7 @@ pre code {
 .table th,
 .table td {
   padding: 0.75rem;
-  vertical-align: top;
+  /* vertical-align: top; */
   border-top: 1px solid #dee2e6;
 }
 
@@ -3827,7 +3827,7 @@ input[type="button"].btn-block {
 .custom-control-label {
   position: relative;
   margin-bottom: 0;
-  vertical-align: top;
+  /* vertical-align: top; */
 }
 
 .custom-control-label::before {

@@ -57,24 +57,22 @@ body{
 		
 		
 			<fieldset>
-				<legend style="text-align:center;">비밀번호 찾기</legend>
+				<legend style="text-align:center;">Search Password</legend>
 					<br>
 				
 				<div class="form-group1">
 					<c:if test="${m.id ==null}">
-								${m.id }
-						<p class="spantext"> 잘못된 이메일 혹은 아이디 입니다.</p>
+						<p class="spantext"> You entered a wrong id or email address.</p>
 					</c:if>
 					<c:if test="${m.id !=null}">
-								${m.id }
-						<p class="spantext">임시패스워드는  ' ${member.pwd } '입니다.</p>
+						<p class="spantext">Your temporary password is  ' <b>${member.pwd } </b> '</p>
 					</c:if>
 				</div>
 					<br>
 					
 				<div class="btns">
 					<div class="btn_login">
-						<input type="button" class="btn btn-primary" value="로그인하러가기" 
+						<input type="button" class="btn btn-dark" value="Go to Signin" 
 						onclick="location.href='views/member/login.jsp'">
 					</div>
 				</div>

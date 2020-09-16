@@ -19,6 +19,7 @@
 	<style type="text/css">
 		h2{
 			text-align: center;
+			font-weight: bold;
 		}
 		#back_img{
 			max-width: 100%;

@@ -68,5 +68,9 @@ public class ServiceImpl implements Service {
 		return dao.selectNoticeByPageNum(page);
 	}
 
-
+	@Override
+	public ArrayList<NoticeVO> getNoticeheader() {
+		// TODO Auto-generated method stub
+		return dao.selectNoticeheader();
+	}
 }

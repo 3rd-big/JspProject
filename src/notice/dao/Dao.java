@@ -23,5 +23,5 @@ public interface Dao {
 	int countallmine();
 
 	ArrayList<NoticeVO> selectNoticeByPageNum(int page);
-
+	ArrayList<NoticeVO> selectNoticeheader();
 }

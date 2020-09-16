@@ -34,7 +34,8 @@ public class ProductDelController extends HttpServlet {
 		ProductVO p = service.getProduct(num);
 		ArrayList<ProductImageVO> detailImgs = service.getDetailImgAll(num);
 
-		String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img\\";
+		//String uploadPath = "C:\\JSPClass\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img\\";
+		String uploadPath = "C:\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\upload_img";
 		
 		// 톰캣 폴더의 대표이미지 삭제
 		String[] imgPath = p.getImg().split("/");
@@ -53,7 +54,7 @@ public class ProductDelController extends HttpServlet {
 		// DB 데이터 삭제
 		service.delProduct(num);
 
-		response.sendRedirect("ProductAllListController");
+		response.sendRedirect("ProductAllListController?page=1");
 	
 	}
 

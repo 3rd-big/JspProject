@@ -19,14 +19,18 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
-
+.container{
+	height: auto;
+	min-height: 77.5%;
+	padding-bottom: 70px;
+}
 .searchIDcomponent{
-	padding: 2em;
+	/* padding: 2em; */
     width: 400px;
     margin-left: 30%;
     padding-top: 100px;
-    padding-bottom: 200px;
-    height:600px;
+   /*  padding-bottom: 200px;
+    height:600px; */
 }
 
 
@@ -38,8 +42,11 @@ body{
 	margin-left: 30%;
 }
 
-.btn_find{
-	display: inline-block;
+#btn_findpw{
+	align:center;
+	margin-left: 35%;
+	text-align:center;
+	
 }
 </style>
 
@@ -55,7 +62,7 @@ body{
 		
 		<form action="${pageContext.request.contextPath }/SearchPwdController" name="f" method="post">
 			<fieldset>
-				<legend style="text-align:center;">비밀번호 찾기</legend>
+				<legend style="text-align:center;">Search Password</legend>
 					<br>
 				<div class="form-group1">
 					<input type="text" class="form-control" id="id" name="id" placeholder="ID">
@@ -64,14 +71,14 @@ body{
 					
 				<div class="form-group1">
 					<input type="email" class="form-control" id="email" name="email"
-						placeholder="email">
+						placeholder="Email">
 				</div>
 					<br>
 					
-				<div class="btns">
-					<div class="btn_find">
-						<button type="submit" class="btn btn-outline-success">비밀번호 찾기</button>
-					</div>
+				<div class="form-group1">
+					
+						<button type="submit" id="btn_findpw" class="btn btn-outline-dark">Search PW</button>
+					
 					
 				</div>
 					

@@ -22,5 +22,6 @@ public interface Service {
 
 	int getcountMine();
 	ArrayList<NoticeVO> getNoticeByPageNum(int page);
+	ArrayList<NoticeVO> getNoticeheader();
 
 }

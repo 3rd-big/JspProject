@@ -44,8 +44,34 @@ table{
 #product_name{
 	word-break:break-all;
 }
+#btn_paymentinfo{
+	width:50%;
+}
 </style>
+<!-- 팝업 스크립트 -->
+	<script type="text/javascript">
+	
+	function popUpClosed() {
+		var code_num = document.getElementById('code_num').value;
+		var param = encodeURI(code_num);
+		location.href="${pageContext.request.contextPath }/AllOrderListController2?o_state=1"; 
+	}
+	
+	function showPopup(code_num) {
 
+			var pop_title = "주문결제정보 조회";
+
+		window.open("", pop_title, "width=800, height=500, left=400, top=200");
+		
+		var frmData = document.allorderList;
+		frmData.target = pop_title;
+		frmData.action = "<%=request.getContextPath()%>/PaymentInfoController?code_num=" + code_num;
+	}
+			
+		
+	
+	
+	</script>
 </head>
 <body>
 	<!-- Navigation -->
@@ -73,7 +99,6 @@ table{
 							<th scope="col">상품명</th>
 							<th scope="col">상품 이미지</th>
 							<th scope="col">총 결제금액</th> 
-							<th scope="col">배송상태</th> 
 							<th scope="col">결제정보</th> 
 							
 							
@@ -82,18 +107,16 @@ table{
 					<tbody >
 						<c:forEach var="o" items="${list }">
 							<tr class="text-center">
-								<td name="code_num">
+								<td name="code_num" style="vertical-align: middle;">
 								 <a id="code_num_link" style="text-decoration: none;" href="${pageContext.request.contextPath }/OrderlistController2?code_num=${o.code_num }">${o.code_num }</a>
 								</td>
-								<td>${o.max_o_date }</td>
-								<td>${o.prod_name } <span style="font-size:12px;">..포함 ${o.ctnrow} 개</span>
+								<td style="vertical-align: middle;">${o.max_o_date }</td>
+								<td style="vertical-align: middle;">${o.prod_name } <span style="font-size:12px;">..포함 ${o.ctnrow} 개</span>
 								</td>
-								<td><img src="${o.prod_img }" width="100" height="100"> </td>
-								<td>${o.priceView } </td>
-								
-								<td> 배송상태? </td>
-								<td> 결제정보연결 </td>
-								
+								<td ><img src="${o.prod_img }" width="100" height="100"> </td>
+								<td style="vertical-align: middle;">${o.priceView } </td>
+								<td style="vertical-align: middle;" align=center> <button type="submit" class="btn btn-outline-dark btn-block" id="btn_paymentinfo" onclick="showPopup('${o.code_num }');">View</button>  </td>
+																									
 							</tr>																
 						</c:forEach>
 					</tbody>
