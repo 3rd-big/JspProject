@@ -79,9 +79,7 @@ create SEQUENCE seq_shop_product;
 create SEQUENCE seq_notice;
 create SEQUENCE seq_product_order;
 
-----------------------------orderinfo sequence -----------------
-create sequence seq_orderInfo;
------------------------------------------------------------------
+
 
 alter table product_order add code_num number;
 
@@ -114,4 +112,14 @@ add_addr_roadAddrPart1 varchar2(500),
 add_addr_roadAddrPart2 varchar2(500),
 add_addr_addrDetail varchar2(500)
 );
+-------------------------------------------------------------------------------------------
+
+
+----------------------------orderinfo sequence -----------------
+create sequence seq_orderInfo;
+-----------------------------------------------------------------
+
+------------------Product_order table의 code_num 속성 number에서 varchar2(200)으로 수정 ----------
+alter table product_order modify(code_num varchar2(200));
+
 -------------------------------------------------------------------------------------------
