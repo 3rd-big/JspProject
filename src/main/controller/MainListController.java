@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.catalina.core.ApplicationContext;
 
 import model.NoticeVO;
 import model.ProductVO;
@@ -37,15 +41,20 @@ public class MainListController extends HttpServlet {
 		request.setAttribute("newProducts", newProducts);
 		
 		
-//		notice.service.Service notice_service = new notice.service.ServiceImpl();
-//		ArrayList<NoticeVO> notices = notice_service.getNoticeAll();
-//		request.setAttribute("notices", notices);
+		notice.service.Service notice_service = new notice.service.ServiceImpl();
+		ArrayList<NoticeVO> notices = notice_service.getNoticeAll();
 		
+		
+		// 메인페이지쪽만 보임
+		//request.setAttribute("notices", notices);
+		
+		// 전체 페이지 확인가능
+		ServletConfig conf = this.getServletConfig();
+		ServletContext application = conf.getServletContext();
+		application.setAttribute("notices", notices);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main2.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
 		dispatcher.forward(request, response);
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

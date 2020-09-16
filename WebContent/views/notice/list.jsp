@@ -33,7 +33,10 @@
 
  <script src="<%=request.getContextPath()/resource/js/jquery.twbsPagination.js" type="text/javascript"></script> 
 --%>
+<style type="text/css">
 
+
+</style>
 
 </head>
 <!-- Navigation -->

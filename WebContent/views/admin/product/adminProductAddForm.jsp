@@ -2,26 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%--
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Shop Item - Start Bootstrap Template</title>
-
-<!-- Bootstrap core CSS -->
-<link
-	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/resource/css/shop-item.css"
-	rel="stylesheet">
-
-<meta charset="UTF-8">
- --%>
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,35 +9,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	
+	<style type="text/css">
+		html{
+			height: 100%;
+		}
+	
+	</style>
 	
 	<script src="<%=request.getContextPath()%>/resource/vendor/jquery/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		
-	<%--
-		function check(){
-			var isEmpty = false;
-			https://do-study.tistory.com/5
 
-	        var idTxt = document.idForm.id;
-	
-	        
-	        if(idTxt.value == ""){
-	            alert("아이디를 기재해주세요");
-	            idTxt.value = "";
-	            idTxt.focus();
-	            return false;
-	        }
-	
-	        var nickTxt = document.idForm.nick;
-	
-	        if(nickTxt.value == ""){
-	            alert("닉네임을 기재해주세요.");
-	            nickTxt.value = "";
-	            nickTxt.focus();
-	            return false;
-	        }
-	    }
-	--%>
 		$(document).ready(function() {
 	
 			$("#detail_img1").hide();

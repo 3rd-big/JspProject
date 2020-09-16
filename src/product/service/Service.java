@@ -10,6 +10,8 @@ public interface Service {
 
 	ArrayList<ProductVO> getProductAll();
 	
+	ArrayList<ProductSizeVO> getProductsSizeAll(int p_num);
+	
 	ArrayList<ProductVO> getProductManagementByPageNum(int page);
 	
 	ArrayList<ProductVO> getBestProducts(int numberItems);

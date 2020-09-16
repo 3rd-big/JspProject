@@ -10,6 +10,8 @@ public interface Dao {
 	
 	ArrayList<ProductVO> selectAll();
 	
+	ArrayList<ProductSizeVO> selectSizeAll(int p_num);
+	
 	ArrayList<ProductVO> selectAllByPageNum(int page);
 	
 	ArrayList<ProductVO> selectBestProducts(int numberItems);

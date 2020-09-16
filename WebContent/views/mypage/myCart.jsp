@@ -20,6 +20,11 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
+.container{
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 70px;
+}
 .cartlistbox{
 	margin-left: 50px;
 	width:850px; 
