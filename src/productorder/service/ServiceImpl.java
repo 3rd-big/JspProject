@@ -2,6 +2,7 @@ package productorder.service;
 
 import java.util.ArrayList;
 
+import model.OrderInfoVO;
 import model.ProductOrderVO;
 import productorder.dao.Dao;
 import productorder.dao.DaoImpl;
@@ -106,6 +107,26 @@ public class ServiceImpl implements Service{
 	public int getCartListCountById(String m_id) {
 		return dao.selectCartListCountById(m_id);
 	}
+
+	@Override
+	public void addOrderInfo(OrderInfoVO oivo) {
+		dao.insert(oivo);
+		
+	}
+
+	@Override
+	public int makeOrderInfoNum() {
+		
+		return dao.selectOrderInfoNum();
+	}
+
+	@Override
+	public void updateCode_num(ProductOrderVO po) {
+		dao.updateCode_num(po);
+		
+	}
+	
+	
 
 
 }
