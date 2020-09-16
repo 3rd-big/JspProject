@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import model.OrderInfoVO;
 import model.ProductOrderVO;
-import model.ProductVO;
 
 public interface Service {
 	void addOrder(ProductOrderVO o);
 	ProductOrderVO getOrder(int num);
 	ArrayList<ProductOrderVO> orderList(String m_id, int o_state);
-	ArrayList<ProductOrderVO> orderListByCNum(String m_id, int code_num);
+	ArrayList<ProductOrderVO> orderListByCNum(String m_id, String code_num);
 	ArrayList<ProductOrderVO> simpleorderlist(String m_id, int o_state, int page);
 	int getCountOrder(String m_id, int o_state);
 	void editState(String type, int num);
@@ -38,4 +37,5 @@ public interface Service {
 	int makeOrderInfoNum();
 	
 	void updateCode_num(ProductOrderVO po);
+	OrderInfoVO getPaymentInfo(String code_num);
 }

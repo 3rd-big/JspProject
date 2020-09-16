@@ -45,7 +45,28 @@ table{
 	word-break:break-all;
 }
 </style>
-
+<!-- 팝업 스크립트 -->
+	<script type="text/javascript">
+	
+	function showPopup(code_num) {
+		
+		var pop_title ="주문정보";
+		var code_num = code_num;
+		window.open("", pop_title, "width=500, height=500, left=200, top=200");
+		
+		var frmData = document.memberList;
+		frmData.target = pop_title;
+		frmData.action = "<%=request.getContextPath()%>/PaymentInfoController?code_num" + code_num;
+		console.log("code_num: " + code_num);
+		console.log(frmData.action);
+		
+	
+	}
+			
+		
+	
+	
+	</script>
 </head>
 <body>
 	<!-- Navigation -->
@@ -73,7 +94,6 @@ table{
 							<th scope="col">상품명</th>
 							<th scope="col">상품 이미지</th>
 							<th scope="col">총 결제금액</th> 
-							<th scope="col">배송상태</th> 
 							<th scope="col">결제정보</th> 
 							
 							
@@ -90,9 +110,7 @@ table{
 								</td>
 								<td><img src="${o.prod_img }" width="100" height="100"> </td>
 								<td>${o.priceView } </td>
-								
-								<td> 배송상태? </td>
-								<td> 결제정보연결 </td>
+								<td> <input type="button" class="btn btn-primary btn-md" value="보기" onClick="showPopup('${o.code_num }')"> 보기</td>
 								
 							</tr>																
 						</c:forEach>

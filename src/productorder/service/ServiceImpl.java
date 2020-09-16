@@ -86,7 +86,7 @@ public class ServiceImpl implements Service{
 	}
 
 	@Override
-	public ArrayList<ProductOrderVO> orderListByCNum(String m_id, int code_num) {
+	public ArrayList<ProductOrderVO> orderListByCNum(String m_id, String code_num) {
 		// TODO Auto-generated method stub
 		return dao.selectAllByCNum(m_id, code_num);
 	}
@@ -124,6 +124,12 @@ public class ServiceImpl implements Service{
 	public void updateCode_num(ProductOrderVO po) {
 		dao.updateCode_num(po);
 		
+	}
+
+	@Override
+	public OrderInfoVO getPaymentInfo(String code_num) {
+		// TODO Auto-generated method stub
+		return dao.selectOrderInfo(code_num);
 	}
 	
 	

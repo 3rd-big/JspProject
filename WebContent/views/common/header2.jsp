@@ -425,7 +425,7 @@
 				<div id="main-gnb-login">
 					<ul>
 						<li><a href="${pageContext.request.contextPath }/ListNoticeController?page=1">공지사항</a></li>
-						<li><a href="${pageContext.request.contextPath }/OrderlistController?o_state=1">주문조회</a></li>
+						<li><a href="${pageContext.request.contextPath }/AllOrderListController?o_state=1&page=1">주문조회</a></li>
 						<li><a href="${pageContext.request.contextPath }/MypageController?o_state=1">마이페이지</a></li>
 						<li><a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a></li>
 					</ul>

@@ -123,11 +123,11 @@
 						<div class="form-group">
 						<div class="btns">
 							<div class="btn_modify">
-								<button type="submit" class="btn btn-primary">수정</button>
+								<button type="submit" class="btn btn-outline-dark btn-block">수정</button>
 							</div>
 							<c:if test="${m.type==1}">
 							<div class="btn_delAccount">
-								<input type="button" class="btn btn-danger" onclick="return checkrem();"
+								<input type="button" class="btn btn-outline-danger btn-block" onclick="return checkrem();"
 									value="탈퇴">
 							</div>
 							</c:if>

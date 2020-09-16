@@ -27,7 +27,7 @@
 .enrollcomponent{
 	/* padding: 2em; */
     width: 500px;
-    margin-left: 30%;
+    margin-left: 27%;
     padding-top: 50px;
    /*  padding-bottom: 150px; */
 }
@@ -99,7 +99,7 @@ function hello(){
 				</div>
 				<div class="btns">
 					<div class="btn_signup">
-						<button type="submit" class="btn btn-primary" onclick="hello();">SignUp</button>
+						<button type="submit" class="btn btn-dark btn-block" onclick="hello();">SignUp</button>
 						<!-- <input type="button" class="btn btn-primary" id="check_btn" value="중복" onclick="idcheck();"> -->
 							<!-- <div id="here"></div> -->
 					</div>
