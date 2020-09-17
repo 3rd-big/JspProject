@@ -103,7 +103,7 @@
 							<div class="card h-100">
 
 								<a href="${pageContext.request.contextPath }/DetailController?num=${product.num }&page=1">
-									<img class="card-img-top" src="${product.img }" alt="">
+									<img class="card-img-top" src="${product.img }" height="316.25" alt="">
 
 								</a>
 								<div class="card-body">

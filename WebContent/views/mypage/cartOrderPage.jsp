@@ -18,6 +18,11 @@
 
 <!-- Bootstrap core CSS -->
 <link
+	href="<%=request.getContextPath()%>/resource/css/adidas_r.css"
+	rel="stylesheet">
+
+
+<link
 	href="<%=request.getContextPath()%>/resource/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -159,7 +164,7 @@
 							<div>
 								<label>배송 요청 사항</label> <input type="text" class="form-control"
 									id="oi_deliMessage" name="oi_deliMessage"
-									value="배송 또는 주문시 요청 사항을 입력해주세요.">
+									value="" placeholder="배송 또는 주문시 요청 사항을 입력해주세요.">
 									
 							</div>
 							
@@ -184,6 +189,8 @@
 				</div>
 
 				<div class="col-lg-4">
+				
+				<div class="payment-main">
 
 					<div class="prods_info" id="test_box" style="top: 58px;">
 
@@ -192,7 +199,7 @@
 
 						<c:forEach var="o" items="${list }">
 							<div class="prodlist">
-								<div class="box last container" style="border: outset;">
+								<div class="box last container" >
 									<a
 										href="<%=request.getContextPath()%>/DetailController?num=${o.p_num}"
 										target="_blank">
@@ -258,15 +265,12 @@
 								<strong>배송비 <span class="deliv_tooltip"> <span
 										class="spt_bg"></span> <span class="tooltip-layer">
 											<div class="arrow spt_bg"></div> <span id="chgContents">
-												<div class="tooltip-contents"
-													style="width: 230px; line-height: 19px;">5만원 이상 구매시
-													무료배송 (도서 산간 지역은 추가 배송비 발생) " ajax로 구현 "</div>
 										</span>
 									</span>
 								</span>
 								</strong>
 								<div class="price-container">
-									<span class="prc" id="viewDlvFee"> <span class="won">원</span></span>
+									<span class="prc" id="viewDlvFee"> <span class="won">0 원</span></span>
 								</div>
 							</div>
 
@@ -274,8 +278,8 @@
 							<div class="box total_p clfix">
 								<strong>총 결제금액</strong>
 								<div class="price-container">
-									<span class="prc" id="TOTAL_PAY_AMT_STR">${productInfo.total_price }<span
-										class="won">원 ajax 로 구현</span></span>
+									<span class="prc" id="TOTAL_PAY_AMT_STR">${order_totalPrice }<span
+										class="won">원</span></span>
 
 
 									<p class="point">
@@ -287,7 +291,7 @@
 						</div>
 						<!-- //price_box -->
 					</div>
-
+</div>
 				</div>
 
 

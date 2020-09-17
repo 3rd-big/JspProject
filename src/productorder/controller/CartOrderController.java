@@ -77,13 +77,15 @@ public class CartOrderController extends HttpServlet {
 			
 		}
 		
+		int preSave_point = (int) (order_totalPrice * 0.05);
+				
 		session.setAttribute("id", m_id);
 		request.setAttribute("orderName", orderName);
 		request.setAttribute("list", list);
 		request.setAttribute("order_totalPrice", order_totalPrice);
 		request.setAttribute("order_totalQuantity", order_totalQuantity);
 		request.setAttribute("member", member);
-		
+		request.setAttribute("preSave_point", preSave_point);
 		
 		String path = "/views/mypage/cartOrderPage.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);

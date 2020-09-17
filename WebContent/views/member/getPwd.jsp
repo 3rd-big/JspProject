@@ -19,7 +19,11 @@
   <!-- Custom styles for this template -->
   <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 <style type="text/css">
-
+.container{
+	height: auto;
+	min-height: 77.5%;
+	padding-bottom: 70px;
+}
 .searchIDcomponent{
 	padding: 2em;
     width: 400px;
