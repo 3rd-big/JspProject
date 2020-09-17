@@ -340,7 +340,7 @@
 				<c:set var="totalReRating" value="0" />
 				
 				<!-- 해당 상품의 모든 리뷰 forEach -->
-				<c:forEach var="review" items="${reviews}" varStatus="status">
+				<c:forEach var="review" items="${reviewsAll}" varStatus="status">
 					<!-- 평점 총합에 누적 -->
 					<c:set var="totalReRating" value="${totalReRating + review.rate}"/>
 					<!-- 마지막 리뷰일 경우 -->
@@ -360,7 +360,7 @@
 				<c:forEach var="emptyStar" begin="1" end="${5 - avgReRating}">
 					<small class="text-warning">&#9734;</small>
 				</c:forEach>
-				<small>${reviews.size() } </small><a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
+				<small>${reviewsAll.size() } </small><a href="#" id="rate" onclick="scroll_move()" >상품평 전체 보기</a><br><br>
 				
 				<h3>${product.name }</h3><br>
 				<h4 class="quantity-total-price">￦${product.priceView }</h4><br>

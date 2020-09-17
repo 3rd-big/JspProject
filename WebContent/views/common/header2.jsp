@@ -139,6 +139,7 @@
 			top: 50%;
 			left: 25%;
 			transform: translate(-50%, -50%);
+			z-index: 100;
 		}
 		
 		.search-img a {
@@ -147,7 +148,7 @@
 		
 		.searchView {
 			position: absolute;
-			top: 30px; 
+			top: 60px; 
 			width: 400px;
 			background-color: #f8f8f8;
 			border: 1px solid #979A9A;
@@ -283,6 +284,11 @@
 							alert(test); */
 				location.href = "${pageContext.request.contextPath }/SearchProductController?keyword=" + field.value + "&page=1";
 			}
+		}
+		
+		function onClick(field) {
+			var keyword = $('input[name=keword]').val();
+			location.href = "${pageContext.request.contextPath }/SearchProductController?keyword=" + keyword + "&page=1";
 		}
 	
 		$(document).ready(function() {
@@ -508,7 +514,7 @@
 				<div class="searchView">
 					<div class="searchView-inner">
 						<input type="search" id="searchTxt" name="keword" placeholder="검색어를 입력하세요" onkeydown="onKeyDown(this)">
-						<button class="btn btn-dark " style="margin-bottom: 5px; margin-left:25px;" type="submit" onclick="onClick()">Search</button>
+						<button class="btn btn-dark " style="margin-bottom: 5px; margin-left:25px;" onclick="onClick()">Search</button>
 					</div>
 				</div>
 				

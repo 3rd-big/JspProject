@@ -87,6 +87,7 @@ public class DetailController extends HttpServlet {
 			
 		request.setAttribute("product", product);
 		request.setAttribute("reviews", reviews);
+		request.setAttribute("reviewsAll", reviewsAll);
 		request.setAttribute("pn", pn);
 		
 		String path = "/views/product/detail.jsp";

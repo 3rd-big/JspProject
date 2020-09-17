@@ -73,7 +73,7 @@ public class LoginController extends HttpServlet {
 		String previousUri = previousUriTokens[previousUriTokens.length - 1];
 		System.out.println(request.getParameter("previousUriToken") + " Uri를 갖고 LoginController로 넘어옴");
 		
-		ArrayList<String> filterList = new ArrayList(Arrays.asList("LogoutController", "signup.jsp", "login.jsp"));
+		ArrayList<String> filterList = new ArrayList(Arrays.asList("LogoutController", "signup.jsp", "login.jsp", "searchPwd.jsp", "searchId.jsp"));
 
 		for (String list : filterList) {
 			if(previousUri.equals(list)) {

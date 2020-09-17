@@ -59,7 +59,14 @@
 
 		<div>
 			<div>
-				<img id="back_img" src="sample_img/category_wide_back.png">
+				<c:choose>
+					<c:when test="${param.category eq 'top' }">
+						<img id="back_img" src="sample_img/first.jpg">
+					</c:when>
+					<c:otherwise>
+						<img id="back_img" src="sample_img/second.jpg">
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 
