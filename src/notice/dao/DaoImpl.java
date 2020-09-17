@@ -297,9 +297,7 @@ public class DaoImpl implements Dao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-//		String sql = "select * from (select * from notice order by n_date desc) where rownum <= 3 and order by num desc";
 		String sql = "select * from (select * from notice order by n_date desc) where rownum <= 3 order by num desc";
-//		String sql = "select * from (select * from notice order by num desc) where rownum <= 3 order by num desc";
 		//String sql = "select * from notice where num=82";
 		
 		try {
