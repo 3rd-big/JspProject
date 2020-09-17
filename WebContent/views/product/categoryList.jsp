@@ -18,7 +18,7 @@
 <link href="<%=request.getContextPath()%>/resource/css/shop-item.css" rel="stylesheet">
 	<style type="text/css">
 		#back_img{
-			max-width: 100%;
+			min-width: 100%;
 		}
 		ul.orderby-menu{
 			float: right;
