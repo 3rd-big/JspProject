@@ -267,6 +267,7 @@
 			align: center;
 			text-align: center;
 			list-style:none;
+			
 		}
 		#ticker-li>a{
 			
@@ -399,11 +400,11 @@
 
 			<!--  공지사항  슬라이드   -->
 
-			<div id="main-gnb-notice" style="padding-top: 10px; margin: 5px 50px;">
+			<div id="main-gnb-notice" style="margin: 10px 70px;">
 				<div class="ticker_wrap">
 					<ul id="ticker">
 						<c:forEach var="notice" items="${notices }">
-							<li id="ticker-li">
+							<li id="ticker-li" >
 								<a href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}" style="color: black;">${notice.title}</a>
 							</li>
 						</c:forEach>

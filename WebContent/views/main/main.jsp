@@ -107,7 +107,7 @@
 			<c:forEach var="newProduct" items="${newProducts }">
 				<div class="col-lg-4">
 					
-						<img class="rounded-circle" src="${newProduct.img}" alt="Generic placeholder image" width="140" height="140">
+						<img class="rounded-circle" src="${newProduct.img}" alt="Generic placeholder image" width="250" height="250">
 							<br><br>
 						<h4 id="product_name">${newProduct.name}</h4> <br>
 						<div id="content_div">
