@@ -401,7 +401,7 @@
 				name : '${orderName}',
 				//결제창에서 보여질 이름
 //				amount : '${order_totalPrice }',
-				amount : '10',
+				amount : '101',
 				//가격
 				buyer_email : '${member.email}',
 				buyer_name : '${member.name}',

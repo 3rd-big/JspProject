@@ -41,7 +41,7 @@
 				<td><textarea rows="1" cols="100" placeholder="title" name="title" id="title" class="form-control"></textarea></td>			
 				</tr>
 				<tr><td>content</td>
-				<td><textarea rows="7" cols="100" placeholder="content" name="content" class="form-control"></textarea></td>
+				<td><textarea rows="7" cols="100" placeholder="content" name="content" class="form-control" style="width:100%;"></textarea></td>
 				</tr>
 			</table>
 			</div>

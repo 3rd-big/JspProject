@@ -42,7 +42,7 @@ public class MainListController extends HttpServlet {
 		
 		
 		notice.service.Service notice_service = new notice.service.ServiceImpl();
-		ArrayList<NoticeVO> notices = notice_service.getNoticeheader();
+		ArrayList<NoticeVO> listnotices = notice_service.getNoticeheader();
 		
 		
 		// 메인페이지쪽만 보임
@@ -51,7 +51,7 @@ public class MainListController extends HttpServlet {
 		// 전체 페이지 확인가능
 		ServletConfig conf = this.getServletConfig();
 		ServletContext application = conf.getServletContext();
-		application.setAttribute("notices", notices);
+		application.setAttribute("listnotices", listnotices);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
 		dispatcher.forward(request, response);

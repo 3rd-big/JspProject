@@ -46,8 +46,7 @@
 
 	<nav id="top">
 		<%-- <jsp:include page="/views/common/header.jsp" /><br> --%>
-		<jsp:include page="/views/common/header2.jsp" /><br>
-		<br>
+		<jsp:include page="/views/common/header2.jsp" />
 	</nav>
 
 
@@ -61,10 +60,10 @@
 			<div>
 				<c:choose>
 					<c:when test="${param.category eq 'top' }">
-						<img id="back_img" src="sample_img/first.jpg">
+						<img id="back_img" src="sample_img/wideimage14.jpg">
 					</c:when>
 					<c:otherwise>
-						<img id="back_img" src="sample_img/second.jpg">
+						<img id="back_img" src="sample_img/wideimage16.jpg">
 					</c:otherwise>
 				</c:choose>
 			</div>
