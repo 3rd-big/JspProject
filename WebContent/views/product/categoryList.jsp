@@ -59,7 +59,7 @@
 
 		<div>
 			<div>
-				<img id="back_img" src="sample_img/category_wide_back.png">
+				<img id="back_img" src="sample_img/wideimage14.jpg">
 			</div>
 		</div>
 

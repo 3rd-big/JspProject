@@ -260,13 +260,14 @@
 		}
 		
 		#ticker {
+			
 			height: 20px;
 			line-height: 150%;
 			overflow: hidden;
 			align: center;
-			text-align: center;
+			text-align: left;
 			list-style:none;
-			
+
 		}
 		#ticker-li>a{
 			
@@ -387,14 +388,14 @@
 					<path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z" />
 					<path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707z" />
 				</svg>
-				
 			</div>
 			<!-- /.main-gnb-notice -->
 
 
 			<!--  공지사항  슬라이드   -->
 
-			<div id="main-gnb-notice" style="margin: 10px 70px;">
+			<div id="main-gnb-notice" style="margin: 10px 150px;">
+
 				<div class="ticker_wrap">
 					<ul id="ticker">
 						<c:forEach var="notice" items="${notices }">
