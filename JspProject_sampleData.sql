@@ -592,6 +592,155 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 70, '/upload_img/pa
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 70, '/upload_img/pants4_3.jpg');
 insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 70, '/upload_img/pants4_4.jpg');
 
-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+---샘플 데이터  스포츠췌어 추가 
+---------------------------------
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '후디', 29900, '/upload_img/top122-1.jpg', 
+                            '스포츠웨어의 편안함과 향균기능까지 더한 데일리 티셔츠!', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 121, '/upload_img/top122-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 121, '/upload_img/top122-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 121, '/upload_img/top122-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '베이지 탑 ', 29900, '/upload_img/top123-1.jpg', 
+                            '스포츠웨어의 편안함과 향균기능까지 더한 데일리 티셔츠!', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 122, '/upload_img/top123-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 122, '/upload_img/top123-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 122, '/upload_img/top123-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '블랙', 29900, '/upload_img/top124-1.jpg', 
+                            '스포츠웨어의 편안함과 향균기능까지 더한 데일리 티셔츠!', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 123, '/upload_img/top124-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 123, '/upload_img/top124-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 123, '/upload_img/top124-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '맨즈 스탠다드 슬리브', 29000, '/upload_img/top125-1.jpg', 
+                            '캐주얼한 디자인에 스포츠웨어 소재로 편안함을 더한 맨즈 스탠다드 슬리브', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 124, '/upload_img/top125-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 124, '/upload_img/top125-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 124, '/upload_img/top125-4.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '에어쿨링 맨즈 레깅스', 19800, '/upload_img/bottom126-1.jpg', 
+                            '남자친구, 남동생 혹은 남편에게 에어쿨링의 편안함을 선물하고 싶다는 여성 소비자들의 마음을 읽고 준비한 맨즈 레깅스!', 
+                            sysdate, 150, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 125, '/upload_img/bottom126-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 125, '/upload_img/bottom126-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 125, '/upload_img/bottom126-4.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '맨즈 슬릿 래글런 숏슬리브', 29900, '/upload_img/top127-1.jpg', 
+                            '스포츠웨어의 편안함과 향균기능까지 더한 데일리 티셔츠!', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 126, '/upload_img/top127-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 126, '/upload_img/top127-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 126, '/upload_img/top127-4.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 조거핏 팬츠', 39000, '/upload_img/bottom128-1.jpg', 
+                            '소프트 조거핏 팬츠', 
+                            sysdate, 150, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 127, '/upload_img/bottom128-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 127, '/upload_img/bottom128-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 127, '/upload_img/bottom126-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 후디 핑크', 45000, '/upload_img/top129-1.jpg', 
+                            '실내에서 휴식을 취할 때, 집 앞에 잠시 외출할 때 내 마음이 편한 그 어느 곳에서도 어울리는 소프트 후디', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 128, '/upload_img/top129-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 128, '/upload_img/top129-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 128, '/upload_img/top129-4.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트 후디 베이지', 45000, '/upload_img/top130-1.jpg', 
+                            '실내에서 휴식을 취할 때, 집 앞에 잠시 외출할 때 내 마음이 편한 그 어느 곳에서도 어울리는 소프트 후디', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 129, '/upload_img/top130-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 129, '/upload_img/top130-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 129, '/upload_img/top130-4.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '레일 9부 레깅스', 27300, '/upload_img/bottom131-1.jpg', 
+                            '레일 9부 레깅스', 
+                            sysdate, 150, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 130, '/upload_img/bottom131-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 130, '/upload_img/bottom131-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 130, '/upload_img/bottom131-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '에어밸런스 스웻팬츠 ', 47000, '/upload_img/bottom132-1.jpg', 
+                            '계절과 꼭맞는 베이직함과 깔끔한 디자인 포인트를 더한 24시간 편하게 입고 다양하게 스타일링할 수 있는 옷', 
+                            sysdate, 150, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 131, '/upload_img/bottom132-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 131, '/upload_img/bottom132-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 131, '/upload_img/bottom132-4.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, 'NZ 집업 베이지',41300, '/upload_img/top133-1.jpg', 
+                            '퍼포먼스에 적합한 텐션으로 몸매를 잡아주고, 운동하기 전과 마무리까지 처음처럼 기분 좋은 순간을 경험할 수 있다', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 132, '/upload_img/top133-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 132, '/upload_img/top133-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 132, '/upload_img/top133-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, 'NZ 집업 퍼플',41300, '/upload_img/top134-1.jpg', 
+                            '퍼포먼스에 적합한 텐션으로 몸매를 잡아주고, 운동하기 전과 마무리까지 처음처럼 기분 좋은 순간을 경험할 수 있다', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 133, '/upload_img/top134-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 133, '/upload_img/top134-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 133, '/upload_img/top134-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '맨즈 오픈 슬릿 티셔츠',35000, '/upload_img/top136-1.jpg', 
+                            '맨즈 오픈 슬릿 티셔츠', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 134, '/upload_img/top136-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 134, '/upload_img/top136-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 134, '/upload_img/top136-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '에어캐치 서포트 9부 ', 29000, '/upload_img/bottom137-1.jpg', 
+                            '계절과 꼭맞는 베이직함과 깔끔한 디자인 포인트를 더한 24시간 편하게 입고 다양하게 스타일링할 수 있는 옷', 
+                            sysdate, 150, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 135, '/upload_img/bottom137-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 135, '/upload_img/bottom137-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 135, '/upload_img/bottom137-4.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트모달 워싱 슬리브리스 블랙 ',29000, '/upload_img/top138-1.jpg', 
+                            '자연을 그대로 담은 부드러운 촉감의 소프트모달', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 136, '/upload_img/top138-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 136, '/upload_img/top138-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 136, '/upload_img/top138-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '소프트모달 워싱 슬리브리스 카키 ',29000, '/upload_img/top139-1.jpg', 
+                            '자연을 그대로 담은 부드러운 촉감의 소프트모달', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 137, '/upload_img/top139-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 137, '/upload_img/top139-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 137, '/upload_img/top139-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '리버서블 점퍼 크리스탈로즈', 83300, '/upload_img/top140-1.jpg', 
+                            '자연을 그대로 담은 부드러운 촉감의 소프트모달', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 138, '/upload_img/top140-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 138, '/upload_img/top140-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 138, '/upload_img/top140-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '에어플럽 베라 하프슬리브', 19000, '/upload_img/top141-1.jpg', 
+                            '자연을 그대로 담은 부드러운 촉감의 소프트모달', 
+                            sysdate, 150, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 139, '/upload_img/top141-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 139, '/upload_img/top141-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 139, '/upload_img/top141-4.jpg');
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '데님 포츠 9부 소프트카키 ', 27300, '/upload_img/bottom142-1.jpg', 
+                            '운동복과 일상복의 경계를 없앤 데님 포츠 레깅스', 
+                            sysdate, 150, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 140, '/upload_img/bottom142-2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 140, '/upload_img/bottom142-3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 140, '/upload_img/bottom142-4.jpg');
+---------------------------------
 
 commit;
