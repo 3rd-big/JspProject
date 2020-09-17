@@ -951,7 +951,31 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 191, '/upload_img/a
 ---------------------------------------------------------
 commit;
 --------------------------------------------------------------
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '헤이즈 샤이나 셰브론 크롭 티', 62000, '/upload_img/newtop1_1.jpg', 
+                            'ersatility is key with this crop tank in a hand-done tonal tie dye.  Wear it for any of your after work plans...  The double layer construction with removable bust cups makes it great for the gym or styled with an outfit for happy hour.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 201, '/upload_img/newtop1_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 201, '/upload_img/newtop1_3.jpg');
 
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '헤이즈 레니 7/8 립 레깅스', 99000, '/upload_img/newbottom1_1.jpg', 
+                            'Step out in comfort and style in a 7/8ths length legging with a hazy hand-dyed tie-dye pattern.  Vertically ribbed material make these leggings a perfect medium weight and supremely breathable.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 202, '/upload_img/newbottom1_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 202, '/upload_img/newbottom1_3.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '크리스탈 V-백 7/8 레깅스', 131000, '/upload_img/newbottom2_1.jpg', 
+                            'Our unique and patented holds-you-in waistband with a new v-back shape that flatters your backside too!  Hand-dyed in a unique crystal-inspired wash, these 7/8th length leggings will recharge you from hot yoga to iced lattes!', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 203, '/upload_img/newbottom2_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 203, '/upload_img/newbottom2_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 203, '/upload_img/newbottom2_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 203, '/upload_img/newbottom2_3.jpg');
+
+commit;
+------------------------------------------------------------------------------------------------------------
 
 
 
