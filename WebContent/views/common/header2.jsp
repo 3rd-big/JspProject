@@ -398,9 +398,9 @@
 
 				<div class="ticker_wrap">
 					<ul id="ticker">
-						<c:forEach var="notice" items="${notices }">
+						<c:forEach var="listnotices" items="${listnotices }">
 							<li id="ticker-li" >
-								<a href="${pageContext.request.contextPath }/ReadNoticeController?num=${notice.num}" style="color: black;">${notice.title}</a>
+								<a href="${pageContext.request.contextPath }/ReadNoticeController?num=${listnotices.num}" style="color: black;">${listnotices.title}</a>
 							</li>
 						</c:forEach>
 					</ul>
