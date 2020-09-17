@@ -147,8 +147,7 @@
 		
 		.searchView {
 			position: absolute;
-			top: 60px;
-			left: -50px;
+			top: 30px; 
 			width: 400px;
 			background-color: #f8f8f8;
 			border: 1px solid #979A9A;
@@ -509,7 +508,7 @@
 				<div class="searchView">
 					<div class="searchView-inner">
 						<input type="search" id="searchTxt" name="keword" placeholder="검색어를 입력하세요" onkeydown="onKeyDown(this)">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="onClick()">Search</button>
+						<button class="btn btn-dark " style="margin-bottom: 5px; margin-left:25px;" type="submit" onclick="onClick()">Search</button>
 					</div>
 				</div>
 				

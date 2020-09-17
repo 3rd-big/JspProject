@@ -22,11 +22,7 @@
 	min-height: 77.5%;
 	padding-bottom: 70px;
 }
-<script>
 
-
-
-</script>
 </style>
 <body>
 	<!-- Navigation -->

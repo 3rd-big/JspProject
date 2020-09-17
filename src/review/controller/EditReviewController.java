@@ -73,8 +73,8 @@ public class EditReviewController extends HttpServlet {
 		MultipartRequest multi = null;
 		
 		
-		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
-//		String uploadPath = "C:\\Web\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
+//		String uploadPath = "C:\\Web-kitri\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
+		String uploadPath = "C:\\Web\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\review_img";
 		try {
 			// request,파일저장경로,용량,인코딩타입,중복파일명에 대한 기본 정책
 			multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", 

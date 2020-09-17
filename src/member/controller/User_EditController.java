@@ -55,10 +55,7 @@ public class User_EditController extends HttpServlet {
         
 
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/main.jsp");
-        if(dispatcher!=null) {
-           dispatcher.forward(request, response);
-        }
+        response.sendRedirect("SearchController");
 	}
 
 	/**
