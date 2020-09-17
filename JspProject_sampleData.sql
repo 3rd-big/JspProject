@@ -744,3 +744,246 @@ insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 140, '/upload_img/b
 ---------------------------------
 
 commit;
+
+---------------------------------------------
+
+
+--스포츠웨어 추가 //  product 시퀀스와 product_img의 product_num 맞지 않을 수 도 있음
+
+------------------------------------------------
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '프론트 라인 크롭 티', 84000, '/upload_img/croptop1_1.jpg', 
+                            'Pound the pavement in the Frontline Crop Tee. It’s the perfect street piece, with a perforated body, cinched waist with drawstring, Alo graphic at front and cropped silhouette. So good with joggers and a baseball cap.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 172, '/upload_img/croptop1_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 172, '/upload_img/croptop1_3.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '펄스 쇼트 슬리브-블루문', 65000, '/upload_img/croptop2_1.jpg', 
+                            'Pound the pavement in the Frontline Crop Tee. It’s the perfect street piece, with a perforated body, cinched waist with drawstring, Alo graphic at front and cropped silhouette. So good with joggers and a baseball cap.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 173, '/upload_img/croptop2_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 173, '/upload_img/croptop2_3.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '펄스 쇼트 슬리브-네온라임', 65000, '/upload_img/croptop3_1.jpg', 
+                            'Pound the pavement in the Frontline Crop Tee. It’s the perfect street piece, with a perforated body, cinched waist with drawstring, Alo graphic at front and cropped silhouette. So good with joggers and a baseball cap.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 174, '/upload_img/croptop3_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 174, '/upload_img/croptop3_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 174, '/upload_img/croptop3_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 174, '/upload_img/croptop3_5.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '게더 롱 슬리브', 67000, '/upload_img/croptop4_1.jpg', 
+                            'Put the “warm” in warm-up with the Gather Long Sleeve. It’s made with a soft ribbed knit and has a cropped, fitted silhouette and cute cinched sides. Pairs pretty with the High-Waist Goddess Legging.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 175, '/upload_img/croptop4_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 175, '/upload_img/croptop4_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 175, '/upload_img/croptop4_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 175, '/upload_img/croptop4_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '더블 테이크 풀오버', 102000, '/upload_img/croptop5_1.jpg', 
+                            'Amp up your to-and-from with the forward Double Take Pullover, a cropped, comfy, French terry sweatshirt that looks like a standout and wears like a staple. Make it pop with leggings, shorts or lounge', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 176, '/upload_img/croptop5_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 176, '/upload_img/croptop5_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 176, '/upload_img/croptop5_4.jpg');
+
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '커버 롱 슬리브 탑', 79000, '/upload_img/croptop6_1.jpg', 
+                            'Prepare to walk the walk in the Cover Long Sleeve Top. The cropped slim fit silhouette, sweet front wrap detail and ribbed sleeves make it on-trend and on-point. Layer it over your favorite Alo bra for an easy, studio-to-street transition.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 177, '/upload_img/croptop6_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 177, '/upload_img/croptop6_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 177, '/upload_img/croptop6_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 177, '/upload_img/croptop6_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '바르 롱 슬리브', 75000, '/upload_img/croptop7_1.jpg', 
+                            'Elevate your warmup with the Barre Long Sleeve, a layering fave for the studio and beyond. It has a wrap design, ballet-inspired neckline, cropped silhouette and soft, ribbed sleeves. Wear it over an Alo bra and tie it in the front or back.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 178, '/upload_img/croptop7_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 178, '/upload_img/croptop7_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 178, '/upload_img/croptop7_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 178, '/upload_img/croptop7_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '피트니스 롱 슬리브 탑', 71000, '/upload_img/croptop8_1.jpg', 
+                            'Bring the feels. The Finesse Long Sleeve Top is made with soft performance jersey and has a comfy, relaxed silhouette, so you can stay cozy and on-trend from yoga to lounge. Looks so good layered under jackets.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 179, '/upload_img/croptop8_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 179, '/upload_img/croptop8_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 179, '/upload_img/croptop8_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 179, '/upload_img/croptop8_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '모션 탱크-라벤더 스모크', 61000, '/upload_img/croptop9_1.jpg', 
+                            'Dream shirt status. Tissue-thin & buttery-soft, the Motion Tank is a sweet, scoop-neck shirt for studio or street, perfect for popping over your fave Alo bra. The flowy silhouette also looks perf with bikers.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 180, '/upload_img/croptop9_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 180, '/upload_img/croptop9_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 180, '/upload_img/croptop9_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 180, '/upload_img/croptop9_5.jpg');
+
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '인 양 하프 집 풀업', 150000, '/upload_img/croptop10_1.jpg', 
+                            'From breezy days to chilly nights, the Yin Yang Half Zip Pullover has you covered. It’s made with polar fleece and has an on-trend half-zip closure with a bungee detail at waist to lock in warmth.', 
+                            sysdate, 250, 'top');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 181, '/upload_img/croptop10_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 181, '/upload_img/croptop10_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 181, '/upload_img/croptop10_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 181, '/upload_img/croptop10_5.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '7/8 하이웨이스트 에어브러쉬 레깅스', 120000, '/upload_img/alobottom1_1.jpg', 
+                            'The 7/8 High-Waist Airbrush Legging — all the smoothing, sculpting benefits of the full-length version, in a perfectly cropped package. So good for studio & all-day cool for street, this look features flat-locked seaming for comfort and functionality, no side seams, and an on-trend high waist.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 182, '/upload_img/alobottom1_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 182, '/upload_img/alobottom1_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 182, '/upload_img/alobottom1_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 182, '/upload_img/alobottom1_5.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '하이웨이스트 체크포인트 레깅스', 111000, '/upload_img/alobottom2_1.jpg', 
+                            'Your favorite sculpting legging and sweatpant combined. The 7/8 High-Waist Checkpoint Legging is made with our signature sculpting, lifting Airbrush fabric and has a skinny waistband with drawcords, open side pockets and elevated seaming. Show it off with a cropped tee or cami.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 183, '/upload_img/alobottom2_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 183, '/upload_img/alobottom2_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 183, '/upload_img/alobottom2_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 183, '/upload_img/alobottom2_5.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '하이웨이스트 코스트 카프리', 109000, '/upload_img/alobottom3_1.jpg', 
+                            'What is hot now? The forward Coast Capri — perfect for working out and wearing out thanks to strategically placed seams and breathable mesh fabric blocking. Team it up with a statement bra top for an incredible practice-to-pavement look.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 184, '/upload_img/alobottom3_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 184, '/upload_img/alobottom3_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 184, '/upload_img/alobottom3_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 184, '/upload_img/alobottom3_5.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '애비뉴 스웻 쇼츠', 71000, '/upload_img/alobottom4_1.jpg', 
+                            'So. Much. Yes! And so soft! Slip into the Avenue Short for comfy chilling or a cool, practice-to-pavement look. Made with luxe French terry, these sweat shorts feature a drawstring waistband & side pockets. Wear it wherever with a cropped hoodie.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 185, '/upload_img/alobottom4_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 185, '/upload_img/alobottom4_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 185, '/upload_img/alobottom4_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 185, '/upload_img/alobottom4_5.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '어반 모토 스웻팬츠', 119000, '/upload_img/alobottom5_1.jpg', 
+                            'City forward. Stay-home comfy. The Urban Moto Sweatpant are designed to transition flawlessly from the studio to the street. Zip front pockets keep your goodies secure on the move. We love wearing it with a cool, cropped sweatshirt & slides.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 186, '/upload_img/alobottom5_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 186, '/upload_img/alobottom5_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 186, '/upload_img/alobottom5_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 186, '/upload_img/alobottom5_5.jpg');
+
+
+
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '유니섹스 레일 스웻팬츠', 153000, '/upload_img/alobottom6_1.jpg', 
+                            'Keep your options open. The Rail Sweatpant has a comfortable ribbed waistband and cuffs, drawcords and functional side zips from waist to cuff. Complete the look with the matching Rail Hoodie or your favorite Alo tee.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 187, '/upload_img/alobottom6_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 187, '/upload_img/alobottom6_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 187, '/upload_img/alobottom6_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 187, '/upload_img/alobottom6_5.jpg');
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '오프 더 그리드 카프리', 94000, '/upload_img/alobottom7_1.jpg', 
+                            'Have a mesh moment with the Off The Grid Capri, made with our sculpting, lifting Airbrush performance fabric. It has wide-knit mesh detailing and sheer mesh down the sides, so you can show it off post-yoga.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 188, '/upload_img/alobottom7_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 188, '/upload_img/alobottom7_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 188, '/upload_img/alobottom7_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 188, '/upload_img/alobottom7_5.jpg');
+
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '티아나 타이다이 7/8 립 레깅스', 120000, '/upload_img/alobottom8_1.jpg', 
+                            'Meet the tie-dyed sister to the fan favorite Renee Rib Legging!', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 189, '/upload_img/alobottom8_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 189, '/upload_img/alobottom8_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 189, '/upload_img/alobottom8_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 189, '/upload_img/alobottom8_5.jpg');
+
+
+
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '다니엘 스트라이프 레깅스', 120000, '/upload_img/alobottom9_1.jpg', 
+                            'Drop it like it is hot in these squat-proof leggings!  Featuring an elegantly marled texture punctuated with bold, leg-lengthening stripes of color.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 190, '/upload_img/alobottom9_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 190, '/upload_img/alobottom9_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 190, '/upload_img/alobottom9_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 190, '/upload_img/alobottom9_5.jpg');
+
+
+
+insert into product values (SEQ_SHOP_PRODUCT.nextval, '헤이즈 레니 7/8 립 레깅스', 109000, '/upload_img/alobottom10_1.jpg', 
+                            'Step out in comfort and style in a 7/8ths length legging with a hazy hand-dyed tie-dye pattern.', 
+                            sysdate, 250, 'bottom');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 191, '/upload_img/alobottom10_2.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 191, '/upload_img/alobottom10_3.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 191, '/upload_img/alobottom10_4.jpg');
+insert into product_image values (SEQ_PRODUCT_IMAGE.nextval, 191, '/upload_img/alobottom10_5.jpg');
+
+---------------------------------------------------------
+commit;
+--------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

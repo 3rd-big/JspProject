@@ -21,7 +21,7 @@
 <style type="text/css">
 .container{
 	height: auto;
-	min-height: 77.5%;
+	min-height: 78%;
 	padding-bottom: 70px;
 }
 .enrollcomponent{
